@@ -1,0 +1,77 @@
+.header{
+    grid-column: 1 / 4;
+    grid-row:  1 / 2;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 1,888px;
+    height: 128px;
+    padding: 24px, 32px, 24px, 32px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
+    box-shadow: 5px 5px 10px 0px #0000001A;
+    margin: 15px;
+    padding: 5px;
+}
+.tomateLogo {
+    margin-left: 1vw;
+   
+}
+.right{
+    display: flex;
+    margin-right: 1.5vw;
+}
+/* right */
+.right{
+    width: 756.02px;
+    height: 48px;
+    gap: 32px;
+    align-items: center;
+    flex-grow: 0;
+}
+.input{
+    display: flex;
+    align-items: center;
+   
+    padding: 12px, 32px, 12px, 32px;
+    border-radius: 8px;
+    gap: 10px;
+    background: #F9F9F91A;
+    width: 30vw;  
+}
+.search{
+    width: 400px;
+    height:48px;
+    padding: 12px, 32px, 12px, 32px;
+    border-radius: 8px;
+    gap: 10px;
+    background: none;
+    border: none;
+    outline: none;
+    color: rgba(240, 248, 255, 0.89);
+    font-size: 18px;
+}
+.tools{
+    width: 244.02px;
+    height: 48px;
+    gap: 16px;
+}
+.noti{
+    width: 18.67px;
+    height: 24px;
+    top: 12.5px;
+}
+.avatar{
+    border-radius: 50px;
+}
+.searchIcon{
+    width: 17.05px;
+    height: 17.06px;
+    margin-left: 18px;
+}
+.userContainer{
+    display: flex;
+    width: 300px;
+    gap: 12px;
+    justify-content: center;
+}

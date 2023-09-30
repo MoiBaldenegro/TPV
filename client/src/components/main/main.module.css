@@ -1,0 +1,27 @@
+section{
+    display: flex;
+}
+.deployContainer{
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+    height: 260px;
+    transition: max-height 0.3s ease-in-out; 
+}
+.deployItem{
+    margin-left: 1vw;
+    width: 160px;
+    height: 30px;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+    border-radius: 12px;
+    transition: 200ms;
+    width: 254px;
+    height: 52px;
+    padding: 5px;
+    border-radius: 8px;
+}

@@ -1,0 +1,159 @@
+
+.aside{
+    margin: 0 15px ;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items:first center;
+    gap: 8px;
+    width: 358px;
+    height: 904px;
+    padding: 32px, 8px, 32px, 24px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
+    box-shadow: 5px 5px 10px 0px #0000001A;
+}
+.sectionOne{
+    width: 340px;
+    height: 250vh;
+    margin-top: 25px;
+    max-height: 800px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.sectionTwo{
+    width: 326px;
+    height: 716px;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.container{
+    gap: 15px;
+
+    padding: 3px;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    width: 310px;
+    height:46px;
+    padding: 8px, 16px, 8px, 16px;
+    border-radius: 8px;
+    margin: 8px;
+    padding: 3px;
+    transition: 200ms;  
+    background-color: #F9F9F933;
+}
+.containerWith{
+    gap: 15px;
+    padding: 3px;
+    align-items: center;
+    display: flex;
+    justify-content:space-between;
+    width: 310px;
+    height:46px;
+    padding: 8px, 16px, 8px, 16px;
+    border-radius: 8px;
+    margin: 8px;
+    transition: 200ms;
+    background-color: #F9F9F933;
+}
+ 
+.icon{
+    width: 27px;
+    height: 26px;
+}
+.arrowIcon{
+    width: 10px;
+    height: 7px; 
+    margin-right: 5px;
+}
+.selectedItem{
+    padding: 3px;
+    align-items: center;
+    display: flex;
+    justify-content:space-between;
+    width: 310px;
+    height:46px;
+    padding: 8px, 16px, 8px, 16px;
+    border-radius: 8px;
+    margin: 8px;
+    transition: 200ms;
+
+}
+
+.selectedItemAlter{
+    gap: 15px;
+    padding: 3px;
+    align-items: center;
+    display: flex;
+    justify-content:flex-start;
+    width: 310px;
+    height:46px;
+    padding: 8px, 16px, 8px, 16px;
+    border-radius: 8px;
+    margin: 8px;
+    transition: 200ms;
+}
+/* HOVER */
+.container:hover, 
+.containerWith:hover, 
+.selectedItem:hover, 
+.selectedItemAlter:hover{
+    background-color:  #f9f9f915;
+}
+
+/*  ASIDE SCROLL BAR*/
+
+.sectionOne::-webkit-scrollbar {
+    width: 10px; 
+  }
+  
+  .sectionOne::-webkit-scrollbar-thumb {
+    background-color: rgba(249, 249, 249, 0.15); 
+    border-radius: 5px; 
+
+  }
+  
+  .sectionOne::-webkit-scrollbar-thumb:hover {
+    background-color: #757575; 
+
+  }
+ .configContainer{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+ }
+ 
+ .iconDivider{
+    width: 300px;
+ }
+
+ .itemsDeployContainer{
+    display: flex;
+    margin-left: 3vw;
+    position: relative;
+ }
+
+ .redLine{
+    margin-left: -4px;
+    margin-top: 5px;
+    position: absolute;
+    transition: 400ms;
+ }
+.iconContainer,
+.configContainer{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.iconAyuda,
+.iconConfig{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+ 
+  

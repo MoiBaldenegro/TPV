@@ -1,0 +1,134 @@
+.categorias{
+    display: flex;
+    flex-direction: column;
+    width: 78vw;
+}
+.categoriesButtonsContainer{
+   display: flex;
+}
+.categoriasButtons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2vh;
+  
+}
+h2{
+    font-size: 35px;
+}
+
+.table{
+    margin: 25px;
+    width: 74vw;
+    height: 50vh;
+}
+
+.searchBarContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
+    margin-top: 2.5vh;
+    width: 1,482px;
+    height: 428px;
+    padding: 16px, 0px, 0px, 0px;
+    border-radius: 16px;
+}
+.searchBar{
+    width: 709px;
+    height: 48px;
+    padding: 12px, 16px, 12px, 16px;
+    border: none;
+    border-radius: 8px;
+    gap: 10px;
+    background: #F9F9F91A;
+    margin: 2vh 25px 0px 0;   
+}
+.searchBar::placeholder{
+    text-indent: 15px;
+}
+.table{
+    background: #F9F9F980;
+    width: 1,418px;
+    height: 56px;
+    padding: 0px, 16px, 0px, 16px;
+    border-radius: 8px;
+    border: 1px solid #F9F9F9;
+}
+
+.actionButtons{
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    transition: 200ms;
+    margin: 10px 16px;
+
+}
+.actionButtons:hover{
+   /*  opacity: .6; */
+   filter:brightness(0.8);
+}
+
+.tableRows{
+text-indent: 25px;    
+;
+}
+.tableRows,
+.buttonsContainer{
+    border-top: 1px solid #F9F9F9;
+   
+
+}
+
+.tHeadClave,
+.tHeadCategoria,
+.tHeadDate,
+.tHeadActions{
+    text-align: left;
+    text-indent: 8px;
+    background-color: #F9F9F966;
+    width: 464px;
+    height:56px;
+    padding: 16px;
+    gap: 8px;
+
+}
+
+.tHeadClave{
+    width:30%;
+}
+.tHeadCategoria{
+    width: 35%;
+}
+.tHeadDate{
+    width: 25%;
+}
+.tHeadActions{
+    text-indent: 15px;
+}
+
+/* CATEGORIES BUTTONS */
+.exportCategories,
+.importCategories,
+.createCategories{ 
+    display: flex;
+    color: #F9F9F9;
+    width: 192.18px;
+    height: 48px;
+    padding: 12px, 16px, 12px, 16px;
+    border-radius: 8px;
+    background: #F9F9F933;
+    margin: 0 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+}
+.createCategories{
+    background: #99000F;
+    width: 160px;
+
+}
+
+
