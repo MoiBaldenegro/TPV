@@ -136,12 +136,9 @@
     border: none;
     letter-spacing: 5px;
   }
-
   .btnEntrar:hover{
     background: #75000B;
-    
   }
-
   .formTittle{
     font-size: 28px;
     margin: 5vh 26vw 5vh 0;
