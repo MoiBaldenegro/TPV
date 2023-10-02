@@ -8,15 +8,15 @@
     align-items:first center;
     gap: 8px;
     width: 358px;
-    height: 904px;
+    height: 82vh;
     padding: 32px, 8px, 32px, 24px;
     border-radius: 16px;
     background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
     box-shadow: 5px 5px 10px 0px #0000001A;
 }
 .sectionOne{
-    width: 340px;
-    height: 250vh;
+    width: 320px;
+    height: 260vh;
     margin-top: 25px;
     max-height: 800px;
     overflow-y: auto;
@@ -31,31 +31,26 @@
 }
 .container{
     gap: 15px;
-
-    padding: 3px;
+    padding:15px;
     display: flex;
     justify-content:flex-start;
     align-items: center;
-    width: 310px;
     height:46px;
-    padding: 8px, 16px, 8px, 16px;
     border-radius: 8px;
-    margin: 8px;
-    padding: 3px;
+    margin: 5px;
     transition: 200ms;  
     background-color: #F9F9F933;
 }
 .containerWith{
     gap: 15px;
-    padding: 3px;
+    padding: 15px;
     align-items: center;
     display: flex;
     justify-content:space-between;
-    width: 310px;
     height:46px;
     padding: 8px, 16px, 8px, 16px;
     border-radius: 8px;
-    margin: 8px;
+    margin: 5px;
     transition: 200ms;
     background-color: #F9F9F933;
 }
@@ -70,30 +65,26 @@
     margin-right: 5px;
 }
 .selectedItem{
-    padding: 3px;
+    padding: 15px;
     align-items: center;
     display: flex;
     justify-content:space-between;
-    width: 310px;
     height:46px;
     padding: 8px, 16px, 8px, 16px;
     border-radius: 8px;
-    margin: 8px;
+    margin: 5px;
     transition: 200ms;
-
 }
-
 .selectedItemAlter{
     gap: 15px;
-    padding: 3px;
+    padding: 15px;
     align-items: center;
     display: flex;
     justify-content:flex-start;
-    width: 310px;
     height:46px;
     padding: 8px, 16px, 8px, 16px;
     border-radius: 8px;
-    margin: 8px;
+    margin: 5px;
     transition: 200ms;
 }
 /* HOVER */
@@ -138,9 +129,9 @@
 
  .redLine{
     margin-left: -4px;
-    margin-top: 5px;
     position: absolute;
     transition: 400ms;
+    height: 40px;
  }
 .iconContainer,
 .configContainer{
@@ -152,7 +143,13 @@
 .iconConfig{
     display: flex;
     gap: 15px;
-    margin-bottom: 20px;
+    margin: 12px 25px;
+}
+.linesContainer{
+    margin-left: -20px;
+}
+.line{
+    height: 250px;
 }
 
  

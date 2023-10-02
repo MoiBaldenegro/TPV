@@ -60,7 +60,7 @@ export default function Aside (){
                 <div className={indexing === 1 ? modeOne : classNameSelected}  onClick={() => handleBoard("catalogo", !active, 1)}>
                     <div className={styles.iconContainer}>
                         <img src={catalogo}  className={styles.icon} alt="catalogo-icon" />
-                        <span >Catalogo</span>
+                        <span>Catálogo</span>
                     </div>
                     <img src={arrow}  className={styles.arrowIcon} alt="icon" />
                 </div>
@@ -72,7 +72,7 @@ export default function Aside (){
                             <img src={redLine} className={styles.redLine}
                             style={
                                 redLinePosition === 1
-                                ? { marginTop: '7px' }
+                                ? { marginTop: '5px' }
                                 : redLinePosition === 2
                                 ? { marginTop: '55px' }
                                 : redLinePosition === 3
@@ -87,11 +87,11 @@ export default function Aside (){
                             />
                         </div>
                         <div className={styling.deployContainer}>
-                            <span className={styling.deployItem} onClick={() => handleBoard("catalogo", true, 1, 1, "categorias")} > categorias </span>
+                            <span className={styling.deployItem} onClick={() => handleBoard("catalogo", true, 1, 1, "categorias")} > Categorías </span>
                             <span className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 2, "productosYPrecios")}> Productos y precios </span>
                             <span className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 3, "complementos")}> Complementos </span>
                             <span className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 4, "modificaciones")}> Modificaciones </span>
-                            <span className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 5, "menusYRecetas")}> Menus y recetas </span>
+                            <span className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 5, "menusYRecetas")}> Menús y recetas </span>
                         </div> 
 
                     </div>: null
@@ -111,7 +111,7 @@ export default function Aside (){
                 <div className={indexing === 4 ? modeOne : classNameSelected} onClick={() => handleBoard("promociones", false, 4)}>
                     <div className={styles.iconContainer}>
                         <img src={promociones} className={styles.icon} alt="promociones" />
-                        <span>Promociones</span>
+                        <span>Descuentos</span>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
                 </div>

@@ -1,4 +1,4 @@
-import styles from "./header.module.css"
+        import styles from "./header.module.css"
 import notification from "../../assets/header/notificacion.svg"
 import arrow from "../../assets/header/arrow.svg"
 import logo from "../../assets/header/tomateLogo.svg"
@@ -15,7 +15,7 @@ export default function Header(){
             <div className={styles.right}>
                 <div className={styles.input}>
                     <img src={search} className={styles.searchIcon} alt="" />
-                    <input type="search" className={styles.search} placeholder="Buscar modulo"/>      
+                    <input type="search" className={styles.search} placeholder="Buscar módulo"/>      
                 </div>
                 <div className={styles.userContainer}>
                     <img src={notification}  className={styles.noti} alt="notificacion" />

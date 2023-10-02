@@ -1,4 +1,5 @@
 import styles from "./loginPage.module.css";
+import { Link } from "react-router-dom";
 
 // Dependencies
 import { NavLink } from "react-router-dom";
@@ -21,6 +22,9 @@ export default function LoginPage (){
                         <option value="en">English</option>
                     </select>
                     <img src={arrow} alt="" className={styles.arrowSelect} />
+                </div>
+                <div>
+                    <span> No tienes una cuenta? <Link to={"/create/account"}>Crea una aqui </Link></span>
                 </div>
             </header>
             <main className={styles.centerContainer}>

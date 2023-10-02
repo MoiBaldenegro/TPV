@@ -11,8 +11,10 @@
     padding: 24px, 32px, 24px, 32px;
     display: flex;
     flex-direction: row-reverse;
+    justify-content: space-between;
     align-items: center;
     z-index: 2;
+    margin: 0 30px;
 }
 .selectInput{
     position: absolute;
