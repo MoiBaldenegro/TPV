@@ -22,6 +22,16 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+.sectionOne::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px; /* Ancho del margen */
+    height: 100%;
+    background-color: transparent; /* Color del margen */
+    z-index: 1; /* Asegura que el margen esté por encima de la pista */
+  }
 .sectionTwo{
     width: 326px;
     height: 716px;
@@ -60,8 +70,7 @@
     height: 26px;
 }
 .arrowIcon{
-    width: 10px;
-    height: 7px; 
+    height: 12px; 
     margin-right: 5px;
 }
 .selectedItem{

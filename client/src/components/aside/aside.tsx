@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
 
 import dashboard from "../../assets/dashboard/dashboard.svg"
 import arrow from "../../assets/dashboard/arrow.svg"
@@ -23,6 +24,7 @@ import styles from "../aside/aside.module.css"
 import styling from "../main/main.module.css"
 // Actions
 import { toggleMainRender, toggleMainItemRender } from "../../redux/actions"
+
 
 
 
@@ -154,10 +156,12 @@ export default function Aside (){
             </div>
             <img src={divider} className={styles.iconDivider} alt="icon" />
             <div className={styles.sectionTwo}>
-                <div className={styles.iconConfig}>
-                    <img src={config} className={styles.icon} alt="configuraciones" />
-                    <span>Configuracion</span>
-                </div>
+                <Link to={"config"} >
+                    <div className={styles.iconConfig}>
+                        <img src={config} className={styles.icon} alt="configuraciones" />
+                        <span>Configuracion</span>
+                    </div>
+                </Link>
                 <div className={styles.iconAyuda}>
                     <img src={ayuda} alt="ayuda" />
                     <span>Ayuda</span>
