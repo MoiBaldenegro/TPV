@@ -24,7 +24,7 @@ export default function Complementos (){
             </section>
             <section className={styles.updateSection}>
                 <div className={styles.leftSection}>
-                    <input type="text" placeholder="Nombre del producto" readOnly className={styles.productName} />
+                    <input type="text" placeholder="Nombre del complemento" readOnly className={styles.productName} />
                     <div className={styles.selectContainer}>
                         <input type="text" name="" id="" placeholder="Clave" readOnly className={styles.clave} />
                         <select name="" id="" placeholder="Tipo de venta" className={styles.ventaTypesSelect}>
@@ -35,66 +35,49 @@ export default function Complementos (){
                     </div> 
                 </div> 
                 <div className={styles.rightSection} >
+                    <div className={styles.inRightSection}> 
+                        <div className={styles.price}>
+                            <span >Precio de venta</span>
+                            <input type="text" placeholder="$0.00" readOnly className={styles.inputItem}/>
+                        </div>
+                    </div>
                     <div className={styles.inRightSection}>
-                        <div className={styles.impuesto}>
-                            <span className={styles.subTittle}>Costo sin impuesto</span>
-                            <img src={helpIcon} alt="help-icon" className={styles.iconItem} />
-                            <input type="text" value={"$0.00"} readOnly className={styles.inputItem} />
-                         </div>
-                        <div className={styles.aumento} >
-                            <span className={styles.subTittle}>importe aumento</span>
-                            <div className={styles.btnContainerInput}>
-                                <input type="text" placeholder="$0.00" className={styles.inputWithButton}/>
-                                <button className={styles.buttonAument}><img src={createIcon} alt="" /></button>  
-                            </div>
-                        </div>
-                        <div className={styles.margen} >
-                            <span className={styles.subTittle}>Margen de utilidad</span>
-                            <input type="text" placeholder="$0.00" className={styles.inputItem}/>
+                    <div className={styles.aumento}>
+                        <span className={styles.subTittle}>importe aumento</span>
+                        <div className={styles.btnContainerInput}>
+                            <input type="text" placeholder="$0.00" className={styles.inputWithButton}/>
+                            <button className={styles.buttonAument}><img src={createIcon} alt="" /></button>  
                         </div>
                     </div>
-                <div>
+                    <div className={styles.porcentaje}>
+                        <span>Porcentaje de aumento</span>
+                        <div className={styles.btnContainerInput}>
+                            <input type="text" placeholder="0%" className={styles.inputWithButton}/>
+                            <button className={styles.buttonAument}><img src={createIcon} alt="" /></button>
+                        </div> 
+                    </div>
+                </div>  
+               
                 </div>
-                <div className={styles.inRightSection}>
-                            <div>
-                                <span className={styles.subTittle}>Precio de venta</span>
-                                <input type="text" placeholder="$0.00" readOnly className={styles.inputItem}/>
-                            </div>
-                            <div className={styles.porcentaje}>
-                                <span>Porcentaje de aumento</span>
-                                <div className={styles.btnContainerInput}>
-                                    <input type="text" placeholder="0%" className={styles.inputWithButton}/>
-                                    <button className={styles.buttonAument}><img src={createIcon} alt="" /></button>
-                                </div>
-                            </div>
-                            <div>
-                                <span>Utilidad</span>
-                                <input type="text" placeholder="Precio de venta" readOnly className={styles.inputItem}/>
-                            </div>
-                        </div>
-                    </div>
-
-                   
-                    
             </section>
             <section className={styles.mainSection}>
                 <div className={styles.mainHead}>
                     <div className={styles.mainHeadLeft} >
                         <span>Mostrar</span>
-                        <select name="" id="">
+                        <select name="" id="" className={styles.showSelect}>
                             <option value="all">Todos</option>
                             <option value="option-one">Option 1</option>
                             <option value="optio-two">Option 2</option>
                         </select>
-                        <span>Productos</span>
+                        <span>Complementos</span>
                     </div>
                     <div className={styles.searchContainer} >
-                        <button><img src={filterIcon} alt="categories-button" /><span>Categorias</span></button>
-                        <button><img src={filterIcon} alt="sell-types" /><span>Tipo de venta</span></button>
-                        <button><img src={filterIcon} alt="state" /><span>Estado</span></button>
-                        <div>
-                            <img src={searchIcon} alt="search-icon" />
-                            <input type="text" />
+                        <button className={styles.categoryButton}><img src={filterIcon} alt="categories-button" /><span>Categorias</span></button>
+                        <button className={styles.sellTypeButton} ><img src={filterIcon} alt="sell-types" /><span>Tipo de venta</span></button>
+                        <button className={styles.stateButton}><img src={filterIcon} alt="state" /><span>Estado</span></button>
+                        <div className={styles.searchBarTable}>
+                            <img src={searchIcon} alt="search-icon" className={styles.searchIcon}/>
+                            <input type="text" className={styles.searchBarTableInput} placeholder="Ejemplo de complemento" />
                         </div>
                     </div> 
                 </div>
