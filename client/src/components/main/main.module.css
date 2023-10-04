@@ -24,6 +24,8 @@ section{
     height: 52px;
     padding: 5px;
     border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-white);
 }
 .container{
     grid-column: 2 / 3;

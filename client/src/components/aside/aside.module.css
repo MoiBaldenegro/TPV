@@ -1,3 +1,6 @@
+@import "../../varCss/colors.module.css";
+@import "../../varCss/fonts.module.css";
+
 
 .aside{
     margin: 0 15px ;
@@ -50,6 +53,8 @@
     margin: 5px;
     transition: 200ms;  
     background-color: #F9F9F933;
+    text-decoration: none;
+    color: var(--color-white);
 }
 .containerWith{
     gap: 15px;
@@ -63,6 +68,8 @@
     margin: 5px;
     transition: 200ms;
     background-color: #F9F9F933;
+    text-decoration: none;
+    color: var(--color-white);
 }
  
 .icon{
@@ -83,6 +90,8 @@
     border-radius: 8px;
     margin: 5px;
     transition: 200ms;
+    text-decoration: none;
+    color: var(--color-white);
 }
 .selectedItemAlter{
     gap: 15px;
@@ -95,6 +104,8 @@
     border-radius: 8px;
     margin: 5px;
     transition: 200ms;
+    text-decoration: none;
+    color: var(--color-white);
 }
 /* HOVER */
 .container:hover, 
@@ -153,6 +164,8 @@
     display: flex;
     gap: 15px;
     margin: 12px 25px;
+    text-decoration: none;
+    color: var(--color-white);
 }
 .linesContainer{
     margin-left: -20px;

@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Delete, Put, Body } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Put, Body,ConflictException, HttpCode } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from 'src/dto/createUser.dto';
+import { Error } from 'mongoose';
 
 @Controller('users')
 export class UsersController {
@@ -16,8 +17,16 @@ export class UsersController {
     return 'Retornando el usuario con el id';
   }
   @Post()
-  create(@Body() body: CreateUserDto) {
-    return this.usersService.create(body);
+  @HttpCode(204)
+  async create(@Body() body: CreateUserDto) {
+    try {
+      return await this.usersService.create(body);
+    } catch (error) {
+      if(error.code === 11000){
+        throw new ConflictException("El usuario y/o email ya estan en uso")
+      }
+      throw error;
+    }
   }
   @Delete(':id')
   delete() {

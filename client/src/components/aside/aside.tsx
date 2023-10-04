@@ -55,17 +55,17 @@ export default function Aside (){
     return (
         <aside className={styles.aside}>
             <div className={styles.sectionOne}>
-                <div className={indexing === 0 ? modeTwo : classNameSelectedAlter} onClick={() => handleBoard("dashboard", false, 0)}>
+                <Link to="dashboard" className={indexing === 0 ? modeTwo : classNameSelectedAlter} onClick={() => handleBoard("dashboard", false, 0)}>
                     <img src={dashboard} className={styles.icon} alt="dashboard-icon" />
                     <span>Dashboard</span>
-                </div>
-                <div className={indexing === 1 ? modeOne : classNameSelected}  onClick={() => handleBoard("catalogo", !active, 1)}>
+                </Link>
+                <Link to="categories" className={indexing === 1 ? modeOne : classNameSelected}  onClick={() => handleBoard("catalogo", !active, 1)}>
                     <div className={styles.iconContainer}>
                         <img src={catalogo}  className={styles.icon} alt="catalogo-icon" />
                         <span>Catálogo</span>
                     </div>
                     <img src={arrow}  className={styles.arrowIcon} alt="icon" />
-                </div>
+                </Link>
                 {
                     main === "catalogo" && active === true ? 
                     <div className={styles.itemsDeployContainer}>
@@ -89,83 +89,81 @@ export default function Aside (){
                             />
                         </div>
                         <div className={styling.deployContainer}>
-                            <span className={styling.deployItem} onClick={() => handleBoard("catalogo", true, 1, 1, "categorias")} > Categorías </span>
-                            <span className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 2, "productosYPrecios")}> Productos y precios </span>
-                            <span className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 3, "complementos")}> Complementos </span>
-                            <span className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 4, "modificaciones")}> Modificaciones </span>
-                            <span className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 5, "menusYRecetas")}> Menús y recetas </span>
+                            <Link to="categories" className={styling.deployItem} onClick={() => handleBoard("catalogo", true, 1, 1, "categorias")} > Categorías </Link>
+                            <Link to="products&prices" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 2, "productosYPrecios")}> Productos y precios </Link>
+                            <Link to="dishes" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 3, "complementos")}> Complementos </Link>
+                            <Link to="modifications" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 4, "modificaciones")}> Modificaciones </Link>
+                            <Link to="menus&recipes" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 5, "menusYRecetas")}> Menús y recetas </Link>
                         </div> 
 
                     </div>: null
                    
                 } 
-                <div className={indexing === 2 ? modeOne : classNameSelected} onClick={() => handleBoard("ventas", false, 2)}>
+                <Link to="sales" className={indexing === 2 ? modeOne : classNameSelected} onClick={() => handleBoard("ventas", false, 2)}>
                     <div className={styles.iconContainer}>
                         <img src={ventas} className={styles.icon} alt="ventas-icon" />
                         <span>Ventas</span>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
-                </div>
-                <div className={indexing === 3 ? modeTwo : classNameSelectedAlter} onClick={() => handleBoard("ventaTypes", false, 3)}>
+                </Link>
+                <Link to="salesTypes" className={indexing === 3 ? modeTwo : classNameSelectedAlter} onClick={() => handleBoard("ventaTypes", false, 3)}>
                     <img src={ventasType} className={styles.icon} alt="tipos-de-venta" />
                     <span>Tipos de venta</span>
-                </div>
-                <div className={indexing === 4 ? modeOne : classNameSelected} onClick={() => handleBoard("promociones", false, 4)}>
+                </Link>
+                <Link to="discounts" className={indexing === 4 ? modeOne : classNameSelected} onClick={() => handleBoard("promociones", false, 4)}>
                     <div className={styles.iconContainer}>
                         <img src={promociones} className={styles.icon} alt="promociones" />
                         <span>Descuentos</span>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
-                </div>
-                <div className={indexing === 5 ? modeOne : classNameSelected} onClick={() => handleBoard("caja", false, 5)}>
+                </Link>
+                <Link to="till" className={indexing === 5 ? modeOne : classNameSelected} onClick={() => handleBoard("caja", false, 5)}>
                     <div className={styles.iconContainer} >
                         <img src={caja} className={styles.icon} alt="caja" />
                         <span>Caja</span>
                     </div>
                     <img src={arrow}  className={styles.arrowIcon} alt="icon" />
-                </div>
-                <div className={indexing === 6 ? modeTwo : classNameSelectedAlter} onClick={() => handleBoard("reservaciones", false, 6)}>
+                </Link>
+                <Link to="reservations" className={indexing === 6 ? modeTwo : classNameSelectedAlter} onClick={() => handleBoard("reservaciones", false, 6)}>
                     <img src={reservaciones} className={styles.icon} alt="reservaciones" />
                     <span>Reservaciones</span>
-                </div>
-                <div className={indexing === 7 ? modeOne : classNameSelected} onClick={() => handleBoard("tableros", false, 7)}>
+                </Link>
+                <Link to="panels" className={indexing === 7 ? modeOne : classNameSelected} onClick={() => handleBoard("tableros", false, 7)}>
                     <div className={styles.iconContainer}  >
                         <img src={tableros} className={styles.icon} alt="tableros" />
                         <span>Tableros</span>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
-                </div>
-                <div className={indexing === 8 ? modeOne : classNameSelected} onClick={() => handleBoard("usuarios", false, 8)}>
+                </Link>
+                <Link to="users" className={indexing === 8 ? modeOne : classNameSelected} onClick={() => handleBoard("usuarios", false, 8)}>
                     <div className={styles.iconContainer} >
                         <img src={usuarios} className={styles.icon} alt="usuarios" />
                         <span>Usuarios</span>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
-                </div>
-                <div className={indexing === 9 ? modeOne : classNameSelected} onClick={() => handleBoard("mesas", false, 9)}>
+                </Link>
+                <Link to="tables" className={indexing === 9 ? modeOne : classNameSelected} onClick={() => handleBoard("mesas", false, 9)}>
                     <div className={styles.iconContainer} >
                         <img src={mesas} className={styles.icon} alt="mesas" />
-                        <span  >Mesas</span>
+                        <span>Mesas</span>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
-                </div>
-                <div className={indexing === 10 ? modeTwo : classNameSelectedAlter}  onClick={() => handleBoard("reportes", false, 10)}>
+                </Link>
+                <Link to="reports" className={indexing === 10 ? modeTwo : classNameSelectedAlter}  onClick={() => handleBoard("reportes", false, 10)}>
                     <img src={reportes} className={styles.icon} alt="reportes" />
                     <span>Reportes</span>
-                </div>
+                </Link>
             </div>
             <img src={divider} className={styles.iconDivider} alt="icon" />
             <div className={styles.sectionTwo}>
-                <Link to={"config"} >
-                    <div className={styles.iconConfig}>
-                        <img src={config} className={styles.icon} alt="configuraciones" />
-                        <span>Configuracion</span>
-                    </div>
+                <Link className={styles.iconConfig}to={"config"} >
+                    <img src={config} className={styles.icon} alt="configuraciones" />
+                    <span>Configuracion</span>
                 </Link>
-                <div className={styles.iconAyuda}>
+                <Link to="help" className={styles.iconAyuda}>
                     <img src={ayuda} alt="ayuda" />
                     <span>Ayuda</span>
-                </div>
+                </Link>
             </div>
         </aside>
     )
