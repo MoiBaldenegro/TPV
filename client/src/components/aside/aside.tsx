@@ -55,11 +55,11 @@ export default function Aside (){
     return (
         <aside className={styles.aside}>
             <div className={styles.sectionOne}>
-                <Link to="dashboard" className={indexing === 0 ? modeTwo : classNameSelectedAlter} onClick={() => handleBoard("dashboard", false, 0)}>
+                <Link to="catalogo/dashboard" className={indexing === 0 ? modeTwo : classNameSelectedAlter} onClick={() => handleBoard("dashboard", false, 0)}>
                     <img src={dashboard} className={styles.icon} alt="dashboard-icon" />
                     <span>Dashboard</span>
                 </Link>
-                <Link to="categories" className={indexing === 1 ? modeOne : classNameSelected}  onClick={() => handleBoard("catalogo", !active, 1)}>
+                <Link to="catalogo/categories" className={indexing === 1 ? modeOne : classNameSelected}  onClick={() => handleBoard("catalogo", !active, 1)}>
                     <div className={styles.iconContainer}>
                         <img src={catalogo}  className={styles.icon} alt="catalogo-icon" />
                         <span>Catálogo</span>
@@ -89,11 +89,11 @@ export default function Aside (){
                             />
                         </div>
                         <div className={styling.deployContainer}>
-                            <Link to="categories" className={styling.deployItem} onClick={() => handleBoard("catalogo", true, 1, 1, "categorias")} > Categorías </Link>
-                            <Link to="products&prices" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 2, "productosYPrecios")}> Productos y precios </Link>
-                            <Link to="dishes" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 3, "complementos")}> Complementos </Link>
-                            <Link to="modifications" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 4, "modificaciones")}> Modificaciones </Link>
-                            <Link to="menus&recipes" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 5, "menusYRecetas")}> Menús y recetas </Link>
+                            <Link to="catalogo/categories" className={styling.deployItem} onClick={() => handleBoard("catalogo", true, 1, 1, "categorias")} > Categorías </Link>
+                            <Link to="catalogo/products&prices" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 2, "productosYPrecios")}> Productos y precios </Link>
+                            <Link to="catalogo/dishes" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 3, "complementos")}> Complementos </Link>
+                            <Link to="catalogo/modifications" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 4, "modificaciones")}> Modificaciones </Link>
+                            <Link to="catalogo/menus&recipes" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 5, "menusYRecetas")}> Menús y recetas </Link>
                         </div> 
 
                     </div>: null

@@ -1,7 +1,6 @@
 @import "../../varCss/colors.module.css";
 @import "../../varCss/fonts.module.css";
 
-
 .aside{
     margin: 0 15px ;
     grid-column: 1 / 2;
@@ -12,10 +11,9 @@
     gap: 8px;
     width: 358px;
     height: 82vh;
-    padding: 32px, 8px, 32px, 24px;
     border-radius: 16px;
-    background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
-    box-shadow: 5px 5px 10px 0px #0000001A;
+    background: var(--color-gradient);
+    box-shadow: var(--standard-shadow);
 }
 .sectionOne{
     width: 320px;
@@ -25,16 +23,6 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
-.sectionOne::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 10px; /* Ancho del margen */
-    height: 100%;
-    background-color: transparent; /* Color del margen */
-    z-index: 1; /* Asegura que el margen esté por encima de la pista */
-  }
 .sectionTwo{
     width: 326px;
     height: 716px;
@@ -52,7 +40,7 @@
     border-radius: 8px;
     margin: 5px;
     transition: 200ms;  
-    background-color: #F9F9F933;
+    background-color: #ca0b0b33;
     text-decoration: none;
     color: var(--color-white);
 }
@@ -67,7 +55,7 @@
     border-radius: 8px;
     margin: 5px;
     transition: 200ms;
-    background-color: #F9F9F933;
+    background-color: var(--color-gray-medium);
     text-decoration: none;
     color: var(--color-white);
 }
@@ -91,7 +79,7 @@
     margin: 5px;
     transition: 200ms;
     text-decoration: none;
-    color: var(--color-white);
+    color: var(--color-white); 
 }
 .selectedItemAlter{
     gap: 15px;
