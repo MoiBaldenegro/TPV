@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
 import dashboard from "../../assets/dashboard/dashboard.svg"
 import arrow from "../../assets/dashboard/arrow.svg"
@@ -21,54 +21,51 @@ import line from "../../assets/dashboard/line.png"
 import redLine from "../../assets/dashboard/redLine.png"
 
 import styles from "../aside/aside.module.css"
-import styling from "../main/main.module.css"
 // Actions
 import { toggleMainRender, toggleMainItemRender } from "../../redux/actions"
-
-
 
 
 export default function Aside (){
 
     const dispatch = useDispatch();
-    const [ main, setMain ] = useState("");
+    const [ main, setMain ] = useState("catalogo");
     const [ active, setActive ] = useState(true)
     const [ indexing, setIndexing] = useState(undefined);
     const [ redLinePosition, setRedLinePosition] = useState(5);
 
-    const handleBoard = (value:any, activeValue:any, indexValue:any, positionLine:any, deployItemValue: string ) => {
+    const handleBoard = (value:any, activeValue:any, indexValue:any, positionLine:any ) => {
         setMain(value)
         setActive(activeValue)
         setIndexing(indexValue)
         setRedLinePosition(positionLine)
         dispatch(toggleMainRender(value))
-        dispatch(toggleMainItemRender(deployItemValue))
     }; 
 
     const modeOne = styles.containerWith
     const modeTwo = styles.container
     const classNameSelected = styles.selectedItem
     const classNameSelectedAlter = styles.selectedItemAlter
-    // const redLineClassName = style.redLineCategorias
+
+    const activeClassName = ({ isActive }) => ( isActive ? styles.isActive : styles.notActive);
+    const deployItemClass = ({ isActive }) => ( isActive ? styles.isActiveDeploy : styles.notActiveDeploy);
 
 
     return (
         <aside className={styles.aside}>
             <div className={styles.sectionOne}>
-                <Link to="catalogo/dashboard" className={indexing === 0 ? modeTwo : classNameSelectedAlter} onClick={() => handleBoard("dashboard", false, 0)}>
-                    <img src={dashboard} className={styles.icon} alt="dashboard-icon" />
-                    <span>Dashboard</span>
-                </Link>
-                <Link to="catalogo/categories" className={indexing === 1 ? modeOne : classNameSelected}  onClick={() => handleBoard("catalogo", !active, 1)}>
+            <NavLink to="catalogo/dashboard" className={activeClassName}>
+                <img src={dashboard} className={styles.icon} alt="dashboard-icon"/>
+                <span className={styles.itemTittle}>Dashboard</span>
+                <div className={styles.separator}></div>
+            </NavLink>
+            <NavLink to="catalogo/categories" className={activeClassName}>
                     <div className={styles.iconContainer}>
                         <img src={catalogo}  className={styles.icon} alt="catalogo-icon" />
                         <span>Catálogo</span>
                     </div>
                     <img src={arrow}  className={styles.arrowIcon} alt="icon" />
-                </Link>
-                {
-                    main === "catalogo" && active === true ? 
-                    <div className={styles.itemsDeployContainer}>
+            </NavLink>
+                    <div className={main === "catalogo" ? styles.itemsDeployContainer : styles.hidden} >
                          <div className={styles.linesContainer}>
                             <img src={line}  className={styles.line} alt="line" />
                             <img src={redLine} className={styles.redLine}
@@ -81,82 +78,82 @@ export default function Aside (){
                                 ? { marginTop: '105px' }
                                 : redLinePosition === 4
                                 ? { marginTop: '160px' }
-                                : redLinePosition === 5
-                                ? { marginTop: '210px' }
-                                : null   
-                            }
+                                : { marginTop: '210px'}}
                             alt="red-line"
                             />
                         </div>
-                        <div className={styling.deployContainer}>
-                            <Link to="catalogo/categories" className={styling.deployItem} onClick={() => handleBoard("catalogo", true, 1, 1, "categorias")} > Categorías </Link>
-                            <Link to="catalogo/products&prices" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 2, "productosYPrecios")}> Productos y precios </Link>
-                            <Link to="catalogo/dishes" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 3, "complementos")}> Complementos </Link>
-                            <Link to="catalogo/modifications" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 4, "modificaciones")}> Modificaciones </Link>
-                            <Link to="catalogo/menus&recipes" className={styling.deployItem}  onClick={() => handleBoard("catalogo", true, 1, 5, "menusYRecetas")}> Menús y recetas </Link>
+                        <div /* ACA PODEMOS HACER LA ANIMACION DEL ASIDE DEPLOY */>
+                            <NavLink to="catalogo/categories" className={deployItemClass} onClick={() => handleBoard("catalogo", true, 1, 1, )} > Categorías </NavLink>
+                            <NavLink to="catalogo/products&prices" className={deployItemClass} onClick={() => handleBoard("catalogo", true, 1, 2, )}> Productos y precios </NavLink>
+                            <NavLink to="catalogo/dishes" className={deployItemClass} onClick={() => handleBoard("catalogo", true, 1, 3, )}> Complementos </NavLink>
+                            <NavLink to="catalogo/modifications" className={deployItemClass} onClick={() => handleBoard("catalogo", true, 1, 4, )}> Modificaciones </NavLink>
+                            <NavLink to="catalogo/menus&recipes" className={deployItemClass}  onClick={() => handleBoard("catalogo", true, 1, 5, )}> Menús y recetas </NavLink>
                         </div> 
 
-                    </div>: null
+                    </div>
                    
-                } 
-                <Link to="sales" className={indexing === 2 ? modeOne : classNameSelected} onClick={() => handleBoard("ventas", false, 2)}>
+                
+                <NavLink to="sales" className={activeClassName}>
                     <div className={styles.iconContainer}>
                         <img src={ventas} className={styles.icon} alt="ventas-icon" />
                         <span>Ventas</span>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
-                </Link>
-                <Link to="salesTypes" className={indexing === 3 ? modeTwo : classNameSelectedAlter} onClick={() => handleBoard("ventaTypes", false, 3)}>
+                </NavLink>
+                <NavLink to="salesTypes" className={activeClassName}>
                     <img src={ventasType} className={styles.icon} alt="tipos-de-venta" />
-                    <span>Tipos de venta</span>
-                </Link>
-                <Link to="discounts" className={indexing === 4 ? modeOne : classNameSelected} onClick={() => handleBoard("promociones", false, 4)}>
+                    <span className={styles.itemTittle}>Tipos de venta</span>
+                    <div className={styles.separator}></div>
+                </NavLink>
+                <NavLink to="discounts" className={activeClassName}>
                     <div className={styles.iconContainer}>
                         <img src={promociones} className={styles.icon} alt="promociones" />
                         <span>Descuentos</span>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
-                </Link>
-                <Link to="till" className={indexing === 5 ? modeOne : classNameSelected} onClick={() => handleBoard("caja", false, 5)}>
+                </NavLink>
+                <NavLink to="till" className={activeClassName}>
                     <div className={styles.iconContainer} >
                         <img src={caja} className={styles.icon} alt="caja" />
                         <span>Caja</span>
                     </div>
                     <img src={arrow}  className={styles.arrowIcon} alt="icon" />
-                </Link>
-                <Link to="reservations" className={indexing === 6 ? modeTwo : classNameSelectedAlter} onClick={() => handleBoard("reservaciones", false, 6)}>
+                </NavLink>
+                <NavLink to="reservations" className={activeClassName}>
                     <img src={reservaciones} className={styles.icon} alt="reservaciones" />
                     <span>Reservaciones</span>
-                </Link>
-                <Link to="panels" className={indexing === 7 ? modeOne : classNameSelected} onClick={() => handleBoard("tableros", false, 7)}>
+                    <div className={styles.separator}></div>
+                </NavLink>
+                <NavLink to="panels" className={activeClassName}>
                     <div className={styles.iconContainer}  >
                         <img src={tableros} className={styles.icon} alt="tableros" />
                         <span>Tableros</span>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
-                </Link>
-                <Link to="users" className={indexing === 8 ? modeOne : classNameSelected} onClick={() => handleBoard("usuarios", false, 8)}>
+                </NavLink>
+                <NavLink to="users" className={activeClassName}>
                     <div className={styles.iconContainer} >
                         <img src={usuarios} className={styles.icon} alt="usuarios" />
                         <span>Usuarios</span>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
-                </Link>
-                <Link to="tables" className={indexing === 9 ? modeOne : classNameSelected} onClick={() => handleBoard("mesas", false, 9)}>
+                </NavLink>
+                <NavLink to="tables" className={activeClassName}>
                     <div className={styles.iconContainer} >
                         <img src={mesas} className={styles.icon} alt="mesas" />
                         <span>Mesas</span>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
-                </Link>
-                <Link to="reports" className={indexing === 10 ? modeTwo : classNameSelectedAlter}  onClick={() => handleBoard("reportes", false, 10)}>
+                </NavLink>
+                <NavLink to="reports" className={activeClassName}>
                     <img src={reportes} className={styles.icon} alt="reportes" />
-                    <span>Reportes</span>
-                </Link>
+                    <span className={styles.itemTittle}>Reportes</span>
+                    <div className={styles.separator}></div>
+                </NavLink>
             </div>
             <img src={divider} className={styles.iconDivider} alt="icon" />
             <div className={styles.sectionTwo}>
-                <Link className={styles.iconConfig}to={"config"} >
+                <Link className={styles.iconConfig} to={"config"} >
                     <img src={config} className={styles.icon} alt="configuraciones" />
                     <span>Configuracion</span>
                 </Link>
