@@ -12,6 +12,11 @@ export class UsersService {
   }
   constructor(@InjectModel(User.name) private UserModel: Model<User>) {}
 
+  
+  async findByEmail(email: string) {
+    return await this.UserModel.findOne({ email }).exec();
+  }
+
   async create(createUser: CreateUserDto) {
     const newUser = new this.UserModel(createUser);
     return await newUser.save();

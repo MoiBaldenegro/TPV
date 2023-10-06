@@ -1,9 +1,13 @@
+@import "../../varCss/colors.module.css";
+@import "../../varCss/fonts.module.css";
+
 .loginPage{
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    color: var(--color-white);
 }
 .header{
     width: 1,888px;
@@ -14,12 +18,30 @@
     justify-content: space-between;
     align-items: center;
     z-index: 2;
-    margin: 0 30px;
+    margin: 2vh 30px;
+}
+.bienvenido{
+  font-size: var(--font-size-large);
+}
+
+
+.checkboxInputContainer{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: var(--font-size-small);
+  margin-left: 0.3vw;
+}
+.checkboxInput{
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: #333; 
+
 }
 .selectInput{
     position: absolute;
     background-color: #333; 
-    color: white;
     appearance: none; 
     width: 80px;
     border: none;
@@ -28,6 +50,9 @@
     border-radius: 8px;
     text-indent: 25px;
     z-index: 10;
+    color: var(--color-white);
+    font-size: var(--font-size-small);
+
 
 }
 /* lenguaje select */
@@ -44,7 +69,6 @@
     padding: 16px, 32px, 16px, 32px;
     border-radius: 8px;
     gap: 16px;
-    border: 1px solid #fff;
     margin-right: 35px;
     z-index: 5;
 
@@ -68,7 +92,6 @@
     display: flex;
     justify-content: center;
     gap: 5vw;
-    margin-bottom: 2vh;
   }
   .logoContainer{
     display: flex;
@@ -99,6 +122,7 @@
   .footer{
     display: flex;
     justify-content: space-between;
+    margin: 4vh;
   }
   .checkboxContainer{
     display: flex;
@@ -112,6 +136,7 @@
     gap: 1vh;
     
   }
+
   .inputForm{
     width: 672px;
     height:48px;
@@ -121,10 +146,13 @@
     border: none;
     outline: none;
     text-indent: 20px;
-    color: #fff;
+    color: var(--color-white);
+    font-size: var(--font-size-medium);
   }
   .inputForm::placeholder{
     text-indent: 20px;
+    font-size: var(--font-size-medium);
+    color: rgba(240, 248, 255, 0.568);
   }
   .btnEntrar{
     width: 672px;
@@ -133,10 +161,10 @@
     border-radius: 8px;
     gap: 8px;
     background: #F9F9F91A;
-    color: #fff;
     transition: 300ms;
     border: none;
-    letter-spacing: 5px;
+    color: var(--color-white);
+    font-size: var(--font-size-medium);
   }
   .btnEntrar:hover{
     background: #75000B;
@@ -145,3 +173,53 @@
     font-size: 28px;
     margin: 5vh 26vw 5vh 0;
   }
+  .linksContainer{
+    display: flex;
+    gap: 10px;
+    margin-left: 2vw;
+    align-items: center;
+  }
+ .links{
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: var(--font-size-small);
+ }
+ .copyrigth{
+  margin-right: 2vw;
+ }
+ .checkboxInputContainer{
+  display: flex;
+  align-items: center;
+ }
+ .checkboxLabel{
+  font-size: var(--font-size-small);
+  cursor: pointer;
+  user-select: none;
+ }
+
+ .checkboxInputNew {
+  appearance: none; 
+  -webkit-appearance: none; /* navegadores basados en Webkit (Safari) */
+  -moz-appearance: none; /* navegadores basados en Gecko (Firefox) */
+  width: 24px;
+  height: 24px; 
+  border: 2px solid #333; 
+  background-color: #F9F9F91A;
+  border-radius: 6px; /* Bordes redondeados */
+  cursor: pointer;
+}
+.checkboxInputNew:checked {
+  content: '\2713'; /* Unicode para el símbolo de marca de verificación */
+  background-color: rgba(218, 204, 204, 0.63);
+}
+.pass{
+  color: var(--color-white);
+  font-size: var(--font-size-small);
+  margin-right: 1vw;
+}
+
+
+
+
+
+

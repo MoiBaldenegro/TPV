@@ -29,34 +29,34 @@ export default function LoginPage (){
             </header>
             <main className={styles.centerContainer}>
                 <div className={styles.logoContainer}>
-                    <span>Bienvenido</span>
+                    <span className={styles.bienvenido}>Bienvenido</span>
                     <img src={tomateLogo} alt="" />
                 </div>
                 <div className={styles.formContainer}>
-                    <span className={styles.formTittle} >Iniciar sesion</span>
+                    <span className={styles.formTittle} >Iniciar sesión</span>
                     <div className={styles.form}>
                         <input placeholder="correo@ejemplo.com" type="text" className={styles.inputForm}/>
                         <input placeholder="password" type="text" className={styles.inputForm} />
                         <div className={styles.checkboxContainer}>
-                            <div >
-                                <input type="checkbox" />
-                                <span>Recordar sesion</span>
+                            <div className={styles.checkboxInputContainer}>
+                                <input  id="mi-checkbox" className={styles.checkboxInputNew} type="checkbox" />
+                                <span className={styles.checkboxLabel}>Recordar sesión</span>
                             </div>
-                            <span>Olvidaste tu contraseña?</span> 
+                            <Link className={styles.pass}>¿Olvidaste tu contraseña?</Link> 
                         </div>
                         <button type="submit" className={styles.btnEntrar}>Entrar</button>
                     </div>
                 </div>
             </main>
             <footer className={styles.footer} >
-                <div>
-                    <NavLink to="#avisoDePrivacidad"  id="">Aviso de Privacidad</NavLink>
+                <div className={styles.linksContainer}>
+                    <NavLink className={styles.links} to="#avisoDePrivacidad"  id="">Aviso de Privacidad</NavLink>
                     <span>|</span>
-                    <NavLink to="#avisoDePrivacidad"  id="">Terminos y condiciones</NavLink>
+                    <NavLink className={styles.links} to="#avisoDePrivacidad"  id="">Términos y condiciones</NavLink>
                     <span>|</span>
-                    <NavLink to="#avisoDePrivacidad"  id="">Soporte tecnico</NavLink>
+                    <NavLink  className={styles.links} to="#avisoDePrivacidad"  id="">Soporte técnico</NavLink>
                 </div>
-                <img src={footerRight} alt="tomate-copyrigth" />
+                <img className={styles.copyrigth} src={footerRight} alt="tomate-copyrigth" />
             </footer>
         </div>  
         )
