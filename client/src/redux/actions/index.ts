@@ -4,6 +4,7 @@ export const GET_CATEGORIES = "GET_CATEGORIES";
 export const TOGGLE_MAIN_RENDER = "TOGGLE_MAIN_RENDER";
 export const TOGGLE_ITEM_MAIN_RENDER = "TOGGLE_ITEM_MAIN_RENDER";
 export const CREATE_USER = "CREATE_USER;";
+export const LOGIN_USER = "LOGIN_USER";
 /*
 
 const getCategories = () =>{
@@ -18,12 +19,26 @@ export const toggleMainItemRender = payload => ({type: TOGGLE_ITEM_MAIN_RENDER, 
 
 export const createUser = user =>  async dispatch => {
     try {
-        const response = await axios.post("http://localhost:8000/users", user)
+        const response = await axios.post("http://localhost:8000/auth/register", user)
         alert(`El usuario con el correo ${user.email} ha sido creado con exito`)  
     } catch (error) {
-        alert(error.response?.data?.error || "Hubo un error al crear el usuraio");
+        alert(error.response?.data?.error || "Hubo un error al crear el usuario");
     }
 }
+
+export const loginUser = user =>  async dispatch => {
+  try {
+      const response = await axios.post("http://localhost:8000/auth/login", user)
+      if(!response.data.email){
+        alert("El usuario y/o contraseña son incorrectos")
+      }
+      return dispatch({ type: LOGIN_USER, payload: response.data})
+  } catch (error) {
+      alert(error.response?.data?.error || "Invalid credentials");
+  }
+}
+
+
    
 
 

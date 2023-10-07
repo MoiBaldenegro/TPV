@@ -1,5 +1,6 @@
 import styles from "./loginPage.module.css";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // Dependencies
 import { NavLink } from "react-router-dom";
@@ -8,10 +9,32 @@ import { NavLink } from "react-router-dom";
 import arrow from "../../assets/loginPage/arrow.svg"
 import tomateLogo from "../../assets/loginPage/tomateLogo.svg"
 import footerRight from "../../assets/loginPage/footerImgRight.svg"
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../redux/actions";
 
 
 
 export default function LoginPage (){
+    const loginUsers = useSelector(state => state.loginUsers);
+    const dispatch = useDispatch();
+
+    const [user, setUser ] = useState({
+        email : "",
+        password: ""
+    })
+
+    const handleChange = (event: any) => {
+        event?.preventDefault();
+        setUser({
+            ...user,
+            [event?.target.name] : event?.target.value
+        })
+    }
+    const onSubmit = () => {
+       dispatch(loginUser(user));
+
+    }
 
     return (
         <div className={styles.loginPage}>
@@ -35,8 +58,8 @@ export default function LoginPage (){
                 <div className={styles.formContainer}>
                     <span className={styles.formTittle} >Iniciar sesión</span>
                     <div className={styles.form}>
-                        <input placeholder="correo@ejemplo.com" type="text" className={styles.inputForm}/>
-                        <input placeholder="password" type="text" className={styles.inputForm} />
+                        <input name="email" onChange={handleChange} placeholder="correo@ejemplo.com" type="text" className={styles.inputForm}/>
+                        <input  name="password" onChange={handleChange} placeholder="password" type="password" className={styles.inputForm} />
                         <div className={styles.checkboxContainer}>
                             <div className={styles.checkboxInputContainer}>
                                 <input  id="mi-checkbox" className={styles.checkboxInputNew} type="checkbox" />
@@ -44,7 +67,7 @@ export default function LoginPage (){
                             </div>
                             <Link className={styles.pass}>¿Olvidaste tu contraseña?</Link> 
                         </div>
-                        <button type="submit" className={styles.btnEntrar}>Entrar</button>
+                        <button onClick={onSubmit} type="submit" className={styles.btnEntrar}>Entrar</button>
                     </div>
                 </div>
             </main>
@@ -60,7 +83,6 @@ export default function LoginPage (){
             </footer>
         </div>  
         )
-
 }
 
 
