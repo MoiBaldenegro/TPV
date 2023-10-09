@@ -1,9 +1,8 @@
 import styles from "./loginPage.module.css";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 // Dependencies
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 // icons
 import arrow from "../../assets/loginPage/arrow.svg"
@@ -16,6 +15,7 @@ import { loginUser } from "../../redux/actions";
 
 
 export default function LoginPage (){
+    const navigate = useNavigate();
     const loginUsers = useSelector(state => state.loginUsers);
     const dispatch = useDispatch();
 
@@ -33,6 +33,7 @@ export default function LoginPage (){
     }
     const onSubmit = () => {
        dispatch(loginUser(user));
+       navigate("/home")
 
     }
 
