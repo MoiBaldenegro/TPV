@@ -104,7 +104,6 @@
     border-radius: 56px;
     gap: 32px;
     background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
-    box-shadow: 5px 5px 10px 0px #0000001A;
     font-size: 30px;
   }
   .formContainer{
@@ -113,7 +112,6 @@
     padding: 56px, 112px, 56px, 112px;
     border-radius: 56px;
     background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
-    box-shadow: 5px 5px 10px 0px #0000001A;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,7 +132,7 @@
     display: flex;
     flex-direction: column;
     width: 85%;
-    gap: 1vh;
+    gap: 1.5vh;
     
   }
 
@@ -191,6 +189,7 @@
  .checkboxInputContainer{
   display: flex;
   align-items: center;
+  margin-left: -5px;
  }
  .checkboxLabel{
   font-size: var(--font-size-small);
@@ -216,7 +215,7 @@
 .pass{
   color: var(--color-white);
   font-size: var(--font-size-small);
-  margin-right: 1vw;
+  margin-right: .3vw;
 }
 
 
