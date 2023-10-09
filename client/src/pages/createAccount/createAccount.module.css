@@ -146,6 +146,7 @@
   .formTittle{
     font-size: 28px;
     margin: 25px;
+    margin-top: 6vh;
   }
   .btnBack{
     width: 120px;
