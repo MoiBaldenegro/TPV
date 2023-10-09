@@ -1,26 +1,18 @@
 import {GET_CATEGORIES,
-        TOGGLE_MAIN_RENDER,
-        TOGGLE_ITEM_MAIN_RENDER,
-        LOGIN_USER, } from "../actions";
-
+        LOGIN_USER,
+        GET_USERS, } from "../actions";
 
 let initialState = {auth: [],
-                    loginUsers:[]}
+                    loginUsers:[],
+                    allUsers: []}
 
 export default function rootReducer(state = initialState, action:any){
     switch (action.type) {
-
-        case TOGGLE_ITEM_MAIN_RENDER:
-            return {
-                ...state,
-                deployItemRender: action.payload
-            }
-        case TOGGLE_MAIN_RENDER:
-            return {
-                ...state,
-                mainRender: action.payload
-            }
-
+        case GET_USERS:
+        return{
+            ...state,
+            allUsers: action.payload
+        }
         case GET_CATEGORIES:
             return {
                 ...state,

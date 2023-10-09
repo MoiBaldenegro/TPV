@@ -5,6 +5,7 @@ export const TOGGLE_MAIN_RENDER = "TOGGLE_MAIN_RENDER";
 export const TOGGLE_ITEM_MAIN_RENDER = "TOGGLE_ITEM_MAIN_RENDER";
 export const CREATE_USER = "CREATE_USER;";
 export const LOGIN_USER = "LOGIN_USER";
+export const GET_USERS = "GET_USERS";
 /*
 
 const getCategories = () =>{
@@ -17,6 +18,7 @@ const getCategories = () =>{
 export const toggleMainRender = payload => ({type: TOGGLE_MAIN_RENDER, payload})
 export const toggleMainItemRender = payload => ({type: TOGGLE_ITEM_MAIN_RENDER, payload})
 
+// Register authentication 
 export const createUser = user =>  async dispatch => {
     try {
         const response = await axios.post("http://localhost:8000/auth/register", user)
@@ -25,7 +27,7 @@ export const createUser = user =>  async dispatch => {
         alert(error.response?.data?.error || "Hubo un error al crear el usuario");
     }
 }
-
+// login authentication
 export const loginUser = user =>  async dispatch => {
   try {
       const response = await axios.post("http://localhost:8000/auth/login", user)
@@ -37,10 +39,13 @@ export const loginUser = user =>  async dispatch => {
       alert(error.response?.data?.error || "Invalid credentials");
   }
 }
-
-
-   
-
+// Get Users
+export const getUsers = () =>{
+  async (dispatch) => {
+      const response = await axios("https://tomate-server.onrender.com/users");
+      return dispatch({ type: GET_CATEGORIES, payload: response.data })
+  }
+}
 
 /*
 ACTIONS POST EXAMPLE
