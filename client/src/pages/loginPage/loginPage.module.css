@@ -41,20 +41,22 @@
 }
 .selectInput{
     position: absolute;
-    background-color: #333; 
+    background-color: #5755559f; 
     appearance: none; 
     width: 80px;
     border: none;
     width: 144.18px;
     height: 56px;
     border-radius: 8px;
-    text-indent: 25px;
+    text-indent: 32px;
     z-index: 10;
     color: var(--color-white);
     font-size: var(--font-size-small);
-
-
+    outline: none;
 }
+
+
+
 /* lenguaje select */
 .lenguajeSelect{
     position: relative;
@@ -75,7 +77,7 @@
   }
   
   .lenguajeSelect:hover {
-    background-color: #555; 
+    background-color: #aca6a6; 
   }
   
   .lenguajeSelect:focus {
@@ -84,7 +86,7 @@
   }
   .arrowSelect{
     z-index: 100;
-    margin-left: 60px;
+    margin-left: 70px;
   }
 
   /* central section */
@@ -127,6 +129,7 @@
   .checkboxContainer{
     display: flex;
     justify-content: space-between;
+    padding: 5px;
   }
   
   .form{
@@ -147,11 +150,11 @@
     outline: none;
     text-indent: 20px;
     color: var(--color-white);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-small);
   }
   .inputForm::placeholder{
     text-indent: 20px;
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-small);
     color: rgba(240, 248, 255, 0.568);
   }
   .btnEntrar{
@@ -164,19 +167,19 @@
     transition: 300ms;
     border: none;
     color: var(--color-white);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-small);
   }
   .btnEntrar:hover{
     background: #75000B;
   }
   .formTittle{
     font-size: 28px;
-    margin: 5vh 26vw 5vh 0;
+    margin: 6.5vh 26vw 3vh 0;
   }
   .linksContainer{
     display: flex;
     gap: 10px;
-    margin-left: 2vw;
+    margin-left: 1.5vw;
     align-items: center;
   }
  .links{
@@ -185,7 +188,7 @@
   font-size: var(--font-size-small);
  }
  .copyrigth{
-  margin-right: 2vw;
+  margin-right: 1.5vw;
  }
  .checkboxInputContainer{
   display: flex;

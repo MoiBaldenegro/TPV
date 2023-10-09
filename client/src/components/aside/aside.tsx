@@ -28,24 +28,16 @@ import { toggleMainRender, toggleMainItemRender } from "../../redux/actions"
 export default function Aside (){
 
     const dispatch = useDispatch();
-    const [ main, setMain ] = useState("catalogo");
+    const [ main, setMain ] = useState("");
     const [ active, setActive ] = useState(true)
-    const [ indexing, setIndexing] = useState(undefined);
     const [ redLinePosition, setRedLinePosition] = useState(5);
 
-    const handleBoard = (value:any, activeValue:any, indexValue:any, positionLine:any ) => {
+    const handleBoard = (value:any, activeValue:any, positionLine:any ) => {
         setMain(value)
         setActive(activeValue)
-        setIndexing(indexValue)
         setRedLinePosition(positionLine)
-        dispatch(toggleMainRender(value))
     }; 
-
-    const modeOne = styles.containerWith
-    const modeTwo = styles.container
-    const classNameSelected = styles.selectedItem
-    const classNameSelectedAlter = styles.selectedItemAlter
-
+    const toggle = main === "catalogo" ? "hidden" : "catalogo";
     const activeClassName = ({ isActive }) => ( isActive ? styles.isActive : styles.notActive);
     const deployItemClass = ({ isActive }) => ( isActive ? styles.isActiveDeploy : styles.notActiveDeploy);
 
@@ -58,7 +50,7 @@ export default function Aside (){
                 <span className={styles.itemTittle}>Dashboard</span>
                 <div className={styles.separator}></div>
             </NavLink>
-            <NavLink to="catalogo/categories" className={activeClassName}>
+            <NavLink onClick={() => handleBoard(toggle, !active,  1, )} to="catalogo/categories" className={activeClassName}>
                     <div className={styles.iconContainer}>
                         <img src={catalogo}  className={styles.icon} alt="catalogo-icon" />
                         <span>Catálogo</span>
@@ -83,11 +75,11 @@ export default function Aside (){
                             />
                         </div>
                         <div /* ACA PODEMOS HACER LA ANIMACION DEL ASIDE DEPLOY */>
-                            <NavLink to="catalogo/categories" className={deployItemClass} onClick={() => handleBoard("catalogo", true, 1, 1, )} > Categorías </NavLink>
-                            <NavLink to="catalogo/products&prices" className={deployItemClass} onClick={() => handleBoard("catalogo", true, 1, 2, )}> Productos y precios </NavLink>
-                            <NavLink to="catalogo/dishes" className={deployItemClass} onClick={() => handleBoard("catalogo", true, 1, 3, )}> Complementos </NavLink>
-                            <NavLink to="catalogo/modifications" className={deployItemClass} onClick={() => handleBoard("catalogo", true, 1, 4, )}> Modificaciones </NavLink>
-                            <NavLink to="catalogo/menus&recipes" className={deployItemClass}  onClick={() => handleBoard("catalogo", true, 1, 5, )}> Menús y recetas </NavLink>
+                            <NavLink to="catalogo/categories" className={deployItemClass} onClick={() => handleBoard("catalogo", true,  1, )} > Categorías </NavLink>
+                            <NavLink to="catalogo/products&prices" className={deployItemClass} onClick={() => handleBoard("catalogo", true,  2, )}> Productos y precios </NavLink>
+                            <NavLink to="catalogo/dishes" className={deployItemClass} onClick={() => handleBoard("catalogo", true,  3, )}> Complementos </NavLink>
+                            <NavLink to="catalogo/modifications" className={deployItemClass} onClick={() => handleBoard("catalogo", true,  4, )}> Modificaciones </NavLink>
+                            <NavLink to="catalogo/menus&recipes" className={deployItemClass}  onClick={() => handleBoard("catalogo", true, 5)}> Menús y recetas </NavLink>
                         </div> 
 
                     </div>

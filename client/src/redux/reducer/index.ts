@@ -4,9 +4,7 @@ import {GET_CATEGORIES,
         LOGIN_USER, } from "../actions";
 
 
-let initialState = {StateInit: [],
-                    mainRender: "",
-                    deployItemRender: "",
+let initialState = {auth: [],
                     loginUsers:[]}
 
 export default function rootReducer(state = initialState, action:any){
@@ -32,8 +30,8 @@ export default function rootReducer(state = initialState, action:any){
             alert("Login autorizado")
             return{
                 ...state,
-                loginUsers: [...state.loginUsers, action.payload]
-                }
+                loginUsers: [...state.loginUsers, action.payload],
+                auth: "Auth"}
         default:
             return state;
     }
