@@ -1,5 +1,5 @@
 import styles from "./loginPage.module.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 // Dependencies
 import { NavLink, useNavigate } from "react-router-dom";
@@ -18,6 +18,8 @@ import { loginUser } from "../../redux/actions";
 
 
 export default function LoginPage (){
+    
+
 
     const [ passVisibility, setPassVisibility ] = useState(false);
     const [ lenguajeSelect, setLenguajeSelect ] = useState(false);
@@ -28,8 +30,6 @@ export default function LoginPage (){
         setLenguajeSelect(!lenguajeSelect)
     }
 
-    const navigate = useNavigate();
-    const loginUsers = useSelector(state => state.loginUsers);
     const dispatch = useDispatch();
 
     const [user, setUser ] = useState({
@@ -44,11 +44,15 @@ export default function LoginPage (){
             [event?.target.name] : event?.target.value
         })
     }
-    const onSubmit = () => {
-       dispatch(loginUser(user));
-       navigate("/home")
+    const onSubmit = async () => {
+        dispatch(loginUser(user));
+      };
 
-    }
+      const loginUsers = useSelector(state => state.loginUsers);
+
+      if(loginUsers.length > 0){
+        return <Navigate to="/home" />
+      }
 
     return (
         <div className={styles.loginPage}>
@@ -66,9 +70,9 @@ export default function LoginPage (){
                         </div>
                     </div>
                 </div>
-                <div>
-                    <span> No tienes una cuenta? <Link to={"/create/account"}>Crea una aqui </Link></span>
-                </div>
+               <div>
+                { /*   <span>   No tienes una cuenta? <Link to={"/auth/register"}>Crea una aqui </Link></span> */ }
+                </div> 
             </header>
             <main className={styles.centerContainer}>
                 <div className={styles.logoContainer}>

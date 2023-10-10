@@ -2,7 +2,7 @@ import {GET_CATEGORIES,
         LOGIN_USER,
         GET_USERS, } from "../actions";
 
-let initialState = {auth: [],
+let initialState = {auth: ["Auth"],
                     loginUsers:[],
                     allUsers: []}
 
