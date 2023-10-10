@@ -8,6 +8,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 import arrow from "../../assets/loginPage/arrow.svg"
 import tomateLogo from "../../assets/loginPage/tomateLogo.svg"
 import footerRight from "../../assets/loginPage/footerImgRight.svg"
+import eyeClose from "../../assets/loginPage/eyeClose.svg"
+import eyeOpen from "../../assets/loginPage/eyeOpen.svg"
+//hooks
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/actions";
@@ -15,6 +18,16 @@ import { loginUser } from "../../redux/actions";
 
 
 export default function LoginPage (){
+
+    const [ passVisibility, setPassVisibility ] = useState(false);
+    const [ lenguajeSelect, setLenguajeSelect ] = useState(false);
+    const toggleVisibilityPass = () => {
+        setPassVisibility(!passVisibility);
+    }
+    const toggleLenguaje = () => {
+        setLenguajeSelect(!lenguajeSelect)
+    }
+
     const navigate = useNavigate();
     const loginUsers = useSelector(state => state.loginUsers);
     const dispatch = useDispatch();
@@ -41,11 +54,17 @@ export default function LoginPage (){
         <div className={styles.loginPage}>
             <header className={styles.header}>
                 <div className={styles.lenguajeSelect}>
-                    <select name="" id="" className={styles.selectInput}>
-                        <option value="es">Español</option>
-                        <option value="en">English</option>
-                    </select>
-                    <img src={arrow} alt="" className={styles.arrowSelect} />
+                    <div className={styles.customSelect} onClick={toggleLenguaje}>
+                        <div className={styles.selectTrigger}>
+                            <span> Español </span>
+                            <img src={arrow} alt="" className={styles.arrowSelect} />
+                        </div>
+                        <div className={lenguajeSelect? styles.options : styles.hidden}>
+                            <span className={styles.option} >English</span>
+                            <span className={styles.option}> French</span>
+                            <span className={styles.option}>摩西</span>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <span> No tienes una cuenta? <Link to={"/create/account"}>Crea una aqui </Link></span>
@@ -60,7 +79,10 @@ export default function LoginPage (){
                     <span className={styles.formTittle} >Iniciar sesión</span>
                     <div className={styles.form}>
                         <input name="email" onChange={handleChange} placeholder="correo@ejemplo.com" type="text" className={styles.inputForm}/>
-                        <input  name="password" onChange={handleChange} placeholder="password" type="password" className={styles.inputForm} />
+                        <div className={styles.inputForm} >
+                            <input  name="password" onChange={handleChange} placeholder="password" type={passVisibility ? "text" : "password"} required className={styles.inputFormIn}/>
+                            <img src={passVisibility ? eyeOpen : eyeClose} alt="pass-visibility" className={styles.eye} onClick={toggleVisibilityPass} />
+                        </div>
                         <div className={styles.checkboxContainer}>
                             <div className={styles.checkboxInputContainer}>
                                 <input  id="mi-checkbox" className={styles.checkboxInputNew} type="checkbox" />
