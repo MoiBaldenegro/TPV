@@ -7,6 +7,7 @@ export default function ProtectedRoute() {
   if (loginUsers.length > 0) {
     return <Outlet />;
   } else {
+    alert("Contraseña y/o correo invalidos")
     return <Navigate to="login"/>;
   }
 }
