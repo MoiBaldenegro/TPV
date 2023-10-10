@@ -5,7 +5,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: 'https://tomate-5h0yy81x2-tomatepvs-projects.vercel.app/', 
+    origin: 'https://tomate-5h0yy81x2-tomatepvs-projects.vercel.app', 
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     credentials: true,
     allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
