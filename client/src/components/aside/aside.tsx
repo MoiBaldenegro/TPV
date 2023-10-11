@@ -22,7 +22,6 @@ import redLine from "../../assets/dashboard/redLine.png"
 
 import styles from "../aside/aside.module.css"
 // Actions
-import { toggleMainRender, toggleMainItemRender } from "../../redux/actions"
 
 
 export default function Aside (){
@@ -69,7 +68,7 @@ export default function Aside (){
                                 : redLinePosition === 3
                                 ? { marginTop: '105px' }
                                 : redLinePosition === 4
-                                ? { marginTop: '160px' }
+                                ? { marginTop: '155px' }
                                 : { marginTop: '210px'}}
                             alt="red-line"
                             />
