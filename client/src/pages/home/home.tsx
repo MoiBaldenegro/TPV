@@ -6,12 +6,13 @@ import Header from "../../components/header/header";
 import Main from "../../components/main/main";
 import Aside from "../../components/aside/aside";
 import Loader from "../../components/loaders/loader";
-import { Navigate } from "react-router-dom";
+import PassNoValid from "../../components/redirections/passNoValid";
 
 export default function Home() {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.isLoading);
   const loginUsers = useSelector((state) => state.loginUsers);
+  const invalidCredentials = useSelector(state => state.invalidCredentials);
 
   useEffect(() => {
     if (loginUsers.length > 0) {
@@ -20,21 +21,23 @@ export default function Home() {
   }, [loginUsers, dispatch]);
 
   if(loginUsers.length !== 1 && isLoading === false){
-    return <Navigate to="/login" />
+    alert("Contraseña y/o correo invalidos")
+    dispatch(toggleLoading(true))
   }  
   return (
     <div className={styles.container}>
-      {isLoading ? (
+      { invalidCredentials === false && isLoading ? (
         <Loader />
-      ) : (
+      ) : loginUsers.length > 0 && loginUsers[0].token ? (
         <div>
           <Header />
           <Aside />
           <Main />
         </div>
-      )}
+      ) :  <PassNoValid />}
     </div>
   );
 }
+
 
 

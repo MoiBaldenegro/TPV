@@ -1,20 +1,28 @@
 import {GET_CATEGORIES,
         LOGIN_USER,
         GET_USERS,
-        TOGGLE_LOADING, } from "../actions";
+        TOGGLE_LOADING,
+        INVALID_CREDENTIALS, } from "../actions";
 
 let initialState = {auth: ["Auth"], // Se verifica si el usuario es autenticado
                     loginUsers:[], // Guarda el token, y el email de quien se logueo correctamente
                     allUsers: [], // trae a todos los usuario
-                    isLoading : true // verifica si se ha terminado una peticion
+                    isLoading : true,
+                    invalidCredentials: false // verifica si se ha terminado una peticion
                 }
 
 export default function rootReducer(state = initialState, action:any){
     switch (action.type) {
+        case INVALID_CREDENTIALS:
+            console.log(action.payload)
+            return{
+                ...state,
+                invalidCredentials: action.payload
+            }
         case TOGGLE_LOADING:
             return{
                 ...state,
-                isLoading: false
+                isLoading: action.payload
             }
         case GET_USERS:
         return{

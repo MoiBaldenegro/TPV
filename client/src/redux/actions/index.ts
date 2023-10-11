@@ -2,6 +2,7 @@ import axios from "axios"
 
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const TOGGLE_MAIN_RENDER = "TOGGLE_MAIN_RENDER";
+export const INVALID_CREDENTIALS = "INVALID_CREDENTIALS";
 export const TOGGLE_LOADING = "TOGGLE_LOADING";
 export const CREATE_USER = "CREATE_USER;";
 export const LOGIN_USER = "LOGIN_USER";
@@ -34,7 +35,7 @@ export const loginUser = user =>  async dispatch => {
       console.log(response.data)
       return dispatch({ type: LOGIN_USER, payload: response.data})
   } catch (error) {
-    alert("Usuario y/o contraseña incorrectos")
+    return dispatch({type: TOGGLE_LOADING, payload: false})
   }
 }
 // Get Users
