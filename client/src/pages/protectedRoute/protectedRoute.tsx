@@ -1,6 +1,6 @@
 import { Outlet, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleLoading } from "../../redux/actions";
+import { setErrors, toggleLoading } from "../../redux/actions";
 
 export default function ProtectedRoute() {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export default function ProtectedRoute() {
     return <Outlet />;
   } else {
     dispatch(toggleLoading(true))
-    alert("contraseña y/o email incorrectos")
+    dispatch(setErrors("email y/o contraseña invalidos"))
     return <Navigate to="login"/>;
   }
 }

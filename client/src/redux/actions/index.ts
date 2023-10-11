@@ -46,7 +46,7 @@ export const getUsers = () =>{
       return dispatch({ type: GET_CATEGORIES, payload: response.data })
   }
 }
-export const setErrors = (payload) => ({type: SET_ERRORS, payload})
+export const setErrors = (error) => ({type: SET_ERRORS, payload: error})
 
 
 /*

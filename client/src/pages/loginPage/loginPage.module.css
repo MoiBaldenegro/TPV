@@ -120,7 +120,7 @@
     justify-content: center;
     align-items: center;
     width: 800px;
-    height: 406px;
+    height: 446px;
     padding: 56px, 112px, 56px, 112px;
     border-radius: 56px;
     gap: 32px;
@@ -129,7 +129,7 @@
   }
   .formContainer{
     width: 800px;
-    height: 406px;
+    height: 446px;
     padding: 56px, 112px, 56px, 112px;
     border-radius: 56px;
     background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
@@ -211,10 +211,14 @@
   .btnEntrar:hover{
     background-color: var(--color-red-hover);
   }
+  .btnEntrar:disabled:hover{
+    opacity: .4;
+    background: #F9F9F91A;
+  }
   
   .formTittle{
     font-size: 28px;
-    margin: 6.5vh 26vw 3vh 0;
+    margin: 7.5vh 26vw 3vh 0;
   }
   .linksContainer{
     display: flex;
@@ -271,8 +275,18 @@
   font-size: var(--font-size-small);
   margin-right: .3vw;
 }
-
-
+.errors{
+  width: 310px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2vh 19vw 0px 0px;
+}
+.errorMessage{
+  font-size: var(--font-size-small);
+  color: var(--color-error-message)
+}
 
 
 

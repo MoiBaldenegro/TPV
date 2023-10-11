@@ -10,6 +10,7 @@ import tomateLogo from "../../assets/loginPage/tomateLogo.svg"
 import footerRight from "../../assets/loginPage/footerImgRight.svg"
 import eyeClose from "../../assets/loginPage/eyeClose.svg"
 import eyeOpen from "../../assets/loginPage/eyeOpen.svg"
+import error from "../../assets/loginPage/error.svg"
 //hooks
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -99,6 +100,15 @@ export default function LoginPage (){
                         </div>
                         <button onClick={onSubmit} type="submit" disabled={ user.email.length < 1 || user.password.length < 1 } className={styles.btnEntrar}>Entrar</button>
                     </div>
+                    { errors.length > 0 ? (
+                            <div className={styles.errors}>
+                                <img src={error} alt="" />
+                                <span className={styles.errorMessage}>{errors}</span> 
+                                </div>
+                    ) : ""
+
+                    }
+                    
                 </div>
             </main>
             <footer className={styles.footer} >

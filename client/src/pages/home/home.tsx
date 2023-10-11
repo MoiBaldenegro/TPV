@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleLoading } from "../../redux/actions";
+import { setErrors, toggleLoading } from "../../redux/actions";
 import styles from "./home.module.css";
 import Header from "../../components/header/header";
 import Main from "../../components/main/main";
@@ -21,7 +21,7 @@ export default function Home() {
   }, [loginUsers, dispatch]);
 
   if(loginUsers.length !== 1 && isLoading === false){
-    alert("Contraseña y/o correo invalidos")
+    dispatch(setErrors("Email y/o contraseña invalidos"))
     dispatch(toggleLoading(true))
   }  
   return (
