@@ -2,7 +2,8 @@ section{
     display: flex;
 }
 .container{
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    position:absolute;
+    top: 17%;
+    left: 21%;
 }
 

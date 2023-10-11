@@ -16,6 +16,7 @@ import Complementos from './components/main/catalogo/complementos/complementos.t
 import Modificaciones from './components/main/catalogo/modificaciones/modificaciones.tsx'
 import MenusYRecetas from './components/main/catalogo/menusYRecetas/menusYRecetas.tsx'
 import Loader from './components/loaders/loader.tsx'
+import Main from './components/main/main.tsx'
 
 const router = createBrowserRouter([
   {
@@ -39,31 +40,32 @@ const router = createBrowserRouter([
         element: <Home/>,
         children: [
           {
-            path: "catalogo/categories",
-            element: <Categorias/>
-          },
-          {
-            path: "catalogo/products&prices",
-            element: <ProductosYPrecios/>
-          },
-          {
-            path: "catalogo/products&prices",
-            element: <ProductosYPrecios/>
-          },
-          {
-            path: "catalogo/dishes",
-            element: <Complementos/>
-          },
-          {
-            path: "catalogo/modifications",
-            element: <Modificaciones/>
-          },
-          {
-            path: "catalogo/menus&recipes",
-            element: <MenusYRecetas/>
-          },
+            path: "catalogo",
+            element: <Main />,
+            children: [
+              {
+                path: "categories",
+                element: <Categorias/>
+              },
+              {
+                path: "products&prices",
+                element: <ProductosYPrecios/>
+              },
+              {
+                path: "dishes",
+                element: <Complementos/>
+              },
+              {
+                path: "modifications",
+                element: <Modificaciones/>
+              },
+              {
+                path: "menus&recipes",
+                element: <MenusYRecetas/>
+              },
+            ]
+          }
         ]
-
       }
     ]
   },
@@ -71,7 +73,6 @@ const router = createBrowserRouter([
     path: "*",
     element: <Loader/>
   },
-
 ])
 
 
