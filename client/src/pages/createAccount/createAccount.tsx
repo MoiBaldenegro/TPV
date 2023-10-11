@@ -34,6 +34,12 @@ export default function createAccount (){
         }) 
         console.log(user);
     }
+    const loginUsers = useSelector(state => state.loginUsers);
+
+    if(loginUsers.length > 0){
+      return <Navigate to="/home" />
+    }
+
      return (
       <div className={styles.loginPage}>
       <main className={styles.centerContainer}>

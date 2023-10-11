@@ -1,13 +1,21 @@
 import {GET_CATEGORIES,
         LOGIN_USER,
-        GET_USERS, } from "../actions";
+        GET_USERS,
+        TOGGLE_LOADING, } from "../actions";
 
-let initialState = {auth: ["Auth"],
-                    loginUsers:[],
-                    allUsers: []}
+let initialState = {auth: ["Auth"], // Se verifica si el usuario es autenticado
+                    loginUsers:[], // Guarda el token, y el email de quien se logueo correctamente
+                    allUsers: [], // trae a todos los usuario
+                    isLoading : true // verifica si se ha terminado una peticion
+                }
 
 export default function rootReducer(state = initialState, action:any){
     switch (action.type) {
+        case TOGGLE_LOADING:
+            return{
+                ...state,
+                isLoading: false
+            }
         case GET_USERS:
         return{
             ...state,
@@ -19,12 +27,13 @@ export default function rootReducer(state = initialState, action:any){
                 StateInit: action.payload
             }
         case LOGIN_USER:
-            alert("Login autorizado")
             return{
                 ...state,
                 loginUsers: [...state.loginUsers, action.payload],
-                auth: "Auth"}
+                auth: "Auth"
+            }
         default:
             return state;
     }
 }
+

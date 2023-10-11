@@ -14,13 +14,13 @@ import eyeOpen from "../../assets/loginPage/eyeOpen.svg"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/actions";
+import { useEffect } from "react";
 
 
 
 export default function LoginPage (){
+    const navigate = useNavigate();
     
-
-
     const [ passVisibility, setPassVisibility ] = useState(false);
     const [ lenguajeSelect, setLenguajeSelect ] = useState(false);
     const toggleVisibilityPass = () => {
@@ -44,8 +44,9 @@ export default function LoginPage (){
             [event?.target.name] : event?.target.value
         })
     }
-    const onSubmit = async () => {
+    const onSubmit =  () => {
         dispatch(loginUser(user));
+        navigate("/home")
       };
 
       const loginUsers = useSelector(state => state.loginUsers);
