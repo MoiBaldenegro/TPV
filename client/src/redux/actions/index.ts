@@ -7,6 +7,7 @@ export const TOGGLE_LOADING = "TOGGLE_LOADING";
 export const CREATE_USER = "CREATE_USER;";
 export const LOGIN_USER = "LOGIN_USER";
 export const GET_USERS = "GET_USERS";
+export const SET_ERRORS = "SET_ERRORS"
 /*
 
 const getCategories = () =>{
@@ -45,6 +46,8 @@ export const getUsers = () =>{
       return dispatch({ type: GET_CATEGORIES, payload: response.data })
   }
 }
+export const setErrors = (payload) => ({type: SET_ERRORS, payload})
+
 
 /*
 ACTIONS POST EXAMPLE

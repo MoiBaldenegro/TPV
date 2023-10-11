@@ -1,6 +1,4 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import "./fonts/fonts.css"
 import './index.css'
 import { store } from './redux/store';
@@ -15,7 +13,6 @@ import ProductosYPrecios from './components/main/catalogo/productosYPrecios/prod
 import Complementos from './components/main/catalogo/complementos/complementos.tsx'
 import Modificaciones from './components/main/catalogo/modificaciones/modificaciones.tsx'
 import MenusYRecetas from './components/main/catalogo/menusYRecetas/menusYRecetas.tsx'
-import Loader from './components/loaders/loader.tsx'
 import Main from './components/main/main.tsx'
 
 const router = createBrowserRouter([

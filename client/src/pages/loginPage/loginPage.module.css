@@ -193,18 +193,21 @@
   .btnEntrar{
     width: 672px;
     height: 48px;
+    background: #75000B;
     padding: 12px, 16px, 12px, 16px;
     border-radius: 8px;
     gap: 8px;
-    background: #F9F9F91A;
-    transition: 300ms;
+    transition: 500ms;
     border: none;
     color: var(--color-white);
     font-size: var(--font-size-small);
   }
-  .btnEntrar:hover{
-    background: #75000B;
+  .btnEntrar:disabled{
+    opacity: .4;
+    background: #F9F9F91A;
+    transition: 800ms;
   }
+  
   .formTittle{
     font-size: 28px;
     margin: 6.5vh 26vw 3vh 0;

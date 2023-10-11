@@ -14,12 +14,14 @@ import eyeOpen from "../../assets/loginPage/eyeOpen.svg"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/actions";
-import { useEffect } from "react";
 
 
 
 export default function LoginPage (){
+    const loginUsers = useSelector(state => state.loginUsers);
+    const errors = useSelector(state => state.errors);
     const navigate = useNavigate();
+
     
     const [ passVisibility, setPassVisibility ] = useState(false);
     const [ lenguajeSelect, setLenguajeSelect ] = useState(false);
@@ -49,7 +51,7 @@ export default function LoginPage (){
         navigate("/home")
       };
 
-      const loginUsers = useSelector(state => state.loginUsers);
+      
 
       if(loginUsers.length > 0){
         return <Navigate to="/home" />
@@ -85,7 +87,7 @@ export default function LoginPage (){
                     <div className={styles.form}>
                         <input name="email" onChange={handleChange} placeholder="correo@ejemplo.com" type="text" className={styles.inputForm}/>
                         <div className={styles.inputForm} >
-                            <input  name="password" onChange={handleChange} placeholder="password" type={passVisibility ? "text" : "password"} required className={styles.inputFormIn}/>
+                            <input  name="password" onChange={handleChange} placeholder="password" type={passVisibility ? "text" : "password"} required  className={styles.inputFormIn}/>
                             <img src={passVisibility ? eyeOpen : eyeClose} alt="pass-visibility" className={styles.eye} onClick={toggleVisibilityPass} />
                         </div>
                         <div className={styles.checkboxContainer}>
@@ -95,7 +97,7 @@ export default function LoginPage (){
                             </div>
                             <Link className={styles.pass}>¿Olvidaste tu contraseña?</Link> 
                         </div>
-                        <button onClick={onSubmit} type="submit" className={styles.btnEntrar}>Entrar</button>
+                        <button onClick={onSubmit} type="submit" disabled={ user.email.length < 1 || user.password.length < 1 } className={styles.btnEntrar}>Entrar</button>
                     </div>
                 </div>
             </main>
