@@ -16,11 +16,11 @@ export class Category {
   })
   categoryName: string;
 
-  @Prop({ type: [() => Category] }) // Usamos el mismo esquema para subcategorías
-  subCategories: Category[];
+  @Prop() 
+  subCategories: any;
 
-  @Prop({ type: () => Category, unique: true }) // Usamos el mismo esquema para el padre
-  parentCategory: Category | null; // Esto puede ser null si es la categoría raíz
+  @Prop() 
+  parentCategory: any;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);
