@@ -1,4 +1,4 @@
-/* import { Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Category } from '../schemas/categories.schema';
@@ -15,15 +15,13 @@ export class CategoriesService {
        return this.categoryModel.find();
     }
 
-    /* create(createCategory: any){
+    /*create(createCategory: any){
        const newCtegory = this.categoryModel.create(createCategory);
        return newCtegory;
     } */
-
-    /*
+    
 
     async create(createCategory: CreateCategoryDto){
-        const newCategoryCode = await this.Gen
         const newCategory =  new this.categoryModel(createCategory);
         return await newCategory.save();
      }
@@ -43,9 +41,9 @@ export class CategoriesService {
 
   
 }    
- */
+ 
 
-
+/*
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -62,7 +60,7 @@ export class CategoriesService {
     async findAll() {
         return this.categoryModel.find().exec();
     }
-
+/*
     async create(createCategory: CreateCategoryDto) {
         createCategory.code = await this.generateCategoryCode(createCategory.parentCategory);
 
@@ -86,7 +84,7 @@ export class CategoriesService {
         const formattedLevel = level.toString().padStart(3, '0');
         return `${parentCode}${formattedLevel}`;
     }
-
+ */ /*
     async findOne(id: string) {
         return this.categoryModel.findById(id).exec();
     }
@@ -99,3 +97,4 @@ export class CategoriesService {
         return this.categoryModel.findByIdAndUpdate(id, category, { new: true }).exec();
     }
 }
+*/
