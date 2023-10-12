@@ -2,6 +2,9 @@ import { Schema, Prop, SchemaFactory } from "@nestjs/mongoose"
 
 export @Schema({ timestamps: true })
 class Category {
+  getSubcategoryCount() {
+    throw new Error('Method not implemented.');
+  }
   @Prop({ 
     unique: true,
     required: true,

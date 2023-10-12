@@ -1,5 +1,4 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { Category } from 'src/schemas/categories.schema';
 
 interface ICategory extends Document {
   code: string;

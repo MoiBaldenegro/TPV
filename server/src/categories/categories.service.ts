@@ -64,7 +64,6 @@ export class CategoriesService {
     }
 
     async create(createCategory: CreateCategoryDto) {
-        // Llamar a la función de generación de clave jerárquica
         createCategory.code = await this.generateCategoryCode(createCategory.parentCategory);
 
         const newCategory = new this.categoryModel(createCategory);
