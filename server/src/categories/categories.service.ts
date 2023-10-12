@@ -22,6 +22,16 @@ export class CategoriesService {
     
 
     async create(createCategory: CreateCategoryDto){
+        const lastCategory = await this.categoryModel.findOne({}, { code: 1 }, { sort: { code: -1 } }); // encontramos la ultima categoria creada
+        let newCode : string; 
+        if(lastCategory){
+            const lastCode = lastCategory.code;
+            const nextNumber = lastCode + 1;
+            newCode = nextNumber.toString().padStart(2, '0'); // Asegura que el código tenga al menos 2 dígitos.
+        } else {
+            newCode = '01';
+        }
+        createCategory.code = newCode;
         const newCategory =  new this.categoryModel(createCategory);
         return await newCategory.save();
      }
