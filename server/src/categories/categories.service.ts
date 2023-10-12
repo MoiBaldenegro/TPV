@@ -31,6 +31,7 @@ export class CategoriesService {
         } else {
             newCode = '01';
         }
+        console.log(newCode)
         createCategory.code = newCode;
         const newCategory =  new this.categoryModel(createCategory);
         return await newCategory.save();
