@@ -8,9 +8,9 @@ interface ICategory extends Document {
 }
 
 const categorySchema = new Schema<ICategory>({
-  code: String, // Esto será la clave jerárquica generada automáticamente
+  code: String,
   categoryName: String,
-  subCategories: [categorySchema], // Uso recursivo para subcategorías
+  subCategories: [{ type: Schema.Types.ObjectId, ref: 'Category' }], // Uso recursivo para subcategorías
   parentCategory: { type: Schema.Types.ObjectId, ref: 'Category', default: null },
 });
 
@@ -44,4 +44,3 @@ categorySchema.methods.getSubcategoryCount = function () {
 const Category = mongoose.model<ICategory>('Category', categorySchema);
 
 export default Category;
-
