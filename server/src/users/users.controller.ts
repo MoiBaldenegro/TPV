@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Delete, Put, Body,ConflictException, HttpCode } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from 'src/dto/createUser.dto';
+import { CreateUserDto } from 'src/dto/users/createUser.dto';
 import { Error } from 'mongoose';
 
 @Controller('users')

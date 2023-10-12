@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
-import { CreateUserDto } from 'src/dto/createUser.dto';
+import { CreateUserDto } from 'src/dto/users/createUser.dto';
 import { UsersService } from 'src/users/users.service';
 import * as bcryptjs from "bcryptjs";
 import { LoginDto } from './dto/login.dto';
