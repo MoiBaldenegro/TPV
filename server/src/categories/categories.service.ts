@@ -59,8 +59,8 @@ export class CategoriesService {
         @InjectModel(Category.name) private categoryModel: Model<Category>
     ) {}
 
-    findAll() {
-        return this.categoryModel.find();
+    async findAll() {
+        return this.categoryModel.find().exec();
     }
 
     async create(createCategory: CreateCategoryDto) {
@@ -80,7 +80,7 @@ export class CategoriesService {
 
             if (parentCategory) {
                 parentCode = parentCategory.code;
-                level = await this.categoryModel.countDocuments({ parentCategory: parentCategoryId }) + 1;
+                level = parentCategory.subCategories.length + 1;
             }
         }
 
@@ -89,15 +89,14 @@ export class CategoriesService {
     }
 
     async findOne(id: string) {
-        return this.categoryModel.findById(id);
+        return this.categoryModel.findById(id).exec();
     }
 
     async delete(id: string) {
-        return this.categoryModel.findByIdAndDelete(id);
+        return this.categoryModel.findByIdAndDelete(id).exec();
     }
 
     async update(id: string, category: UpdateCategoryDto) {
-        return this.categoryModel.findByIdAndUpdate(id, category, { new: true });
+        return this.categoryModel.findByIdAndUpdate(id, category, { new: true }).exec();
     }
 }
-

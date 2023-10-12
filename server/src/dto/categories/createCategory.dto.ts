@@ -19,6 +19,6 @@ export class CreateCategoryDto{
     subCategories: Category[];
     
     @IsOptional()
-    parentCategory: Category | null;
+    parentCategory: string | null;
 }
 

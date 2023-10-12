@@ -1,4 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
+import { Category } from 'src/schemas/categories.schema';
 
 interface ICategory extends Document {
   code: string;
@@ -7,7 +8,7 @@ interface ICategory extends Document {
   parentCategory: ICategory | null;
 }
 
-const categorySchema = new Schema<ICategory>({
+const categorySchema = new Schema<Category>({
   code: String,
   categoryName: String,
   subCategories: [{ type: Schema.Types.ObjectId, ref: 'Category' }], // Uso recursivo para subcategorías
