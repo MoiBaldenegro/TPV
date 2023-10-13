@@ -1,6 +1,11 @@
 import { IsString, IsNumber, IsOptional, Length } from 'class-validator';
 
-export class updateProductDto {
+export class updateDishesDto {
+  @IsString()
+  @Length(1, 35)
+  @IsOptional()
+  category?: string;
+
   @IsString()
   @Length(1, 16)
   @IsOptional()
@@ -9,11 +14,7 @@ export class updateProductDto {
   @IsString()
   @Length(1, 35)
   @IsOptional()
-  category?: string;
-
-  @IsString()
-  @IsOptional()
-  productName?: string;
+  dishesName?: string;
 
   @IsNumber()
   @IsOptional()

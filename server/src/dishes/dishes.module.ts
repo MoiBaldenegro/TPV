@@ -1,9 +1,19 @@
 import { Module } from '@nestjs/common';
 import { DishesController } from './dishes.controller';
 import { DishesService } from './dishes.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { Dishes, DishesSchema } from 'src/schemas/dishes.schema';
 
 @Module({
+  imports: [
+    MongooseModule.forFeature([
+      {
+        name: Dishes.name,
+        schema: DishesSchema,
+      },
+    ]),
+  ],
   controllers: [DishesController],
-  providers: [DishesService]
+  providers: [DishesService],
 })
 export class DishesModule {}

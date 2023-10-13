@@ -51,6 +51,7 @@ export class CategoriesController {
         throw new ConflictException('La categoria ya existe');
       }
     }
+    throw new NotFoundException('Ha ocurridon algo inesperado');
   }
 
   @Delete(':id')

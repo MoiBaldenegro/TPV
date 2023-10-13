@@ -26,6 +26,8 @@ export class ProductsService {
     return await this.productsModel.findByIdAndDelete(id);
   }
   async update(id: string, updatedProduct: updateProductDto) {
-    return await this.productsModel.findByIdAndUpdate(id, updatedProduct);
+    return await this.productsModel.findByIdAndUpdate(id, updatedProduct, {
+      new: true,
+    });
   }
 }

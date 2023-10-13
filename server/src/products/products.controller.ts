@@ -9,6 +9,8 @@ import {
   Body,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
+import { createDishesDto } from 'src/dto/dishes/createdDishes.dto';
+import { createProductDto } from 'src/dto/products/createProduct.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -25,17 +27,26 @@ export class ProductsController {
       throw new NotFoundException('Ocurrio algo inesperado');
     }
   }
-  @Get(":id")
-  async findOne(@Body() body: string){
+  @Get(':id')
+  async findOne(@Body() body: string) {
     try {
-        const selectedProduct = await this.productService.findOne(body); 
-        if(!selectedProduct) throw new ConflictException("El producto que intentas encontrar no existe") 
-        return 
-    } catch (error) {
-        
-        
-    }
-    
+      const selectedProduct = await this.productService.findOne(body);
+      if (!selectedProduct)
+        throw new ConflictException(
+          'El producto que intentas encontrar no existe',
+        );
+      return;
+    } catch (error) {}
+  }
 
+  @Post()
+  async create(@Body() body: createProductDto) {
+    try {
+      return await this.productService.create(body);
+    } catch (error) {
+      if (error.code === 11000)
+        throw new ConflictException('Este producto ya existe');
+      throw new NotFoundException('Ha ocurrido algo inesperado');
+    }
   }
 }
