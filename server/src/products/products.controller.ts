@@ -7,10 +7,13 @@ import {
   ConflictException,
   NotFoundException,
   Body,
+  HttpCode,
+  Param,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { createDishesDto } from 'src/dto/dishes/createdDishes.dto';
 import { createProductDto } from 'src/dto/products/createProduct.dto';
+import { updateProductDto } from 'src/dto/products/updatedProduct.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -27,6 +30,7 @@ export class ProductsController {
       throw new NotFoundException('Ocurrio algo inesperado');
     }
   }
+
   @Get(':id')
   async findOne(@Body() body: string) {
     try {
@@ -38,15 +42,37 @@ export class ProductsController {
       return;
     } catch (error) {}
   }
-
+  
   @Post()
-  async create(@Body() body: createProductDto) {
+  async create(@Body() body: createProductDto){
     try {
-      return await this.productService.create(body);
+      return await this.productService.create(body); 
     } catch (error) {
-      if (error.code === 11000)
-        throw new ConflictException('Este producto ya existe');
-      throw new NotFoundException('Ha ocurrido algo inesperado');
+      if(error.code === 11000) throw new ConflictException("Este producto ya existe");
+      throw new NotFoundException("Ha ocurrido algo inesperado")
+    }
+
+  }
+  @Delete(":id")
+  @HttpCode(204)
+  async delete(@Param("id") id: string){
+    try {
+      const deletedProduct = await this.productService.delete(id);
+      if(!deletedProduct) throw new NotFoundException("No existe el producto");
+      return deletedProduct;
+    } catch (error) {
+      throw new NotFoundException("Ha ocurrdo algo inesperado");
+    }
+
+  }
+  @Put(":id")
+  async update(@Param("id") id : string, @Body() body: updateProductDto){
+    try {
+      const updatedProduct = await this.productService.update(id, body);
+      if(!updatedProduct) throw new NotFoundException("No existe el producto");
+      return updatedProduct;
+    } catch (error) {
+      throw new NotFoundException("Ha ocurrido algo inesperado")
     }
   }
 }

@@ -5,7 +5,6 @@ import { AuthModule } from './auth/auth.module';
 import { CategoriesModule } from './categories/categories.module';
 import { DishesModule } from './dishes/dishes.module';
 import { ProductsModule } from './products/products.module';
-import { DishesModule } from './dishes/dishes.module';
 
 @Module({
   imports: [
