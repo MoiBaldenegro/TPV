@@ -1,5 +1,3 @@
-
-
 export const jwtConstants = {
-    secret: "no utils in production"
+  secret: 'no utils in production',
 };

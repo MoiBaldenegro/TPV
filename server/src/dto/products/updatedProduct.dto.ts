@@ -1,0 +1,43 @@
+import {
+  IsString,
+  IsDefined,
+  IsNumber,
+  IsNotEmpty,
+  IsOptional,
+  Length,
+} from 'class-validator';
+
+export class updateProductDto {
+  @IsDefined()
+  @IsString()
+  @IsNotEmpty()
+  @Length(1, 16)
+  code?: string;
+
+  @IsDefined()
+  @IsString()
+  @IsNotEmpty()
+  @Length(1, 35)
+  category?: string;
+
+  @IsDefined()
+  @IsString()
+  @IsNotEmpty()
+  productName?: string;
+
+  @IsNumber()
+  @IsOptional()
+  priceInSite?: number;
+
+  @IsNumber()
+  @IsOptional()
+  priceToGo?: number;
+
+  @IsNumber()
+  @IsOptional()
+  priceCallOrder: number;
+
+  @IsNumber()
+  @IsOptional()
+  priceDelivery?: number;
+}

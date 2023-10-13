@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Delete, Put, Body,ConflictException, HttpCode } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Put,
+  Body,
+  ConflictException,
+  HttpCode,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from 'src/dto/users/createUser.dto';
 import { Error } from 'mongoose';
@@ -22,8 +31,8 @@ export class UsersController {
     try {
       return await this.usersService.create(body);
     } catch (error) {
-      if(error.code === 11000){
-        throw new ConflictException("El usuario y/o email ya estan en uso")
+      if (error.code === 11000) {
+        throw new ConflictException('El usuario y/o email ya estan en uso');
       }
       throw error;
     }

@@ -12,7 +12,6 @@ export class UsersService {
   }
   constructor(@InjectModel(User.name) private UserModel: Model<User>) {}
 
-  
   async findByEmail(email: string) {
     return await this.UserModel.findOne({ email }).exec();
   }

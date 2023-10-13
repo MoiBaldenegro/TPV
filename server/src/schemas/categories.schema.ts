@@ -1,27 +1,26 @@
-import { Schema, Prop, SchemaFactory } from "@nestjs/mongoose"
-import { CreateCategoryDto } from "src/dto/categories/createCategory.dto";
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
+import { CreateCategoryDto } from 'src/dto/categories/createCategory.dto';
 
 @Schema({ timestamps: true })
 export class Category {
-  @Prop({ 
+  @Prop({
     unique: true,
     required: true,
-    trim: true
+    trim: true,
   })
   code: number;
 
-  @Prop({ 
+  @Prop({
     unique: true,
     required: true,
-    trim: true
+    trim: true,
   })
   categoryName: string;
 
   @Prop({ type: Array, default: () => [] })
   subCategories: CreateCategoryDto[];
-  
 
-  @Prop() 
+  @Prop()
   parentCategory: string | null;
 }
 

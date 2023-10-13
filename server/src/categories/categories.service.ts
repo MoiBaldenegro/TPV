@@ -7,52 +7,50 @@ import { UpdateCategoryDto } from 'src/dto/categories/updateCategory.dto';
 
 @Injectable()
 export class CategoriesService {
-    constructor(
-        @InjectModel(Category.name) private categoryModel: Model<Category>
-    ) {}
+  constructor(
+    @InjectModel(Category.name) private categoryModel: Model<Category>,
+  ) {}
 
-    findAll(){
-       return this.categoryModel.find();
-    }
+  findAll() {
+    return this.categoryModel.find();
+  }
 
-    /*create(createCategory: any){
+  /*create(createCategory: any){
        const newCtegory = this.categoryModel.create(createCategory);
        return newCtegory;
     } */
-    
 
-    async create(createCategory: CreateCategoryDto){
-        const lastCategory = await this.categoryModel.findOne({}, { code: 1 }, { sort: { code: -1 } }); // encontramos la ultima categoria creada
-        let newCode : string; 
-        if(lastCategory){
-            const lastCode = lastCategory.code;
-            const nextNumber = lastCode + 1;
-            newCode = nextNumber.toString().padStart(2, '0'); // Asegura que el código tenga al menos 2 dígitos.
-        } else {
-            newCode = '01';
-        }
-        console.log(newCode)
-        createCategory.code = newCode;
-        const newCategory =  new this.categoryModel(createCategory);
-        return await newCategory.save();
-     }
-
-    async findOne(id: string) {
-        return this.categoryModel.findById(id);
+  async create(createCategory: CreateCategoryDto) {
+    const lastCategory = await this.categoryModel.findOne(
+      {},
+      { code: 1 },
+      { sort: { code: -1 } },
+    ); // encontramos la ultima categoria creada
+    let newCode: string;
+    if (lastCategory) {
+      const lastCode = lastCategory.code;
+      const nextNumber = lastCode + 1;
+      newCode = nextNumber.toString().padStart(2, '0'); // Asegura que el código tenga al menos 2 dígitos.
+    } else {
+      newCode = '01';
     }
+    console.log(newCode);
+    createCategory.code = newCode;
+    const newCategory = new this.categoryModel(createCategory);
+    return await newCategory.save();
+  }
 
-    async delete(id: string) {
-       return this.categoryModel.findByIdAndDelete(id);
-    }
-    async update(id: string, category: UpdateCategoryDto) {
-        return this.categoryModel.findByIdAndUpdate ( id, category, { new : true } );
-    }
+  async findOne(id: string) {
+    return this.categoryModel.findById(id);
+  }
 
-
-
-  
-}    
- 
+  async delete(id: string) {
+    return this.categoryModel.findByIdAndDelete(id);
+  }
+  async update(id: string, category: UpdateCategoryDto) {
+    return this.categoryModel.findByIdAndUpdate(id, category, { new: true });
+  }
+}
 
 /*
 import { Injectable } from '@nestjs/common';
