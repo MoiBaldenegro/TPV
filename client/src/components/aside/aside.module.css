@@ -178,6 +178,7 @@
     transition: max-height 0.3s ease-in;
     animation: slideUp 0.3s ease-in;
   }
+  
   @keyframes slideUp {
     from {
       max-height: 300px; /* Ajusta la altura máxima deseada al valor de "open" */
