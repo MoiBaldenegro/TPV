@@ -90,29 +90,7 @@
     transition: 200ms;
 
 }
-.notActiveDeploy{
-    display: flex;
-    margin-left: 3vw;
-    position: relative;
-    margin-left: 1vw;
-    width: 160px;
-    height: 30px;
-    font-family: sans-serif;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 30px;
-    letter-spacing: 0em;
-    text-align: left;
-    border-radius: 12px;
-    width: 254px;
-    height: 52px;
-    padding: 5px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--color-white); 
-    transition: 200ms;
 
-}
 .separator{
  width: 100px;
 }
@@ -220,28 +198,3 @@
     height: 250px;
 }
 
-@keyframes slideDown {
-    from {
-      max-height: 0;
-      opacity: 0;
-    }
-    to {
-      max-height: 300px; /* Ajusta la altura máxima deseada */
-      opacity: 1;
-    }
-  }
-  .animationContainer,
-  .linesContainer {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.35s ease-in;
-    animation: slideDown 0.35s ease-in; 
-  }
-
-  .animationContainer,
-  .linesContainer {
-    max-height: 300px; 
-    opacity: 1;
-  }  
- 
-  
