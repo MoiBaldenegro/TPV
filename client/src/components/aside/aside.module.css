@@ -3,6 +3,7 @@
 
 .aside{
     margin: 0 15px ;
+    margin-left: 20px;
     grid-column: 1 / 2;
     grid-row: 2 / 3;
     display: flex;
@@ -13,7 +14,6 @@
     border-radius: 16px;
     background: var(--color-gradient);
     box-shadow: var(--standard-shadow);
-    background-color: aqua;
 }
 .sectionOne{
     width: 320px;
@@ -75,7 +75,9 @@
 .isActiveDeploy{  
     font-weight: 700;
 }
-
+.separator{
+ width: 100px;
+}
 .itemTittle{
     display: flex;
     justify-content: flex-start;
@@ -89,7 +91,6 @@
     margin-right: 5px;
 }
 .arrowIcon{
-    height: px; 
     margin-right: 3.2px;
     transform-origin: center;
     transition: transform 0.4s ease-in-out;
@@ -103,17 +104,7 @@
    
 }
 
-
-/* HOVER */
-.container:hover, 
-.containerWith:hover, 
-.selectedItem:hover, 
-.selectedItemAlter:hover{
-    background-color:  #f9f9f915;
-}
-
 /*  ASIDE SCROLL BAR*/
-
 .sectionOne::-webkit-scrollbar {
     width: 10px; 
   }
@@ -123,19 +114,15 @@
     border-radius: 5px; 
 
   }
-  
-
  .configContainer{
     display: flex;
     justify-content: flex-start;
     padding: 10px;
  }
- 
  .iconDivider{
     width: 300px;
  }
  
-
  .itemsDeployContainer,
  .deployContainer{
     display: flex;
@@ -181,7 +168,6 @@
 .line{
     height: 250px;
 }
-
 @keyframes slideDown {
     from {
       max-height: 0;
