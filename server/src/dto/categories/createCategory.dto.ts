@@ -10,7 +10,7 @@ import {
 } from 'class-validator';
 
 export class CreateCategoryDto {
-
+  @IsOptional()
   code: string;
 
   @IsDefined()
@@ -21,7 +21,6 @@ export class CreateCategoryDto {
 
   @IsArray()
   @IsOptional()
-  @ValidateNested({ each: true })
   subCategories: Category[];
 
   @IsOptional()
