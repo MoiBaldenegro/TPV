@@ -14,6 +14,7 @@
     border-radius: 16px;
     background: var(--color-gradient);
     box-shadow: var(--standard-shadow);
+    transition: 900ms;
 }
 .sectionOne{
     width: 320px;
@@ -235,11 +236,11 @@
     max-height: 0;
     transition: max-height 0.3s ease-in;
     opacity: 0;
-    animation: slideDown 0.5s ease-in; /* Duración y función de temporización personalizables */
+    animation: slideDown 0.5s ease-in; 
   }
 
   .animationContainer.open {
-    max-height: 300px; /* Ajusta la altura máxima deseada */
+    max-height: 300px; 
     opacity: 1;
   }  
  
