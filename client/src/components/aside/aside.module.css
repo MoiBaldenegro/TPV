@@ -173,19 +173,18 @@
  .iconDivider{
     width: 300px;
  }
- .itemsDeployContainer{
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.2s ease-in;
-    opacity: 0;
-    animation: slideDown 0.2s ease-in;
- }
+
 
  .itemsDeployContainer,
  .deployContainer{
     display: flex;
     margin-left: 3vw;
     position: relative;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-in;
+    opacity: 0;
+    animation: slideDown 0.2s ease-in;
     
  }
  @keyframes aparecerDesdeArriba {
