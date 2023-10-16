@@ -15,7 +15,7 @@
     box-shadow: var(--standard-shadow);
 }
 .sectionOne{
-    width: 330px;
+    width: 335px;
     height: 285vh;
     margin-top: 25px;
     margin-left: 20px;
@@ -171,9 +171,10 @@
 
   .linesContainer,
   .containerDeployItemsClass{
+    transition: 300ms;
     overflow: hidden;
-    transition: max-height 0.3s ease-in;
-    animation: slideDown 0.5s ease-in;
+    transition: max-height 0.2s ease-in;
+    animation: slideDown 0.2s ease-in;
   }
 
 /* Mixin de centrado con flexbox */
