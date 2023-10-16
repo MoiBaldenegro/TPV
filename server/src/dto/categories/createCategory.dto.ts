@@ -6,7 +6,7 @@ import {
   IsArray,
   Length,
   IsOptional,
-  ValidateNested
+  ValidateNested,
 } from 'class-validator';
 
 export class CreateCategoryDto {
@@ -27,4 +27,3 @@ export class CreateCategoryDto {
   @IsOptional()
   parentCategory: string | null;
 }
-

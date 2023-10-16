@@ -11,8 +11,8 @@ export class CategoriesService {
     @InjectModel(Category.name) private categoryModel: Model<Category>,
   ) {}
 
-  findAll() {
-    return this.categoryModel.find();
+  async findAll() {
+    return await this.categoryModel.find();
   }
 
   /*create(createCategory: any){
@@ -41,14 +41,16 @@ export class CategoriesService {
   }
 
   async findOne(id: string) {
-    return this.categoryModel.findById(id);
+    return await this.categoryModel.findById(id);
   }
 
   async delete(id: string) {
-    return this.categoryModel.findByIdAndDelete(id);
+    return await this.categoryModel.findByIdAndDelete(id);
   }
   async update(id: string, category: UpdateCategoryDto) {
-    return this.categoryModel.findByIdAndUpdate(id, category, { new: true });
+    return await this.categoryModel.findByIdAndUpdate(id, category, {
+      new: true,
+    });
   }
 }
 

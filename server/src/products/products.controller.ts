@@ -42,37 +42,36 @@ export class ProductsController {
       return;
     } catch (error) {}
   }
-  
-  @Post()
-  async create(@Body() body: createProductDto){
-    try {
-      return await this.productService.create(body); 
-    } catch (error) {
-      if(error.code === 11000) throw new ConflictException("Este producto ya existe");
-      throw new NotFoundException("Ha ocurrido algo inesperado")
-    }
 
+  @Post()
+  async create(@Body() body: createProductDto) {
+    try {
+      return await this.productService.create(body);
+    } catch (error) {
+      if (error.code === 11000)
+        throw new ConflictException('Este producto ya existe');
+      throw new NotFoundException('Ha ocurrido algo inesperado');
+    }
   }
-  @Delete(":id")
+  @Delete(':id')
   @HttpCode(204)
-  async delete(@Param("id") id: string){
+  async delete(@Param('id') id: string) {
     try {
       const deletedProduct = await this.productService.delete(id);
-      if(!deletedProduct) throw new NotFoundException("No existe el producto");
+      if (!deletedProduct) throw new NotFoundException('No existe el producto');
       return deletedProduct;
     } catch (error) {
-      throw new NotFoundException("Ha ocurrdo algo inesperado");
+      throw new NotFoundException('Ha ocurrdo algo inesperado');
     }
-
   }
-  @Put(":id")
-  async update(@Param("id") id : string, @Body() body: updateProductDto){
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() body: updateProductDto) {
     try {
       const updatedProduct = await this.productService.update(id, body);
-      if(!updatedProduct) throw new NotFoundException("No existe el producto");
+      if (!updatedProduct) throw new NotFoundException('No existe el producto');
       return updatedProduct;
     } catch (error) {
-      throw new NotFoundException("Ha ocurrido algo inesperado")
+      throw new NotFoundException('Ha ocurrido algo inesperado');
     }
   }
 }

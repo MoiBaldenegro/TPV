@@ -21,8 +21,9 @@ export class CategoriesController {
   async findAll() {
     try {
       const categoriesArray = await this.categoriesService.findAll();
-      if (!categoriesArray || categoriesArray.length === 0)
+      if (!categoriesArray || categoriesArray.length === 0) {
         throw new NotFoundException('No se encontraron categorías.');
+      }
       return categoriesArray;
     } catch (error) {
       throw new ConflictException(
