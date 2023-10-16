@@ -246,7 +246,6 @@
     animation: slideDown 0.35s ease-in; 
   }
 
-  .animationContainer,
   .linesContainer {
     max-height: 300px; 
     opacity: 1;
