@@ -89,10 +89,6 @@
     color: var(--color-white); 
     font-weight: 700;
     transition: 200ms;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.35s ease-in;
-    animation: slideDown 0.35s ease-in; 
 
 }
 .notActiveDeploy{
@@ -142,7 +138,6 @@
 
 .isActive .arrowIcon{
     transform: rotate(180deg);
-    
 }
 .isActive .icon{
     transform: rotate(10deg);
@@ -236,9 +231,7 @@
       opacity: 1;
     }
   }
-
-  
-  
+  .animationContainer,
   .linesContainer {
     overflow: hidden;
     max-height: 0;
@@ -246,18 +239,20 @@
     animation: slideDown 0.35s ease-in; 
   }
 
+  .animationContainer,
   .linesContainer {
     max-height: 300px; 
     opacity: 1;
   } 
   @keyframes slideUp {
     from {
-      max-height: 300px; /* Ajusta la altura máxima deseada al valor de "open" */ 
+      max-height: 300px; /* Ajusta la altura máxima deseada al valor de "open" */
       opacity: 1;
     }
     to {
       max-height: 0;
       opacity: 0;
     }
-  }  
-
+  } 
+ 
+  
