@@ -173,12 +173,20 @@
  .iconDivider{
     width: 300px;
  }
+ .itemsDeployContainer{
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-in;
+    opacity: 0;
+    animation: slideDown 0.2s ease-in;
+ }
 
  .itemsDeployContainer,
  .deployContainer{
     display: flex;
     margin-left: 3vw;
     position: relative;
+    
  }
  @keyframes aparecerDesdeArriba {
     from {
@@ -219,5 +227,14 @@
     height: 250px;
 }
 
-
+@keyframes slideDown {
+    from {
+      max-height: 0;
+      opacity: 0;
+    }
+    to {
+      max-height: 300px; /* Ajusta la altura máxima deseada */
+      opacity: 1;
+    }
+  }
 

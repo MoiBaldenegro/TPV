@@ -73,7 +73,7 @@ export default function Aside (){
                             alt="red-line"
                             />
                         </div>
-                        <div className={styles.deployItemClass}>
+                        <div>
                             <NavLink to="catalogo/categories" className={deployItemClass} onClick={() => handleBoard("catalogo", true,  1, )} > Categorías </NavLink>
                             <NavLink to="catalogo/products&prices" className={deployItemClass} onClick={() => handleBoard("catalogo", true,  2, )}> Productos y precios </NavLink>
                             <NavLink to="catalogo/dishes" className={deployItemClass} onClick={() => handleBoard("catalogo", true,  3, )}> Complementos </NavLink>
