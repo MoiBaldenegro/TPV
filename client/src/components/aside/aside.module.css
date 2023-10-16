@@ -90,7 +90,28 @@
     transition: 200ms;
 
 }
-
+.notActiveDeploy{
+    display: flex;
+    margin-left: 3vw;
+    position: relative;
+    margin-left: 1vw;
+    width: 160px;
+    height: 30px;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+    border-radius: 12px;
+    width: 254px;
+    height: 52px;
+    padding: 5px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-white); 
+    transition: 200ms;
+}
 .separator{
  width: 100px;
 }
@@ -197,4 +218,6 @@
 .line{
     height: 250px;
 }
+
+
 
