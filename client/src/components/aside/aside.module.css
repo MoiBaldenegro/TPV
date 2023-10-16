@@ -181,6 +181,7 @@
     transition: max-height 0.3s ease-in;
     animation: slideUp 0.3s ease-in;
   }
+  
 
 /* Mixin de centrado con flexbox */
 .selector{
