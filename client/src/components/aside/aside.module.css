@@ -61,7 +61,7 @@
     margin-left: 1vw;
     width: 160px;
     height: 30px;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-medium);
     font-weight: 400;
     text-align: left;
     border-radius: 12px;
@@ -129,8 +129,7 @@
  .deployContainer{
     display: flex;
     margin-left: 3vw;
-    position: relative;
-    
+    position: relative;  
  }
  @keyframes aparecerDesdeArriba {
     from {
