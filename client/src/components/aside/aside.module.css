@@ -173,8 +173,8 @@
   .containerDeployItemsClass{
     transition: 300ms;
     overflow: hidden;
-    transition: max-height 0.35s ease-in;
-    animation: slideDown 0.35s ease-in;
+    transition: max-height 0.32s ease-in;
+    animation: slideDown 0.32s ease-in;
   }
 
 /* Mixin de centrado con flexbox */
