@@ -56,7 +56,7 @@ export default function Aside (){
                     </div>
                     <img src={arrow}  className={styles.arrowIcon} alt="icon" />
             </NavLink>
-                    <div className={main === "catalogo" ? styles.itemsDeployContainer : styles.hidden} >
+                    <div className={main === "catalogo" && active ? styles.itemsDeployContainer : styles.closedDeploy} >
                          <div className={styles.linesContainer}>
                             <img src={line}  className={styles.line} alt="line" />
                             <img src={redLine} className={styles.redLine}
