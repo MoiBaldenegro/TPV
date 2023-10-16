@@ -56,7 +56,7 @@ export default function Aside (){
                     </div>
                     <img src={arrow}  className={styles.arrowIcon} alt="icon" />
             </NavLink>
-                    <div className={main === "catalogo" && active ? styles.itemsDeployContainer : styles.closedDeploy} >
+                    <div className={main === "catalogo" ? styles.itemsDeployContainer : styles.hidden} >
                          <div className={styles.linesContainer}>
                             <img src={line}  className={styles.line} alt="line" />
                             <img src={redLine} className={styles.redLine}
@@ -73,7 +73,7 @@ export default function Aside (){
                             alt="red-line"
                             />
                         </div>
-                        <div className={styles.containerDeployItemsClass}>
+                        <div className={active ? styles.containerDeployItemsClass : styles.closedDeploy}>
                             <NavLink to="catalogo/categories" className={deployItemClass} onClick={() => handleBoard("catalogo", true,  1, )} > Categorías </NavLink>
                             <NavLink to="catalogo/products&prices" className={deployItemClass} onClick={() => handleBoard("catalogo", true,  2, )}> Productos y precios </NavLink>
                             <NavLink to="catalogo/dishes" className={deployItemClass} onClick={() => handleBoard("catalogo", true,  3, )}> Complementos </NavLink>

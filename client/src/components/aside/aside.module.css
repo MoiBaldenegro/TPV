@@ -31,7 +31,9 @@
     display: flex;
     flex-direction: column;
 }
-
+.hidden{
+    display: none;
+}
 .isActive,
 .notActive{
     gap: 15px;
@@ -175,19 +177,9 @@
     animation: slideDown 0.3s ease-in;
   }
   .closedDeploy{
+    max-height: 0;
     transition: max-height 0.3s ease-in;
     animation: slideUp 0.3s ease-in;
-  }
-  
-  @keyframes slideUp {
-    from {
-      max-height: 300px; /* Ajusta la altura máxima deseada al valor de "open" */
-      opacity: 1;
-    }
-    to {
-      max-height: 0;
-      opacity: 0;
-    }
   }
 
 /* Mixin de centrado con flexbox */
