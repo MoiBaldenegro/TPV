@@ -11,7 +11,7 @@ import {
 
 export class CreateCategoryDto {
 
-  code: number;
+  code: string;
 
   @IsDefined()
   @IsString()

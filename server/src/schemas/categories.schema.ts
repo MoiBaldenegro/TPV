@@ -15,7 +15,7 @@ export class Category {
     required: true,
     trim: true,
   })
-  categoryName: string;
+  categoryName: number;
 
   @Prop({ type: Array, default: () => [] })
   subCategories: CreateCategoryDto[];
