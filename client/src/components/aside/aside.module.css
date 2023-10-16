@@ -131,18 +131,7 @@
     margin-left: 3vw;
     position: relative;  
  }
- @keyframes aparecerDesdeArriba {
-    from {
-        display: none;
 
-      transform: translateY(0);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
  .redLine{
     margin-left: -4px;
     position: absolute;
@@ -178,6 +167,20 @@
       max-height: 300px; /* Ajusta la altura máxima deseada */
       opacity: 1;
     }
+  }
+  .itemsDeployContainer,
+  .hidden{
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-in;
+    opacity: 0;
+    animation: slideDown 0.5s ease-in;
+   
+  }
+  .hidden{
+    max-height: 300px; /* Ajusta la altura máxima deseada */
+    opacity: 1;
+
   }
 
 
