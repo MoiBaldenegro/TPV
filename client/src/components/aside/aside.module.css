@@ -227,11 +227,11 @@
       opacity: 0;
     }
     to {
-      max-height: 300px; 
+      max-height: 300px; /* Ajusta la altura máxima deseada */
       opacity: 1;
     }
   }
- 
+  .animationContainer,
   .linesContainer {
     overflow: hidden;
     max-height: 0;
@@ -239,7 +239,7 @@
     animation: slideDown 0.2s ease-in; 
   }
 
-  
+  .animationContainer,
   .linesContainer {
     max-height: 300px; 
     opacity: 1;
