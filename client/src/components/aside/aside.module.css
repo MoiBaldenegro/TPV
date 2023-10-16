@@ -130,8 +130,7 @@
     margin-right: 5px;
 }
 .arrowIcon{
-    width: 7.5;
-    height: 12px; 
+    height: 7.5px; 
     margin-right: 3.2px;
     transform-origin: center;
     transition: transform 0.4s ease-in-out;
