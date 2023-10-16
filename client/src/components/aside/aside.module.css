@@ -169,7 +169,8 @@
     }
   }
 
-  .linesContainer{
+  .linesContainer,
+  .containerDeployItemsClass{
     overflow: hidden;
     transition: max-height 0.3s ease-in;
     animation: slideDown 0.5s ease-in;
