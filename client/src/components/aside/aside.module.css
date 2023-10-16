@@ -235,8 +235,8 @@
   .linesContainer {
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.2s ease-in;
-    animation: slideDown 0.2s ease-in; 
+    transition: max-height 0.35s ease-in;
+    animation: slideDown 0.35s ease-in; 
   }
 
   .animationContainer,
