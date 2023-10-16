@@ -6,14 +6,12 @@ import {
   IsArray,
   Length,
   IsOptional,
+  ValidateNested
 } from 'class-validator';
 
 export class CreateCategoryDto {
-  @IsDefined()
-  @IsString()
-  @IsNotEmpty()
-  @Length(2, 9)
-  code: string;
+
+  code: number;
 
   @IsDefined()
   @IsString()
@@ -23,8 +21,10 @@ export class CreateCategoryDto {
 
   @IsArray()
   @IsOptional()
+  @ValidateNested({ each: true })
   subCategories: Category[];
 
   @IsOptional()
   parentCategory: string | null;
 }
+
