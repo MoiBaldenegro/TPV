@@ -168,21 +168,18 @@
       opacity: 1;
     }
   }
-  .itemsDeployContainer,
-  .hidden{
+  .notActiveDeploy,
+  .isActiveDeploy{
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.3s ease-in;
     opacity: 0;
     animation: slideDown 0.5s ease-in;
-   
   }
-  .hidden{
+  .isActiveDeploy{
     max-height: 300px; /* Ajusta la altura máxima deseada */
     opacity: 1;
-
   }
-
 
 /* Mixin de centrado con flexbox */
 .selector{
