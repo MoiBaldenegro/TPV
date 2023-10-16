@@ -170,7 +170,8 @@
   }
   .notActiveDeploy,
   .isActiveDeploy,
-  .containerDeployItemsClass{
+  .containerDeployItemsClass
+  .linesContainer{
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.3s ease-in;
