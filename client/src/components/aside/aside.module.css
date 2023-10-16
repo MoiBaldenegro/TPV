@@ -47,7 +47,7 @@
     text-decoration: none;
     color: var(--color-white);
     background-color: var(--color-gray-medium);
-    transition: 400ms;  
+    transition: 200ms;  
 }
 .notActive{
     gap: 15px;
@@ -60,7 +60,7 @@
     margin: 5px;
     text-decoration: none;
     color: var(--color-white);
-    transition: 300ms;  
+    transition: 200ms;  
 }
 .notActive:hover{
     background-color: var(--color-gray-medium);
@@ -87,7 +87,7 @@
     text-decoration: none;
     color: var(--color-white); 
     font-weight: 700;
-    transition: 300ms;
+    transition: 200ms;
 
 }
 .notActiveDeploy{
@@ -104,14 +104,13 @@
     letter-spacing: 0em;
     text-align: left;
     border-radius: 12px;
-    transition: 200ms;
     width: 254px;
     height: 52px;
     padding: 5px;
     border-radius: 8px;
     text-decoration: none;
     color: var(--color-white); 
-    transition: 300ms;
+    transition: 200ms;
 
 }
 .separator{
@@ -130,7 +129,7 @@
     margin-right: 5px;
 }
 .arrowIcon{
-    height: 7.5px; 
+    height: px; 
     margin-right: 3.2px;
     transform-origin: center;
     transition: transform 0.4s ease-in-out;
