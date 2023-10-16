@@ -7,7 +7,6 @@
     grid-row: 2 / 3;
     display: flex;
     flex-direction: column;
-    align-items:first center;
     gap: 8px;
     width: 358px;
     height: 82vh;
@@ -173,18 +172,13 @@
  .iconDivider{
     width: 300px;
  }
-
+ 
 
  .itemsDeployContainer,
  .deployContainer{
     display: flex;
     margin-left: 3vw;
     position: relative;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.2s ease-in;
-    opacity: 0;
-    animation: slideDown 0.2s ease-in;
     
  }
  @keyframes aparecerDesdeArriba {
