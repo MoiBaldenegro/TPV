@@ -8,7 +8,7 @@ export class Category {
     required: true,
     trim: true,
   })
-  code: string;
+  code: number;
 
   @Prop({
     unique: true,

@@ -21,6 +21,7 @@ export class CreateCategoryDto {
 
   @IsArray()
   @IsOptional()
+  @ValidateNested({ each: true })
   subCategories: Category[];
 
   @IsOptional()
