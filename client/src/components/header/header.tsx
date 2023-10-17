@@ -10,7 +10,7 @@ import { useState } from "react";
 
 
 export default function Header(){
-    const [  searching, setSearching ] = useState();
+    const [  searching, setSearching ] = useState("");
     const [ isActive, setIsActive ] = useState(false);
     const closeIconClass = isActive ? styles.closeIcon : styles.closeIconHidden;
 
@@ -25,7 +25,7 @@ export default function Header(){
     }
 
     const clearSearch = () => {
-        setSearching(undefined)
+        setSearching("")
     }
 
 
