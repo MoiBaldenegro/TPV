@@ -48,7 +48,7 @@ export default function LoginPage (){
             [event?.target.name] : event?.target.value
         })
     }
-    const eyeClassName = user.password.length > 0 ? eyeActive : passVisibility ? eyeClose : eyeOpen // logica para la activacion y cambio del ojo en el input password
+    const eyeClassName =passVisibility ? eyeClose : user.password.length > 0 ? eyeActive : eyeOpen // logica para la activacion y cambio del ojo en el input password
 
     const onSubmit =  () => {
         dispatch(loginUser(user));
