@@ -5,9 +5,30 @@ import logo from "../../assets/header/tomateLogo.svg"
 import search from "../../assets/header/search.svg"
 import avatar from "../../assets/header/avatar.svg"
 import closeIcon from "../../assets/header/close.svg";
+// hooks
+import { useState } from "react";
 
 
 export default function Header(){
+    const [  searching, setSearching ] = useState();
+    const [ isActive, setIsActive ] = useState(false);
+    const closeIconClass = isActive ? styles.closeIcon : styles.closeIconHidden;
+
+    const HandleChange = () => {
+        event?.preventDefault()
+        setSearching(event.target.value)
+    }
+    if(searching && searching.length > 0){
+        setIsActive(true)
+    } else{
+        setIsActive(false)
+    }
+
+    const clearSearch = () => {
+        setSearching(undefined)
+    }
+
+
     return(
         <header className={styles.header}>
             <div className={styles.logo}>
@@ -16,8 +37,8 @@ export default function Header(){
             <div className={styles.right}>
                 <div className={styles.input}>
                     <img src={search} className={styles.searchIcon} alt="" />
-                    <input type="text" className={styles.search} placeholder="Buscar módulo"/>  
-                    <img src={closeIcon} alt="close-icon" className={styles.closeIcon}/>    
+                    <input type="text" value={searching}  onChange={HandleChange} className={styles.search} placeholder="Buscar módulo"/>  
+                    <img src={closeIcon} alt="close-icon" onClick={clearSearch}  className={closeIconClass}/>    
                 </div>
                 <div className={styles.userContainer}>
                     <img src={notification}  className={styles.noti} alt="notificacion" />

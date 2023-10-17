@@ -90,6 +90,10 @@ input[type="search"]::-webkit-search-clear-button {
     font-size: var(--font-size-small);
     
 }
-.closeIcon{
+.closeIcon,
+.closeIconHidden{
     margin-right: 1vw;
+}
+.closeIconHidden{
+    display: none;
 }
