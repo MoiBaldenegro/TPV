@@ -93,6 +93,7 @@ input[type="search"]::-webkit-search-clear-button {
 }
 .closeIcon,
 .closeIconHidden{
+    position: absolute;
     margin-right: 1vw;
 }
 .closeIconHidden{

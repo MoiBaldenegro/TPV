@@ -20,18 +20,16 @@ export default function Header(){
         if(searching && searching.length > 0){
             setIsActiveCloseIcon(true)
         }
-        if(searching.length < 1 || !searching){
+        if(searching === ""){
             setIsActiveCloseIcon(false)
         }
     }
     
-
     const clearSearch = () => {
         setSearching("")
         setIsActiveCloseIcon(false)
     }
 
-    
     return(
         <header className={styles.header}>
             <div className={styles.logo}>
