@@ -10,9 +10,9 @@ import {
   Body,
 } from '@nestjs/common';
 import { DishesService } from './dishes.service';
-import { createDishesDto } from 'src/dto/dishes/createdDishes.dto';
+import { createDishesDto } from 'src/dto/catalogo/dishes/createdDishes.dto';
 import { HttpCode } from '@nestjs/common';
-import { updateDishesDto } from 'src/dto/dishes/updatedDishes.dto';
+import { updateDishesDto } from 'src/dto/catalogo/dishes/updatedDishes.dto';
 
 @Controller('dishes')
 export class DishesController {

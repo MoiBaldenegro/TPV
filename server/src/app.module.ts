@@ -2,10 +2,11 @@ import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
-import { CategoriesModule } from './categories/categories.module';
-import { DishesModule } from './dishes/dishes.module';
-import { ProductsModule } from './products/products.module';
-import { ModificationsModule } from './modifications/modifications.module';
+import { CategoriesModule } from './catalogo/categories/categories.module';
+import { DishesModule } from './catalogo/dishes/dishes.module';
+import { ProductsModule } from './catalogo/products/products.module';
+import { ModificationsModule } from './catalogo/modifications/modifications.module';
+import { MenusYrecetasModule } from './catalogo/menus-yrecetas/menus-yrecetas.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ModificationsModule } from './modifications/modifications.module';
     DishesModule,
     ProductsModule,
     ModificationsModule,
+    MenusYrecetasModule,
   ],
   controllers: [],
   providers: [],

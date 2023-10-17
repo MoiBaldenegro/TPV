@@ -11,9 +11,9 @@ import {
   Param,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
-import { createDishesDto } from 'src/dto/dishes/createdDishes.dto';
-import { createProductDto } from 'src/dto/products/createProduct.dto';
-import { updateProductDto } from 'src/dto/products/updatedProduct.dto';
+import { createDishesDto } from 'src/dto/catalogo/dishes/createdDishes.dto';
+import { createProductDto } from 'src/dto/catalogo/products/createProduct.dto';
+import { updateProductDto } from 'src/dto/catalogo/products/updatedProduct.dto';
 
 @Controller('products')
 export class ProductsController {

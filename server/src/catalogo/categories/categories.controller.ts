@@ -11,8 +11,8 @@ import {
   HttpCode,
 } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
-import { CreateCategoryDto } from 'src/dto/categories/createCategory.dto';
-import { UpdateCategoryDto } from 'src/dto/categories/updateCategory.dto';
+import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
+import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dto';
 
 @Controller('categories')
 export class CategoriesController {

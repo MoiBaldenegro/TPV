@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { createDishesDto } from 'src/dto/dishes/createdDishes.dto';
-import { updateDishesDto } from 'src/dto/dishes/updatedDishes.dto';
+import { createDishesDto } from 'src/dto/catalogo/dishes/createdDishes.dto';
+import { updateDishesDto } from 'src/dto/catalogo/dishes/updatedDishes.dto';
 import { Dishes } from 'src/schemas/dishes.schema';
 
 @Injectable()
