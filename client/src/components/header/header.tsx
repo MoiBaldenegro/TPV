@@ -14,7 +14,7 @@ export default function Header(){
     const [ isActive, setIsActive ] = useState(false);
     const closeIconClass = isActive ? styles.closeIcon : styles.closeIconHidden;
 
-    const HandleChange = () => {
+    const HandleChange = (event: any) => {
         event?.preventDefault()
         setSearching(event.target.value)
     }
