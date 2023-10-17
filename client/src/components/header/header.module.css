@@ -94,7 +94,7 @@ input[type="search"]::-webkit-search-clear-button {
 .closeIcon,
 .closeIconHidden{
     position: absolute;
-    left: 90%;
+    left: 96%;
 }
 .closeIconHidden{
     display: none;
