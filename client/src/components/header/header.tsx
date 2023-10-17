@@ -25,7 +25,7 @@ export default function Header(){
                     <img src={arrow} alt="vector" className={styles.closeIcon} /> 
                 </div>    
                 <div className={styles.perfil}>
-                    <img src={avatar} className={styles.avatar} alt="" />       
+                    <img src={avatar} className={styles.avatar} alt="" />  
             </div>
         </div>
         </header>
