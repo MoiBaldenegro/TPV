@@ -47,7 +47,7 @@
     width: 35vw;  
 }
 .search{
-    width: 385px;
+    width: 370px;
     height:48px;
     padding: 12px, 32px, 12px, 32px;
     border-radius: 8px;
@@ -94,7 +94,7 @@ input[type="search"]::-webkit-search-clear-button {
 .closeIcon,
 .closeIconHidden{
     position: absolute;
-    left: 96%;
+    left: 95%;
 }
 .closeIconHidden{
     display: none;
