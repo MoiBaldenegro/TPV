@@ -1,4 +1,4 @@
-import styles from "./header.module.css"
+        import styles from "./header.module.css"
 import notification from "../../assets/header/notificacion.svg"
 import arrow from "../../assets/header/arrow.svg"
 import logo from "../../assets/header/tomateLogo.svg"
@@ -22,7 +22,7 @@ export default function Header(){
                 <div className={styles.userContainer}>
                     <img src={notification}  className={styles.noti} alt="notificacion" />
                     <span> Moises Baldenegro</span>
-                    <img src={arrow} alt="vector" /> 
+                    <img src={arrow} alt="vector" className={styles.closeIcon} /> 
                 </div>    
                 <div className={styles.perfil}>
                     <img src={avatar} className={styles.avatar} alt="" />       

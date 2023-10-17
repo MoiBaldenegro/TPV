@@ -87,3 +87,6 @@ input[type="search"]::-webkit-search-clear-button {
     font-size: var(--font-size-small);
     
 }
+.closeIcon{
+    margin-left: 1vw;
+}
