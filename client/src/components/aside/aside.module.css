@@ -127,6 +127,7 @@
  
  .itemsDeployContainer,
  .deployContainer{
+    margin-top: 5vh;
     display: flex;
     margin-left: 3vw;
     position: relative;  
