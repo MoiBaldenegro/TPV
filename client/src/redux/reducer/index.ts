@@ -10,11 +10,17 @@ let initialState = {auth: ["Auth"], // Se verifica si el usuario es autenticado
                     allUsers: [], // trae a todos los usuario
                     isLoading : true,
                     invalidCredentials: false, // verifica si se ha terminado una peticion
-                    errors: []
+                    errors: [],
+                    allCategories: []
                 }
 
 export default function rootReducer(state = initialState, action:any){
     switch (action.type) {
+        case GET_CATEGORIES:
+            return{
+                ...state,
+                allCategories: action.payload
+            }
         case SET_ERRORS:
             return{
                 ...state,

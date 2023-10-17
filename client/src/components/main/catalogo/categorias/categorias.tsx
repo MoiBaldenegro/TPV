@@ -1,14 +1,26 @@
 import styles from "./categorias.module.css"
-import categorias from "../../../../mocks/categorias.json"
 // ICONS
 import update from "../../../../assets/categorias/updateIcon.svg"
 import deleteIcon from "../../../../assets/categorias/deleteIcon.svg"
 import exportIcon from "../../../../assets/categorias/exportIcon.svg"
 import importIcon from "../../../../assets/categorias/importIcon.svg"
 import createIcon from "../../../../assets/categorias/createIcon.svg"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { getCategories } from "../../../../redux/actions"
 
 
 export default function Categorias (){
+
+    // Cargamos la data de categorias al montar el componente
+    const dispatch = useDispatch();
+    const allCategories = useSelector(state => state.allCategories);
+
+
+    useEffect(()=>{
+        dispatch(getCategories())
+    }
+    ,[])
     return (
         <section className={styles.categorias}>
             <div className={styles.categoriasButtons}>
@@ -31,14 +43,14 @@ export default function Categorias (){
                         </tr>
                     </thead>
                     <tbody>
-                        {categorias.categorias?.map((categoria, index) => (
+                        {allCategories?.map((categoria, index) => (
                         <tr key={index}>
-                            <td className={styles.tableRows} >{categoria.clave}</td>
-                            <td className={styles.tableRows}>{categoria.nombre}</td>
-                            <td className={styles.tableRows}>{categoria.date}</td>
+                            <td className={styles.tableRows} >{categoria.code}</td>
+                            <td className={styles.tableRows}>{categoria.categoryName}</td>
+                            <td className={styles.tableRows}>{categoria.createdAt}</td>
                             <td className={styles.buttonsContainer}>
                                 <button className={styles.actionButtons}>
-                                    <img src={update} alt="update-icon" />
+                                    <img src={update} alt="update-icon"/>
                                 </button>
                                 <button className={styles.actionButtons}>
                                     <img src={deleteIcon} alt="delete-icon" />

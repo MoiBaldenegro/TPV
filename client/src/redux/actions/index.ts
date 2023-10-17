@@ -7,7 +7,8 @@ export const TOGGLE_LOADING = "TOGGLE_LOADING";
 export const CREATE_USER = "CREATE_USER;";
 export const LOGIN_USER = "LOGIN_USER";
 export const GET_USERS = "GET_USERS";
-export const SET_ERRORS = "SET_ERRORS"
+export const SET_ERRORS = "SET_ERRORS";
+export const ALL_CATEGORIES = "ALL_CATEGORIES";
 /*
 
 const getCategories = () =>{
@@ -19,6 +20,13 @@ const getCategories = () =>{
 
 export const toggleLoading = (payload: boolean) => ({type: TOGGLE_LOADING, payload})
 export const toggleMainItemRender = payload => ({type: TOGGLE_ITEM_MAIN_RENDER, payload})
+//Get categories
+export const getCategories = () => {
+  async (dispatch) => {
+    const response = await axios("https://tomate-server.onrender.com/categories");
+    return dispatch({type: GET_CATEGORIES, payload: response.data})
+  }
+}
 
 // Register authentication 
 export const createUser = user =>  async dispatch => {
@@ -33,7 +41,6 @@ export const createUser = user =>  async dispatch => {
 export const loginUser = user =>  async dispatch => {
   try {
       const response = await axios.post("https://tomate-server.onrender.com/auth/login", user)
-      console.log(response.data)
       return dispatch({ type: LOGIN_USER, payload: response.data})
   } catch (error) {
     return dispatch({type: TOGGLE_LOADING, payload: false})
