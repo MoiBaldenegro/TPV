@@ -11,17 +11,17 @@ import { useState } from "react";
 
 export default function Header(){
     const [  searching, setSearching ] = useState("");
-    const [ isActive, setIsActive ] = useState(false);
-    const closeIconClass = isActive ? styles.closeIcon : styles.closeIconHidden;
+    const [ isActiveCloseIcon, setIsActiveCloseIcon ] = useState(false);
+    const closeIconClass = isActiveCloseIcon ? styles.closeIcon : styles.closeIconHidden;
 
     const HandleChange = (event: any) => {
         event?.preventDefault()
         setSearching(event.target.value)
     }
     if(searching && searching.length > 0){
-        setIsActive(true)
+        setIsActiveCloseIcon(true)
     } else{
-        setIsActive(false)
+        setIsActiveCloseIcon(false)
     }
 
     const clearSearch = () => {
