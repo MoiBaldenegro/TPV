@@ -28,7 +28,7 @@ export default function LoginPage (){
     
     const [ passVisibility, setPassVisibility ] = useState(false);
     const [ lenguajeSelect, setLenguajeSelect ] = useState(false);
-    const [ activeEye, setActiveEye ] =  useState(false): // activa el ojo, al escribir
+    const [ activeEye, setActiveEye ] =  useState(false); // activa el ojo, al escribir
     const toggleVisibilityPass = () => {
         setPassVisibility(!passVisibility);
     }
