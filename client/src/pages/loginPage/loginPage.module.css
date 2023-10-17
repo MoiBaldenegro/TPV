@@ -124,7 +124,6 @@
     border-radius: 56px;
     gap: 32px;
     background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
-    font-size: 30px;
   }
   .formContainer{
     width: 800px;
@@ -178,6 +177,7 @@
     width: 672px;
     height:48px;
     color: var(--color-white);
+    font-size: var(--font-size-small);
     text-indent: 20px;
   }
   .inputFormIn::placeholder,

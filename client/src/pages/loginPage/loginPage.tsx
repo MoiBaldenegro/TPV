@@ -91,7 +91,7 @@ export default function LoginPage (){
                     <div className={styles.form}>
                         <input name="email" onChange={handleChange} placeholder="correo@ejemplo.com" type="text" className={styles.inputForm}/>
                         <div className={styles.inputForm} >
-                            <input  name="password" onChange={handleChange} placeholder="password" type={passVisibility ? "text" : "password"} required  className={styles.inputFormIn}/>
+                            <input  name="password" onChange={handleChange} placeholder="Contraseña" type={passVisibility ? "text" : "password"} required  className={styles.inputFormIn}/>
                             <img src={eyeClassName/*passVisibility ? eyeOpen : eyeClose*/} alt="pass-visibility" className={styles.eye} onClick={toggleVisibilityPass} />
                         </div>
                         <div className={styles.checkboxContainer}>
