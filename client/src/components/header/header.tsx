@@ -48,8 +48,8 @@ export default function Header(){
                 </div>    
                 <div className={styles.perfil}>
                     <img src={avatar} className={styles.avatar} alt="" />  
+                </div>
             </div>
-        </div>
         </header>
     )
 }

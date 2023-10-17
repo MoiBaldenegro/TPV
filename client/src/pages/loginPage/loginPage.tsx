@@ -11,6 +11,8 @@ import footerRight from "../../assets/loginPage/footerImgRight.svg"
 import eyeClose from "../../assets/loginPage/eyeClose.svg"
 import eyeOpen from "../../assets/loginPage/eyeOpen.svg"
 import error from "../../assets/loginPage/error.svg"
+import eyeActive from "../../assets/loginPage/eyeActive.svg"
+
 //hooks
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +28,7 @@ export default function LoginPage (){
     
     const [ passVisibility, setPassVisibility ] = useState(false);
     const [ lenguajeSelect, setLenguajeSelect ] = useState(false);
+    const [ activeEye, setActiveEye ] =  useState(false): // activa el ojo, al escribir
     const toggleVisibilityPass = () => {
         setPassVisibility(!passVisibility);
     }
@@ -39,6 +42,8 @@ export default function LoginPage (){
         email : "",
         password: ""
     })
+    const eyeClassName =  user.password.length > 0 ? eyeActive : eyeClose // logica para la activacion y cambio del ojo en el input password
+
 
     const handleChange = (event: any) => {
         event?.preventDefault();
@@ -88,8 +93,8 @@ export default function LoginPage (){
                     <div className={styles.form}>
                         <input name="email" onChange={handleChange} placeholder="correo@ejemplo.com" type="text" className={styles.inputForm}/>
                         <div className={styles.inputForm} >
-                            <input  name="password" onChange={handleChange} placeholder="password" type={passVisibility ? "text" : "password"} required  className={styles.inputFormIn}/>
-                            <img src={passVisibility ? eyeOpen : eyeClose} alt="pass-visibility" className={styles.eye} onClick={toggleVisibilityPass} />
+                            <input  name="password" onChange={handleChange} placeholder="contraseña" type={passVisibility ? "text" : "password"} required  className={styles.inputFormIn}/>
+                            <img src={passVisibility ? eyeOpen : eyeClassName} alt="pass-visibility" className={styles.eye} onClick={toggleVisibilityPass} />
                         </div>
                         <div className={styles.checkboxContainer}>
                             <div className={styles.checkboxInputContainer}>
