@@ -20,6 +20,9 @@ export default function Header(){
         if(searching && searching.length > 0){
             setIsActiveCloseIcon(true)
         }
+        if(searching.length < 1 || !searching){
+            setIsActiveCloseIcon(false)
+        }
     }
     
 

@@ -37,6 +37,7 @@
     flex-grow: 0;
 }
 .input{
+    position: relative;
     display: flex;
     align-items: center;
     padding: 12px, 32px, 12px, 32px;
