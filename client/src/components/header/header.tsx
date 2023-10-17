@@ -17,18 +17,18 @@ export default function Header(){
     const HandleChange = (event: any) => {
         event?.preventDefault()
         setSearching(event.target.value)
+        if(searching && searching.length > 0){
+            setIsActiveCloseIcon(true)
+        }
     }
-    if(searching && searching.length > 0){
-        setIsActiveCloseIcon(true)
-    } else{
-        setIsActiveCloseIcon(false)
-    }
+    
 
     const clearSearch = () => {
         setSearching("")
+        setIsActiveCloseIcon(false)
     }
 
-
+    
     return(
         <header className={styles.header}>
             <div className={styles.logo}>
