@@ -28,7 +28,7 @@ export default function LoginPage (){
     
     const [ passVisibility, setPassVisibility ] = useState(false);
     const [ lenguajeSelect, setLenguajeSelect ] = useState(false);
-    const [ activeEye, setActiveEye ] =  useState(false); // activa el ojo, al escribir
+    const [ activeEye, setActiveEye ] =  useState(false): // activa el ojo, al escribir
     const toggleVisibilityPass = () => {
         setPassVisibility(!passVisibility);
     }
@@ -42,7 +42,7 @@ export default function LoginPage (){
         email : "",
         password: ""
     })
-    const eyeClassName =  user.password.length > 0 ? eyeActive : eyeClose // logica para la activacion y cambio del ojo en el input password
+    const eyeClassName = user.password.length > 0 ? eyeActive : passVisibility ? eyeOpen : eyeClose // logica para la activacion y cambio del ojo en el input password
 
 
     const handleChange = (event: any) => {
@@ -94,7 +94,7 @@ export default function LoginPage (){
                         <input name="email" onChange={handleChange} placeholder="correo@ejemplo.com" type="text" className={styles.inputForm}/>
                         <div className={styles.inputForm} >
                             <input  name="password" onChange={handleChange} placeholder="contraseña" type={passVisibility ? "text" : "password"} required  className={styles.inputFormIn}/>
-                            <img src={passVisibility ? eyeOpen : eyeClassName} alt="pass-visibility" className={styles.eye} onClick={toggleVisibilityPass} />
+                            <img src={user.password.length > 0 ? eyeActive : passVisibility ? eyeOpen : eyeClose} alt="pass-visibility" className={styles.eye} onClick={toggleVisibilityPass} />
                         </div>
                         <div className={styles.checkboxContainer}>
                             <div className={styles.checkboxInputContainer}>
