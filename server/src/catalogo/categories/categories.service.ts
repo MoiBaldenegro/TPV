@@ -21,7 +21,7 @@ export class CategoriesService {
     } */
 
   async create(createCategory: CreateCategoryDto) {
-    const lastCategory = await this.categoryModel.findOne(
+   /* const lastCategory = await this.categoryModel.findOne(
       {},
       { code: 1 },
       { sort: { code: -1 } },
@@ -35,7 +35,7 @@ export class CategoriesService {
       newCode = '01';
     }
     console.log(newCode);
-    createCategory.code = newCode;
+    createCategory.code = newCode; */
     const newCategory = new this.categoryModel(createCategory);
     return await newCategory.save();
   }
