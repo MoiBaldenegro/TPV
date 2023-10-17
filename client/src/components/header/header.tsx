@@ -17,12 +17,12 @@ export default function Header(){
                 <div className={styles.input}>
                     <img src={search} className={styles.searchIcon} alt="" />
                     <input type="text" className={styles.search} placeholder="Buscar módulo"/>  
-                    <img src={closeIcon} alt="close-icon" />    
+                    <img src={closeIcon} alt="close-icon" className={styles.closeIcon}/>    
                 </div>
                 <div className={styles.userContainer}>
                     <img src={notification}  className={styles.noti} alt="notificacion" />
                     <span> Moises Baldenegro</span>
-                    <img src={arrow} alt="vector" className={styles.closeIcon} /> 
+                    <img src={arrow} alt="vector"/> 
                 </div>    
                 <div className={styles.perfil}>
                     <img src={avatar} className={styles.avatar} alt="" />  
