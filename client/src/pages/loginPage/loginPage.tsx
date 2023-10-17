@@ -116,7 +116,7 @@ export default function LoginPage (){
             </main>
             <footer className={styles.footer} >
                 <div className={styles.linksContainer}>
-                    <NavLink className={styles.links} to="#avisoDePrivacidad"  id="">Aviso de Privacidad</NavLink>
+                    <NavLink className={styles.links} to="#avisoDePrivacidad"  id="">Aviso de privacidad</NavLink>
                     <span>|</span>
                     <NavLink className={styles.links} to="#avisoDePrivacidad"  id="">Términos y condiciones</NavLink>
                     <span>|</span>
