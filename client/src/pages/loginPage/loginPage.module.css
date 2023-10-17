@@ -200,7 +200,7 @@
     border: none;
     color: var(--color-white);
     font-size: var(--font-size-small);
-    transition: .3s;
+    transition: .2s;
   }
   .btnEntrar:disabled{
     opacity: .4;
