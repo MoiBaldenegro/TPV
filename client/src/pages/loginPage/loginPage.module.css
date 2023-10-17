@@ -205,7 +205,7 @@
   .btnEntrar:disabled{
     opacity: .4;
     background: #F9F9F91A;
-    transition: .6s;
+    transition: .3s;
   }
   .btnEntrar:hover{
     background-color: var(--color-red-hover);
@@ -217,7 +217,7 @@
   
   .formTittle{
     font-size: 28px;
-    margin: 7.5vh 20vw 3vh 0;
+    margin: 7.5vh 21vw 3vh 0;
   }
   .linksContainer{
     display: flex;
