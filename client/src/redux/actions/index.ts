@@ -27,8 +27,10 @@ export const getCategories = () => {
     const response = await axios("https://tomate-server.onrender.com/categories");
     return dispatch({type: GET_CATEGORIES, payload: response.data})
   }
-}
-// Delete categories
+} 
+
+/* 
+// Delete categories 
 export const deleteCategorie = id => async dispatch => {
   try {
     const response = await axios.delete(`https://tomate-server.onrender.com/categories/${id}`);
@@ -42,6 +44,7 @@ export const deleteCategorie = id => async dispatch => {
     console.log("Error al eliminar la categoría:", error);
   }
 };
+*/
 
 // Register authentication 
 export const createUser = user =>  async dispatch => {

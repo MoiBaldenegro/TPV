@@ -1,7 +1,7 @@
 import styles from "./categorias.module.css"
 // ICONS
 import update from "../../../../assets/categorias/updateIcon.svg"
-import deleteIcon from "../../../../assets/categorias/deleteIcon.svg"
+import deleteIcon from "../../../../assets/categorias/bloquedIcon.svg"
 import exportIcon from "../../../../assets/categorias/exportIcon.svg"
 import importIcon from "../../../../assets/categorias/importIcon.svg"
 import createIcon from "../../../../assets/categorias/createIcon.svg"

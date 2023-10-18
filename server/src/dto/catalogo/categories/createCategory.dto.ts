@@ -26,4 +26,10 @@ export class CreateCategoryDto {
 
   @IsOptional()
   parentCategory: string | null;
+
+  @IsString()
+  @Length(1, 8)
+  @IsOptional()
+  status?: "disabled" | "enabled"
 }
+

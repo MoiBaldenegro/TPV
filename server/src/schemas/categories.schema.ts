@@ -22,6 +22,11 @@ export class Category {
 
   @Prop()
   parentCategory: string | null;
+  
+  @Prop({
+    default: "enabled"
+  })
+  status: "disabled" | "enabled"
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);
