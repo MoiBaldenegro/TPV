@@ -16,7 +16,7 @@ export default function Categorias() {
   const handleChange = (event) => {
     event.preventDefault();
     const searchValue = event.target.value
-    if(searchValue.length > 2){
+    if(searchValue.length < 2){
       dispatch(getCategories());
     }
     dispatch(searchCategories(searchValue))
