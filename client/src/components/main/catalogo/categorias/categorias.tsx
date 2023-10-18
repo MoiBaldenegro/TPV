@@ -5,6 +5,7 @@ import deleteIcon from "../../../../assets/categorias/bloquedIcon.svg"
 import exportIcon from "../../../../assets/categorias/exportIcon.svg"
 import importIcon from "../../../../assets/categorias/importIcon.svg"
 import createIcon from "../../../../assets/categorias/createIcon.svg"
+import enabledIcon from "../../../../assets/categorias/enabledIcon.svg"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { deleteCategorie, getCategories } from "../../../../redux/actions"
@@ -56,11 +57,16 @@ export default function Categorias (){
                                 <button className={styles.actionButtons}>
                                     <img src={update} alt="update-icon"/>
                                 </button>
-                                <button 
+                                { categoria.status === "enabled" ? <button 
                                         className={styles.actionButtons}
                                         onClick={()=>{ onDelete(categoria._id) }}>
                                     <img src={deleteIcon} alt="delete-icon" />
-                                </button>
+                                </button> : <button 
+                                        className={styles.actionButtons}
+                                        onClick={()=>{ onDelete(categoria._id) }}>
+                                    <img src={enabledIcon} alt="enabled-icon" />
+                                </button> }
+                                
                             </td>
                         </tr>
                         ))}
