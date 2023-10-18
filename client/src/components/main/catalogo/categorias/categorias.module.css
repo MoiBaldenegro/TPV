@@ -40,7 +40,6 @@ h2{
     border: none;
     outline: none;
     color: var(--color-white);
-    text-indent: 15px;
     width: 709px;
     height: 48px;
     min-height: 48px;
@@ -164,5 +163,5 @@ text-indent: 25px;
     border-radius: 8px;
     gap: 10px;
     background: #F9F9F91A;
-    margin: 2vh 25px 0px 0;   
+    margin: 2vh 15px 0px 0px;   
 }
