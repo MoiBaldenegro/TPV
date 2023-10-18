@@ -22,11 +22,12 @@ export const toggleLoading = (payload: boolean) => ({type: TOGGLE_LOADING, paylo
 export const toggleMainItemRender = payload => ({type: TOGGLE_ITEM_MAIN_RENDER, payload})
 //Get categories
 export const getCategories = () => {
-  async (dispatch) => {
+  return async (dispatch) => {
     const response = await axios("https://tomate-server.onrender.com/categories");
     return dispatch({type: GET_CATEGORIES, payload: response.data})
   }
 }
+
 
 // Register authentication 
 export const createUser = user =>  async dispatch => {
