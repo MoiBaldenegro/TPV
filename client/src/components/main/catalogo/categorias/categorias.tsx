@@ -8,6 +8,7 @@ import update from "../../../../assets/categorias/updateIcon.svg";
 import exportIcon from "../../../../assets/categorias/exportIcon.svg";
 import importIcon from "../../../../assets/categorias/importIcon.svg";
 import createIcon from "../../../../assets/categorias/createIcon.svg";
+import searchIcon from "../../../../assets/categorias/searchIcon.svg";
 
 export default function Categorias() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export default function Categorias() {
   const handleChange = (event) => {
     event.preventDefault();
     const searchValue = event.target.value
-    if(searchValue.length < 1 || allCategories.length === 0){
+    if(searchValue.length < 1){
       dispatch(getCategories());
     }
     dispatch(searchCategories(searchValue))
@@ -50,8 +51,9 @@ export default function Categorias() {
         </div>
       </div>
       <div className={styles.searchBarContainer}>
+        <img src={searchIcon} alt="search-icon" className={styles.serachIcon} />
         <input
-          type="search"
+          type="text"
           className={styles.searchBar}
           placeholder="Buscar categoria"
           onChange={handleChange}
