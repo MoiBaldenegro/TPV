@@ -30,13 +30,16 @@ export const getCategories = () => {
 // Delete categories
 export const deleteCategorie = id => async dispatch => {
   try {
-    const response = await axios.delete(`https://tomate-server.onrender.com/categories/${id}`)
-    console.log(response.data)
-    if(response.data) alert("Categoria eliminado con exito")
+    const response = await axios.delete(`https://tomate-server.onrender.com/categories/${id}`);
+    if (response.status === 204) {
+      alert("Categoría eliminada con éxito");
+    } else {
+      console.log(`El servidor respondió con un código de estado ${response.status}`);
+    }
   } catch (error) {
-    console.log(error.data)
+    console.log("Error al eliminar la categoría:", error);
   }
-}
+};
 
 // Register authentication 
 export const createUser = user =>  async dispatch => {
