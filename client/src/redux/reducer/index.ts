@@ -23,7 +23,7 @@ export default function rootReducer(state = initialState, action:any){
             const filterArray = state.allCategories.filter(element => element._id !== categoryId);
             return{
                 ...state,
-                allCategories: filterArray;
+                allCategories: filterArray
             }
         case GET_CATEGORIES:
             return{
