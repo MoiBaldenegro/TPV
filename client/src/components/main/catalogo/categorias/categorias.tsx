@@ -18,7 +18,6 @@ export default function Categorias (){
     
     const onDelete = (id: string) => {
         dispatch(deleteCategorie(id))
-        alert(id)
     }
 
 
