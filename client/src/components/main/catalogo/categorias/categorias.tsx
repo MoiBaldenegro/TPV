@@ -1,7 +1,7 @@
 import styles from "./categorias.module.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "../../../../redux/actions";
+import { getCategories, searchCategories } from "../../../../redux/actions";
 import deleteIcon from "../../../../assets/categorias/bloquedIcon.svg";
 import enabledIcon from "../../../../assets/categorias/enabledIcon.svg";
 import update from "../../../../assets/categorias/updateIcon.svg";
@@ -14,7 +14,9 @@ export default function Categorias() {
   const allCategories = useSelector((state) => state.allCategories);
 
   const handleChange = (event) => {
-      
+    event.preventDefault();
+    const searchValue = event.target.value
+    dispatch(searchCategories(searchValue))
   }
 
   const onDelete = (id: string) => {
