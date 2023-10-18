@@ -27,7 +27,8 @@ export const getCategories = () => {
     return dispatch({type: GET_CATEGORIES, payload: response.data})
   }
 }
-
+// Delete categories
+export const deleteCategorie = (id:string) => axios.delete(`https://tomate-server.onrender.com/categories${id}`)
 
 // Register authentication 
 export const createUser = user =>  async dispatch => {

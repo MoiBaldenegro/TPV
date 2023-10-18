@@ -7,7 +7,7 @@ import importIcon from "../../../../assets/categorias/importIcon.svg"
 import createIcon from "../../../../assets/categorias/createIcon.svg"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getCategories } from "../../../../redux/actions"
+import { deleteCategorie, getCategories } from "../../../../redux/actions"
 
 
 export default function Categorias (){
@@ -15,6 +15,10 @@ export default function Categorias (){
     // Cargamos la data de categorias al montar el componente
     const dispatch = useDispatch();
     const allCategories = useSelector(state => state.allCategories);
+    
+    const onDelete = (id: string) => {
+        dispatch(deleteCategorie(id))
+    }
 
 
     useEffect(()=>{
@@ -52,7 +56,9 @@ export default function Categorias (){
                                 <button className={styles.actionButtons}>
                                     <img src={update} alt="update-icon"/>
                                 </button>
-                                <button className={styles.actionButtons}>
+                                <button 
+                                        className={styles.actionButtons}
+                                        onClick={()=>{onDelete(categoria.id)}}>
                                     <img src={deleteIcon} alt="delete-icon" />
                                 </button>
                             </td>
