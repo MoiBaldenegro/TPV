@@ -52,7 +52,7 @@ export default function Categorias() {
       </div>
       <div className={styles.searchBarContainer}>
         <div className={styles.searchInputContainer}>
-          <img src={searchIcon} alt="search-icon" className={styles.serachIcon} />
+          <img src={searchIcon} alt="search-icon" className={styles.searchIcon} />
           <input
             type="text"
             className={styles.searchBar}
