@@ -77,11 +77,11 @@ h2{
 .actionButtonsSecond{
     background: var(--color-accent-red-primary);
 }
-
-
-.actionButtons:hover{
+.actionButtonsSecond:hover,
+.actionButtonsFirst:hover,
+.actionButtonsFirstEnabled:hover{
    /*  opacity: .6; */
-   filter:brightness(0.8);
+   filter:brightness(0.85);
 }
 
 .tableRows{
