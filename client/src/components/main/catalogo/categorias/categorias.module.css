@@ -12,19 +12,16 @@
 .categoriasButtons{
     display: flex;
     justify-content: space-between;
-    margin-top: 2vh;
-  
+    margin-top: 2vh; 
 }
 h2{
     font-size: 35px;
 }
-
 .table{
     margin: 25px;
     width: 74vw;
     height: 50vh;
 }
-
 .searchBarContainer{
     display: flex;
     flex-direction: column;
@@ -49,9 +46,7 @@ h2{
     gap: 10px;
     background: transparent;
 } 
-.searchBar::placeholder{
-    text-indent: 15px;
-}
+
 .table{
     background: #F9F9F980;
     width: 1,418px;
@@ -86,7 +81,6 @@ h2{
    /*  opacity: .6; */
    filter:brightness(0.85);
 }
-
 .tableRows{
 text-indent: 25px;
 }
@@ -94,7 +88,6 @@ text-indent: 25px;
 .buttonsContainer{
     border-top: 1px solid #F9F9F9;
 }
-
 .tHeadClave,
 .tHeadCategoria,
 .tHeadDate,
@@ -108,7 +101,6 @@ text-indent: 25px;
     gap: 8px;
 
 }
-
 .tHeadClave{
     width:30%;
 }
@@ -121,7 +113,6 @@ text-indent: 25px;
 .tHeadActions{
     text-indent: 15px;
 }
-
 /* CATEGORIES BUTTONS */
 .exportCategories,
 .importCategories,
