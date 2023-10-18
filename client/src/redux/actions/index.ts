@@ -9,6 +9,7 @@ export const LOGIN_USER = "LOGIN_USER";
 export const GET_USERS = "GET_USERS";
 export const SET_ERRORS = "SET_ERRORS";
 export const ALL_CATEGORIES = "ALL_CATEGORIES";
+export const DELETE_CATEGORY = "DELETE_CATEGORY";
 /*
 
 const getCategories = () =>{
@@ -33,6 +34,7 @@ export const deleteCategorie = id => async dispatch => {
     const response = await axios.delete(`https://tomate-server.onrender.com/categories/${id}`);
     if (response.status === 204) {
       alert("Categoría eliminada con éxito");
+      return dispatch({type: DELETE_CATEGORY, payload: id})
     } else {
       console.log(`El servidor respondió con un código de estado ${response.status}`);
     }
