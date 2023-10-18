@@ -36,7 +36,7 @@ h2{
     padding: 16px, 0px, 0px, 0px;
     border-radius: 16px;
 }
-/* .searchBar{
+.searchBar{
     border: none;
     outline: none;
     color: var(--color-white);
@@ -48,9 +48,8 @@ h2{
     border: none;
     border-radius: 8px;
     gap: 10px;
-    background: #F9F9F91A;
-    margin: 2vh 25px 0px 0;   
-} */
+    background: transparent;
+} 
 .searchBar::placeholder{
     text-indent: 15px;
 }
@@ -151,6 +150,8 @@ text-indent: 25px;
     margin-left: 15px;
 }
 .searchInputContainer{
+    display: flex;
+    align-items: center;
     border: none;
     outline: none;
     color: var(--color-white);
@@ -163,6 +164,5 @@ text-indent: 25px;
     border-radius: 8px;
     gap: 10px;
     background: #F9F9F91A;
-    margin: 2vh 25px 0px 0;  
-    
+    margin: 2vh 25px 0px 0;   
 }
