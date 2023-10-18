@@ -29,10 +29,10 @@ export const getCategories = () => {
 }
 // Delete categories
 export const deleteCategorie = id => async dispatch => {
-  alert(id)
   try {
     const response = await axios.delete(`https://tomate-server.onrender.com/categories/${id}`)
     console.log(response.data)
+    if(response.data) alert("Categoria eliminado con exito")
   } catch (error) {
     console.log(error.data)
   }
