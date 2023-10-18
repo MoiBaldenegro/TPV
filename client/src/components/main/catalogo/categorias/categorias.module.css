@@ -23,13 +23,14 @@ h2{
     height: 50vh;
 }
 .searchBarContainer{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: end;
     background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
     margin-top: 2.5vh;
     width: 1,482px;
-    height: 450px;
+    min-height: 450px;
     padding: 16px, 0px, 0px, 0px;
     border-radius: 16px;
 }
