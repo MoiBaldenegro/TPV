@@ -37,6 +37,10 @@ h2{
     border-radius: 16px;
 }
 .searchBar{
+    border: none;
+    outline: none;
+    color: var(--color-white);
+    text-indent: 15px;
     width: 709px;
     height: 48px;
     padding: 12px, 16px, 12px, 16px;
@@ -85,7 +89,7 @@ h2{
 }
 
 .tableRows{
-text-indent: 25px;   
+text-indent: 25px;
 }
 .tableRows,
 .buttonsContainer{
@@ -103,6 +107,7 @@ text-indent: 25px;
     height:56px;
     padding: 16px;
     gap: 8px;
+
 }
 
 .tHeadClave{

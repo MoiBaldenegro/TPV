@@ -4,6 +4,7 @@ import {GET_CATEGORIES,
         TOGGLE_LOADING,
         INVALID_CREDENTIALS,
         SET_ERRORS,
+        SEARCH_CATEGORIES,
         /* DELETE_CATEGORY,*/ } from "../actions";
 
 let initialState = {auth: ["Auth"], // Se verifica si el usuario es autenticado
@@ -17,6 +18,13 @@ let initialState = {auth: ["Auth"], // Se verifica si el usuario es autenticado
 
 export default function rootReducer(state = initialState, action:any){
     switch (action.type) {
+        case SEARCH_CATEGORIES:
+            const value = action.payload;
+            const categoriesSearch = state.allCategories.filter(element => element.categoryName.toLowerCase().includes(value.toLowerCase()))
+            return{
+                ...state,
+                allCategories: categoriesSearch
+            }
         /*
         case DELETE_CATEGORY: // refrescamos el estado de categorias despues de eliminar
             const categoryId: string = action.payload;

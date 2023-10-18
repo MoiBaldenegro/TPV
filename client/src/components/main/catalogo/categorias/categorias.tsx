@@ -13,6 +13,10 @@ export default function Categorias() {
   const dispatch = useDispatch();
   const allCategories = useSelector((state) => state.allCategories);
 
+  const handleChange = (event) => {
+      
+  }
+
   const onDelete = (id: string) => {
     dispatch(deleteCategorie(id));
   };
@@ -45,6 +49,7 @@ export default function Categorias() {
           type="search"
           className={styles.searchBar}
           placeholder="Buscar categoria"
+          onChange={handleChange}
         />
         <table className={styles.table}>
           <thead className={styles.thead}>

@@ -10,6 +10,7 @@ export const GET_USERS = "GET_USERS";
 export const SET_ERRORS = "SET_ERRORS";
 export const ALL_CATEGORIES = "ALL_CATEGORIES";
 export const DELETE_CATEGORY = "DELETE_CATEGORY";
+export const SEARCH_CATEGORIES = "SEARCH_CATEGORIES"
 /*
 
 const getCategories = () =>{
@@ -29,6 +30,7 @@ export const getCategories = () => {
   }
 } 
 
+export const searchCategories = payload => ({type: SEARCH_CATEGORIES, payload })
 /* 
 // Delete categories 
 export const deleteCategorie = id => async dispatch => {
