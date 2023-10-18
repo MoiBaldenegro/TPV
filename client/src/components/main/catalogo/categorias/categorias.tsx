@@ -8,7 +8,6 @@ import createIcon from "../../../../assets/categorias/createIcon.svg"
 import enabledIcon from "../../../../assets/categorias/enabledIcon.svg"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { deleteCategorie, getCategories } from "../../../../redux/actions"
 
 
 export default function Categorias (){
