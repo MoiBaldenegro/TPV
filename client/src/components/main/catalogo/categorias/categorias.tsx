@@ -53,21 +53,23 @@ export default function Categorias (){
                             <td className={styles.tableRows} >{categoria.code}</td>
                             <td className={styles.tableRows}>{categoria.categoryName}</td>
                             <td className={styles.tableRows}>{categoria.createdAt}</td>
-                            <td className={styles.buttonsContainer}>
-                                <button className={styles.actionButtons}>
-                                    <img src={update} alt="update-icon"/>
-                                </button>
-                                { categoria.status === "enabled" ? <button 
-                                        className={styles.actionButtons}
-                                        onClick={()=>{ onDelete(categoria._id) }}>
-                                    <img src={deleteIcon} alt="delete-icon" />
-                                </button> : <button 
-                                        className={styles.actionButtons}
-                                        onClick={()=>{ onDelete(categoria._id) }}>
-                                    <img src={enabledIcon} alt="enabled-icon" />
-                                </button> }
+                            
+                
+                                { categoria.status === "enabled" ? < td className={styles.buttonsContainer}><button className={styles.actionButtonsFirst}>
+                                        <img src={update} alt="update-icon" />
+                                    </button><button
+                                        className={styles.actionButtonsSecond}
+                                        onClick={() => { onDelete(categoria._id) } }>
+                                            <img src={deleteIcon} alt="delete-icon" />
+                                        </button></td> : <td className={styles.buttonsContainer}><button className={styles.actionButtonsFirstEnabled}>
+                                            <img src={update} alt="update-icon" />
+                                        </button><button
+                                            className={styles.actionButtonsSecond}
+                                            onClick={() => { onDelete(categoria._id) } }>
+                                                <img src={enabledIcon} alt="enabled-icon" />
+                                            </button></td> }
                                 
-                            </td>
+                            
                         </tr>
                         ))}
                     </tbody>

@@ -1,3 +1,6 @@
+@import "../../../../varCss/colors.module.css";
+@import "../../../../varCss/fonts.module.css";
+
 .categorias{
     display: flex;
     flex-direction: column;
@@ -55,15 +58,27 @@ h2{
     border: 1px solid #F9F9F9;
 }
 
-.actionButtons{
+.actionButtonsSecond,
+.actionButtonsFirst,
+.actionButtonsFirstEnabled{
     border: none;
     width: 32px;
     height: 32px;
     border-radius: 8px;
     transition: 200ms;
     margin: 10px 16px;
-
 }
+.actionButtonsFirst{
+    background: rgba(116, 160, 22, 1);
+}
+.actionButtonsFirstEnabled{
+    background: rgba(249, 249, 249, 0.1);
+}
+.actionButtonsSecond{
+    background: var(--color-accent-red-primary);
+}
+
+
 .actionButtons:hover{
    /*  opacity: .6; */
    filter:brightness(0.8);
