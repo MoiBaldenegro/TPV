@@ -28,7 +28,14 @@ export const getCategories = () => {
   }
 }
 // Delete categories
-export const deleteCategorie = (id:string) => axios.delete(`https://tomate-server.onrender.com/categories${id}`)
+export const deleteCategorie = id => async dispatch => {
+  try {
+    const response = await axios.delete(`https://tomate-server.onrender.com/categories${id}`)
+    console.log(response.data)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 // Register authentication 
 export const createUser = user =>  async dispatch => {

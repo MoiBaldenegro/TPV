@@ -18,6 +18,7 @@ export default function Categorias (){
     
     const onDelete = (id: string) => {
         dispatch(deleteCategorie(id))
+        alert("funca")
     }
 
 
@@ -58,7 +59,7 @@ export default function Categorias (){
                                 </button>
                                 <button 
                                         className={styles.actionButtons}
-                                        onClick={()=>{onDelete(categoria.id)}}>
+                                        onClick={()=>{ onDelete(categoria.id) }}>
                                     <img src={deleteIcon} alt="delete-icon" />
                                 </button>
                             </td>
