@@ -51,13 +51,15 @@ export default function Categorias() {
         </div>
       </div>
       <div className={styles.searchBarContainer}>
-        <img src={searchIcon} alt="search-icon" className={styles.serachIcon} />
-        <input
-          type="text"
-          className={styles.searchBar}
-          placeholder="Buscar categoria"
-          onChange={handleChange}
-        />
+        <div className={styles.searchInputContainer}>
+          <img src={searchIcon} alt="search-icon" className={styles.serachIcon} />
+          <input
+            type="text"
+            className={styles.searchBar}
+            placeholder="Buscar categoria"
+            onChange={handleChange}
+          />
+        </div>
         <table className={styles.table}>
           <thead className={styles.thead}>
             <tr>
