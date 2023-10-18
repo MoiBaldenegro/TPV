@@ -59,7 +59,7 @@ export default function Categorias (){
                                 </button>
                                 <button 
                                         className={styles.actionButtons}
-                                        onClick={()=>{ onDelete(categoria.id) }}>
+                                        onClick={()=>{ onDelete(categoria._id) }}>
                                     <img src={deleteIcon} alt="delete-icon" />
                                 </button>
                             </td>
