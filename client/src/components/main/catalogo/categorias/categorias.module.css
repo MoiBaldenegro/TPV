@@ -85,14 +85,11 @@ h2{
 }
 
 .tableRows{
-text-indent: 25px;    
-;
+text-indent: 25px;   
 }
 .tableRows,
 .buttonsContainer{
     border-top: 1px solid #F9F9F9;
-   
-
 }
 
 .tHeadClave,
@@ -106,7 +103,6 @@ text-indent: 25px;
     height:56px;
     padding: 16px;
     gap: 8px;
-
 }
 
 .tHeadClave{
