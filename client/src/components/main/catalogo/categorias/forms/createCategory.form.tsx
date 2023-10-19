@@ -1,12 +1,12 @@
-import styles from "./createCategories.modules.css"
+import style from './style.css?inline'
 
 function CreateCategories({ isOpen, onClose, children }) {
   if (!isOpen) return null;
 
   return (
-    <div className={styles.modal}>
-      <div className={styles.modalContent}>
-        <button className={styles.closeButton} onClick={onClose}>
+    <div className={style.modal}>
+      <div className={style.modalContent}>
+        <button className={style.closeButton} onClick={onClose}>
           X
         </button>
         {children}
