@@ -40,7 +40,7 @@ export default function LoginPage (){
         email : "",
         password: ""
     })
-
+    
     const handleChange = (event: any) => {
         event?.preventDefault();
         setUser({
