@@ -1,4 +1,4 @@
-import styles from "./createCategories.modules.css"
+import styles from "./createCategories.module.css"
 
 function CreateCategories({ isOpen, onClose, children }) {
   if (!isOpen) return null;
