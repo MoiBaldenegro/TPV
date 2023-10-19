@@ -9,6 +9,7 @@ function CreateCategories({ isOpen, onClose, children }) {
         <button className={styles.closeButton} onClick={onClose}>
           X
         </button>
+        <h1> Se renderizo! dentro del modal</h1>
         {children}
       </div>
     </div>
