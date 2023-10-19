@@ -1,4 +1,4 @@
-.modal {
+.modal::before {
   content: "";
     position: fixed;
     top: 0;
@@ -12,7 +12,7 @@
     align-items: center;
   }
   
-  .modalContent::after{
+  .modalContent::before{
     background: rgb(201, 194, 194);
     padding: 20px;
     border-radius: 5px;
