@@ -58,11 +58,11 @@ export default function Categorias() {
             <span>Importar categorias</span>
           </button>
           <button className={styles.createCategories} onClick={openModal}>
-            <img src={createIcon} alt="create-icon" />
+            <img src={createIcon} alt="create-icon"/>
             <span>Crear categoria</span>
           </button>
           <CreateCategories isOpen={isModalOpen} onClose={closeModal} >
-             <h2>con children </h2>
+             <h3>Creaer categoria</h3>
           </CreateCategories>
         </div>
       </div>

@@ -1,18 +1,16 @@
-import styles from "./createCategories.module.css"
-// dependencies
-//icons 
-import arrow from "../../../../../assets/public/arrow.svg"
-//hooks
-import { useBoolean } from "../../../../../utils/useBoolean"
+import styles from "./createCategories.module.css";
+import arrow from "../../../../../assets/public/arrow.svg";
+import { useModals } from "../../../../../hooks/useModals";
 
-interface Props{
-    isOpen: any,
-    onClose: any,
-    children: any
+interface Props {
+  isOpen: any;
+  onClose: any;
+  children: any;
 }
 
-function CreateCategories({ isOpen, onClose, children } : Props) {
- const { toggleLenguaje, lenguajeSelect } = useBoolean();
+function CreateCategories({ isOpen, onClose, children }: Props) {
+  const { toggleLenguaje, lenguajeSelect } = useModals();
+
   if (!isOpen) return null;
 
   return (
@@ -21,33 +19,39 @@ function CreateCategories({ isOpen, onClose, children } : Props) {
         <button className={styles.closeButton} onClick={onClose}>
           X
         </button>
-        {children}
+        <div className={styles.contentContainer}>
+          {children}
+          <div>
             <div>
-                <div>
-                    <div>
-                        <input type="text" readOnly value="Nombre de la categoría" />
-                    </div>
-                    <div className={styles.customSelect} onClick={toggleLenguaje}>
-                        <div className={styles.selectTrigger}>
-                            <span> Español </span>
-                            <img src={arrow} alt="" className={styles.arrowSelect} />
-                        </div>
-                        <div className={lenguajeSelect? styles.options : styles.hidden}>
-                            <span className={styles.option} >English</span>
-                            <span className={styles.option}> French</span>
-                            <span className={styles.option}>摩西</span>
-                        </div>
-                    </div>
+              <h3>General</h3>
+              <div>
+                <input type="text" readOnly value="Nombre de la categoría" />
+              </div>
+              <div className={styles.customSelect} onClick={toggleLenguaje}>
+                <div className={styles.selectTrigger}>
+                  <span>Español</span>
+                  <img src={arrow} alt="" className={styles.arrowSelect} />
                 </div>
-                <div>
-
+                <div className={lenguajeSelect ? styles.options : styles.hidden}>
+                  <span className={styles.option}>English</span>
+                  <span className={styles.option}>French</span>
+                  <span className={styles.option}>摩西</span>
                 </div>
-
+              </div>
             </div>
             <div>
-
+              <h3>Complementos</h3>
+              <span>Contenido sugerido</span>
+              <button>
+                <img src="" alt="" />Agregar
+              </button>
             </div>
+          </div>
+          <button>
+            <img src="" alt="" />Guardar categoría
+          </button>
         </div>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-export function useBoolean(){
+
+export function useModals(){
   
 const [ lenguajeSelect, setLenguajeSelect ] = useState(false);
 
