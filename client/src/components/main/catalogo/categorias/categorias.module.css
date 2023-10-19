@@ -135,7 +135,9 @@ text-indent: 25px;
 .createCategories{
     background: #99000F;
     width: 160px;
-
+}
+.createCategories:hover{
+    filter: brightness(0.8);
 }
 .searchIcon{
     margin-left: 15px;
