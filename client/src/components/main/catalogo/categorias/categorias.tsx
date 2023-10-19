@@ -23,7 +23,7 @@ export default function Categorias() {
     const closeModal = () => {
       setIsModalOpen(false);
     };
-  /////////////////////////////////&
+  /////////////////////////////////
   const dispatch = useDispatch();
   const allCategories = useSelector((state) => state.allCategories);
 
