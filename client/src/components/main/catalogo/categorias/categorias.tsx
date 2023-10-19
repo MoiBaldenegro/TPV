@@ -62,7 +62,7 @@ export default function Categorias() {
             <span>Crear categoria</span>
           </button>
           <CreateCategories isOpen={isModalOpen} onClose={closeModal} >
-             <h2>con children</h2>
+             <h2>con children </h2>
           </CreateCategories>
         </div>
       </div>

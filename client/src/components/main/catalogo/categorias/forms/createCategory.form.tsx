@@ -1,10 +1,9 @@
 import styles from "./createCategories.module.css"
 // dependencies
-import { useState } from "react";
 //icons 
 import arrow from "../../assets/loginPage/arrow.svg"
-//utils
-import { toggleLenguaje } from "../../../../../utils/toggleLenguaje";
+//hooks
+import { useBoolean } from "../../../../../utils/useBoolean"
 
 interface Props{
     isOpen: any,
@@ -13,7 +12,7 @@ interface Props{
 }
 
 function CreateCategories({ isOpen, onClose, children } : Props) {
-    const [ lenguajeSelect, setLenguajeSelect ] = useState(false);
+ const { toggleLenguaje, lenguajeSelect } = useBoolean();
   if (!isOpen) return null;
 
   return (
