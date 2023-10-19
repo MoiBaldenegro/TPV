@@ -1,4 +1,4 @@
-.modal {
+.modal::before {
     position: fixed;
     top: 0;
     left: 0;
