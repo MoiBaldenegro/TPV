@@ -25,7 +25,7 @@ export default function Home() {
     dispatch(toggleLoading(true))
   }  
   return (
-    <div className={styles.blur}>
+    <div className={styles.container}>
       { invalidCredentials === false && isLoading ? (
         <Loader />
       ) : loginUsers.length > 0 && loginUsers[0].token ? (

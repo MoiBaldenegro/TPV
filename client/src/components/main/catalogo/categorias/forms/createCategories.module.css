@@ -1,16 +1,14 @@
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.788);
-    filter: blur(3px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+.modal::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Fondo negro con opacidad */
+  filter: blur(3px); /* Aplicar el filtro de desenfoque al fondo */
+  z-index: -1; /* Para que esté detrás del contenido */
+}
   .modalContent::after{
     background: rgb(201, 194, 194);
     padding: 20px;

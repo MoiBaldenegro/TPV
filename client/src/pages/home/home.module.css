@@ -1,9 +1,5 @@
-.container,
-.blur{
+.container{
     display: grid;
     grid-template-columns: 100px, 1fr, 1fr;
     grid-template-rows: 150px, 1fr;
-}
-.blur{
-    filter: blur(3px);
 }
