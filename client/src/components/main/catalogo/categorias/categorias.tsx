@@ -1,5 +1,5 @@
 import styles from "./categorias.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories, searchCategories } from "../../../../redux/actions";
 import deleteIcon from "../../../../assets/categorias/bloquedIcon.svg";
@@ -9,8 +9,28 @@ import exportIcon from "../../../../assets/categorias/exportIcon.svg";
 import importIcon from "../../../../assets/categorias/importIcon.svg";
 import createIcon from "../../../../assets/categorias/createIcon.svg";
 import searchIcon from "../../../../assets/categorias/searchIcon.svg";
+import CreateCategories from "./forms/createCategory.form";
 
 export default function Categorias() {
+
+  // Modal de create categories //
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+  
+    const openModal = () => {
+      setIsModalOpen(true);
+    };
+    const closeModal = () => {
+      setIsModalOpen(false);
+    };
+ 
+
+
+
+
+
+
+  /////////////////////////////////&
   const dispatch = useDispatch();
   const allCategories = useSelector((state) => state.allCategories);
 
@@ -44,10 +64,13 @@ export default function Categorias() {
             <img src={importIcon} alt="import-icon" />
             <span>Importar categorias</span>
           </button>
-          <button className={styles.createCategories}>
+          <button className={styles.createCategories} onClick={openModal}>
             <img src={createIcon} alt="create-icon" />
             <span>Crear categoria</span>
           </button>
+          <CreateCategories isOpen={isModalOpen} onClose={closeModal} >
+             <h1> Se renderizo!</h1>
+          </CreateCategories>
         </div>
       </div>
       <div className={styles.searchBarContainer}>
