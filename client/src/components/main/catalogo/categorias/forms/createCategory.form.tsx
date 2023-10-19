@@ -1,7 +1,7 @@
 import styles from "./createCategories.module.css"
 // dependencies
 //icons 
-import arrow from "../../assets/loginPage/arrow.svg"
+import arrow from "../../../../../assets/public/arrow.svg"
 //hooks
 import { useBoolean } from "../../../../../utils/useBoolean"
 
