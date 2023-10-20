@@ -11,6 +11,7 @@ export const SET_ERRORS = "SET_ERRORS";
 export const ALL_CATEGORIES = "ALL_CATEGORIES";
 export const DELETE_CATEGORY = "DELETE_CATEGORY";
 export const SEARCH_CATEGORIES = "SEARCH_CATEGORIES"
+export const CREATE_CATEGORY = "CREATE_CATEGORY"
 /*
 
 const getCategories = () =>{
@@ -19,9 +20,21 @@ const getCategories = () =>{
         return dispatch({ type: GET_CATEGORIES, payload: response.data })
     }
 }   */
-
 export const toggleLoading = (payload: boolean) => ({type: TOGGLE_LOADING, payload})
 export const toggleMainItemRender = payload => ({type: TOGGLE_ITEM_MAIN_RENDER, payload})
+// Create Categories
+export const createCategory = category => async dispatch => {
+  try {
+    const response = await axios.post("https://tomate-server.onrender.com/categories")
+    if(response.data){
+      return dispatch({type: CREATE_CATEGORY, payload: response.data})
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+
 //Get categories
 export const getCategories = () => {
   return async (dispatch) => {

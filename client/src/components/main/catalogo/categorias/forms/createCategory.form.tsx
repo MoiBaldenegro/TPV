@@ -1,6 +1,12 @@
 import styles from "./createCategories.module.css";
-import arrow from "../../../../../assets/public/arrow.svg";
 import { useModals } from "../../../../../hooks/useModals";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createCategory } from "../../../../../redux/actions";
+// icons
+import arrow from "../../../../../assets/public/arrow.svg";
+import disquet from "../../../../../assets/public/disquetIcon.svg"
+import createIcon from "../../../../../assets/public/createIcon.svg"
 
 interface Props {
   isOpen: any;
@@ -9,7 +15,38 @@ interface Props {
 }
 
 function CreateCategories({ isOpen, onClose, children }: Props) {
+  const dispatch = useDispatch();
   const { toggleLenguaje, lenguajeSelect } = useModals();
+  const [category, setCategory] = useState({
+    code: "",
+    categoryName: "",
+    subCategories: [
+      {
+        code: "02",
+        categoryName: "Subcategoría 1"
+      },
+      {
+        code: "03",
+        categoryName: "Subcategoría 2"
+      }
+    ],
+    parentCategory: null,
+    status: "enabled"
+  });
+  
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setCategory(
+      {
+        ...category,
+      [name]: value 
+    }
+    )
+  }
+  const onSubmit () => {
+    dispatch(createCategory(category));
+  }
 
   if (!isOpen) return null;
 
@@ -25,7 +62,8 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
             <div>
               <h3>General</h3>
               <div>
-                <input type="text" readOnly value="Nombre de la categoría" />
+                <input type="text" name="code" placeholder="code" onChange={handleChange} />
+                <input type="text" name="categoryName" placeholder="Nombre de la subcategoría" onChange={handleChange} />
               </div>
               <div className={styles.customSelect} onClick={toggleLenguaje}>
                 <div className={styles.selectTrigger}>
@@ -43,12 +81,12 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
               <h3>Complementos</h3>
               <span>Contenido sugerido</span>
               <button>
-                <img src="" alt="" />Agregar
+                <img src={createIcon} alt="" />Agregar subcategorias
               </button>
             </div>
           </div>
-          <button>
-            <img src="" alt="" />Guardar categoría
+          <button onClick={onSubmit}>
+            <img src={disquet} alt="" />Guardar categoría
           </button>
         </div>
       </div>
