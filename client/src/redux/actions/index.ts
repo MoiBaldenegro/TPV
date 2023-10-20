@@ -26,7 +26,7 @@ export const toggleMainItemRender = payload => ({type: TOGGLE_ITEM_MAIN_RENDER, 
 export const createCategory = category => async dispatch => {
   alert(category);
   try {
-    const response = await axios.post("https://tomate-server.onrender.com/categories")
+    const response = await axios.post("https://tomate-server.onrender.com/categories", category)
     if(response.data){
       return dispatch({type: CREATE_CATEGORY, payload: response.data})
     }
