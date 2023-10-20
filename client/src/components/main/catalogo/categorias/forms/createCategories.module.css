@@ -162,6 +162,7 @@ background: #F9F9F91A;
 
 }
 .buttonsContainer{
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
