@@ -134,3 +134,20 @@ gap: 16px;
   display: flex;
   gap: 32px;
 }
+.inputCategory{
+  border: none;
+  outline: none;
+  width: 448px;
+height: 48px;
+padding: 12px, 16px, 12px, 16px ;
+border-radius: 8px;
+
+}
+.buttonCreate{
+  width: 186px;
+height: 48px;
+padding: 12px, 16px, 12px, 16px;
+border-radius: 8px;
+gap: 8px;
+
+}

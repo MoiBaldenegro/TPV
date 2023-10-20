@@ -25,7 +25,7 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
             <div className={styles.formLeft}>
               <h3>General</h3>
               <div>
-                <input type="text" readOnly value="Nombre de la categoría" />
+                <input type="text" readOnly value="Nombre de la categoría"  className={styles.inputCategory}/>
               </div>
                 <div className={styles.customSelect} onClick={toggleLenguaje}>
                   <div className={styles.selectTrigger}>
@@ -47,10 +47,11 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
               </button>
             </div>
           </div>
-          <button>
-            <img src="" alt="" />Guardar categoría
-          </button>
+          
         </div>
+        <button className={styles.buttonCreate}>
+          <img src="" alt="" />Guardar categoría
+        </button>
       </div>
     </div>
   );
