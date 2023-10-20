@@ -39,7 +39,7 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
                   </div>
                 </div>
             </div>
-            <div>
+            <div className={styles.formRight}>
               <h3>Complementos</h3>
               <span>Contenido sugerido</span>
               <button>

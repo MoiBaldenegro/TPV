@@ -15,6 +15,9 @@
     background: rgba(0, 0, 0, 0.822);
   }
   .modalContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     width: 1120px;
     height: 736px;
@@ -105,8 +108,27 @@
   gap: 32px; 
   border: 1px solid #f9f9f9;
 }
-.formLeft{
+.formLeft,
+.formRight{
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
+}
+.formRight{
+  width: 480px;
+height: 158px;
+padding: 16px;
+border-radius: 16px;
+gap: 16px;
+
+}
+.formLeft{
+  width: 480px;
+height: 182px;
+padding: 16px;
+border-radius: 16px;
+gap: 16px;
+
 }
 .formContainer{
   display: flex;
