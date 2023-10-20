@@ -12,6 +12,7 @@ export default function useAside () {
         setMain(value)
         setActive(activeValue)
         setRedLinePosition(positionLine)
+        console.log(main);
     }; 
     return { handleBoard, main, active, redLinePosition}
 }
