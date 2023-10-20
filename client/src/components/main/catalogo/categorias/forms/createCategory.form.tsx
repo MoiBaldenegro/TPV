@@ -42,16 +42,20 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
             <div className={styles.formRight}>
               <h3>Complementos</h3>
               <span>Contenido sugerido</span>
-              <button>
+              <button className={styles.buttonFormRight}>
                 <img src="" alt="" />Agregar
               </button>
             </div>
           </div>
           
         </div>
-        <button className={styles.buttonCreate}>
+        <div className={styles.buttonsContainer} >
+          <button className={styles.buttonCreate}>
           <img src="" alt="" />Guardar categoría
         </button>
+
+        </div>
+        
       </div>
     </div>
   );
