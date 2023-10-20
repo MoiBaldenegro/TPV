@@ -51,11 +51,10 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
         </div>
         <div className={styles.buttonsContainer} >
           <button className={styles.buttonCreate}>
-          <img src="" alt="" />Guardar categoría
-        </button>
-
+            <img src="" alt="" />Guardar categoría
+         </button>
         </div>
-        
+
       </div>
     </div>
   );
