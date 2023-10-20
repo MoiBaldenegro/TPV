@@ -22,7 +22,7 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
         <div className={styles.contentContainer}>
           {children}
           <div>
-            <div>
+            <div className={styles.formLeft}>
               <h3>General</h3>
               <div>
                 <input type="text" readOnly value="Nombre de la categoría" />
