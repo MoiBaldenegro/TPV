@@ -99,10 +99,12 @@
 
 .contentContainer{
   display: flex;
-  
+  flex-direction: column;
+  width: 992px;
+  height: 528px;
+  gap: 32px; 
 }
 .formLeft{
   background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
 
 }
-  
