@@ -15,6 +15,10 @@
     background: rgba(0, 0, 0, 0.822);
   }
   .modalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: relative;
     width: 1120px;
     height: 736px;
@@ -39,8 +43,8 @@
 /* estilos de select */
 .customSelect{
   position: relative;
-  width: 145px;
-  height: 56px;
+  width: 448px;
+  height: 48px;
   background: rgba(249, 249, 249, 0.2);
   display: flex;
   justify-content: center;
@@ -99,6 +103,81 @@
 
 .contentContainer{
   display: flex;
-  
+  flex-direction: column;
+  width: 992px;
+  height: 528px;
+  gap: 32px; 
 }
-  
+.formLeft,
+.formRight{
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
+}
+.formRight{
+  width: 480px;
+height: 158px;
+padding: 16px;
+border-radius: 16px;
+gap: 16px;
+
+}
+.formLeft{
+  width: 480px;
+height: 182px;
+padding: 16px;
+border-radius: 16px;
+gap: 16px;
+
+}
+.formContainer{
+  display: flex;
+  gap: 32px;
+}
+.inputCategory{
+  text-indent: 15px;
+  color: var(--color-white);
+  border: none;
+  outline: none;
+  width: 448px;
+height: 48px;
+padding: 12px, 16px, 12px, 16px ;
+border-radius: 8px;
+background: #F9F9F91A;
+}
+.inputCategory::placeholder{
+  text-indent: 15px;
+  color: #f9f9f9bb;
+}
+.buttonCreate{
+  border: none;
+  color: var(--color-white);
+  width: 186px;
+height: 48px;
+padding: 12px, 16px, 12px, 16px;
+border-radius: 8px;
+gap: 8px;
+background: #F9F9F91A;
+
+
+}
+.buttonsContainer{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid #f9f9f9;
+
+}
+.buttonFormRight{
+  border: none;
+  outline: none;
+  color: var(--color-white);
+  width: 222px;
+height: 48px;
+padding: 12px, 16px, 12px, 16px;
+border-radius: 8px;
+gap: 8px;
+background: #F9F9F91A;
+
+}
