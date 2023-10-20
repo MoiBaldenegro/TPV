@@ -13,7 +13,6 @@ interface Props {
   onClose: any;
   children: any;
 }
-
 function CreateCategories({ isOpen, onClose, children }: Props) {
   const dispatch = useDispatch();
   const { toggleLenguaje, lenguajeSelect } = useModals();
