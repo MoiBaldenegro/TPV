@@ -35,6 +35,7 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
   
 
   const handleChange = (event) => {
+    console.log(category)
     const { name, value } = event.target;
     setCategory(
       {
@@ -44,6 +45,7 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
     )
   }
   const onSubmit = () => {
+    console.log(category)
     dispatch(createCategory(category));
   }
 
