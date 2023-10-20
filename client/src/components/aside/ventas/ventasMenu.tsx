@@ -12,7 +12,7 @@ export default function VentasMenu (){
 
 
     return (
-        <div className={main === "ventas" ? styles.itemsDeployContainer : styles.hidden}>
+        <div className={ styles.itemsDeployContainer}>
             <LinesVentasModule/>
             <div className={styles.containerDeployItemsClass}>
                 <NavLink to="ventas/bills" className={deployItemClass} onClick={() => handleBoard("ventas", true,  1, )} >Cuentas</NavLink>
