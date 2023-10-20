@@ -3,17 +3,24 @@ import { useState } from "react";
 
 
 export default function useAside () {
-    const [ main, setMain ] = useState("ventas");
+    // para el boton externo
+    const toggle = main === "ventas" ? "hidden" : "ventas";
+    
+    const openMenu = () => {
+        setMain(value)
+        setActive(activeValue)
+        setRedLinePosition(positionLine)
+    }
+    //para los elementos internos
+    const [ main, setMain ] = useState("");
     const [ active, setActive ] = useState(true)
     const [ redLinePosition, setRedLinePosition] = useState(5);
 
     
-    const handleBoard = (value:any, activeValue:any, positionLine  :any ) => {
-        alert("me ejecute");
+    const handleBoard = (value:any, activeValue:any, positionLine :any ) => {
         setMain(value)
         setActive(activeValue)
         setRedLinePosition(positionLine)
-        console.log(main);
     }; 
-    return { handleBoard, main, active, redLinePosition}
+    return [handleBoard, main, active, redLinePosition]
 }

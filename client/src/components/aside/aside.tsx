@@ -38,6 +38,7 @@ export default function Aside (){
         setRedLinePosition(positionLine)
     }; 
     const toggle = main === "catalogo" ? "hidden" : "catalogo";
+    const toggleTwo = main === "ventas" ? "lo que sea" : "ventas";
     const activeClassName = ({ isActive }) => ( isActive ? styles.isActive : styles.notActive);
     const deployItemClass = ({ isActive }) => ( isActive ? styles.isActiveDeploy : styles.notActiveDeploy);
 
@@ -82,7 +83,7 @@ export default function Aside (){
                             <NavLink to="catalogo/menus&recipes" className={deployItemClass}  onClick={() => handleBoard("catalogo", true, 5)}> Menús y recetas </NavLink>
                         </div> 
                     </div>
-                <NavLink to="sales" className={activeClassName}>
+                <NavLink onClick={() => handleBoard(toggleTwo, !active,  1, )} to="ventas/bills" className={activeClassName}>
                     <div className={styles.iconContainer}>
                         <img src={ventas} className={styles.icon} alt="ventas-icon" />
                         <span>Ventas</span>
