@@ -86,10 +86,10 @@ export default function Aside (){
                     <div className={styles.iconContainer}>
                         <img src={ventas} className={styles.icon} alt="ventas-icon" />
                         <span>Ventas</span>
-                        <VentasMenu/>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
                 </NavLink>
+            <VentasMenu/>
                 <NavLink to="salesTypes" className={activeClassName}>
                     <img src={ventasType} className={styles.icon} alt="tipos-de-venta" />
                     <span className={styles.itemTittle}>Tipos de venta</span>

@@ -1,6 +1,5 @@
 import styles from "./lines.module.css"
 //dependencies
-import { useState } from "react";
 // icons 
 import line from "../../../assets/dashboard/line.png";
 import redLine from "../../../assets/dashboard/redLine.png";
