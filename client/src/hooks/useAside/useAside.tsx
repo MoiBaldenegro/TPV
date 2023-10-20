@@ -3,12 +3,12 @@ import { useState } from "react";
 
 
 export default function useAside () {
-    const [ main, setMain ] = useState("");
+    const [ main, setMain ] = useState("ventas");
     const [ active, setActive ] = useState(true)
     const [ redLinePosition, setRedLinePosition] = useState(5);
 
     
-    const handleBoard = (value, activeValue, positionLine ) => {
+    const handleBoard = (value:any, activeValue:any, positionLine  :any ) => {
         alert("me ejecute");
         setMain(value)
         setActive(activeValue)

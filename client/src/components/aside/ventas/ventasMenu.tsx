@@ -8,14 +8,13 @@ import { NavLink } from "react-router-dom";
 
 export default function VentasMenu (){
     const deployItemClass = ({ isActive }) => ( isActive ? styles.isActiveDeploy : styles.notActiveDeploy);
-    const { handleBoard, main } =  useAside();
-
+    const { handleBoard, main } =  useAside({ value, activeValue, positionLine  });
 
     return (
-        <div className={ styles.itemsDeployContainer}>
+        <div className={main === "ventas" ? styles.itemsDeployContainer : styles.hidden}>
             <LinesVentasModule/>
             <div className={styles.containerDeployItemsClass}>
-                <NavLink to="ventas/bills" className={deployItemClass} onClick={() => handleBoard("ventas", true,  1, )} >Cuentas</NavLink>
+                <NavLink to="ventas/bills" className={deployItemClass} onClick={() => handleBoard( "ventas", true,  1  )} >Cuentas</NavLink>
                 <NavLink to="ventas/notes" className={deployItemClass} onClick={() => handleBoard("ventas", true,  2, )}>Notas</NavLink>
                 <NavLink to="ventas/products" className={deployItemClass} onClick={() => handleBoard("ventas", true,  3, )}>Productos</NavLink>
                 <NavLink to="ventas/payments" className={deployItemClass} onClick={() => handleBoard("ventas", true,  4, )}>Pagos</NavLink>
