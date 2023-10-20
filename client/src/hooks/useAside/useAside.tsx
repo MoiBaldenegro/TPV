@@ -9,6 +9,7 @@ export default function useAside () {
 
     
     const handleBoard = (value, activeValue, positionLine ) => {
+        alert("me ejecute");
         setMain(value)
         setActive(activeValue)
         setRedLinePosition(positionLine)
