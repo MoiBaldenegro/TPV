@@ -31,6 +31,8 @@ h2{
     margin-top: 2.5vh;
     width: 1,482px;
     min-height: 450px;
+    max-height: 700px;
+    overflow: auto;
     padding: 16px, 0px, 0px, 0px;
     border-radius: 16px;
 }
