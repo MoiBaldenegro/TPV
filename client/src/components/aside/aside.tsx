@@ -21,6 +21,7 @@ import line from "../../assets/dashboard/line.png"
 import redLine from "../../assets/dashboard/redLine.png"
 
 import styles from "../aside/aside.module.css"
+import VentasMenu from "./ventas/ventasMenu"
 // Actions
 
 
@@ -85,6 +86,7 @@ export default function Aside (){
                     <div className={styles.iconContainer}>
                         <img src={ventas} className={styles.icon} alt="ventas-icon" />
                         <span>Ventas</span>
+                        <VentasMenu/>
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
                 </NavLink>
