@@ -7,8 +7,8 @@ import { NavLink } from "react-router-dom";
 
 
 export default function VentasMenu (){
-    const deployItemClass = ({ isActive }) => ( isActive ? styles.isActiveDeploy : styles.notActiveDeploy);
-    const { handleBoard, main } =  useAside({ value, activeValue, positionLine  });
+    const deployItemClass = ({ isActive }: any) => ( isActive ? styles.isActiveDeploy : styles.notActiveDeploy);
+    const { handleBoard, main } =  useAside();
 
     return (
         <div className={main === "ventas" ? styles.itemsDeployContainer : styles.hidden}>
