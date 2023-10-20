@@ -17,8 +17,8 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
   const dispatch = useDispatch();
   const { toggleLenguaje, lenguajeSelect } = useModals();
   const [category, setCategory] = useState({
-    code: "",
-    categoryName: "",
+    code: "25",
+    categoryName: "sdfgsdfgfsdf",
     subCategories: [
       {
         code: "02",

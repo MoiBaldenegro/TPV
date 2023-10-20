@@ -20,10 +20,9 @@ let initialState = {auth: ["Auth"], // Se verifica si el usuario es autenticado
 export default function rootReducer(state = initialState, action:any){
     switch (action.type){
         case CREATE_CATEGORY:
-            const refreshArray = state.allCategories.push(action.payload);
             return{
                 ...state,
-                allCategories: refreshArray
+                allCategories: [...state.allCategories, action.payload]
             }
 
         case SEARCH_CATEGORIES:
