@@ -43,7 +43,7 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
     }
     )
   }
-  const onSubmit () => {
+  const onSubmit = () => {
     dispatch(createCategory(category));
   }
 
