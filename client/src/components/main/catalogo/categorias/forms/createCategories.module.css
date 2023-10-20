@@ -103,8 +103,12 @@
   width: 992px;
   height: 528px;
   gap: 32px; 
+  border: 1px solid #f9f9f9;
 }
 .formLeft{
   background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
-
+}
+.formContainer{
+  display: flex;
+  gap: 32px;
 }
