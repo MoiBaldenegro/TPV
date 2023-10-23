@@ -12,7 +12,6 @@ export default function Cuentas(){
         <section className={styles.head}>
             <h2>Modificadores</h2>
         </section>
-       
         <section className={styles.mainSection}>
             <div className={styles.mainHead}>
                 <div className={styles.mainHeadLeft} >
