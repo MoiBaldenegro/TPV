@@ -101,13 +101,7 @@ const router = createBrowserRouter([
               path: "cancellationsReasons",
               element: <MotivosDeCancelacion/>
             }
-              
-              
-              
-              
-              
-              
-              
+               
             ]
 
           }
