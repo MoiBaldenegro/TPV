@@ -1,17 +1,17 @@
-import useAside from "../../../hooks/useAside/useAside";
 import LinesVentasModule from "./lines";
 import styles from "./ventasMenu.module.css";
 // dependencies
 import { NavLink } from "react-router-dom";
 
+interface Props {
+    main: string
+}
 
-
-export default function VentasMenu (){
+export default function VentasMenu ({main}: Props){
     const deployItemClass = ({ isActive }: any) => ( isActive ? styles.isActiveDeploy : styles.notActiveDeploy);
-    const { handleBoard, main } : any =  useAside();
 
     return (
-        <div className={main === "ventas" ? styles.itemsDeployContainer : styles.hidden}>
+        <div className={ main === "ventas" ? styles.itemsDeployContainer : styles.hidden}>
             <LinesVentasModule/>
             <div className={styles.containerDeployItemsClass}>
                 <NavLink to="ventas/bills" className={deployItemClass} onClick={() => handleBoard( "ventas", true,  1  )} >Cuentas</NavLink>

@@ -40,7 +40,7 @@ export default function Aside (){
         setRedLinePosition(positionLine)
     }; 
      const toggle = main === "catalogo" ? "hidden" : "catalogo";
-    //const toggleTwo = main === "ventas" ? "lo que sea" : "ventas";
+    const toggleTwo = main === "ventas" ? "lo que sea" : "ventas";
     const activeClassName = ({ isActive }) => ( isActive ? styles.isActive : styles.notActive);
     const deployItemClass = ({ isActive }) => ( isActive ? styles.isActiveDeploy : styles.notActiveDeploy);
 
@@ -92,7 +92,7 @@ export default function Aside (){
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
                 </NavLink>
-            <VentasMenu/>
+                <VentasMenu main={main} />
                 <NavLink to="salesTypes" className={activeClassName}>
                     <img src={ventasType} className={styles.icon} alt="tipos-de-venta" />
                     <span className={styles.itemTittle}>Tipos de venta</span>
