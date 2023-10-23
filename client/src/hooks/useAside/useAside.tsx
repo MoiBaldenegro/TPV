@@ -3,7 +3,7 @@ import { useState } from "react";
 
 
 export default function useAside () {
-    const [ main, setMain ] = useState("");
+    const [ main, setMain ] = useState("ventas");
     const [ active, setActive ] = useState(true)
     const [ redLinePosition, setRedLinePosition] = useState(5);
     // para el boton externo
