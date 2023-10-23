@@ -25,5 +25,5 @@ export default function useAside () {
         setRedLinePosition(positionLine)
         alert(main)
     }; 
-    return [ handleBoard, main, active, redLinePosition, toggle, openMenu ]
+    return [ handleBoard, main, active, redLinePosition, toggle ];
 }
