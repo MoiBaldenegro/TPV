@@ -85,7 +85,7 @@ export default function Aside (){
                             <NavLink to="catalogo/menus&recipes" className={deployItemClass}  onClick={() => handleBoard("catalogo", true, 5)}> Menús y recetas </NavLink>
                         </div> 
                     </div>
-                <NavLink  to="ventas/bills" className={activeClassName}>
+                <NavLink onClick={() => handleBoard(toggle, !active,  1, )}  to="ventas/bills" className={activeClassName}>
                     <div className={styles.iconContainer}>
                         <img src={ventas} className={styles.icon} alt="ventas-icon" />
                         <span>Ventas</span>
