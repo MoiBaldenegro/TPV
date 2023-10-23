@@ -31,7 +31,7 @@ export default function Aside (){
 
     const [ main, setMain ] = useState("");
     const [ active, setActive ] = useState(true)
-    const [ redLinePosition, setRedLinePosition] = useState(5);
+    const [ redLinePosition, setRedLinePosition] = useState(1);
 
     const handleBoard = (value:any, activeValue:any, positionLine:any ) => {
         setMain(value)
