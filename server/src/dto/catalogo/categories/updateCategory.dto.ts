@@ -1,4 +1,4 @@
-import { Category } from 'src/schemas/categories.schema';
+import { Category } from 'src/schemas/catalogo/categories.schema';
 import { IsString, Length, IsOptional } from 'class-validator';
 
 export class UpdateCategoryDto {

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { DishesController } from './dishes.controller';
 import { DishesService } from './dishes.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Dishes, DishesSchema } from 'src/schemas/dishes.schema';
+import { Dishes, DishesSchema } from 'src/schemas/catalogo/dishes.schema';
 
 @Module({
   imports: [

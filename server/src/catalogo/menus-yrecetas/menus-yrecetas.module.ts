@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import {
   MenusYRecetas,
   MenusYRecetasSchema,
-} from 'src/schemas/menusYRecetas.schema';
+} from 'src/schemas/catalogo/menusYRecetas.schema';
 
 @Module({
   imports: [

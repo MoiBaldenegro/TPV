@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { createMenusYRecetasDto } from 'src/dto/catalogo/menusYRecetas/createMenusYRecetasDto';
 import { updateMenusYRecetasDto } from 'src/dto/catalogo/menusYRecetas/updatedMenusYRecetasDto';
-import { MenusYRecetas } from 'src/schemas/menusYRecetas.schema';
+import { MenusYRecetas } from 'src/schemas/catalogo/menusYRecetas.schema';
 
 @Injectable()
 export class MenusYrecetasService {

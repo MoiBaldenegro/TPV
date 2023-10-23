@@ -27,7 +27,6 @@ import VentasMenu from "./ventas/ventasMenu"
 
 export default function Aside (){
 
-    const dispatch = useDispatch();
     const [ main, setMain ] = useState("");
     const [ active, setActive ] = useState(true)
     const [ redLinePosition, setRedLinePosition] = useState(5);

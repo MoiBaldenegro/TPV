@@ -7,6 +7,7 @@ import { DishesModule } from './catalogo/dishes/dishes.module';
 import { ProductsModule } from './catalogo/products/products.module';
 import { ModificationsModule } from './catalogo/modifications/modifications.module';
 import { MenusYrecetasModule } from './catalogo/menus-yrecetas/menus-yrecetas.module';
+import { BillsModule } from './bills/bills.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { MenusYrecetasModule } from './catalogo/menus-yrecetas/menus-yrecetas.mo
     ProductsModule,
     ModificationsModule,
     MenusYrecetasModule,
+    BillsModule,
   ],
   controllers: [],
   providers: [],

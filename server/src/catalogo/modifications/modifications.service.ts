@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { createModifierDto } from 'src/dto/catalogo/modifiers/createModifierDto';
 import { updateModifierDto } from 'src/dto/catalogo/modifiers/updateModifierDto';
-import { Modifier } from 'src/schemas/modifiers.Schema';
+import { Modifier } from 'src/schemas/catalogo/modifiers.Schema';
 
 @Injectable()
 export class ModificationsService {
