@@ -27,17 +27,18 @@ import useAside from "../../hooks/useAside/useAside"
 
 
 export default function Aside (){
-    const { toggle, main }  = useAside();
+    const [ toggle, main, active, handleBoard, redLinePosition ]  = useAside();
 
     //const [ main, setMain ] = useState("");
-    const [ active, setActive ] = useState(true)
-     const [ redLinePosition, setRedLinePosition] = useState(5);
+    //const [ active, setActive ] = useState(true)
+    //const [ redLinePosition, setRedLinePosition] = useState(5);
 
-    const handleBoard = (value:any, activeValue:any, positionLine:any ) => {
+    /*const handleBoard = (value:any, activeValue:any, positionLine:any ) => {
+        console.log(toggle, main)
         setMain(value)
         setActive(activeValue)
         setRedLinePosition(positionLine)
-    }; 
+    }; */
     // const toggle = main === "catalogo" ? "hidden" : "catalogo";
     //const toggleTwo = main === "ventas" ? "lo que sea" : "ventas";
     const activeClassName = ({ isActive }) => ( isActive ? styles.isActive : styles.notActive);
