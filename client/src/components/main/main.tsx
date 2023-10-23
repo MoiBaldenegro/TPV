@@ -9,7 +9,6 @@ export default function Main () {
 
     return(
         <section className={style.container}>
-                <Outlet/> 
         </section>
     )
 }
