@@ -17,18 +17,18 @@ export default function LinesVentasModule ({redLinePosition} : Props){
                             <img src={redLine} className={styles.redLine}
                             style={
                                 redLinePosition === 1
-                                ? { marginTop: '5px' }
+                                ? { marginTop: '2px' }
                                 : redLinePosition === 2
-                                ? { marginTop: '55px' }
+                                ? { marginTop: '50px' }
                                 : redLinePosition === 3
-                                ? { marginTop: '105px' }
+                                ? { marginTop: '100px' }
                                 : redLinePosition === 4
-                                ? { marginTop: '155px' }
+                                ? { marginTop: '150px' }
                                 : redLinePosition === 5
-                                ? { marginTop: '210px' }
+                                ? { marginTop: '200px' }
                                 : redLinePosition === 6
-                                ? { marginTop: '270px' }
-                                : { marginTop: '325px' }
+                                ? { marginTop: '260px' }
+                                : { marginTop: '315px' }
                             }
 
                                 
