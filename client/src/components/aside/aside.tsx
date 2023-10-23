@@ -91,7 +91,7 @@ export default function Aside (){
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
                 </NavLink>
-                <VentasMenu main={main} redLinePosition={redLinePosition}/>
+                <VentasMenu main={main} redLinePosition={redLinePosition} handleBoard={handleBoard}/>
                 <NavLink to="salesTypes" className={activeClassName}>
                     <img src={ventasType} className={styles.icon} alt="tipos-de-venta" />
                     <span className={styles.itemTittle}>Tipos de venta</span>

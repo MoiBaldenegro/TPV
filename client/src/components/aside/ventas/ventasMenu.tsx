@@ -5,10 +5,11 @@ import { NavLink } from "react-router-dom";
 
 interface Props {
     main: string,
-    redLinePosition: number
+    redLinePosition: number,
+    handleBoard: Function
 }
 
-export default function VentasMenu ({main, redLinePosition}: Props){
+export default function VentasMenu ({main, redLinePosition, handleBoard}: Props){
     const deployItemClass = ({ isActive }: any) => ( isActive ? styles.isActiveDeploy : styles.notActiveDeploy);
 
     return (
