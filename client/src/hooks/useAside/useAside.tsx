@@ -16,14 +16,14 @@ export default function useAside () {
         setRedLinePosition(positionLine)
     }
 */    //para los elementos internos
-    
 
     
     const handleBoard = (value:any, activeValue:any, positionLine :any ) => {
+        alert(main)
         setMain(value)
         setActive(activeValue)
         setRedLinePosition(positionLine)
-        alert(main)
+        
     }; 
     return [ handleBoard, main, active, redLinePosition, toggle ];
 }

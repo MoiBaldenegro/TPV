@@ -27,7 +27,7 @@ import useAside from "../../hooks/useAside/useAside"
 
 
 export default function Aside (){
-    const { main, active, redLinePosition, toggle, handleBoard } : any = useAside();
+    const { main, active, redLinePosition, toggle, handleBoard }  = useAside();
 
     //const [ main, setMain ] = useState("");
     //const [ active, setActive ] = useState(true)
