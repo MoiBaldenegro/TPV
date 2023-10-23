@@ -64,7 +64,14 @@ const router = createBrowserRouter([
           },
           {
             path: "sales",
-            element: <Ventas/>
+            element: <Main/>,
+            children: [{
+              path: "bills",
+              element: <Ventas/>
+            }
+              
+            ]
+
           }
 
         ]
