@@ -27,9 +27,9 @@ import useAside from "../../hooks/useAside/useAside"
 
 
 export default function Aside (){
-    const { toggle }  = useAside();
+    const { toggle, main }  = useAside();
 
-    const [ main, setMain ] = useState("");
+    //const [ main, setMain ] = useState("");
     const [ active, setActive ] = useState(true)
      const [ redLinePosition, setRedLinePosition] = useState(5);
 
