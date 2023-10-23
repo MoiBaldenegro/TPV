@@ -8,7 +8,7 @@ import useAside from "../../../hooks/useAside/useAside";
 
 
 export default function LinesVentasModule (){
-    const { redLinePosition } = useAside();
+    const { redLinePosition } : any = useAside();
     return(
         <div>
              <div className={styles.linesContainer}>

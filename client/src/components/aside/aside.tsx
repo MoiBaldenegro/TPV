@@ -22,22 +22,24 @@ import redLine from "../../assets/dashboard/redLine.png"
 
 import styles from "../aside/aside.module.css"
 import VentasMenu from "./ventas/ventasMenu"
+import useAside from "../../hooks/useAside/useAside"
 // Actions
 
 
 export default function Aside (){
+    const { main, active, redLinePosition, toggle, handleBoard } : any = useAside();
 
-    const [ main, setMain ] = useState("");
-    const [ active, setActive ] = useState(true)
-    const [ redLinePosition, setRedLinePosition] = useState(5);
+    //const [ main, setMain ] = useState("");
+    //const [ active, setActive ] = useState(true)
+    // const [ redLinePosition, setRedLinePosition] = useState(5);
 
-    const handleBoard = (value:any, activeValue:any, positionLine:any ) => {
+   /* const handleBoard = (value:any, activeValue:any, positionLine:any ) => {
         setMain(value)
         setActive(activeValue)
         setRedLinePosition(positionLine)
-    }; 
-    const toggle = main === "catalogo" ? "hidden" : "catalogo";
-    const toggleTwo = main === "ventas" ? "lo que sea" : "ventas";
+    }; */
+    //const toggle = main === "catalogo" ? "hidden" : "catalogo";
+    //const toggleTwo = main === "ventas" ? "lo que sea" : "ventas";
     const activeClassName = ({ isActive }) => ( isActive ? styles.isActive : styles.notActive);
     const deployItemClass = ({ isActive }) => ( isActive ? styles.isActiveDeploy : styles.notActiveDeploy);
 
