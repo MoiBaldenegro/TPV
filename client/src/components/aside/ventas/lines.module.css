@@ -8,6 +8,15 @@
 .linesContainer{
     margin-left: -20px;
 }
+.line{
+  height: 250px;
+}
+.redLine{
+  margin-left: -4px;
+  position: absolute;
+  transition: 400ms;
+  height: 40px;
+}
 @keyframes slideDown {
   from {
     max-height: 0;
