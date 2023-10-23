@@ -18,7 +18,7 @@ export default function useAside () {
 */    //para los elementos internos
 
     
-    const handleBoard = (value:any, activeValue:any, positionLine :any ) => {
+    const handleBoard = (value:any, activeValue:any, positionLine :any) => {
         setMain(value)
         setActive(activeValue)
         setRedLinePosition(positionLine)
