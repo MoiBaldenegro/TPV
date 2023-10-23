@@ -14,6 +14,7 @@ import Complementos from './components/main/catalogo/complementos/complementos.t
 import Modificaciones from './components/main/catalogo/modificaciones/modificaciones.tsx'
 import MenusYRecetas from './components/main/catalogo/menusYRecetas/menusYRecetas.tsx'
 import Main from './components/main/main.tsx'
+import Cuentas from './components/main/ventas/cuentas/cuentas.tsx';
 
 const router = createBrowserRouter([
   {
@@ -67,7 +68,7 @@ const router = createBrowserRouter([
             element: <Main/>,
             children: [{
               path: "bills",
-              element: <Ventas/>
+              element: <Cuentas/>
             }
               
             ]

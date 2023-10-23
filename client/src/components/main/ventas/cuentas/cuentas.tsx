@@ -1,26 +1,16 @@
-import styles from "./modificaciones.module.css"
+import styles from "./cuentas.module.css";
 
-
-// icons
-import exportIcon from "../../../../assets/public/exportIcon.svg"
-import importIcon from "../../../../assets/public/importIcon.svg"
-import createIcon from "../../../../assets/public/createIcon.svg"
-import filterIcon from "../../../../assets/public/filterIcon.svg"
-import searchIcon from "../../../../assets/public/searchIcon.svg"
+//icons 
+import searchIcon from "../../../../assets/public/searchIcon.svg";
+import filterIcon from "../../../../assets/public/filterIcon.svg";
 
 
 
-
-export default function Modificaciones (){
+export default function Cuentas(){
     return (
         <div className={styles.container} >
         <section className={styles.head}>
             <h2>Modificadores</h2>
-            <div>
-                <button className={styles.btnHead}><img src={exportIcon} alt="export-icon" />Exportar modificadores</button>
-                <button className={styles.btnHead}><img src={importIcon} alt="import-icon" />Importar modificadores</button>
-                <button className={styles.btnHeadCreate}><img src={createIcon} alt="create-icon" /><span>Crear modificador</span></button>
-            </div>
         </section>
        
         <section className={styles.mainSection}>
