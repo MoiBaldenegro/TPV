@@ -5,10 +5,11 @@ import line from "../../../assets/dashboard/line.png";
 import redLine from "../../../assets/dashboard/redLine.png";
 import useAside from "../../../hooks/useAside/useAside";
 
+interface Props{
+    redLinePosition: number
+}
 
-
-export default function LinesVentasModule (){
-    const { redLinePosition } : any = useAside();
+export default function LinesVentasModule ({redLinePosition} : Props){
     return(
         <div>
              <div className={styles.linesContainer}>
