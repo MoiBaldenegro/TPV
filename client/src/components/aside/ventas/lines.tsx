@@ -29,9 +29,7 @@ export default function LinesVentasModule ({redLinePosition} : Props){
                                 : redLinePosition === 6
                                 ? { marginTop: '255px' }
                                 : { marginTop: '310px' }
-                            }
-
-                                
+                            }   
                             alt="red-line"
                             />
                         </div>
