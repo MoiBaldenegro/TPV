@@ -21,7 +21,7 @@ export class CategoriesService {
     } */
 
   async create(createCategory: CreateCategoryDto) {
-   /* const lastCategory = await this.categoryModel.findOne(
+    /* const lastCategory = await this.categoryModel.findOne(
       {},
       { code: 1 },
       { sort: { code: -1 } },

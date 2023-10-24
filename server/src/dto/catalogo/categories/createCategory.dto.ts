@@ -30,6 +30,5 @@ export class CreateCategoryDto {
   @IsString()
   @Length(1, 8)
   @IsOptional()
-  status?: "disabled" | "enabled"
+  status?: 'disabled' | 'enabled';
 }
-

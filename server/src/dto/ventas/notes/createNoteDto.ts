@@ -1,21 +1,26 @@
-import { IsString, IsDefined, Length } from 'class-validator';
+import { IsDefined, IsString } from 'class-validator';
 
-export class CreateBillDto {
-  @IsString()
-  @IsDefined()
-  @Length(1, 8)
-  billCode: string;
-
+export class createNoteDto {
   @IsDefined()
   @IsString()
-  @Length(1, 6)
-  sellType: 'onSite' | 'toGo' | 'rappi' | 'phone';
+  checkCode: string;
+
+  @IsDefined()
+  @IsString()
+  noteNumber: string;
+
+  @IsDefined()
+  @IsString()
+  paymentCode: string;
+
+  @IsDefined()
+  @IsString()
+  sellType: string;
 
   @IsDefined()
   @IsString()
   user: string;
 
-  @IsDefined()
   @IsString()
   checkTotal: string;
 
@@ -24,6 +29,9 @@ export class CreateBillDto {
   status: 'enabled' | 'disabled' | 'pending' | 'cancel';
 
   @IsDefined()
+  @IsString()
+  cashier: string;
+
   @IsString()
   paymentDate: string;
 }

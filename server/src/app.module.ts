@@ -8,7 +8,7 @@ import { ProductsModule } from './catalogo/products/products.module';
 import { ModificationsModule } from './catalogo/modifications/modifications.module';
 import { MenusYrecetasModule } from './catalogo/menus-yrecetas/menus-yrecetas.module';
 import { BillsModule } from './ventas/bills/bills.module';
-import { NotesModule } from './notes/notes.module';
+import { NotesModule } from './ventas/notes/notes.module';
 
 @Module({
   imports: [

@@ -1,15 +1,21 @@
-import { IsString, Length, IsOptional } from 'class-validator';
+import { IsString, IsOptional } from 'class-validator';
 
-export class UpdateBillDto {
+export class updateNoteDto {
   @IsOptional()
   @IsString()
-  @Length(1, 8)
-  billCode?: string;
+  checkCode?: string;
 
   @IsOptional()
   @IsString()
-  @Length(1, 6)
-  sellType?: 'onSite' | 'toGo' | 'rappi' | 'phone';
+  noteNumber?: string;
+
+  @IsOptional()
+  @IsString()
+  paymentCode?: string;
+
+  @IsOptional()
+  @IsString()
+  sellType?: string;
 
   @IsOptional()
   @IsString()
@@ -22,6 +28,10 @@ export class UpdateBillDto {
   @IsOptional()
   @IsString()
   status?: 'enabled' | 'disabled' | 'pending' | 'cancel';
+
+  @IsOptional()
+  @IsString()
+  cashier?: string;
 
   @IsOptional()
   @IsString()

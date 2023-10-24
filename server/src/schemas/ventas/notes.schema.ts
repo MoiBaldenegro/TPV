@@ -1,25 +1,36 @@
 import { SchemaFactory, Schema, Prop } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true })
-export class Bills {
+export class Notes {
   @Prop({
-    required: true,
     trim: true,
+    required: true,
   })
-  billCode: string;
+  checkCode: string;
 
   @Prop({
     required: true,
     trim: true,
   })
-  sellType: 'onSite' | 'toGo' | 'rappi' | 'phone';
+  noteNumber: string;
+
+  @Prop({
+    required: true,
+    trim: true,
+  })
+  paymentCode: string;
+
+  @Prop({
+    required: true,
+    trim: true,
+  })
+  sellType: string;
 
   @Prop({
     required: true,
     trim: true,
   })
   user: string;
-
   @Prop({
     required: true,
     trim: true,
@@ -28,6 +39,7 @@ export class Bills {
 
   @Prop({
     required: true,
+    trim: true,
   })
   status: 'enabled' | 'disabled' | 'pending' | 'cancel';
 
@@ -35,8 +47,13 @@ export class Bills {
     required: true,
     trim: true,
   })
-  paymentDate: string;
+  cashier: string;
 
-  // falta la informacion que aparecera en detalles //
+  @Prop({
+    required: true,
+    trim: true,
+  })
+  paymentDate: string;
 }
-export const BillSchema = SchemaFactory.createForClass(Bills);
+
+export const NoteSchema = SchemaFactory.createForClass(Notes);
