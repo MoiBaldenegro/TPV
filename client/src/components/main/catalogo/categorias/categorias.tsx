@@ -55,11 +55,11 @@ export default function Categorias() {
           </button>
           <button className={styles.importCategories}>
             <img src={importIcon} alt="import-icon" />
-            <span>Importar categorias</span>
+            <input type="file" placeholder="Importar categorias" />
           </button>
           <button className={styles.createCategories} onClick={openModal}>
             <img src={createIcon} alt="create-icon"/>
-            <input type="file" /> Importar
+            <span>Crear categoria</span>
           </button>
           <CreateCategories isOpen={isModalOpen} onClose={closeModal} >
              <h3>Creaer categoria</h3>
