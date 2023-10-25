@@ -12,7 +12,7 @@ import { NotesModule } from './ventas/notes/notes.module';
 import { ProductModule } from './ventas/product/product.module';
 import { PaymentsModule } from './ventas/payments/payments.module';
 import { DiscountsModule } from './ventas/discounts/discounts.module';
-import { CancellationsModule } from './cancellations/cancellations.module';
+import { CancellationsModule } from './ventas/cancellations/cancellations.module';
 
 @Module({
   imports: [

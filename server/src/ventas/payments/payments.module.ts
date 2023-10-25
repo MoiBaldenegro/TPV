@@ -5,14 +5,14 @@ import { InjectModel, MongooseModule } from '@nestjs/mongoose';
 import { Payment, PaymentSchema } from 'src/schemas/ventas/payment.schema';
 
 @Module({
-  imports: [MongooseModule.forFeature(
-    [
+  imports: [
+    MongooseModule.forFeature([
       {
         name: Payment.name,
-        schema: PaymentSchema
-      }
-    ]
-  )],
+        schema: PaymentSchema,
+      },
+    ]),
+  ],
   controllers: [PaymentsController],
   providers: [PaymentsService],
 })

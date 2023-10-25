@@ -5,14 +5,14 @@ import { InjectModel, MongooseModule } from '@nestjs/mongoose';
 import { Discount, DiscountSchema } from 'src/schemas/ventas/discounts.schema';
 
 @Module({
-  imports:[MongooseModule.forFeature(
-    [
+  imports: [
+    MongooseModule.forFeature([
       {
         name: Discount.name,
-        schema: DiscountSchema
-      }
-    ]
-  )],
+        schema: DiscountSchema,
+      },
+    ]),
+  ],
   controllers: [DiscountsController],
   providers: [DiscountsService],
 })
