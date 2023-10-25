@@ -13,6 +13,7 @@ import { ProductModule } from './ventas/product/product.module';
 import { PaymentsModule } from './ventas/payments/payments.module';
 import { DiscountsModule } from './ventas/discounts/discounts.module';
 import { CancellationsModule } from './ventas/cancellations/cancellations.module';
+import { CancellationReasonModule } from './ventas/cancellation-reason/cancellation-reason.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { CancellationsModule } from './ventas/cancellations/cancellations.module
     PaymentsModule,
     DiscountsModule,
     CancellationsModule,
+    CancellationReasonModule,
   ],
   controllers: [],
   providers: [],

@@ -7,28 +7,33 @@ import { Cancellations } from 'src/schemas/ventas/cancellations.schema';
 
 @Injectable()
 export class CancellationsService {
-    constructor(@InjectModel(Cancellations.name) private cancellationModel : Model <Cancellations>){}
-    
-    async findAll(){
-        return await this.cancellationModel.find();
-    }
+  constructor(
+    @InjectModel(Cancellations.name)
+    private cancellationModel: Model<Cancellations>,
+  ) {}
 
-    async findOne(id : string){
-        return await this.cancellationModel.findById(id);
-    }
+  async findAll() {
+    return await this.cancellationModel.find();
+  }
 
-    async create( createdCancellation : CreateCancellationDto){
-        const newCancellation = new this.cancellationModel(createdCancellation);
-        return await newCancellation.save();
-    }
+  async findOne(id: string) {
+    return await this.cancellationModel.findById(id);
+  }
 
-    async delete(id: string){
-        return this.cancellationModel.findByIdAndDelete(id);
-    }
+  async create(createdCancellation: CreateCancellationDto) {
+    const newCancellation = new this.cancellationModel(createdCancellation);
+    return await newCancellation.save();
+  }
 
-    async update(id : string, updatedCancellation : UpdateCancellationDto){
-        return await this.cancellationModel.findByIdAndUpdate(id, updatedCancellation, { new : true });
-    }
+  async delete(id: string) {
+    return this.cancellationModel.findByIdAndDelete(id);
+  }
 
-
+  async update(id: string, updatedCancellation: UpdateCancellationDto) {
+    return await this.cancellationModel.findByIdAndUpdate(
+      id,
+      updatedCancellation,
+      { new: true },
+    );
+  }
 }
