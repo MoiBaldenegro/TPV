@@ -55,7 +55,7 @@ export default function Categorias() {
           </button>
           <button className={styles.importCategories}>
             <img src={importIcon} alt="import-icon" />
-            <input type="file" placeholder="Importar categorias" />
+            <input type="file" accept="xlsx" placeholder="Importar categorias" />
           </button>
           <button className={styles.createCategories} onClick={openModal}>
             <img src={createIcon} alt="create-icon"/>
