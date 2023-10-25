@@ -42,7 +42,7 @@ export class Payment {
   @Prop({
     required: true,
     trim: true,
-    default: "0.00"
+    default: '0.00',
   })
   paymentTotal: string;
 
@@ -52,7 +52,7 @@ export class Payment {
     // default: "cash"
   })
   paymentType: true;
-  
+
   @Prop({
     required: true,
     trim: true,
@@ -68,7 +68,9 @@ export class Payment {
   @Prop({
     required: true,
     trim: true,
-    default: "unbilled"
+    default: 'unbilled',
   })
   billing: 'billed' | 'unbilled';
 }
+
+export const PaymentSchema = SchemaFactory.createForClass(Payment);
