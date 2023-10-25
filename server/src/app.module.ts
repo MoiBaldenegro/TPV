@@ -9,6 +9,8 @@ import { ModificationsModule } from './catalogo/modifications/modifications.modu
 import { MenusYrecetasModule } from './catalogo/menus-yrecetas/menus-yrecetas.module';
 import { BillsModule } from './ventas/bills/bills.module';
 import { NotesModule } from './ventas/notes/notes.module';
+import { ProductModule } from './ventas/product/product.module';
+import { PaymentsModule } from './ventas/payments/payments.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { NotesModule } from './ventas/notes/notes.module';
     MenusYrecetasModule,
     BillsModule,
     NotesModule,
+    ProductModule, // este modulo probablemente se elimine (revisar)
+    PaymentsModule,
   ],
   controllers: [],
   providers: [],

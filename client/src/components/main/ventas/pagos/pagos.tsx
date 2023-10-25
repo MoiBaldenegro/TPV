@@ -25,7 +25,7 @@ export default function Pagos(){
                     <button className={styles.categoryButton}><img src={filterIcon} alt="categories-button" /><span>Categorias</span></button>
                     <div className={styles.searchBarTable}>
                         <img src={searchIcon} alt="search-icon" className={styles.searchIcon}/>
-                        <input type="text" className={styles.searchBarTableInput} placeholder="dia/mes/año" />
+                        <input type="text" className={styles.searchBarTableInput} placeholder="Folio #000000" />
                     </div>
                 </div> 
             </div>
