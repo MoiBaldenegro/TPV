@@ -11,6 +11,7 @@ import { BillsModule } from './ventas/bills/bills.module';
 import { NotesModule } from './ventas/notes/notes.module';
 import { ProductModule } from './ventas/product/product.module';
 import { PaymentsModule } from './ventas/payments/payments.module';
+import { DiscountsModule } from './ventas/discounts/discounts.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { PaymentsModule } from './ventas/payments/payments.module';
     NotesModule,
     ProductModule, // este modulo probablemente se elimine (revisar)
     PaymentsModule,
+    DiscountsModule,
   ],
   controllers: [],
   providers: [],
