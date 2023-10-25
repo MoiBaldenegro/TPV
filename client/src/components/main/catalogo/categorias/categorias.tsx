@@ -59,7 +59,7 @@ export default function Categorias() {
           </button>
           <button className={styles.createCategories} onClick={openModal}>
             <img src={createIcon} alt="create-icon"/>
-            <span>Crear categoria</span>
+            <input type="file" accept="xlsx">Crear categoria</input>
           </button>
           <CreateCategories isOpen={isModalOpen} onClose={closeModal} >
              <h3>Creaer categoria</h3>
