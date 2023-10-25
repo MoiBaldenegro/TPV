@@ -8,7 +8,7 @@ export default function Cancelaciones (){
     return (
         <div className={styles.container} >
         <section className={styles.head}>
-            <h2>Cuentas</h2>
+            <h2>Cancelaciones</h2>
         </section>
         <section className={styles.mainSection}>
             <div className={styles.mainHead}>
@@ -19,13 +19,13 @@ export default function Cancelaciones (){
                         <option value="option-one">Option 1</option>
                         <option value="optio-two">Option 2</option>
                     </select>
-                    <span>Cuentas</span>
+                    <span>Cancelaciones</span>
                 </div>
                 <div className={styles.searchContainer} >
                     <button className={styles.categoryButton}><img src={filterIcon} alt="categories-button" /><span>Categorias</span></button>
                     <div className={styles.searchBarTable}>
                         <img src={searchIcon} alt="search-icon" className={styles.searchIcon}/>
-                        <input type="text" className={styles.searchBarTableInput} placeholder="Cuenta # Ejemplo-00" />
+                        <input type="text" className={styles.searchBarTableInput} placeholder="Folio de cuenta cancelada" />
                     </div>
                 </div> 
             </div>
