@@ -27,6 +27,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
     const HandleUpload = async () => {
         const data = new FormData();
         data.append("file", files);
+        console.log(files)
 
         if (!files) {
             alert('Por favor, selecciona un archivo.');
@@ -34,7 +35,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
         }
 
         try {
-            console.log(files)
+           
             await axios.post('https://tomate-server.onrender.com/excel/upload', data, {
               headers: {
                 'Content-Type': 'multipart/form-data',
