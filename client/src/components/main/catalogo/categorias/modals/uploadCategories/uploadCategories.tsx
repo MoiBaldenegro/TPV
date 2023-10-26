@@ -50,6 +50,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
     if (!isOpen) return null;
     return(
         <div className={styles.modal}>
+            <div className={styles.modalContent}>
             {children}
            <div className={styles.dropZone} {...getRootProps()}>
                 <input {...getInputProps()} />
@@ -60,6 +61,9 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                 )}
             </div>
             {files && <button onClick={HandleUpload}>Subir</button>}
+
+            </div>
+           
         </div>
 
     )
