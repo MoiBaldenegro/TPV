@@ -13,6 +13,7 @@ interface Props{
 
 
 export default function UploadFiles({ isOpen, onClose, children } : Props){
+
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
     const [ files, setFiles ] = useState(null);
 
@@ -26,6 +27,11 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
         const data = new FormData();
         data.append("file", files);
 
+        if (!files) {
+            alert('Por favor, selecciona un archivo.');
+            return;
+        }
+
         try {
             await axios.post('http://localhost:3001/upload', data, {
               headers: {
@@ -37,6 +43,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
           } catch (error) {
             console.error('Error al subir el archivo:', error);
           }
+
     }
 
     if (!isOpen) return null;
@@ -51,6 +58,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                 <p>Arrastra y suelta un archivo Excel aquí o haz clic para seleccionarlo.</p>
                 )}
             </div>
+            {files && <button onClick={HandleUpload}>Subir</button>}
         </div>
 
     )
