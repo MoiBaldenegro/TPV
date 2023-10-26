@@ -138,7 +138,9 @@ text-indent: 25px;
     background: #99000F;
     width: 160px;
 }
-.createCategories:hover{
+.createCategories:hover,
+.importCategories:hover,
+.exportCategories:hover{
     filter: brightness(0.8);
 }
 .searchIcon{

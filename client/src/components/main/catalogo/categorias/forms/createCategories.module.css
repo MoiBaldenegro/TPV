@@ -12,7 +12,7 @@
     align-items: center;
     z-index: 1000;
     transition: 1s;
-    background: rgba(0, 0, 0, 0.822);
+    background: rgba(214, 208, 208, 0.616);
   }
   .modalContent {
     display: flex;

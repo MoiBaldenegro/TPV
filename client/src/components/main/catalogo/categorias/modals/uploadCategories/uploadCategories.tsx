@@ -4,6 +4,10 @@ import { useDropzone } from "react-dropzone";
 import { useState } from "react"; 
 //dependecies
 import axios from "axios";
+//icons
+import importIcon from "../../../../../../assets/public/importIcon.svg"
+import iconExcel from "../../../../../../assets/public/iconExcel.svg";
+import closeIcon from "../../../../../../assets/public/closeIcon.svg"
 
 interface Props{
     isOpen: any,
@@ -50,23 +54,28 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
 
     if (!isOpen) return null;
     return(
-        <div className={styles.modal}>
+        <div className={styles.modal} >
             <div className={styles.modalContent}>
-            <button className={styles.resetButton}>X</button>
+            <img src={closeIcon} className={styles.closeButton} onClick={onClose}/>
             {children}
             <span className={styles.tittle} >Cargar archivo</span>
            <div className={styles.dropZone} {...getRootProps()}>
                 <input {...getInputProps()} />
                 {files ? (
-                <p>Archivo seleccionado: {files.name}</p>
+                    <div className={styles.inDropZoneCharge}>
+                        <strong>Archivo seleccionado:</strong>
+                        <img src={iconExcel} alt="excel-icon" />
+                        <span>{files.name}</span>
+                        <button className={styles.resetButton} onClick={onReset}>Seleccionar otro archivo</button>
+                    </div>
                 ) : (
-                    <div>
+                    <div className={styles.inDropZone}>
                         <p>Arrastra y suelta un archivo aquí o haz clic para seleccionarlo.</p>
-                        <button className={styles.Resetbutton} onClick={onReset}>X</button>
+                        <img src={importIcon} alt="import-icon" />
                     </div>
                 )}
             </div>
-            <button disabled={!files} className={styles.importButton} onClick={HandleUpload}>Importar</button>
+            <button disabled={!files} className={styles.importButton} onClick={HandleUpload}> <img src={importIcon} alt="" />Importar</button>
             </div>
         </div>
     )
