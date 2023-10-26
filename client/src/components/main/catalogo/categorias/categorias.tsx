@@ -10,6 +10,7 @@ import importIcon from "../../../../assets/categorias/importIcon.svg";
 import createIcon from "../../../../assets/categorias/createIcon.svg";
 import searchIcon from "../../../../assets/categorias/searchIcon.svg";
 import CreateCategories from "./forms/createCategory.form";
+import UploadFiles from "./modals/uploadCategories/uploadCategories";
 
 export default function Categorias() {
 
@@ -53,17 +54,18 @@ export default function Categorias() {
             <img src={exportIcon} alt="export-icon" />
             <span>Exportar categorias</span>
           </button>
-          <button className={styles.importCategories}>
+          <button className={styles.importCategories} onClick={openModal} >
             <img src={importIcon} alt="import-icon" />
             <input type="file" accept=".xlsx" placeholder="Importar categorias" />
           </button>
-          <button className={styles.createCategories} onClick={openModal}>
+          <button className={styles.createCategories} >
             <img src={createIcon} alt="create-icon"/>
             <span>Crear categoria</span>
           </button>
-          <CreateCategories isOpen={isModalOpen} onClose={closeModal} >
-             <h3>Creaer categoria</h3>
-          </CreateCategories>
+          <UploadFiles isOpen={isModalOpen} onClose={closeModal} >
+            <h1>Cargar Archivos</h1>
+          </UploadFiles>
+          
         </div>
       </div>
       <div className={styles.searchBarContainer}>
@@ -130,3 +132,7 @@ export default function Categorias() {
     </section>
   );
 }
+
+/* <CreateCategories isOpen={isModalOpen} onClose={closeModal} >
+             <h3>Creaer categoria</h3>
+          </CreateCategories> */
