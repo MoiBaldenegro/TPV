@@ -58,7 +58,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                 <p>Arrastra y suelta un archivo aquí o haz clic para seleccionarlo.</p>
                 )}
             </div>
-            {files && <button onClick={HandleUpload}>Subir</button>}
+            {files && <button onClick={HandleUpload}>Importar</button>}
 
             </div>
            

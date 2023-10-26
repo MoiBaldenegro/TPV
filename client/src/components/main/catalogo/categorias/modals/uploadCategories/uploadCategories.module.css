@@ -2,7 +2,7 @@
 @import "../../../../../../varCss/fonts.module.css";
 
 .modal {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -29,8 +29,11 @@
     box-shadow: 0px 0px 10px rgba(117, 117, 117, 0.2);
   }
   .dropZone {
-    border: 2px dashed var(--color-primary); /* Borde punteado */
-    background: var(--color-gray-medium); /* Fondo gris claro */
+    opacity: .9;
+    width: 800;
+    height: 250px;
+    border: 2px dashed var(--color-accent-red-primary); 
+    background: var(--color-gray-medium); 
     padding: 20px;
     text-align: center;
     cursor: pointer;
