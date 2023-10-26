@@ -6,7 +6,7 @@ import * as xlsx from "xlsx";
 
 @Injectable()
 export class ExcelService {
-    constructor(@InjectModel(Category.name) private excelModel : Model  <Category>){}
+    constructor(@InjectModel(Category.name) private excelModel : Model <Category>){}
 
     async processExcel (file : any){
         const workbook = xlsx.read(file.buffer, { type: 'buffer' });

@@ -3,9 +3,10 @@ import { ExcelController } from './excel.controller';
 import { ExcelService } from './excel.service';
 import { MulterModule } from '@nestjs/platform-express';
 import { multerOptions } from '../multer.config';
+import { CategoriesModule } from 'src/catalogo/categories/categories.module';
 
 @Module({
-  imports: [MulterModule.register(multerOptions)],
+  imports: [MulterModule.register(multerOptions), CategoriesModule],
   controllers: [ExcelController],
   providers: [ExcelService]
 })
