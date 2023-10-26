@@ -6,7 +6,7 @@ import { multerOptions } from '../multer.config';
 import { CategoriesModule } from 'src/catalogo/categories/categories.module';
 
 @Module({
-  imports: [MulterModule.register(multerOptions), CategoriesModule],
+  imports: [MulterModule.register(multerOptions)],
   controllers: [ExcelController],
   providers: [ExcelService]
 })
