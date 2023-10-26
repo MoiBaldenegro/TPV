@@ -42,27 +42,32 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
           }
 
     }
+
+    const onReset = () => {
+        setFiles(null)
+    }
   
 
     if (!isOpen) return null;
     return(
         <div className={styles.modal}>
             <div className={styles.modalContent}>
+            <button className={styles.resetButton}>X</button>
             {children}
-            <span>Cargar archivo</span>
+            <span className={styles.tittle} >Cargar archivo</span>
            <div className={styles.dropZone} {...getRootProps()}>
                 <input {...getInputProps()} />
                 {files ? (
                 <p>Archivo seleccionado: {files.name}</p>
                 ) : (
-                <p>Arrastra y suelta un archivo aquí o haz clic para seleccionarlo.</p>
+                    <div>
+                        <p>Arrastra y suelta un archivo aquí o haz clic para seleccionarlo.</p>
+                        <button className={styles.Resetbutton} onClick={onReset}>X</button>
+                    </div>
                 )}
             </div>
-            {files && <button onClick={HandleUpload}>Importar</button>}
-
+            <button disabled={!files} className={styles.importButton} onClick={HandleUpload}>Importar</button>
             </div>
-           
         </div>
-
     )
 } 
