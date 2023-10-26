@@ -49,7 +49,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
         <div className={styles.modal}>
             <div className={styles.modalContent}>
             {children}
-            <h1>Cargar archivo</h1>
+            <span>Cargar archivo</span>
            <div className={styles.dropZone} {...getRootProps()}>
                 <input {...getInputProps()} />
                 {files ? (
