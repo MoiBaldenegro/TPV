@@ -1,4 +1,9 @@
 import styles from "./uploadCategories.module.css"
+//hooks
+import { useDropzone } from "react-dropzone";
+import { useState } from "react"; 
+//dependecies
+import axios from "axios";
 
 interface Props{
     isOpen: any,
@@ -8,10 +13,44 @@ interface Props{
 
 
 export default function UploadFiles({ isOpen, onClose, children } : Props){
+    const { getRootProps, getInputProps } = useDropzone({ onDrop });
+    const [ files, setFiles ] = useState(null);
+
+    const onDrop = (acceptedFiles) => {
+        setFiles(acceptedfiles[0])
+    }
+
+
+    // funcion para cargar archivos
+    const HandleUpload = async () => {
+        const data = new FormData();
+        data.append("file", files);
+
+        try {
+            await axios.post('http://localhost:3001/upload', data, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            });
+            alert('Archivo subido con éxito.');
+            setFiles(null);
+          } catch (error) {
+            console.error('Error al subir el archivo:', error);
+          }
+    }
+
     if (!isOpen) return null;
     return(
         <div className={styles.modal}>
-|   |       <h1>Contenido</h1>
+            {children}
+           <div className={styles.dropZone} {...getRootProps()}>
+                <input {...getInputProps()} />
+                {files ? (
+                <p>Archivo seleccionado: {files.name}</p>
+                ) : (
+                <p>Arrastra y suelta un archivo Excel aquí o haz clic para seleccionarlo.</p>
+                )}
+            </div>
         </div>
 
     )
