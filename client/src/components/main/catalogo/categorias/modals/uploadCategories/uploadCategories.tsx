@@ -16,11 +16,8 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
     const onDrop = (acceptedFiles : any) => {
         setFiles(acceptedFiles[0])
     }
-
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
     const [ files, setFiles ] = useState(null);
-
-   
 
     // funcion para cargar archivos
     const HandleUpload = async () => {
@@ -52,12 +49,13 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
         <div className={styles.modal}>
             <div className={styles.modalContent}>
             {children}
+            <h1>Cargar archivo</h1>
            <div className={styles.dropZone} {...getRootProps()}>
                 <input {...getInputProps()} />
                 {files ? (
                 <p>Archivo seleccionado: {files.name}</p>
                 ) : (
-                <p>Arrastra y suelta un archivo Excel aquí o haz clic para seleccionarlo.</p>
+                <p>Arrastra y suelta un archivo aquí o haz clic para seleccionarlo.</p>
                 )}
             </div>
             {files && <button onClick={HandleUpload}>Subir</button>}
