@@ -13,14 +13,14 @@ interface Props{
 
 
 export default function UploadFiles({ isOpen, onClose, children } : Props){
+    const onDrop = (acceptedFiles : any) => {
+        setFiles(acceptedFiles[0])
+    }
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
     const [ files, setFiles ] = useState(null);
 
-    const onDrop = (acceptedFiles) => {
-        setFiles(acceptedfiles[0])
-    }
-
+   
 
     // funcion para cargar archivos
     const HandleUpload = async () => {
@@ -45,6 +45,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
           }
 
     }
+  
 
     if (!isOpen) return null;
     return(
