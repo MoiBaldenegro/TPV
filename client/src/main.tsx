@@ -5,7 +5,7 @@ import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Landing from './pages/landing/landing.tsx'
-import { CreateAccount, Home, LoginPage} from './components.tsx'
+import { CreateAccount, Home, LoginPage, VentaTypes} from './components.tsx'
 import NotFound from './pages/notFound/notFound.tsx'
 import ProtectedRoute from './pages/protectedRoute/protectedRoute.tsx'
 import Categorias from './components/main/catalogo/categorias/categorias.tsx'
@@ -104,6 +104,17 @@ const router = createBrowserRouter([
                
             ]
 
+          },
+          {
+            path: "sellTypes",
+            element: <Main/>,
+            children: [
+              {
+                path: "sellTypes",
+                element: <VentaTypes/>
+              }
+            ]
+            
           }
 
         ]

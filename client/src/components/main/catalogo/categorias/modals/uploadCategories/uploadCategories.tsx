@@ -36,7 +36,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
 
         try {
            
-            await axios.post('https://tomate-server.onrender.com/excel/upload', data, {
+            await axios.post('http://localhost:8000/excel/upload', data, {
               headers: {
                 'Content-Type': 'multipart/form-data',
               },
