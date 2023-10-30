@@ -53,7 +53,6 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                         },
                     });
                 });
-                console.log(data)
     
                 // Aquí puedes realizar operaciones adicionales con los datos del archivo
     
