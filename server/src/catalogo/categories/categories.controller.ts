@@ -47,7 +47,7 @@ export class CategoriesController {
   @Post()
   async create(@Body() body: CreateCategoryDto | CreateCategoryDto[]) {
     try {
-      console.log(body);
+      console.log(`Moi: ${Body[1]}`);
       const categoriesService = this.categoriesService; // Capturar this en una variable
   
       if (Array.isArray(body)) {
