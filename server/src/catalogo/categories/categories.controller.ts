@@ -13,6 +13,7 @@ import {
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
 import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dto';
+import { CreateBillDto } from 'src/dto/ventas/bills/createBill.Dto';
 
 @Controller('categories')
 export class CategoriesController {
@@ -44,16 +45,30 @@ export class CategoriesController {
   }
 
   @Post()
-  async create(@Body() body: CreateCategoryDto) {
+  async create(@Body() body: CreateCategoryDto | CreateCategoryDto[]) {
     try {
-      return await this.categoriesService.create(body);
+      const categoriesService = this.categoriesService; // Capturar this en una variable
+  
+      if (Array.isArray(body)) {
+        const createdCategories = await Promise.all(
+          body.map(async (element: CreateCategoryDto) => {
+            return await categoriesService.create(element); // Usar la variable categoriesService
+          })
+        );
+        return createdCategories;
+      } else {
+        const createdCategory = await categoriesService.create(body); // Usar la variable categoriesService
+        return createdCategory;
+      }
     } catch (error) {
       if (error.code === 11000) {
-        throw new ConflictException('La categoria ya existe');
+        throw new ConflictException('La categoría ya existe');
+      } else {
+        throw new NotFoundException('Ha ocurrido algo inesperado');
       }
     }
-    throw new NotFoundException('Ha ocurridon algo inesperado');
   }
+  
 
   @Delete(':id')
   @HttpCode(204)
