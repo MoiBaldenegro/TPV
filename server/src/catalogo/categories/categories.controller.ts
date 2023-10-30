@@ -43,22 +43,22 @@ export class CategoriesController {
       throw new ConflictException('Ocurrio algo inesperado');
     }
   }
+
   @Post()
-  async create(@Body() body: { categorias: CreateCategoryDto[] }) {
+  async create(@Body() body: CreateCategoryDto | CreateCategoryDto[]) {
     try {
-      const BodyArray = body.categorias;
       const categoriesService = this.categoriesService; // Capturar this en una variable
-      console.log(BodyArray); // ver la data
-      if (Array.isArray(BodyArray)) {
+  
+      if (Array.isArray(body)) {
         const createdCategories = await Promise.all(
-          BodyArray.map(async (element: CreateCategoryDto) => {
+          body.map(async (element: CreateCategoryDto) => {
             return await categoriesService.create(element); // Usar la variable categoriesService
           })
         );
         return createdCategories;
       } else {
-        // Esto no es necesario aquí, puedes manejar el caso de un solo objeto en el mapeo de categorías
-        throw new NotFoundException('Se esperaba un arreglo de categorías');
+        const createdCategory = await categoriesService.create(body); // Usar la variable categoriesService
+        return createdCategory;
       }
     } catch (error) {
       if (error.code === 11000) {
@@ -68,7 +68,6 @@ export class CategoriesController {
       }
     }
   }
-  
   
 
   @Delete(':id')
