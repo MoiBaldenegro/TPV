@@ -51,6 +51,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                     
                     // Luego, puedes enviar los datos a tu servidor, si es necesario
                     try {
+                        console.log(sheetData)
                         axios.post('https://tomate-server.onrender.com/categories', sheetData, {
                             headers: {
                                 'Content-Type': 'application/json',
