@@ -23,31 +23,50 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
     const [ files, setFiles ] = useState(null);
 
-    // funcion para cargar archivos
+    
     const HandleUpload = async () => {
-        const data = new FormData();
-        data.append("file", files);
-        console.log(files)
-
         if (!files) {
             alert('Por favor, selecciona un archivo.');
             return;
         }
-
+    
         try {
-           
-            await axios.post('http://localhost:8000/excel/upload', data, {
-              headers: {
-                'Content-Type': 'multipart/form-data',
-              },
-            });
-            alert('Archivo subido con éxito.');
-            setFiles(null);
-          } catch (error) {
+            const data = new FormData();
+            data.append("file", files);
+    
+            // Leer el archivo Excel
+            const reader = new FileReader();
+    
+            reader.onload = (event) => {
+                const data = event.target.result;
+                const workbook = XLSX.read(data, { type: "array" });
+    
+                // Procesar las hojas del archivo Excel
+                workbook.SheetNames.forEach((sheetName) => {
+                    const sheet = workbook.Sheets[sheetName];
+                    const sheetData = XLSX.utils.sheet_to_json(sheet);
+                    console.log(`Contenido de la hoja "${sheetName}":`, sheetData);
+                });
+    
+                // Aquí puedes realizar operaciones adicionales con los datos del archivo
+    
+                // Luego, puedes enviar los datos a tu servidor, si es necesario
+                axios.post('http://localhost:8000/excel/upload', data, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+    
+                alert('Archivo subido con éxito.');
+                setFiles(null);
+            };
+    
+            reader.readAsArrayBuffer(files);
+        } catch (error) {
             console.error('Error al subir el archivo:', error);
-          }
-
+        }
     }
+    
 
     const onReset = () => {
         setFiles(null)
