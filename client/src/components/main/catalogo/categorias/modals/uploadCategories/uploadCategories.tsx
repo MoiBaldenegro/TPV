@@ -46,16 +46,19 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                     const sheet = workbook.Sheets[sheetName];
                     const sheetData = utils.sheet_to_json(sheet);
                     console.log(`Contenido de la hoja "${sheetName}":`, sheetData);
+
+                    axios.post('https://tomate-server.onrender.com/categories', sheetData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        },
+                    });
                 });
+                console.log(data)
     
                 // Aquí puedes realizar operaciones adicionales con los datos del archivo
     
                 // Luego, puedes enviar los datos a tu servidor, si es necesario
-                axios.post('https://localhost:8000/categories', data, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                });
+               
     
                 alert('Archivo subido con éxito.');
                 setFiles(null);
