@@ -4,6 +4,7 @@ import { useDropzone } from "react-dropzone";
 import { useState } from "react"; 
 //dependecies
 import axios from "axios";
+import XLSX from 'xlsx';
 //icons
 import importIcon from "../../../../../../assets/public/importIcon.svg"
 import iconExcel from "../../../../../../assets/public/iconExcel.svg";
@@ -23,6 +24,10 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
     const [ files, setFiles ] = useState(null);
 
+    // funcion para cargar archivos
+    
+
+    // ...
     
     const HandleUpload = async () => {
         if (!files) {
