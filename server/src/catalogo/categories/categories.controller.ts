@@ -57,8 +57,8 @@ export class CategoriesController {
         );
         return createdCategories;
       } else {
-        const createdCategory = await categoriesService.create(body); // Usar la variable categoriesService
-        return createdCategory;
+        // Esto no es necesario aquí, puedes manejar el caso de un solo objeto en el mapeo de categorías
+        throw new NotFoundException('Se esperaba un arreglo de categorías');
       }
     } catch (error) {
       if (error.code === 11000) {
