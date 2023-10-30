@@ -24,8 +24,6 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
     const [ files, setFiles ] = useState(null);
 
- .
-    
     const HandleUpload = async () => {
         if (!files) {
             alert('Por favor, selecciona un archivo.');
