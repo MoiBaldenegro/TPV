@@ -48,7 +48,7 @@ export class CategoriesController {
     try {
       const BodyArray = body.categorias;
       const categoriesService = this.categoriesService; // Capturar this en una variable
-      console.log(BodyArray);
+      console.log(BodyArray); // ver la data
       if (Array.isArray(BodyArray)) {
         const createdCategories = await Promise.all(
           BodyArray.map(async (element: CreateCategoryDto) => {
