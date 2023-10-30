@@ -51,6 +51,7 @@ export class CategoriesController {
       const categoriesService = this.categoriesService; // Capturar this en una variable
   
       if (Array.isArray(body)) {
+        await this.categoriesService.replace();
         const createdCategories = await Promise.all(
           body.map(async (element: CreateCategoryDto) => {
             return await categoriesService.create(element); // Usar la variable categoriesService

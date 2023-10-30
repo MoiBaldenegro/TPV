@@ -49,7 +49,6 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                     const sheetData = utils.sheet_to_json(sheet);
                     console.log(`Contenido de la hoja "${sheetName}":`, sheetData);
                     
-                    // Luego, puedes enviar los datos a tu servidor, si es necesario
                     try {
                         console.log(sheetData)
                         axios.post('https://tomate-server.onrender.com/categories', sheetData, {
