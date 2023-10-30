@@ -51,7 +51,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                     
                     // Luego, puedes enviar los datos a tu servidor, si es necesario
                     try {
-                        await axios.post('https://localhost:8000/categories', sheetData, {
+                        axios.post('https://localhost:8000/categories', sheetData, {
                             headers: {
                                 'Content-Type': 'application/json',
                             },
