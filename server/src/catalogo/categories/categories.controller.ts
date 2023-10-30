@@ -43,15 +43,15 @@ export class CategoriesController {
       throw new ConflictException('Ocurrio algo inesperado');
     }
   }
-
   @Post()
-  async create(@Body() body: CreateCategoryDto | CreateCategoryDto[]) {
+  async create(@Body() body: { categorias: CreateCategoryDto[] }) {
     try {
+      const BodyArray = body.categorias;
       const categoriesService = this.categoriesService; // Capturar this en una variable
   
-      if (Array.isArray(body)) {
+      if (Array.isArray(BodyArray)) {
         const createdCategories = await Promise.all(
-          body.map(async (element: CreateCategoryDto) => {
+          BodyArray.map(async (element: CreateCategoryDto) => {
             return await categoriesService.create(element); // Usar la variable categoriesService
           })
         );
@@ -68,6 +68,7 @@ export class CategoriesController {
       }
     }
   }
+  
   
 
   @Delete(':id')
