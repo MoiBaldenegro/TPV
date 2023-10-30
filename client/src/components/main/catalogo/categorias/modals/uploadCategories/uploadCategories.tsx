@@ -56,7 +56,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                 // Aquí puedes realizar operaciones adicionales con los datos del archivo
     
                 // Luego, puedes enviar los datos a tu servidor, si es necesario
-                axios.post('http://localhost:8000/excel/upload', data, {
+                axios.post('https://tomate-server.onrender.com/categories', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
