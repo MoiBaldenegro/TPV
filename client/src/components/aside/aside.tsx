@@ -104,7 +104,7 @@ export default function Aside (){
                     </div>
                     <img src={arrow} className={styles.arrowIcon} alt="icon" />
                 </NavLink>
-                <NavLink to="till" className={activeClassName}>
+                <NavLink to="till/till" className={activeClassName}>
                     <div className={styles.iconContainer} >
                         <img src={caja} className={styles.icon} alt="caja" />
                         <span>Caja</span>
