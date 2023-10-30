@@ -24,10 +24,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
     const [ files, setFiles ] = useState(null);
 
-    // funcion para cargar archivos
-    
-
-    // ...
+ .
     
     const HandleUpload = async () => {
         if (!files) {
@@ -56,7 +53,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                 // Aquí puedes realizar operaciones adicionales con los datos del archivo
     
                 // Luego, puedes enviar los datos a tu servidor, si es necesario
-                axios.post('https://tomate-server.onrender.com/categories', data, {
+                axios.post('https://localhost:8000/categories', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
