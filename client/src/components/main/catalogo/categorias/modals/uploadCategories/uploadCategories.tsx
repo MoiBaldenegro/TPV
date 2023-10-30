@@ -24,6 +24,8 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
     const [ files, setFiles ] = useState(null);
 
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     const HandleUpload = async () => {
         if (!files) {
             alert('Por favor, selecciona un archivo.');
@@ -37,7 +39,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
             // Leer el archivo Excel
             const reader = new FileReader();
     
-            reader.onload = (event) => {
+            reader.onload = async (event) => {
                 const data = event.target.result;
                 const workbook = read(data, { type: "array" });
     
@@ -46,29 +48,32 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                     const sheet = workbook.Sheets[sheetName];
                     const sheetData = utils.sheet_to_json(sheet);
                     console.log(`Contenido de la hoja "${sheetName}":`, sheetData);
-
-                    axios.post('https://tomate-server.onrender.com/categories', sheetData, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                        },
-                    });
+                    
+                    // Luego, puedes enviar los datos a tu servidor, si es necesario
+                    try {
+                        await axios.post('https://localhost:8000/categories', sheetData, {
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                        });
+                        alert('Archivo subido con éxito.');
+                        setFiles(null);
+                    } catch (error) {
+                        console.error('Error al enviar los datos al servidor:', error);
+                        alert('Error al enviar los datos al servidor.');
+                    }
                 });
-    
-                // Aquí puedes realizar operaciones adicionales con los datos del archivo
-    
-                // Luego, puedes enviar los datos a tu servidor, si es necesario
-               
-    
-                alert('Archivo subido con éxito.');
-                setFiles(null);
             };
     
             reader.readAsArrayBuffer(files);
         } catch (error) {
             console.error('Error al subir el archivo:', error);
+            alert('Error al subir el archivo.');
         }
     }
     
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     const onReset = () => {
         setFiles(null)
