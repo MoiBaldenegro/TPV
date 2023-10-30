@@ -4,7 +4,7 @@ import { useDropzone } from "react-dropzone";
 import { useState } from "react"; 
 //dependecies
 import axios from "axios";
-import XLSX from 'xlsx';
+import { read, utils } from 'xlsx';
 //icons
 import importIcon from "../../../../../../assets/public/importIcon.svg"
 import iconExcel from "../../../../../../assets/public/iconExcel.svg";
@@ -44,12 +44,12 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
     
             reader.onload = (event) => {
                 const data = event.target.result;
-                const workbook = XLSX.read(data, { type: "array" });
+                const workbook = read(data, { type: "array" });
     
                 // Procesar las hojas del archivo Excel
                 workbook.SheetNames.forEach((sheetName) => {
                     const sheet = workbook.Sheets[sheetName];
-                    const sheetData = XLSX.utils.sheet_to_json(sheet);
+                    const sheetData = utils.sheet_to_json(sheet);
                     console.log(`Contenido de la hoja "${sheetName}":`, sheetData);
                 });
     
