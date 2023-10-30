@@ -43,7 +43,7 @@ export default function Categorias() {
 
   useEffect(() => {
     dispatch(getCategories());
-  }, []);
+  }, [isModalOpen]);
 
   return (
     <section className={styles.categorias}>
@@ -62,7 +62,7 @@ export default function Categorias() {
             <img src={createIcon} alt="create-icon"/>
             <span>Crear categoria</span>
           </button>
-          <UploadFiles isOpen={isModalOpen} onClose={closeModal}>
+          <UploadFiles isOpen={isModalOpen} onClose={closeModal} closeModal={closeModal}> 
           </UploadFiles>
           
         </div>
