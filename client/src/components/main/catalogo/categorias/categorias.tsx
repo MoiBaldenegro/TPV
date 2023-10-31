@@ -56,11 +56,11 @@ export default function Categorias() {
             <img src={createIcon} alt="create-icon"/>
             <span>Crear categoria</span>
           </button>
-          <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal}> 
-          </UploadFiles> 
-          <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
+          {uploadCategories.isOpen ? <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal}> 
+          </UploadFiles> :  null }
+          {createCategory.isOpen ? <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
              <h3>Creaer categoria</h3>
-          </CreateCategories> 
+          </CreateCategories> : null }
         </div>
       </div>
       <div className={styles.searchBarContainer}>
