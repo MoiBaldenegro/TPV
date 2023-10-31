@@ -15,10 +15,9 @@ import { useModal } from "../../../../hooks/useModals";
 
 export default function Categorias() {
 
-  const uploadCategories = useModal();
   const createCategory = useModal();
-
- 
+  const uploadCategories = useModal();
+  
   /////////////////////////////////
   const dispatch = useDispatch();
   const allCategories = useSelector((state) => state.allCategories);
@@ -49,17 +48,17 @@ export default function Categorias() {
             <img src={exportIcon} alt="export-icon" />
             <span>Exportar categorias</span>
           </button>
-          <button className={styles.importCategories} onClick={uploadCategories.openModal} >
+          <button className={styles.importCategories} onClick={()=> { uploadCategories.openModal(1)}}>
             <img src={importIcon} alt="import-icon" />
             <span>Importar categorias</span>
           </button>
-          <button className={styles.createCategories} onClick={createCategory.openModal}>
+          <button className={styles.createCategories} onClick={()=> { uploadCategories.openModal(2)}}>
             <img src={createIcon} alt="create-icon"/>
             <span>Crear categoria</span>
           </button>
-          <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal} > 
+          <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal} id={1}> 
           </UploadFiles> 
-          <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
+          <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal} id={2}>
              <h3>Creaer categoria</h3>
           </CreateCategories> 
         </div>
