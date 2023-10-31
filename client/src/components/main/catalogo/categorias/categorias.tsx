@@ -126,4 +126,5 @@ export default function Categorias() {
 
 /* <CreateCategories isOpen={isModalOpen} onClose={closeModal} >
              <h3>Creaer categoria</h3>
+             ///
           </CreateCategories> */
