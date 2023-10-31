@@ -11,12 +11,15 @@ import searchIcon from "../../../../assets/categorias/searchIcon.svg";
 import UploadFiles from "./modals/uploadCategories/uploadCategories";
 import { useEffect } from "react";
 import { useModal } from "../../../../hooks/useModals";
+
+
+
 export default function Categorias() {
 
   const createCategory = useModal("createCategory");
   const uploadCategories = useModal("uploadCategory");
   
-  /////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////// 
   const dispatch = useDispatch();
   const { allCategories } = useSelector((state) => state.categories);
 

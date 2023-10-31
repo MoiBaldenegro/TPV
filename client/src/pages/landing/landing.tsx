@@ -2,13 +2,7 @@ import styles from "./landing.module.css";
 
 import { NavLink } from "react-router-dom";
 
-import tomateLogo from "../../assets/loginPage/tomateLogo.svg"
-;
-
-
-
-
-
+import tomateLogo from "../../assets/loginPage/tomateLogo.svg";
 
 export default function Landing (){
     return(

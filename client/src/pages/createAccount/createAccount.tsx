@@ -5,11 +5,8 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux"
 // icons
-import tomateLogo from "../../assets/loginPage/tomateLogo.svg"
-;
+import tomateLogo from "../../assets/loginPage/tomateLogo.svg";
 import { createUser } from "../../redux/actions/auth";
-
-
 
 
 export default function createAccount (){
