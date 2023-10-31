@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+/* import { useDispatch, useSelector } from "react-redux"
 import styles from "./usuarios.module.css"
 import { useEffect } from "react"
 import { getUsers } from "../../../redux/actions"
@@ -25,4 +25,4 @@ export default function Usuarios (){
             }   
         </section>
     )
-}
+}  */
