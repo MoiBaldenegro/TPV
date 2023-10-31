@@ -10,6 +10,7 @@ import createIcon from "../../../../assets/categorias/createIcon.svg";
 import searchIcon from "../../../../assets/categorias/searchIcon.svg";
 import UploadFiles from "./modals/uploadCategories/uploadCategories";
 import { useModal } from "../../../../hooks/useModals";
+import { useEffect } from "react";
 
 export default function Categorias() {
 
