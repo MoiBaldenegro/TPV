@@ -58,9 +58,7 @@ export default function Categorias() {
           </button>
           {uploadCategories.isOpen ? <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal}> 
           </UploadFiles> :  null }
-          {createCategory.isOpen ? <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
-             <h3>Creaer categoria</h3>
-          </CreateCategories> : null }
+          
         </div>
       </div>
       <div className={styles.searchBarContainer}>
