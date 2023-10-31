@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setErrors, toggleLoading } from "../../redux/actions";
+import { setErrors, toggleLoading } from "../../redux/actions/auth";
 import styles from "./home.module.css";
 import Header from "../../components/header/header";
 import Main from "../../components/main/main";
@@ -10,9 +10,9 @@ import PassNoValid from "../../components/redirections/passNoValid";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.isLoading);
-  const loginUsers = useSelector((state) => state.loginUsers);
-  const invalidCredentials = useSelector(state => state.invalidCredentials);
+  const { isLoading } = useSelector((state) => state.auth);
+  const { loginUsers } = useSelector((state) => state.auth);
+  const { invalidCredentials } = useSelector(state => state.auth);
 
   useEffect(() => {
     if (loginUsers.length > 0) {

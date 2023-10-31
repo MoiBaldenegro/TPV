@@ -19,7 +19,7 @@ export default function Categorias() {
   
   /////////////////////////////////
   const dispatch = useDispatch();
-  const allCategories = useSelector((state) => state.allCategories);
+  const { allCategories } = useSelector((state) => state.categories);
 
   const handleChange = (event) => {
     event.preventDefault();

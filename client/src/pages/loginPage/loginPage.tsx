@@ -15,13 +15,13 @@ import eyeActive from "../../assets/loginPage/eyeActive.svg"
 //hooks
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../redux/actions";
+import { loginUser } from "../../redux/actions/auth";
 
 
 
 export default function LoginPage (){
-    const loginUsers = useSelector(state => state.loginUsers);
-    const errors = useSelector(state => state.errors);
+    const { loginUsers } = useSelector(state => state.auth);
+    const{ errors } = useSelector(state => state.auth);
     const navigate = useNavigate();
 
     
