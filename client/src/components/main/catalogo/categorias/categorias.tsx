@@ -59,7 +59,7 @@ export default function Categorias() {
           </button>
           <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal} > 
           </UploadFiles> 
-          <CreateCategories isOpen={isModalOpen} onClose={closeModal} closeModal={createCategories.closeModal}>
+          <CreateCategories isOpen={createCategories.isOpen} onClose={createCategories.closeModal}>
              <h3>Creaer categoria</h3>
           </CreateCategories> 
         </div>
