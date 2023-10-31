@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux"
 // icons
 import tomateLogo from "../../assets/loginPage/tomateLogo.svg"
 ;
-import { createUser } from "../../redux/actions";
+import { createUser } from "../../redux/actions/auth";
 
 
 
@@ -34,7 +34,7 @@ export default function createAccount (){
         }) 
         console.log(user);
     }
-    const loginUsers = useSelector(state => state.loginUsers);
+    const { loginUsers }= useSelector(state => state.auth);
 
     if(loginUsers.length > 0){
       return <Navigate to="/home" />
