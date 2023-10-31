@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 // EN este hook gestionamos los valores necesarios para manejar modales
-export default function useModal() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function useModal(initialState = false) {
+  const [isOpen, setIsOpen] = useState(initialState);
 
   // Función para abrir el modal
   const openModal = () => {
