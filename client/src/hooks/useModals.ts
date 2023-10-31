@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { useState } from 'react';
 
+// EN este hook gestionamos los valores necesarios para manejar modales
+export const useModal = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-export function useModals(){
-  
-const [ lenguajeSelect, setLenguajeSelect ] = useState(false);
+  // Función para abrir el modal
+  const openModal = () => {
+    setIsOpen(true);
+  };
 
+  // Función para cerrar el modal
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
-    const toggleLenguaje = () => {
-        setLenguajeSelect(!lenguajeSelect)
-    }
-
-    return { lenguajeSelect, toggleLenguaje}
-
-}
+  // Devolver el estado del modal y las funciones de apertura y cierre
+  return {
+    isOpen,
+    openModal,
+    closeModal,
+  };
+};

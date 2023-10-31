@@ -1,5 +1,4 @@
 import styles from "./categorias.module.css";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories, searchCategories } from "../../../../redux/actions";
 import deleteIcon from "../../../../assets/categorias/bloquedIcon.svg";
@@ -9,21 +8,14 @@ import exportIcon from "../../../../assets/categorias/exportIcon.svg";
 import importIcon from "../../../../assets/categorias/importIcon.svg";
 import createIcon from "../../../../assets/categorias/createIcon.svg";
 import searchIcon from "../../../../assets/categorias/searchIcon.svg";
-import CreateCategories from "./forms/createCategory.form";
 import UploadFiles from "./modals/uploadCategories/uploadCategories";
+import { useModal } from "../../../../hooks/useModals";
 
 export default function Categorias() {
 
-  // Modal de create categories //
+  const { isOpen, openModal, closeModal } = useModal();
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-  
-    const openModal = () => {
-      setIsModalOpen(true);
-    };
-    const closeModal = () => {
-      setIsModalOpen(false);
-    };
+ 
   /////////////////////////////////
   const dispatch = useDispatch();
   const allCategories = useSelector((state) => state.allCategories);
@@ -62,7 +54,7 @@ export default function Categorias() {
             <img src={createIcon} alt="create-icon"/>
             <span>Crear categoria</span>
           </button>
-          <UploadFiles isOpen={isModalOpen} onClose={closeModal} closeModal={closeModal}> 
+          <UploadFiles isOpen={isOpen} onClose={closeModal} closeModal={closeModal}> 
           </UploadFiles>
           
         </div>
