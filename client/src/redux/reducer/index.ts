@@ -82,4 +82,5 @@ export default function rootReducer(state = initialState, action:any){
             return state;
     }
 }
+// reset redux
 
