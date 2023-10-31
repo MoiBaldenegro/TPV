@@ -11,7 +11,7 @@ import searchIcon from "../../../../assets/categorias/searchIcon.svg";
 import UploadFiles from "./modals/uploadCategories/uploadCategories";
 import { useEffect } from "react";
 import CreateCategories from "./forms/createCategory.form";
-import { useModal } from "../../../../hooks/useModals";
+import useModal from "../../../../hooks/useModals";
 
 export default function Categorias() {
 
