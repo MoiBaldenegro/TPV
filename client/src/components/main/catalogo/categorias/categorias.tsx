@@ -15,7 +15,6 @@ import { useModal } from "../../../../hooks/useModals";
 
 export default function Categorias() {
 
-  const createCategory = useModal();
   const uploadCategories = useModal();
   
   /////////////////////////////////
@@ -58,9 +57,7 @@ export default function Categorias() {
           </button>
           <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal}> 
           </UploadFiles> 
-          <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
-             <h3>Creaer categoria</h3>
-          </CreateCategories> 
+         
         </div>
       </div>
       <div className={styles.searchBarContainer}>
