@@ -14,7 +14,7 @@ import { useEffect } from "react";
 
 export default function Categorias() {
 
-  const { isOpen, openModal, closeModal } = useModal();
+  const uploadCategories = useModal();
 
  
   /////////////////////////////////
@@ -36,7 +36,7 @@ export default function Categorias() {
 
   useEffect(() => {
     dispatch(getCategories());
-  }, [isOpen]);
+  }, [uploadCategories.isOpen]);
 
   return (
     <section className={styles.categorias}>
@@ -47,7 +47,7 @@ export default function Categorias() {
             <img src={exportIcon} alt="export-icon" />
             <span>Exportar categorias</span>
           </button>
-          <button className={styles.importCategories} onClick={openModal} >
+          <button className={styles.importCategories} onClick={uploadCategories.openModal} >
             <img src={importIcon} alt="import-icon" />
             <span>Importar categorias</span>
           </button>
@@ -55,9 +55,8 @@ export default function Categorias() {
             <img src={createIcon} alt="create-icon"/>
             <span>Crear categoria</span>
           </button>
-          <UploadFiles isOpen={isOpen} onClose={closeModal} closeModal={closeModal}> 
-          </UploadFiles>
-          
+          <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal} closeModal={uploadCategories.closeModal}> 
+          </UploadFiles> 
         </div>
       </div>
       <div className={styles.searchBarContainer}>
