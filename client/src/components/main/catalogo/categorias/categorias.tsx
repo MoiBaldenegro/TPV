@@ -1,6 +1,6 @@
 import styles from "./categorias.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories, searchCategories } from "../../../../redux/actions";
+import { getCategories,searchCategories } from "../../../../redux/actions/catalogo/categoriesActions";
 import deleteIcon from "../../../../assets/categorias/bloquedIcon.svg";
 import enabledIcon from "../../../../assets/categorias/enabledIcon.svg";
 import update from "../../../../assets/categorias/updateIcon.svg";
@@ -10,7 +10,6 @@ import createIcon from "../../../../assets/categorias/createIcon.svg";
 import searchIcon from "../../../../assets/categorias/searchIcon.svg";
 import UploadFiles from "./modals/uploadCategories/uploadCategories";
 import { useEffect } from "react";
-import CreateCategories from "./forms/createCategory.form";
 import { useModal } from "../../../../hooks/useModals";
 export default function Categorias() {
 
