@@ -48,17 +48,17 @@ export default function Categorias() {
             <img src={exportIcon} alt="export-icon" />
             <span>Exportar categorias</span>
           </button>
-          <button className={styles.importCategories} onClick={()=> { uploadCategories.openModal(1)}}>
+          <button className={styles.importCategories} onClick={uploadCategories.openModal}>
             <img src={importIcon} alt="import-icon" />
             <span>Importar categorias</span>
           </button>
-          <button className={styles.createCategories} onClick={()=> { uploadCategories.openModal(2)}}>
+          <button className={styles.createCategories} onClick={createCategory.openModal}>
             <img src={createIcon} alt="create-icon"/>
             <span>Crear categoria</span>
           </button>
-          <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal} id={1}> 
+          <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal}> 
           </UploadFiles> 
-          <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal} id={2}>
+          <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
              <h3>Creaer categoria</h3>
           </CreateCategories> 
         </div>
