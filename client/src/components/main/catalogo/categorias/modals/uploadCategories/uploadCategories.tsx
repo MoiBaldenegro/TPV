@@ -13,12 +13,11 @@ import closeIcon from "../../../../../../assets/public/closeIcon.svg"
 interface Props{
     isOpen: any,
     onClose: any,
-    children: any,
-    closeModal: any
+    children: any
 }
 
 
-export default function UploadFiles({ isOpen, onClose, children, closeModal } : Props){
+export default function UploadFiles({ isOpen, onClose, children } : Props){
     const onDrop = (acceptedFiles : any) => {
         setFiles(acceptedFiles[0])
     }
@@ -59,7 +58,7 @@ export default function UploadFiles({ isOpen, onClose, children, closeModal } : 
                         });
                         alert('Archivo subido con éxito.');
                         setFiles(null);
-                        closeModal(false);
+                        onClose();
                     } catch (error) {
                         console.error('Error al enviar los datos al servidor:', error);
                         alert('Error al enviar los datos al servidor.');

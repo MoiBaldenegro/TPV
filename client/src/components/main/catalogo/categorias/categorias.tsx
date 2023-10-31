@@ -11,10 +11,12 @@ import searchIcon from "../../../../assets/categorias/searchIcon.svg";
 import UploadFiles from "./modals/uploadCategories/uploadCategories";
 import { useModal } from "../../../../hooks/useModals";
 import { useEffect } from "react";
+import CreateCategories from "./forms/createCategory.form";
 
 export default function Categorias() {
 
   const uploadCategories = useModal();
+  const createCategories = useModal();
 
  
   /////////////////////////////////
@@ -55,8 +57,11 @@ export default function Categorias() {
             <img src={createIcon} alt="create-icon"/>
             <span>Crear categoria</span>
           </button>
-          <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal} closeModal={uploadCategories.closeModal}> 
+          <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal} > 
           </UploadFiles> 
+          <CreateCategories isOpen={isModalOpen} onClose={closeModal} closeModal={createCategories.closeModal}>
+             <h3>Creaer categoria</h3>
+          </CreateCategories> 
         </div>
       </div>
       <div className={styles.searchBarContainer}>
@@ -124,7 +129,4 @@ export default function Categorias() {
   );
 }
 
-/* <CreateCategories isOpen={isModalOpen} onClose={closeModal} >
-             <h3>Creaer categoria</h3>
-             ///
-          </CreateCategories> */
+
