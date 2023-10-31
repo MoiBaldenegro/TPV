@@ -57,8 +57,7 @@ export default function Categorias() {
             <img src={createIcon} alt="create-icon"/>
             <span>Crear categoria</span>
           </button>
-          <UploadFiles isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal} > 
-          </UploadFiles> 
+          
           <CreateCategories isOpen={createCategories.isOpen} onClose={createCategories.closeModal}>
              <h3>Creaer categoria</h3>
           </CreateCategories> 
