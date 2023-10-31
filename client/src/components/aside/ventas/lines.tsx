@@ -3,7 +3,7 @@ import styles from "./lines.module.css"
 // icons 
 import line from "../../../assets/dashboard/line.png";
 import redLine from "../../../assets/dashboard/redLine.png";
-import useAside from "../../../hooks/useAside/useAside";
+import useAside from "../../../hooks/useAside";
 
 interface Props{
     redLinePosition: number

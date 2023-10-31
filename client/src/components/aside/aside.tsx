@@ -22,7 +22,7 @@ import redLine from "../../assets/dashboard/redLine.png"
 
 import styles from "../aside/aside.module.css"
 import VentasMenu from "./ventas/ventasMenu"
-import useAside from "../../hooks/useAside/useAside"
+import useAside from "../../hooks/useAside"
 // Actions
 
 

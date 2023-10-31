@@ -14,7 +14,6 @@ export class Products {
   })
   category: string;
   @Prop({
-    unique: true,
     required: true,
     trim: true,
   })
