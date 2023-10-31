@@ -1,23 +1,22 @@
 import { useState } from 'react';
 
-// EN este hook gestionamos los valores necesarios para manejar modales
-export default function useModal(initialState = false) {
-  const [isOpen, setIsOpen] = useState(initialState);
+// Modificamos el hook para recibir un nombre o identificador
+export const useModal = (modalName) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Función para abrir el modal
   const openModal = () => {
     setIsOpen(true);
   };
 
-  // Función para cerrar el modal
   const closeModal = () => {
     setIsOpen(false);
   };
 
-  // Devolver el estado del modal y las funciones de apertura y cierre
   return {
     isOpen,
     openModal,
     closeModal,
+    // Agregamos el nombre del modal al objeto
+    modalName,
   };
 };
