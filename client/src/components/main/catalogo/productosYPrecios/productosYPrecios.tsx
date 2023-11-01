@@ -97,7 +97,15 @@ export default function ProductosYPrecios(){
                 </div>
                 <div className={styles.tableContainer}>
                     <table className={styles.table}>
-                        <thead></thead>
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Clave</th>
+                                <th>Producto</th>
+                                <th>Restaurante</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
                         <tbody></tbody>
                     </table>
                 </div>
@@ -109,19 +117,3 @@ export default function ProductosYPrecios(){
 }
 
 
-
-
-
-
-
-/* 
- <div  >
- 
-                            
-                        </div>
-                        
-
-                         
-
-
-*/
