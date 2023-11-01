@@ -10,7 +10,7 @@ import Promociones from "./components/main/promociones/promociones";
 import Caja from "./components/main/caja/caja";
 import Reservaciones from "./components/main/reservaciones/reservaciones";
 import Tableros from "./components/main/tableros/tableros";
-import Usuarios from "./components/main/usuarios/usuarios";
+// import Usuarios from "./components/main/usuarios/usuarios";
 import Mesas from "./components/main/mesas/mesas";
 import Reportes from "./components/main/reportes/reportes";
 import Ayuda from "./components/main/ayuda/ayuda";
@@ -27,7 +27,7 @@ export {
   Caja,
   Reservaciones,
   Tableros,
-  Usuarios,
+  // Usuarios,
   Mesas,
   Reportes,
   Ayuda,
