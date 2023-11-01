@@ -33,36 +33,27 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
             alert('Por favor, selecciona un archivo.');
             return;
         }
+        const data = new FormData();
+         data.append("file", files);
     
-        try {
-            const data = new FormData();
-            data.append("file", files);
+         // Leer el archivo Excel
+        const reader = new FileReader();
     
-            // Leer el archivo Excel
-            const reader = new FileReader();
+        reader.onload = (event) => {
+            const data = event.target.result;
+            const workbook = read(data, { type: "array" });
     
-            reader.onload = async (event) => {
-                const data = event.target.result;
-                const workbook = read(data, { type: "array" });
-    
-                // Procesar las hojas del archivo Excel
-                workbook.SheetNames.forEach((sheetName) => {
-                    const sheet = workbook.Sheets[sheetName];
-                    const sheetData = utils.sheet_to_json(sheet);
-                    dispatch(createCategory(sheetData))
-                    setFiles(null);
-                    onClose();   
-                });
-            };
-    
-            reader.readAsArrayBuffer(files);
-        } catch (error) {
-            console.error('Error al subir el archivo:', error);
-            alert('Error al subir el archivo.');
-        }
+            // Procesar las hojas del archivo Excel
+            workbook.SheetNames.forEach((sheetName) => {
+                const sheet = workbook.Sheets[sheetName];
+                const sheetData = utils.sheet_to_json(sheet);
+                dispatch(createCategory(sheetData))
+                setFiles(null);
+                onClose();   
+            });
+        };
+        reader.readAsArrayBuffer(files);  
     }
-    
-    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     const onReset = () => {
