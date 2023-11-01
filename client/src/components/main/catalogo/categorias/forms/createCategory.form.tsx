@@ -1,12 +1,10 @@
 import styles from "./createCategories.module.css";
-import { useModals } from "../../../../../hooks/useModals";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createCategory } from "../../../../../redux/actions";
 // icons
-import arrow from "../../../../../assets/public/arrow.svg";
 import disquet from "../../../../../assets/public/disquetIcon.svg"
 import createIcon from "../../../../../assets/public/createIcon.svg"
+import { createCategory } from "../../../../../redux/actions/catalogo/categoriesActions";
 
 interface Props {
   isOpen: any;
@@ -15,7 +13,6 @@ interface Props {
 }
 function CreateCategories({ isOpen, onClose, children }: Props) {
   const dispatch = useDispatch();
-  const { toggleLenguaje, lenguajeSelect } = useModals();
   const [category, setCategory] = useState({
     code: "25",
     categoryName: "sdfgsdfgfsdf",
@@ -64,17 +61,6 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
                 <input type="text" name="code" placeholder="code" onChange={handleChange} />
                 <input type="text" name="categoryName" placeholder="Nombre de la subcategoría" onChange={handleChange}  className={styles.inputCategory}/>
               </div>
-                <div className={styles.customSelect} onClick={toggleLenguaje}>
-                  <div className={styles.selectTrigger}>
-                    <span>Español</span>
-                    <img src={arrow} alt="" className={styles.arrowSelect} />
-                  </div>
-                  <div className={lenguajeSelect ? styles.options : styles.hidden}>
-                    <span className={styles.option}>English</span>
-                    <span className={styles.option}>French</span>
-                    <span className={styles.option}>摩西</span>
-                  </div>
-                </div>
             </div>
             <div className={styles.formRight}>
               <h3>Complementos</h3>
