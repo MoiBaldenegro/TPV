@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { read, utils } from 'xlsx';
 import { useDispatch } from 'react-redux';
 
-const useFileUpload = (actionCallback) => {
+const useUpload = (actionCallback) => {
   const dispatch = useDispatch();
   const [files, setFiles] = useState(null);
 
@@ -45,4 +45,4 @@ const useFileUpload = (actionCallback) => {
   };
 };
 
-export default useFileUpload;
+export default useUpload;
