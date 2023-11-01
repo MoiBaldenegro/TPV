@@ -1,6 +1,5 @@
 import axios from "axios";
 
-export const CREATE_CATEGORY = "CREATE_CATEGORY";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const SEARCH_CATEGORIES = "SEARCH_CATEGORIES";
 export const UPLOAD_CATEGORIES = "UPLOAD_CATRGORIES";
@@ -24,12 +23,10 @@ export const createCategory = category => async dispatch => {
         return;
       }
     } else {
-      const response = await axios.post("https://tomate-server.onrender.com/categories", category);
-      if (response.data) {
-        return;
-      }
+      return await axios.post("https://tomate-server.onrender.com/categories", category);
     }
   } catch (error) {
+    console.log(error)
     console.error('Error general:', error);
   }
 };
