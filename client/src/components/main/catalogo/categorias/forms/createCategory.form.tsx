@@ -82,5 +82,6 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
     </div>
   );
 }
+// new commit
 
 export default CreateCategories;
