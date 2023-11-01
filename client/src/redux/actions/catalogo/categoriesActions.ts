@@ -8,7 +8,6 @@ export const searchCategories = payload => ({type: SEARCH_CATEGORIES, payload })
 
 // Create Categories
 export const createCategory = category => async dispatch => {
-  try {
     if (Array.isArray(category)) {
       try {
         const res = await axios.post('https://tomate-server.onrender.com/categories', category);
@@ -23,13 +22,17 @@ export const createCategory = category => async dispatch => {
         return;
       }
     } else {
-      return await axios.post("https://tomate-server.onrender.com/categories", category);
+      try {
+        return await axios.post("https://tomate-server.onrender.com/categories", category);
+      } catch (error) {
+        console.log(error)
+        console.error('Error general:', error);
+      }
+      
     }
-  } catch (error) {
-    alert("entre a al catch");
-    console.log(error)
-    console.error('Error general:', error);
-  }
+   
+    
+  
 };
 
 
