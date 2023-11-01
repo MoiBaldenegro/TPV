@@ -1,7 +1,6 @@
 import styles from "./uploadCategories.module.css"
 //hooks
 import { useDropzone } from "react-dropzone";
-import { useState } from "react"; 
 //dependecies
 //icons
 import importIcon from "../../../../../../assets/public/importIcon.svg"
@@ -20,13 +19,10 @@ interface Props{
 
 export default function UploadFiles({ isOpen, onClose, children } : Props){
 
-    const { handleUpload, resetFiles } = useUpload(createCategory);
+    const { handleUpload, resetFiles, onDrop, files } = useUpload(createCategory);
     
-    const onDrop = (acceptedFiles : any) => {
-        setFiles(acceptedFiles[0])
-    }
+
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
-    const [ files, setFiles ] = useState(null);
 
     if (!isOpen) return null;
     return(

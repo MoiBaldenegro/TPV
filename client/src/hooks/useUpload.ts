@@ -37,11 +37,16 @@ const useUpload = (actionCallback) => {
     reader.readAsArrayBuffer(file);
   }, [dispatch, actionCallback]);
 
+  const onDrop = (acceptedFiles : any) => {
+    setFiles(acceptedFiles[0])
+}
+
   const resetFiles = () => {
     setFiles(null);
   };
 
   return {
+    onDrop,
     files,
     handleUpload,
     resetFiles,
