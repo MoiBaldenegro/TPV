@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-export const useModal = () => {
+// Modificamos el hook para recibir un nombre o identificador
+export const useModal = (modalName: string) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
-    console.log(isOpen);
     setIsOpen(true);
   };
 
@@ -16,5 +16,6 @@ export const useModal = () => {
     isOpen,
     openModal,
     closeModal,
+    modalName,
   };
 };
