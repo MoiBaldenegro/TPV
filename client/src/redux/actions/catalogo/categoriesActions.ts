@@ -11,6 +11,7 @@ export const searchCategories = payload => ({type: SEARCH_CATEGORIES, payload })
 export const createCategory = category => async dispatch => {
   try {
     if (Array.isArray(category)) {
+      console.log("entre aca")
       try {
         await axios.post('https://tomate-server.onrender.com/categories', category);
         alert('Archivo subido con éxito.');

@@ -1,15 +1,16 @@
 import styles from "./uploadCategories.module.css"
+
 //hooks
 import { useDropzone } from "react-dropzone";
 import { useState } from "react"; 
+import { useDispatch } from "react-redux";
 //dependecies
-import axios from "axios";
 import { read, utils } from 'xlsx';
 //icons
 import importIcon from "../../../../../../assets/public/importIcon.svg"
 import iconExcel from "../../../../../../assets/public/iconExcel.svg";
 import closeIcon from "../../../../../../assets/public/closeIcon.svg"
-import { useDispatch } from "react-redux";
+
 import { createCategory } from "../../../../../../redux/actions/catalogo/categoriesActions";
 
 interface Props{
