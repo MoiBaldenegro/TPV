@@ -9,6 +9,8 @@ import { read, utils } from 'xlsx';
 import importIcon from "../../../../../../assets/public/importIcon.svg"
 import iconExcel from "../../../../../../assets/public/iconExcel.svg";
 import closeIcon from "../../../../../../assets/public/closeIcon.svg"
+import { useDispatch } from "react-redux";
+import { createCategory } from "../../../../../../redux/actions/catalogo/categoriesActions";
 
 interface Props{
     isOpen: any,
@@ -18,6 +20,7 @@ interface Props{
 
 
 export default function UploadFiles({ isOpen, onClose, children } : Props){
+    const dispatch = useDispatch();
     const onDrop = (acceptedFiles : any) => {
         setFiles(acceptedFiles[0])
     }
@@ -28,52 +31,33 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     const HandleUpload = async () => {
         if (!files) {
-            alert('Por favor, selecciona un archivo.');
-            return;
+          alert('Por favor, selecciona un archivo.');
+          return;
         }
-    
-        try {
-            const data = new FormData();
-            data.append("file", files);
-    
-            // Leer el archivo Excel
-            const reader = new FileReader();
-    
-            reader.onload = async (event) => {
-                const data = event.target.result;
-                const workbook = read(data, { type: "array" });
-    
-                // Procesar las hojas del archivo Excel
-                workbook.SheetNames.forEach((sheetName) => {
-                    const sheet = workbook.Sheets[sheetName];
-                    const sheetData = utils.sheet_to_json(sheet);
-                    console.log(`Contenido de la hoja "${sheetName}":`, sheetData);
-                    
-                    try {
-                        console.log(sheetData)
-                        axios.post('https://tomate-server.onrender.com/categories', sheetData, {
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                        });
-                        alert('Archivo subido con éxito.');
-                        setFiles(null);
-                        onClose();
-                    } catch (error) {
-                        console.error('Error al enviar los datos al servidor:', error);
-                        alert('Error al enviar los datos al servidor.');
-                    }
-                });
-            };
-    
-            reader.readAsArrayBuffer(files);
-        } catch (error) {
-            console.error('Error al subir el archivo:', error);
-            alert('Error al subir el archivo.');
-        }
-    }
-    
-    
+      
+        const data = new FormData();
+        data.append("file", files);
+      
+        // Leemos el archivo
+        const reader = new FileReader();
+      
+        reader.onload = (event) => {
+          const data = event.target.result;
+          const workbook = read(data, { type: "array" });
+      
+          // Procesar las hojas del archivo Excel
+          workbook.SheetNames.forEach((sheetName) => {
+            const sheet = workbook.Sheets[sheetName];
+            const sheetData = utils.sheet_to_json(sheet);
+            console.log(`Contenido de la hoja "${sheetName}":`, sheetData);
+      
+            dispatch(createCategory(sheetData));
+            setFiles(null);
+            onClose();
+          });
+        }; 
+      };
+      
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     const onReset = () => {
