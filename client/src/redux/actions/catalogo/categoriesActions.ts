@@ -17,7 +17,7 @@ export const createCategory = category => async dispatch => {
           throw new Error("Ha ocurrido algo inesperado")
         }
         alert('Archivo subido con éxito.');
-        return;
+        return dispatch({ type: CREATE_CATEGORY, payload: res.data });
       } catch (error) {
         console.error('Error al enviar los datos al servidor:', error);
         alert('Error al enviar los datos al servidor.');
