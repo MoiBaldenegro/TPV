@@ -14,6 +14,9 @@ export const createCategory = category => async dispatch => {
       if(!res.data){
         throw new Error("Ha ocurrido algo inesperado, la respuesta no contiene datos")
       }
+      if(res.status === 409){
+        throw new Error("Esta categoria ya se encuentra listada");
+      }
       alert('Archivo subido con éxito.');
     } else {
       const response = await axios.post("https://tomate-server.onrender.com/categories", category);
