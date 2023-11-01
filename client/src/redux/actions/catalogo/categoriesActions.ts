@@ -23,8 +23,15 @@ export const createCategory = category => async dispatch => {
       alert('categoria creada con éxito.');
     } 
   } catch (error) {
-    alert("entre al catch")
-    console.log(error)
+    if (axios.isCancel(error)) {
+      console.log('La solicitud fue cancelada:', error);
+    } else if (error.response && error.response.status === 409) {
+      console.error('Error de conflicto:', error);
+      alert('Esta categoria ya existe');
+    } else {
+      alert("Ha ocurrido algo inesperado, y no se ha podido enviar la informacion");
+      console.log(error);
+    }
   }
   /*
     if (Array.isArray(category)) {
