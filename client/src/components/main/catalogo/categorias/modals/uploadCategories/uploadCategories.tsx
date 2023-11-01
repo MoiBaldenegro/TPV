@@ -20,6 +20,7 @@ interface Props{
 export default function UploadFiles({ isOpen, onClose, children } : Props){
 
     const { handleUpload, resetFiles } = useUpload(createCategory);
+    
     const onDrop = (acceptedFiles : any) => {
         setFiles(acceptedFiles[0])
     }
