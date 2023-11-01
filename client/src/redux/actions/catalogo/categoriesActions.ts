@@ -29,11 +29,6 @@ export const createCategory = category => async dispatch => {
   }
 };
 
-    
-  
-};
-
-
 //Get categories
 export const getCategories = () => {
     return async (dispatch) => {
