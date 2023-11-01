@@ -31,6 +31,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     const HandleUpload = async () => {
+        alert("me ejecute debuguin")
         if (!files) {
           alert('Por favor, selecciona un archivo.');
           return;
