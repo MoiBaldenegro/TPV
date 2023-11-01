@@ -49,19 +49,9 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                 workbook.SheetNames.forEach((sheetName) => {
                     const sheet = workbook.Sheets[sheetName];
                     const sheetData = utils.sheet_to_json(sheet);
-                    console.log(`Contenido de la hoja "${sheetName}":`, sheetData);
-                    
-                    try {
-                        alert(sheetData)
-                        dispatch(createCategory(sheetData))
-                        
-                        alert('Archivo subido con éxito.');
-                        setFiles(null);
-                        onClose();
-                    } catch (error) {
-                        console.error('Error al enviar los datos al servidor:', error);
-                        alert('Error al enviar los datos al servidor.');
-                    }
+                    dispatch(createCategory(sheetData))
+                    setFiles(null);
+                    onClose();   
                 });
             };
     
