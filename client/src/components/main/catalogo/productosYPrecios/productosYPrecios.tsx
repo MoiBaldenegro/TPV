@@ -1,18 +1,28 @@
 import styles from "./productosYPrecios.module.css"
+//hooks
+import { useEffect } from "react";  
 
 // icons
 import exportIcon from "../../../../assets/public/exportIcon.svg"
 import importIcon from "../../../../assets/public/importIcon.svg"
 import createIcon from "../../../../assets/public/createIcon.svg"
 import helpIcon from "../../../../assets/public/helpIcon.svg"
-// import arrow from "../../../../assets/public/arrow.svg"
 import filterIcon from "../../../../assets/public/filterIcon.svg"
-import searchIcon from "../../../../assets/public/searchIcon.svg"
+import searchIcon from "../../../../assets/public/searchIcon.svg";
+// import arrow from "../../../../assets/public/arrow.svg"
+import { useDispatch, useSelector } from "react-redux"
+import { getProducts } from "../../../../redux/actions/catalogo/productsActions"
 
 
 
 export default function ProductosYPrecios(){
-    return (
+    const dispatch = useDispatch();
+    const { allProducts } = useSelector(state => state.products)
+
+    useEffect(()=> {
+        dispatch(getProducts());
+    },[])
+    return ( 
         <div className={styles.container} >
             <section className={styles.head}>
                 <h2>Productos y precios</h2>
@@ -106,7 +116,11 @@ export default function ProductosYPrecios(){
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                            <tr>
+                                <td>{allProducts[0].code}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div className={styles.tableFooter}>

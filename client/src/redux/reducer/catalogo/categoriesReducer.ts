@@ -18,12 +18,6 @@ import { SEARCH_CATEGORIES, GET_CATEGORIES } from "../../actions/catalogo/catego
                         ...state,
                         allCategories: action.payload
                     }
-                    
-        case GET_CATEGORIES:
-            return {
-                ...state,
-                StateInit: action.payload
-            }
       default:
         return state;
     }
