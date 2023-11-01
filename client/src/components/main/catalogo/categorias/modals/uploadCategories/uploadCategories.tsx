@@ -21,6 +21,8 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
 
     const { handleUpload, resetFiles, onDrop, files } = useUpload(createCategory);
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+    if (!isOpen) return null;
     return(
         <div className={styles.modal} >
             <div className={styles.modalContent}>
@@ -43,7 +45,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                     </div>
                 )}
             </div>
-            <button disabled={!files} className={styles.importButton} onClick={handleUpload}> <img src={importIcon} alt="" />Importar</button>
+            <button disabled={!files} className={styles.importButton} onClick={()=>{handleUpload(); onClose();}}> <img src={importIcon} alt="" />Importar</button>
             </div>
         </div>
     )
