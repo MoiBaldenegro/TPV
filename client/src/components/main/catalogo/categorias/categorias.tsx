@@ -38,7 +38,7 @@ export default function Categorias() {
 
   useEffect(() => {
     dispatch(getCategories());
-  }, [createCategory.isOpen]);
+  }, [createCategory.isOpen, allCategories]);
 
   return (
     <section className={styles.categorias}>
