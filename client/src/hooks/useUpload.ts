@@ -11,8 +11,8 @@ const useUpload = (actionCallback) => {
       alert('Por favor, selecciona un archivo.');
       return;
     }
-    if (!file || !(file instanceof Blob)) {
-        alert('Por favor, selecciona un archivo válido.');
+    if (!(file instanceof Blob) || !file.name.endsWith('.xlsx')) {
+        alert('Por favor, selecciona un archivo de Excel válido (extensión .xlsx).');
         return;
       }
     const data = new FormData();
