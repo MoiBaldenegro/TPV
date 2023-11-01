@@ -30,7 +30,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    const HandleUpload = async () => {
+    const HandleUpload = () => {
         if (!files) {
           alert('Por favor, selecciona un archivo.');
           return;
@@ -47,10 +47,11 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
       
           // Procesar las hojas del archivo Excel
           workbook.SheetNames.forEach((sheetName) => {
-            console.log("Me ejecute cuncion dentro de funcion");
             const sheet = workbook.Sheets[sheetName];
             const sheetData = utils.sheet_to_json(sheet);
             console.log(`Contenido de la hoja "${sheetName}":`, sheetData);
+            alert(sheetName)
+            console.log(sheetData)
       
             dispatch(createCategory(sheetData));
             setFiles(null);
