@@ -9,6 +9,7 @@ export const searchCategories = payload => ({type: SEARCH_CATEGORIES, payload })
 
 // Create Categories
 export const createCategory = category => async dispatch => {
+  console.log(typeof category)
   try {
     if (Array.isArray(category)) {
       console.log("entre aca")
