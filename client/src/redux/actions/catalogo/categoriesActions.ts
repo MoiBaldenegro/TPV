@@ -26,6 +26,7 @@ export const createCategory = category => async dispatch => {
       return await axios.post("https://tomate-server.onrender.com/categories", category);
     }
   } catch (error) {
+    alert("entre a al catch");
     console.log(error)
     console.error('Error general:', error);
   }
