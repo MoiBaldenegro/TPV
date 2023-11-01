@@ -26,6 +26,7 @@ const useFileUpload = (actionCallback) => {
       workbook.SheetNames.forEach((sheetName) => {
         const sheet = workbook.Sheets[sheetName];
         const sheetData = utils.sheet_to_json(sheet);
+        alert("Debuguenado")
         dispatch(actionCallback(sheetData)); 
         setFiles(null);
       });

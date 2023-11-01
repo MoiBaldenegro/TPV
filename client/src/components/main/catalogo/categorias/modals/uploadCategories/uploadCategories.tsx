@@ -2,13 +2,14 @@ import styles from "./uploadCategories.module.css"
 //hooks
 import { useDropzone } from "react-dropzone";
 import { useState } from "react"; 
+import useUpload from "../../../../../../hooks/useUpload";
 //dependecies
 //icons
 import importIcon from "../../../../../../assets/public/importIcon.svg"
 import iconExcel from "../../../../../../assets/public/iconExcel.svg";
 import closeIcon from "../../../../../../assets/public/closeIcon.svg"
 import { createCategory } from "../../../../../../redux/actions/catalogo/categoriesActions";
-import useUpload from "../../../../../../hooks/useUpload";
+
 
 interface Props{
     isOpen: any,
