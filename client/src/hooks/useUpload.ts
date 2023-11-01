@@ -7,6 +7,7 @@ const useUpload = (actionCallback) => {
   const [files, setFiles] = useState(null);
 
   const handleUpload = useCallback(async () => {
+    console.log(files)
     if (!files) {
       alert('Por favor, selecciona un archivo.');
       return;
@@ -39,6 +40,8 @@ const useUpload = (actionCallback) => {
 }
 
   const resetFiles = () => {
+    alert(files)
+    console.log(files)
     setFiles(null);
   };
 
