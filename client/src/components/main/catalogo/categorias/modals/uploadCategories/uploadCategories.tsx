@@ -20,8 +20,6 @@ interface Props{
 export default function UploadFiles({ isOpen, onClose, children } : Props){
 
     const { handleUpload, resetFiles, onDrop, files } = useUpload(createCategory);
-    
-
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
     if (!isOpen) return null;
