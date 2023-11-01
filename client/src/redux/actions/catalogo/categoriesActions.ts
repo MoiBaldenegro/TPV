@@ -24,8 +24,10 @@ export const createCategory = category => async dispatch => {
     } else {
       try {
         const response = await axios.post("https://tomate-server.onrender.com/categories", category);
+        alert('categoria creada con éxito.');
         return response;
       } catch (error) {
+        alert("Error")
         console.log(error)
         console.error('Error general:', error);
       }
