@@ -16,8 +16,8 @@ import { useModal } from "../../../../hooks/useModals";
 
 export default function Categorias() {
 
-  const createCategory = useModal("createCategory");
-  const uploadCategories = useModal("uploadCategory");
+  const createCategory = useModal();
+  const uploadCategories = useModal();
   
   ////////////////////////////////////////////////////////////////////////////////////// 
   const dispatch = useDispatch();

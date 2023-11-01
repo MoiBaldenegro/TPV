@@ -33,31 +33,7 @@ export const createCategory = category => async dispatch => {
       console.log(error);
     }
   }
-  /*
-    if (Array.isArray(category)) {
-      
-       
-       
-      
-        console.error('Error al enviar los datos al servidor:', error);
-        alert('Error al enviar los datos al servidor.');
-        return;
-      }
-    } else {
-      try {
-        
-      } catch (error) {
-        alert("Error")
-        console.log(error)
-        console.error('Error general:', error);
-      }
-      
-    } */
-   
-    
-  
 };
-
 
 //Get categories
 export const getCategories = () => {
