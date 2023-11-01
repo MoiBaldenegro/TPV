@@ -6,7 +6,7 @@ const useUpload = (actionCallback) => {
   const dispatch = useDispatch();
   const [files, setFiles] = useState(null);
 
-  const handleUpload = useCallback(async () => {
+  const handleUpload = () => {
     console.log(files)
     if (!files) {
       alert('Por favor, selecciona un archivo.');
@@ -33,7 +33,7 @@ const useUpload = (actionCallback) => {
       });
     };
     reader.readAsArrayBuffer(files);
-  }, [dispatch, actionCallback]);
+  };
 
   const onDrop = (acceptedFiles : any) => {
     setFiles(acceptedFiles[0])
