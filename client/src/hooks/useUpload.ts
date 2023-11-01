@@ -6,14 +6,14 @@ const useUpload = (actionCallback) => {
   const dispatch = useDispatch();
   const [files, setFiles] = useState(null);
 
-  const handleUpload = useCallback(async (file) => {
-    if (!file) {
+  const handleUpload = useCallback(async () => {
+    if (!files) {
       alert('Por favor, selecciona un archivo.');
       return;
     }
    
     const data = new FormData();
-    data.append('file', file);
+    data.append('file', files);
 
     // Leemos el archivo 
     const reader = new FileReader();
@@ -31,7 +31,7 @@ const useUpload = (actionCallback) => {
         setFiles(null);
       });
     };
-    reader.readAsArrayBuffer(file);
+    reader.readAsArrayBuffer(files);
   }, [dispatch, actionCallback]);
 
   const onDrop = (acceptedFiles : any) => {
