@@ -5,7 +5,7 @@ export const GET_PRODUCTS = "GET_PRODUCTS";
 
 
 
-}export const getProducts = () => {
+export const getProducts = () => {
     return async (dispatch) => {
       try {
         const response = await axios("https://tomate-server.onrender.com/categories");
