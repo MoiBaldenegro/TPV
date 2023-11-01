@@ -35,7 +35,6 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
           alert('Por favor, selecciona un archivo.');
           return;
         }
-      
         const data = new FormData();
         data.append("file", files);
       
@@ -48,6 +47,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
       
           // Procesar las hojas del archivo Excel
           workbook.SheetNames.forEach((sheetName) => {
+            console.log("Me ejecute cuncion dentro de funcion");
             const sheet = workbook.Sheets[sheetName];
             const sheetData = utils.sheet_to_json(sheet);
             console.log(`Contenido de la hoja "${sheetName}":`, sheetData);
@@ -58,14 +58,10 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
           });
         }; 
       };
-      
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     const onReset = () => {
         setFiles(null)
     }
-  
-
     if (!isOpen) return null;
     return(
         <div className={styles.modal} >
