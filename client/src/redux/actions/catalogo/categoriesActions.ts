@@ -23,6 +23,7 @@ export const createCategory = category => async dispatch => {
       alert('categoria creada con éxito.');
     } 
   } catch (error) {
+    alert("entre al catch")
     console.log(error)
   }
   /*
