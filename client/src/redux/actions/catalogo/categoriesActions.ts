@@ -17,7 +17,7 @@ export const createCategory = category => async dispatch => {
           throw new Error("Ha ocurrido algo inesperado")
         }
         alert('Archivo subido con éxito.');
-        return dispatch({ type: CREATE_CATEGORY, payload: res.data });
+        return;
       } catch (error) {
         console.error('Error al enviar los datos al servidor:', error);
         alert('Error al enviar los datos al servidor.');
@@ -26,7 +26,7 @@ export const createCategory = category => async dispatch => {
     } else {
       const response = await axios.post("https://tomate-server.onrender.com/categories", category);
       if (response.data) {
-        return dispatch({ type: CREATE_CATEGORY, payload: response.data });
+        return;
       }
     }
   } catch (error) {
