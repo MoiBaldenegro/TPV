@@ -8,32 +8,27 @@ export const searchCategories = payload => ({type: SEARCH_CATEGORIES, payload })
 
 // Create Categories
 export const createCategory = category => async dispatch => {
+  try {
     if (Array.isArray(category)) {
-      try {
-        const res = await axios.post('https://tomate-server.onrender.com/categories', category);
-        if(!res){
-          throw new Error("Ha ocurrido algo inesperado")
-        }
-        alert('Archivo subido con éxito.');
-        return;
-      } catch (error) {
-        console.error('Error al enviar los datos al servidor:', error);
-        alert('Error al enviar los datos al servidor.');
-        return;
+      const res = await axios.post('https://tomate-server.onrender.com/categories', category);
+      if (!res.data) {
+        throw new Error("La respuesta no contiene datos");
       }
+      alert('Archivo subido con éxito.');
     } else {
-      try {
-        const response = await axios.post("https://tomate-server.onrender.com/categories", category);
-        alert('categoria creada con éxito.');
-        return response;
-      } catch (error) {
-        alert("Error")
-        console.log(error)
-        console.error('Error general:', error);
+      const response = await axios.post("https://tomate-server.onrender.com/categories", category);
+      if (!response.data) {
+        throw new Error("La respuesta no contiene datos");
       }
-      
+      alert('Categoría creada con éxito.');
+      return response;
     }
-   
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Ha ocurrido un error al procesar la solicitud.');
+  }
+};
+
     
   
 };
