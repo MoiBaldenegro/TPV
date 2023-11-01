@@ -11,6 +11,7 @@ import searchIcon from "../../../../assets/categorias/searchIcon.svg";
 import UploadFiles from "./modals/uploadCategories/uploadCategories";
 import { useEffect } from "react";
 import { useModal } from "../../../../hooks/useModals";
+import CreateCategories from "./forms/createCategory.form";
 
 
 
@@ -60,9 +61,9 @@ export default function Categorias() {
             <span>Crear categoria</span>
           </button>
          
-          {/* createCategory.isOpen && createCategory.modalName ? <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
+          { createCategory.isOpen && createCategory.modalName === "createCategory" ? <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
              <h3>Creaer categoria</h3>
-  </CreateCategories> : null */  }
+              </CreateCategories> : null  }
         </div>
       </div>
       <div className={styles.searchBarContainer}>
