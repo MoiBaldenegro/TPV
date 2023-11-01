@@ -11,7 +11,10 @@ const useUpload = (actionCallback) => {
       alert('Por favor, selecciona un archivo.');
       return;
     }
-
+    if (!file || !(file instanceof Blob)) {
+        alert('Por favor, selecciona un archivo válido.');
+        return;
+      }
     const data = new FormData();
     data.append('file', file);
 
