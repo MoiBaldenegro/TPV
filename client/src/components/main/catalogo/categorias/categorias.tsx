@@ -60,7 +60,6 @@ export default function Categorias() {
             <img src={createIcon} alt="create-icon"/>
             <span>Crear categoria</span>
           </button>
-         
           { createCategory.isOpen && createCategory.modalName === "createCategory" ? <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
              <h3>Creaer categoria</h3>
               </CreateCategories> : null  }
