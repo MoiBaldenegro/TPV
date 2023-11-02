@@ -119,7 +119,7 @@ export default function ProductosYPrecios(){
                         </thead>
                         <tbody>
                             <tr>
-                                <td>valores</td>
+                                <td>{allProducts? allProducts[0].code : ""}</td>
                             </tr>
                         </tbody>
                     </table>
