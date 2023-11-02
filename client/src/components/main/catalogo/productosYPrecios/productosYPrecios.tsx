@@ -123,9 +123,9 @@ export default function ProductosYPrecios(){
                                 console.log(allProducts);// Agrega este log para depurar
                                 return (
                                     <tr key={index}>
-                                        <td>{product.categoryName}</td>
-                                        <td>{product.Code}</td>
-                                        <td>{product.priceOnSite}</td>
+                                        <td>{product}</td>
+                                        <td>{product}</td>
+                                        <td>{product}</td>
                                     </tr>
                                 );
                             })}
