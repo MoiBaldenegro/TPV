@@ -39,7 +39,7 @@ export default function Categorias() {
 
   useEffect(() => {
     dispatch(getCategories());
-  }, [allCategories]);
+  }, [allCategories, uploadCategories.closeModal]);
 
   return (
     <section className={styles.categorias}>
