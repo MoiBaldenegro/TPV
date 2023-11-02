@@ -21,6 +21,7 @@ export default function ProductosYPrecios(){
 
     useEffect(()=> {
         dispatch(getProducts());
+        console.log(allProducts);
     },[])
     return ( 
         <div className={styles.container} >
