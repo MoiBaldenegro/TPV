@@ -22,7 +22,7 @@ export default function ProductosYPrecios(){
     useEffect(()=> {
         dispatch(getProducts());
         console.log(allProducts);
-    },[allProducts])
+    },[])
     return ( 
         <div className={styles.container} >
             <section className={styles.head}>
@@ -118,18 +118,16 @@ export default function ProductosYPrecios(){
                             </tr>
                         </thead>
                         <tbody>
-                        
-                                {allProducts?.map(product => {
-                                    return (
-                                        <tr>
-                                    <td>{product.categoryName}</td>
-                                    <td>{product.Code}</td>
-                                    <td>{product.priceOnSite}</td>
-                                </tr>
-                                    )
-                                }
-                                    
-                                )}
+                        {allProducts?.map(product => {
+    console.log("Mapping product:", product); // Agrega este log para depurar
+    return (
+        <tr key={product.id}>
+            <td>{product.categoryName}</td>
+            <td>{product.Code}</td>
+            <td>{product.priceOnSite}</td>
+        </tr>
+    );
+})}
                             
                         </tbody>
                     </table>
