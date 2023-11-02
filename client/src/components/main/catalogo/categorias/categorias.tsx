@@ -48,7 +48,7 @@ export default function Categorias() {
       <div className={styles.categoriasButtons}>
         <h2>Categorias</h2>
         <div className={styles.categoriesButtonsContainer}>
-          <button className={styles.exportCategories}>
+          <button className={styles.exportCategories} onClick={saveCategories.openModal}>
             <img src={exportIcon} alt="export-icon" />
             <span>Exportar categorias</span>
           </button>
