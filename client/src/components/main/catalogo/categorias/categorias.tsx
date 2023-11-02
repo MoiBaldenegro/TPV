@@ -65,11 +65,8 @@ export default function Categorias() {
           { createCategory.isOpen && createCategory.modalName === "createCategory" ? <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
              <h3>Creaer categoria</h3>
               </CreateCategories> : null }
-          {/* saveCategories.isOpen && saveCategories.modalName === "saveCategories" ?  <SaveCategoriesModal isOpen={saveCategories.isOpen} onClose={saveCategories.closeModal}> 
-          </SaveCategoriesModal> : null */}
-          <SaveCategoriesModal isOpen={saveCategories.isOpen} onClose={saveCategories.closeModal}> 
-          </SaveCategoriesModal>
-          
+          { saveCategories.isOpen && saveCategories.modalName === "saveCategories" ?  <SaveCategoriesModal isOpen={saveCategories.isOpen} onClose={saveCategories.closeModal}> 
+          </SaveCategoriesModal> : null } 
         </div>
       </div>
       <div className={styles.searchBarContainer}>
