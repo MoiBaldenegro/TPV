@@ -10,7 +10,7 @@ export default function productsReducer(state = initialState, action){
     switch(action.type){
 
         case GET_PRODUCTS:
-            alert(action.payload)
+            console.log(action.payload)
             return {
                 ...state,
                 allProducts: action.payload
