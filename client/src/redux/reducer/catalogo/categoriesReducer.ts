@@ -1,7 +1,9 @@
-import { SEARCH_CATEGORIES, GET_CATEGORIES } from "../../actions/catalogo/categoriesActions";
+import { SEARCH_CATEGORIES, GET_CATEGORIES_SUCESS, GET_CATEGORIES_REQUEST, GET_CATEGORIES_FAILURE } from "../../actions/catalogo/categoriesActions";
   
   const initialState = {
     allCategories: [],
+    loading: false,
+    error: null
   };
   
   export default function categoriesReducer(state = initialState, action) {
@@ -13,11 +15,22 @@ import { SEARCH_CATEGORIES, GET_CATEGORIES } from "../../actions/catalogo/catego
                     ...state,
                     allCategories: categoriesSearch
                 }
-                case GET_CATEGORIES:
+                case GET_CATEGORIES_SUCESS:
                     return{
                         ...state,
                         allCategories: action.payload
                     }
+                    case GET_CATEGORIES_REQUEST:
+                      return{
+                        ...state,
+                      loading: true  
+                      }
+                      case GET_CATEGORIES_FAILURE:
+                        return {
+                          ...state,
+                          error: action.error,
+                          isLoading: false,
+                        };
       default:
         return state;
     }

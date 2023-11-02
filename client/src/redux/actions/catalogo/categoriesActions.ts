@@ -1,8 +1,10 @@
 import axios from "axios";
 
-export const GET_CATEGORIES = "GET_CATEGORIES";
+export const GET_CATEGORIES_SUCESS = "GET_CATEGORIES_SUCESS";
 export const SEARCH_CATEGORIES = "SEARCH_CATEGORIES";
 export const UPLOAD_CATEGORIES = "UPLOAD_CATRGORIES";
+export const GET_CATEGORIES_REQUEST = "GET_CATEGORIES_REQUEST";
+export const GET_CATEGORIES_FAILURE = "GET_CATEGORIES_FAILURE";
 
 export const searchCategories = payload => ({type: SEARCH_CATEGORIES, payload })
 
@@ -41,8 +43,19 @@ export const createCategory = category => async dispatch => {
 //Get categories
 export const getCategories = () => {
     return async (dispatch) => {
-      const response = await axios("https://tomate-server.onrender.com/categories");
-      return dispatch({type: GET_CATEGORIES, payload: response.data})
+      dispatch({ type: GET_CATEGORIES_REQUEST }); // Enviamos la peticion al servidor
+      try {
+        const response = await axios("https://tomate-server.onrender.com/categories");
+        if(response.status === 200){
+          return dispatch({type: GET_CATEGORIES_SUCESS, payload: response.data})
+        } else {
+          dispatch({ type: GET_CATEGORIES_FAILURE, error: "Respuesta inesperada del servidor" });
+        }
+      } catch (error) {
+        dispatch({ type: GET_CATEGORIES_FAILURE, error: "Error en la solicitud" });
+      }
+     
+      
     }
 
   } 

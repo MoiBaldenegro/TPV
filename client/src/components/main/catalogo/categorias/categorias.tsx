@@ -12,6 +12,7 @@ import UploadFiles from "./modals/uploadCategories/uploadCategories";
 import { useEffect } from "react";
 import { useModal } from "../../../../hooks/useModals";
 import CreateCategories from "./forms/createCategory.form";
+import SaveCategoriesModal from "./modals/confirms/saveCategories";
 
 
 
@@ -19,6 +20,7 @@ export default function Categorias() {
 
   const createCategory = useModal("createCategory");
   const uploadCategories = useModal("uploadCategories");
+  const saveCategories = useModal("saveCategories")
   
   ////////////////////////////////////////////////////////////////////////////////////// 
   const dispatch = useDispatch();
@@ -62,7 +64,9 @@ export default function Categorias() {
           </button>
           { createCategory.isOpen && createCategory.modalName === "createCategory" ? <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
              <h3>Creaer categoria</h3>
-              </CreateCategories> : null  }
+              </CreateCategories> : null }
+          { saveCategories.isOpen && saveCategories.modalName === "saveCategories" ? <SaveCategoriesModal isOpen={saveCategories.isOpen} onClose={saveCategories.closeModal}> 
+          </SaveCategoriesModal> : null}
         </div>
       </div>
       <div className={styles.searchBarContainer}>
