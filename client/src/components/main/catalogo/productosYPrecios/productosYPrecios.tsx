@@ -9,6 +9,8 @@ import createIcon from "../../../../assets/public/createIcon.svg"
 import helpIcon from "../../../../assets/public/helpIcon.svg"
 import filterIcon from "../../../../assets/public/filterIcon.svg"
 import searchIcon from "../../../../assets/public/searchIcon.svg";
+import update from "../../../../assets/categorias/updateIcon.svg";
+import deleteIcon from "../../../../assets/categorias/bloquedIcon.svg";
 // import arrow from "../../../../assets/public/arrow.svg"
 import { useDispatch, useSelector } from "react-redux"
 import { getProducts } from "../../../../redux/actions/catalogo/productsActions"
@@ -124,6 +126,16 @@ export default function ProductosYPrecios(){
                                         <td>{product.code}</td>
                                         <td>{product.productName}</td>
                                         <td>{product.priceInSite}</td>
+                                        <>
+                      <button className={styles.actionButtonsFirst}>
+                        <img src={update} alt="update-icon" />
+                      </button>
+                      <button
+                        className={styles.actionButtonsSecond}
+                      >
+                        <img src={deleteIcon} alt="delete-icon" />
+                      </button>
+                    </>
                                     </tr>
                                 )
                             )}
