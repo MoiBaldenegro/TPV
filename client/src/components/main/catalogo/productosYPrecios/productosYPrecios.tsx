@@ -119,11 +119,13 @@ export default function ProductosYPrecios(){
                         </thead>
                         <tbody>
                         
-                                {allProducts?.map(product => <tr>
+                                {allProducts?.map(product => ( 
+                                    <tr>
                                     <td>{product.categoryName}</td>
                                     <td>{product.Code}</td>
                                     <td>{product.priceOnSite}</td>
-                                </tr>)}
+                                </tr>)
+                                )}
                             
                         </tbody>
                     </table>
