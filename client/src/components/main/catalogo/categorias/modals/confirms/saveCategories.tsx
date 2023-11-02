@@ -19,8 +19,8 @@ export default function SaveCategoriesModal({ isOpen, onClose, children } : Prop
         loading ? <ConfirmLoader/> : allCategories && allCategories.length > 0 ? (
             <div className={styles.modal}>
                 {children}
-                <h1>Categorias guardadas</h1>
-                <button onClick={onClose}></button>
+                <h1 className={styles.tittle}>Categorias guardadas</h1>
+                <button onClick={onClose}>Aceptar</button>
             </div>
         ) : null 
 
