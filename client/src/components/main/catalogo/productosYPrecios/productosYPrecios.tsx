@@ -118,9 +118,13 @@ export default function ProductosYPrecios(){
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                { allProducts ? <td>{allProducts[0].code} </td> : null } 
-                            </tr>
+                        
+                                {allProducts?.map(product => <tr>
+                                    <td>{product.categoryName}</td>
+                                    <td>{product.Code}</td>
+                                    <td>{product.priceOnSite}</td>
+                                </tr>)}
+                            
                         </tbody>
                     </table>
                 </div>
