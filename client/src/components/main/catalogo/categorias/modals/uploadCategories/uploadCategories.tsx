@@ -13,11 +13,12 @@ import useUpload from "../../../../../../hooks/useUpload";
 interface Props{
     isOpen: any,
     onClose: any,
-    children: any
+    children: any,
+    openModal: any
 }
 
 
-export default function UploadFiles({ isOpen, onClose, children } : Props){
+export default function UploadFiles({ isOpen, onClose, children, openModal } : Props){
 
     const { handleUpload, resetFiles, onDrop, files } = useUpload(createCategory);
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
@@ -45,7 +46,7 @@ export default function UploadFiles({ isOpen, onClose, children } : Props){
                     </div>
                 )}
             </div>
-            <button disabled={!files} className={styles.importButton} onClick={()=>{handleUpload(); onClose();}}> <img src={importIcon} alt="" />Importar</button>
+            <button disabled={!files} className={styles.importButton} onClick={()=>{handleUpload(); onClose(); openModal();}}> <img src={importIcon} alt="" />Importar</button>
             </div>
         </div>
     )

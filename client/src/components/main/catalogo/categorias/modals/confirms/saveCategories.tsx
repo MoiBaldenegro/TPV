@@ -18,6 +18,7 @@ export default function SaveCategoriesModal({ isOpen, onClose, children } : Prop
     if(!isOpen) return null;
     loading ? <Loader/> : allCategories && allCategories.length > 0 ? (
         <div className={styles.modal}>
+            {children}
 			<h1>Categorias guardadas</h1>
             <button onClick={onClose}></button>
 		</div>
