@@ -47,7 +47,9 @@ export const getCategories = () => {
       try {
         const response = await axios("https://tomate-server.onrender.com/categories");
         if(response.status === 200){
-          return dispatch({type: GET_CATEGORIES_SUCESS, payload: response.data})
+          setTimeout(() => {
+            dispatch({ type: GET_CATEGORIES_SUCESS, payload: response.data });
+          }, 1000);
         } else {
           dispatch({ type: GET_CATEGORIES_FAILURE, error: "Respuesta inesperada del servidor" });
         }

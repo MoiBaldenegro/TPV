@@ -9,6 +9,5 @@
     gap: 32px;
     background: rgb(80, 103, 172);
     color: white;
-
-
+    z-index: 1000;
 }
