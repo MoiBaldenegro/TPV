@@ -6,6 +6,7 @@ export const useModal = (modalName: string) => {
 
   const openModal = () => {
     setIsOpen(true);
+    console.log(modalName)
   };
 
   const closeModal = () => {
