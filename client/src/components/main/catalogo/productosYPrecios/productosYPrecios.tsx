@@ -17,7 +17,7 @@ import { getProducts } from "../../../../redux/actions/catalogo/productsActions"
 
 export default function ProductosYPrecios(){
     const dispatch = useDispatch();
-    const { allProducts } = useSelector(state => state.products)
+    const { allProducts } = useSelector((state) => state.products)
 
     useEffect(()=> {
         dispatch(getProducts());
