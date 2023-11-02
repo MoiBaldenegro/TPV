@@ -119,12 +119,16 @@ export default function ProductosYPrecios(){
                         </thead>
                         <tbody>
                         
-                                {allProducts?.map(product => ( 
-                                    <tr>
+                                {allProducts?.map(product => {
+                                    return (
+                                        <tr>
                                     <td>{product.categoryName}</td>
                                     <td>{product.Code}</td>
                                     <td>{product.priceOnSite}</td>
-                                </tr>)
+                                </tr>
+                                    )
+                                }
+                                    
                                 )}
                             
                         </tbody>
