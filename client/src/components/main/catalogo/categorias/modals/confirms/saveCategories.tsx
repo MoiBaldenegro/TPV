@@ -22,7 +22,7 @@ export default function SaveCategoriesModal({ isOpen, onClose, children } : Prop
 			<h1>Categorias guardadas</h1>
             <button onClick={onClose}></button>
 		</div>
-    ) : null;
+    ) : <h1>SOY EL MODAL PERDIDO</h1>;
 	
 	
 }
