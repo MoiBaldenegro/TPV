@@ -24,8 +24,6 @@ export default function SaveCategoriesModal({ isOpen, onClose, children } : Prop
             </div>
         ) : null 
 
-    )
-    
-	
+    )	
 	
 }

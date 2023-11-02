@@ -1,4 +1,7 @@
 .spinner {
+  position: absolute;
+  inset: 0;
+  margin: auto;
     width: 56px;
     height: 56px;
     display: grid;
