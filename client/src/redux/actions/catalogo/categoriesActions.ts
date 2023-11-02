@@ -5,11 +5,13 @@ export const SEARCH_CATEGORIES = "SEARCH_CATEGORIES";
 export const UPLOAD_CATEGORIES = "UPLOAD_CATRGORIES";
 export const GET_CATEGORIES_REQUEST = "GET_CATEGORIES_REQUEST";
 export const GET_CATEGORIES_FAILURE = "GET_CATEGORIES_FAILURE";
+export const UPLOAD_FILE_SUCCESS = "UPLOAD_FILE_SUCCESS";
 
 export const searchCategories = payload => ({type: SEARCH_CATEGORIES, payload })
 
 // Create Categories
 export const createCategory = category => async dispatch => {
+  dispatch({ type: GET_CATEGORIES_REQUEST });
   try {
     if(Array.isArray(category)){
       const res = await axios.post('https://tomate-server.onrender.com/categories', category);
@@ -20,6 +22,7 @@ export const createCategory = category => async dispatch => {
         throw new Error("Esta categoria ya se encuentra listada");
       }
       alert('Archivo subido con éxito.');
+      dispatch({type: UPLOAD_FILE_SUCCESS})
     } else {
       const response = await axios.post("https://tomate-server.onrender.com/categories", category);
       if(!response.data){
@@ -47,9 +50,9 @@ export const getCategories = () => {
       try {
         const response = await axios("https://tomate-server.onrender.com/categories");
         if(response.status === 200){
-          setTimeout(() => {
+         
             dispatch({ type: GET_CATEGORIES_SUCESS, payload: response.data });
-          }, 1000);
+          
         } else {
           dispatch({ type: GET_CATEGORIES_FAILURE, error: "Respuesta inesperada del servidor" });
         }
@@ -57,7 +60,6 @@ export const getCategories = () => {
         dispatch({ type: GET_CATEGORIES_FAILURE, error: "Error en la solicitud" });
       }
      
-      
     }
 
   } 

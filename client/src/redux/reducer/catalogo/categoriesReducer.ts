@@ -1,4 +1,4 @@
-import { SEARCH_CATEGORIES, GET_CATEGORIES_SUCESS, GET_CATEGORIES_REQUEST, GET_CATEGORIES_FAILURE } from "../../actions/catalogo/categoriesActions";
+import { SEARCH_CATEGORIES, GET_CATEGORIES_SUCESS, GET_CATEGORIES_REQUEST, GET_CATEGORIES_FAILURE, UPLOAD_FILE_SUCCESS } from "../../actions/catalogo/categoriesActions";
   
   const initialState = {
     allCategories: [],
@@ -32,6 +32,11 @@ import { SEARCH_CATEGORIES, GET_CATEGORIES_SUCESS, GET_CATEGORIES_REQUEST, GET_C
                           error: action.error,
                           isLoading: false,
                         };
+                        case UPLOAD_FILE_SUCCESS:
+                          return{
+                            ...state,
+                            loading: false
+                          }
       default:
         return state;
     }
