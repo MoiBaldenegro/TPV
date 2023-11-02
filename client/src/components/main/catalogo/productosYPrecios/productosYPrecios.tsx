@@ -22,7 +22,7 @@ export default function ProductosYPrecios(){
     useEffect(()=> {
         dispatch(getProducts());
         console.log(allProducts);
-    },[])
+    },[allProducts])
     return ( 
         <div className={styles.container} >
             <section className={styles.head}>
