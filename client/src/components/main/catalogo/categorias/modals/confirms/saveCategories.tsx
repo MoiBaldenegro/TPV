@@ -13,16 +13,19 @@ export default function SaveCategoriesModal({ isOpen, onClose, children } : Prop
     const { loading } = useSelector( state => state.categories );
     const { allCategories } = useSelector( state => state.categories );  
 
-   
 
     if(!isOpen) return null;
-    loading ? <Loader/> : allCategories && allCategories.length > 0 ? (
-        <div className={styles.modal}>
-            {children}
-			<h1>Categorias guardadas</h1>
-            <button onClick={onClose}></button>
-		</div>
-    ) : <h1>SOY EL MODAL PERDIDO</h1>;
+    return(
+        loading ? <Loader/> : allCategories && allCategories.length > 0 ? (
+            <div className={styles.modal}>
+                {children}
+                <h1>Categorias guardadas</h1>
+                <button onClick={onClose}></button>
+            </div>
+        ) : null 
+
+    )
+    
 	
 	
 }
