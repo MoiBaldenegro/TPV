@@ -107,30 +107,26 @@ export default function ProductosYPrecios(){
                     </div> 
                 </div>
                 <div className={styles.tableContainer}>
-                    <table className={styles.table}>
-                        <thead>
-                            <tr>
-                                <th>Categoria</th>
-                                <th>Clave</th>
-                                <th>Producto</th>
-                                <th>Restaurante</th>
-                                <th>Acciones</th>
+                <table className={styles.table}>
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Clave</th>
+                            <th>Producto</th>
+                            <th>Restaurante</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {allProducts?.map(product => (
+                            <tr key={product.id}>
+                                <td>{product.categoryName}</td>
+                                <td>{product.Code}</td>
+                                <td>{product.priceOnSite}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                        {allProducts?.map(product => {
-    console.log("Mapping product:", product); // Agrega este log para depurar
-    return (
-        <tr key={product.id}>
-            <td>{product.categoryName}</td>
-            <td>{product.Code}</td>
-            <td>{product.priceOnSite}</td>
-        </tr>
-    );
-})}
-                            
-                        </tbody>
-                    </table>
+                        ))}
+                    </tbody>
+                </table>
                 </div>
                 <div className={styles.tableFooter}>
                 </div>
