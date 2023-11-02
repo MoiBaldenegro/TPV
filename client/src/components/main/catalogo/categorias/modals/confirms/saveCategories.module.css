@@ -1,5 +1,5 @@
     .modal{
-    position:absolute;
+    position:relative;
     width: 550px;
     height: 332px;
     inset: 0;
@@ -9,6 +9,6 @@
     gap: 32px;
     background: rgba(31, 32, 35, 1);
     color: white;
-    
+
 
 }
