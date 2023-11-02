@@ -118,10 +118,11 @@ export default function ProductosYPrecios(){
                             </tr>
                         </thead>
                         <tbody>
-                             {allProducts?.map(product => {
-                                console.log("Mapping product:", product); // Agrega este log para depurar
+                             {allProducts?.map((product, index)=> {
+                                console.log("Mapping product:", product); 
+                                console.log(allProducts);// Agrega este log para depurar
                                 return (
-                                    <tr key={product.id}>
+                                    <tr key={index}>
                                         <td>{product.categoryName}</td>
                                         <td>{product.Code}</td>
                                         <td>{product.priceOnSite}</td>
