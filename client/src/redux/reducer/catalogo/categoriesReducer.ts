@@ -18,7 +18,8 @@ import { SEARCH_CATEGORIES, GET_CATEGORIES_SUCESS, GET_CATEGORIES_REQUEST, GET_C
                 case GET_CATEGORIES_SUCESS:
                     return{
                         ...state,
-                        allCategories: action.payload
+                        allCategories: action.payload,
+                        loading: false
                     }
                     case GET_CATEGORIES_REQUEST:
                       return{
