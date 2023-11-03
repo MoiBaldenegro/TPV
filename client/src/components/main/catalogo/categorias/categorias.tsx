@@ -24,6 +24,7 @@ export default function Categorias() {
   
   ////////////////////////////////////////////////////////////////////////////////////// 
   const dispatch = useDispatch();
+  const { loading } = useSelector( state => state.categories );
   const { allCategories } = useSelector((state) => state.categories);
 
   const handleChange = (event) => {
@@ -41,7 +42,7 @@ export default function Categorias() {
 
   useEffect(() => {
     dispatch(getCategories());
-  }, []);
+  }, [loading]);
 
   return (
     <section className={styles.categorias}>
