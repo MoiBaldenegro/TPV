@@ -1,12 +1,14 @@
-import { combineReducers } from "redux";
-import authReducer from "./auth/authReducer";
-import categoriesReducer from "./catalogo/categoriesReducer";
-import productsReducer from "./catalogo/productsReducer";
+import { combineReducers } from 'redux';
+import authReducer from './auth/authReducer';
+import categoriesReducer from './catalogo/categoriesReducer/categoriesReducer';
+import productsReducer from './catalogo/productsReducer';
+import dishesReducer from './catalogo/dishesReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   categories: categoriesReducer,
-  products: productsReducer
+  products: productsReducer,
+  dishes: dishesReducer,
 });
 
 export default rootReducer;

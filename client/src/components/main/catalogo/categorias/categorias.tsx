@@ -1,43 +1,43 @@
-import styles from "./categorias.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { getCategories,searchCategories } from "../../../../redux/actions/catalogo/categoriesActions";
-import deleteIcon from "../../../../assets/categorias/bloquedIcon.svg";
-import enabledIcon from "../../../../assets/categorias/enabledIcon.svg";
-import update from "../../../../assets/categorias/updateIcon.svg";
-import exportIcon from "../../../../assets/categorias/exportIcon.svg";
-import importIcon from "../../../../assets/categorias/importIcon.svg";
-import createIcon from "../../../../assets/categorias/createIcon.svg";
-import searchIcon from "../../../../assets/categorias/searchIcon.svg";
-import UploadFiles from "./modals/uploadCategories/uploadCategories";
-import { useEffect } from "react";
-import { useModal } from "../../../../hooks/useModals";
-import CreateCategories from "./forms/createCategory.form";
-import SaveCategoriesModal from "./modals/confirms/saveCategories";
-
-
+import styles from './categorias.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getCategories,
+  searchCategories,
+} from '../../../../redux/actions/catalogo/categoriesActions';
+import deleteIcon from '../../../../assets/categorias/bloquedIcon.svg';
+import enabledIcon from '../../../../assets/categorias/enabledIcon.svg';
+import update from '../../../../assets/categorias/updateIcon.svg';
+import exportIcon from '../../../../assets/categorias/exportIcon.svg';
+import importIcon from '../../../../assets/categorias/importIcon.svg';
+import createIcon from '../../../../assets/categorias/createIcon.svg';
+import searchIcon from '../../../../assets/categorias/searchIcon.svg';
+import UploadFiles from './modals/uploadCategories/uploadCategories';
+import { useEffect } from 'react';
+import { useModal } from '../../../../hooks/useModals';
+import CreateCategories from './forms/createCategory.form';
+import SaveCategoriesModal from './modals/confirms/saveCategories';
 
 export default function Categorias() {
+  const createCategory = useModal('createCategory');
+  const uploadCategories = useModal('uploadCategories');
+  const saveCategories = useModal('saveCategories');
 
-  const createCategory = useModal("createCategory");
-  const uploadCategories = useModal("uploadCategories");
-  const saveCategories = useModal("saveCategories")
-  
-  ////////////////////////////////////////////////////////////////////////////////////// 
+  //////////////////////////////////////////////////////////////////////////////////////
   const dispatch = useDispatch();
   const { allCategories } = useSelector((state) => state.categories);
 
   const handleChange = (event) => {
     event.preventDefault();
-    const searchValue = event.target.value
-    if(searchValue.length < 1){
+    const searchValue = event.target.value;
+    if (searchValue.length < 1) {
       dispatch(getCategories());
     }
-    dispatch(searchCategories(searchValue))
-  }
+    dispatch(searchCategories(searchValue));
+  };
 
   const onDelete = (id: string) => {
     dispatch(deleteCategorie(id));
-  }; 
+  };
 
   useEffect(() => {
     dispatch(getCategories());
@@ -48,30 +48,65 @@ export default function Categorias() {
       <div className={styles.categoriasButtons}>
         <h2>Categorias</h2>
         <div className={styles.categoriesButtonsContainer}>
-          <button className={styles.exportCategories} onClick={saveCategories.openModal}>
+          <button
+            className={styles.exportCategories}
+            onClick={saveCategories.openModal}
+          >
             <img src={exportIcon} alt="export-icon" />
             <span>Exportar categorias</span>
           </button>
-          <button className={styles.importCategories} onClick={uploadCategories.openModal}>
+          <button
+            className={styles.importCategories}
+            onClick={uploadCategories.openModal}
+          >
             <img src={importIcon} alt="import-icon" />
             <span>Importar categorias</span>
           </button>
-          { uploadCategories.isOpen && uploadCategories.modalName === "uploadCategories" ? <UploadFiles openModal={saveCategories.openModal} isOpen={uploadCategories.isOpen} onClose={uploadCategories.closeModal} > 
-          </UploadFiles> :  null }
-          <button className={styles.createCategories} onClick={createCategory.openModal}>
-            <img src={createIcon} alt="create-icon"/>
+          {uploadCategories.isOpen &&
+          uploadCategories.modalName === 'uploadCategories' ? (
+            <UploadFiles
+              openModal={saveCategories.openModal}
+              isOpen={uploadCategories.isOpen}
+              onClose={uploadCategories.closeModal}
+            >
+              Cargar archivo
+            </UploadFiles>
+          ) : null}
+          <button
+            className={styles.createCategories}
+            onClick={createCategory.openModal}
+          >
+            <img src={createIcon} alt="create-icon" />
             <span>Crear categoria</span>
           </button>
-          { createCategory.isOpen && createCategory.modalName === "createCategory" ? <CreateCategories isOpen={createCategory.isOpen} onClose={createCategory.closeModal}>
-             <h3>Creaer categoria</h3>
-              </CreateCategories> : null }
-          { saveCategories.isOpen && saveCategories.modalName === "saveCategories" ?  <SaveCategoriesModal actionType={getCategories} isOpen={saveCategories.isOpen} onClose={saveCategories.closeModal}> 
-          </SaveCategoriesModal> : null } 
+          {createCategory.isOpen &&
+          createCategory.modalName === 'createCategory' ? (
+            <CreateCategories
+              isOpen={createCategory.isOpen}
+              onClose={createCategory.closeModal}
+            >
+              <h3>Crear categoria</h3>
+            </CreateCategories>
+          ) : null}
+          {saveCategories.isOpen &&
+          saveCategories.modalName === 'saveCategories' ? (
+            <SaveCategoriesModal
+              actionType={getCategories}
+              isOpen={saveCategories.isOpen}
+              onClose={saveCategories.closeModal}
+            >
+              Categorias guardadas
+            </SaveCategoriesModal>
+          ) : null}
         </div>
       </div>
       <div className={styles.searchBarContainer}>
         <div className={styles.searchInputContainer}>
-          <img src={searchIcon} alt="search-icon" className={styles.searchIcon} />
+          <img
+            src={searchIcon}
+            alt="search-icon"
+            className={styles.searchIcon}
+          />
           <input
             type="text"
             className={styles.searchBar}
@@ -95,7 +130,7 @@ export default function Categorias() {
                 <td className={styles.tableRows}>{categoria.categoryName}</td>
                 <td className={styles.tableRows}>{categoria.createdAt}</td>
                 <td className={styles.buttonsContainer}>
-                  {categoria.status === "enabled" ? (
+                  {categoria.status === 'enabled' ? (
                     <>
                       <button className={styles.actionButtonsFirst}>
                         <img src={update} alt="update-icon" />
@@ -133,5 +168,3 @@ export default function Categorias() {
     </section>
   );
 }
-
-
