@@ -19,7 +19,7 @@ export default function SaveCategoriesModal({ isOpen, onClose, children } : Prop
     if(!loading && allCategories && allCategories.length > 0){
         setTimeout(() => {
             onClose();
-         }, 2000)
+         }, 1500)
     }
     return(
         <div className={styles.container}>
