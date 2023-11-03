@@ -26,8 +26,6 @@
     opacity: .8;
     animation: spinner-e04l1k 3s infinite linear;
   }
-  
-  
   .spinner::before,
   .spinner::after {
     content: "";

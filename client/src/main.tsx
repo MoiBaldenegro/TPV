@@ -22,7 +22,6 @@ import Descuentos from './components/main/ventas/descuentos/descuentos.tsx';
 import Cancelaciones from './components/main/ventas/cancelaciones/cancelaciones.tsx';
 import MotivosDeCancelacion from './components/main/ventas/motivosDeCancelaiones/motivosDeCancelaciones.tsx';
 import SaveCategoriesModal from './components/main/catalogo/categorias/modals/confirms/saveCategories.tsx';
-import ConfirmLoader from './components/loaders/confirmsLoader/confirmsLoader.tsx';
 
 const router = createBrowserRouter([
   {
@@ -141,7 +140,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <ConfirmLoader/>
+    element: <NotFound/>
   },
 ])
 
