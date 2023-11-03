@@ -7,10 +7,11 @@ interface Props{
 	isOpen: any,
 	onClose: any,
 	children: any,
+    actionType: ()=> void
 }
 
 
-export default function SaveCategoriesModal({ isOpen, onClose, children } : Props){
+export default function SaveCategoriesModal({ isOpen, onClose, children, actionType } : Props){
     const { loading } = useSelector( state => state.categories );
     const { allCategories } = useSelector( state => state.categories );  
 
@@ -19,6 +20,7 @@ export default function SaveCategoriesModal({ isOpen, onClose, children } : Prop
     if(!loading && allCategories && allCategories.length > 0){
         setTimeout(() => {
             onClose();
+            actionType();
          }, 1500)
     }
     return(
