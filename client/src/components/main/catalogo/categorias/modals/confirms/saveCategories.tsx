@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import styles from "./saveCategories.module.css";
 import ConfirmLoader from "../../../../../loaders/confirmsLoader/confirmsLoader";
+import checkIcon from "../../../../../../assets/public/checkIcon.svg"
 
 interface Props{
 	isOpen: any,
@@ -15,15 +16,22 @@ export default function SaveCategoriesModal({ isOpen, onClose, children } : Prop
 
 
     if(!isOpen) return null;
+    if(!loading && allCategories && allCategories.length > 0){
+        setTimeout(() => {
+            onClose();
+         }, 2000)
+    }
     return(
-        loading ? <ConfirmLoader/> : allCategories && allCategories.length > 0 ? (
+        <div className={styles.container}>
+            { loading ? <ConfirmLoader/> : allCategories && allCategories.length > 0 ? (
             <div className={styles.modal}>
                 {children}
+                <img src={checkIcon} alt="check-icon" />
                 <h1 className={styles.tittle}>Categorias guardadas</h1>
-                <button onClick={onClose}>Aceptar</button>
             </div>
-        ) : null 
-
+        ) : null }
+    </div>
+       
     )	
 	
 }

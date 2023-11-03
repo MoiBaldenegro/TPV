@@ -23,7 +23,6 @@ h2{
     height: 50vh;
 }
 .searchBarContainer{
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: end;
