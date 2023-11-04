@@ -7,7 +7,7 @@ import {
 } from './actionTypes';
 
 //Get categories
-export const getCategories = () => {
+export const getCategoriesAction = () => {
   return async (dispatch) => {
     dispatch({ type: CATEGORIES_REQUEST });
     try {
@@ -15,6 +15,7 @@ export const getCategories = () => {
         'https://tomate-server.onrender.com/categories',
       );
       if (response.status === 200) {
+        console.log(response);
         dispatch({ type: GET_CATEGORIES, payload: response.data });
         return;
       }
@@ -32,7 +33,7 @@ export const getCategories = () => {
 };
 
 // search categories
-export const searchCategories = (payload) => ({
+export const searchCategoriesAction = (payload) => ({
   type: SEARCH_CATEGORIES,
   payload,
 });

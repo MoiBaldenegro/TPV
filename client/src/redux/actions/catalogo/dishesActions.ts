@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const CREATE_DISHES_REQUEST = 'CREATE_DISHES_REQUEST';
 
-export const createCategory = (dishes) => async (dispatch) => {
+export const createDishes = (dishes) => async (dispatch) => {
   dispatch({ type: CREATE_DISHES_REQUEST });
   try {
     if (Array.isArray(dishes)) {

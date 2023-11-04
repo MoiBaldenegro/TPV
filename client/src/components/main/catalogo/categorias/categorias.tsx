@@ -1,9 +1,9 @@
 import styles from './categorias.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getCategories,
-  searchCategories,
-} from '../../../../redux/actions/catalogo/categoriesActions';
+  getCategoriesAction,
+  searchCategoriesAction,
+} from '../../../../redux/actions/catalogo/categoriesActions/getCategories';
 import deleteIcon from '../../../../assets/categorias/bloquedIcon.svg';
 import enabledIcon from '../../../../assets/categorias/enabledIcon.svg';
 import update from '../../../../assets/categorias/updateIcon.svg';
@@ -30,9 +30,9 @@ export default function Categorias() {
     event.preventDefault();
     const searchValue = event.target.value;
     if (searchValue.length < 1) {
-      dispatch(getCategories());
+      dispatch(getCategoriesAction());
     }
-    dispatch(searchCategories(searchValue));
+    dispatch(searchCategoriesAction(searchValue));
   };
 
   const onDelete = (id: string) => {
@@ -40,7 +40,7 @@ export default function Categorias() {
   };
 
   useEffect(() => {
-    dispatch(getCategories());
+    dispatch(getCategoriesAction());
   }, []);
 
   return (
@@ -91,7 +91,7 @@ export default function Categorias() {
           {saveCategories.isOpen &&
           saveCategories.modalName === 'saveCategories' ? (
             <SaveCategoriesModal
-              actionType={getCategories}
+              actionType={getCategoriesAction}
               isOpen={saveCategories.isOpen}
               onClose={saveCategories.closeModal}
             >

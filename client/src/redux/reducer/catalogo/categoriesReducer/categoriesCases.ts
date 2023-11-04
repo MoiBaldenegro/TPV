@@ -40,7 +40,7 @@ export function getCategories(state, action) {
   };
 }
 // Search
-export default function searchCategories(state, action) {
+export function searchCategories(state, action) {
   const value = action.payload;
   const categoriesSearch = state.allCategories.filter((element) =>
     element.categoryName.toLowerCase().includes(value.toLowerCase()),

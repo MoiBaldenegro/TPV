@@ -18,10 +18,10 @@ export default function SaveCategoriesModal({
 }: Props) {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.categories);
-  const { allCategories } = useSelector((state) => state.categories);
+  const { error } = useSelector((state) => state.categories);
 
   if (!isOpen) return null;
-  if (!loading && allCategories && allCategories.length > 0) {
+  if (!loading && !error) {
     setTimeout(async () => {
       dispatch(actionType());
       onClose();
@@ -31,12 +31,16 @@ export default function SaveCategoriesModal({
     <div className={styles.container}>
       {loading ? (
         <ConfirmLoader />
-      ) : allCategories && allCategories.length > 0 ? (
+      ) : error ? (
+        <div>
+          <h1>hay errores</h1>
+        </div>
+      ) : (
         <div className={styles.modal}>
           <img src={checkIcon} alt="check-icon" />
           <h1 className={styles.tittle}>{children}</h1>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

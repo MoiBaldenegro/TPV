@@ -6,7 +6,7 @@ import { useDropzone } from 'react-dropzone';
 import importIcon from '../../../../../../assets/public/importIcon.svg';
 import iconExcel from '../../../../../../assets/public/iconExcel.svg';
 import closeIcon from '../../../../../../assets/public/closeIcon.svg';
-import { createCategory } from '../../../../../../redux/actions/catalogo/categoriesActions';
+import { createCategoryAction } from '../../../../../../redux/actions/catalogo/categoriesActions/createCategories';
 import useUpload from '../../../../../../hooks/useUpload';
 
 interface Props {
@@ -22,7 +22,8 @@ export default function UploadFiles({
   children,
   openModal,
 }: Props) {
-  const { handleUpload, resetFiles, onDrop, files } = useUpload(createCategory);
+  const { handleUpload, resetFiles, onDrop, files } =
+    useUpload(createCategoryAction);
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   if (!isOpen) return null;

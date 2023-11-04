@@ -6,7 +6,8 @@ import {
   GET_CATEGORIES,
   SEARCH_CATEGORIES,
 } from '../../../actions/catalogo/categoriesActions/actionTypes';
-import searchCategories, {
+import {
+  searchCategories,
   categoriesConflict,
   categoriesFailure,
   categoriesRequest,
@@ -35,10 +36,10 @@ export default function categoriesReducer(state = initialState, action) {
       return saveCategories(state);
     // Get
     case GET_CATEGORIES:
-      return getCategories;
+      return getCategories(state, action);
     // Search
     case SEARCH_CATEGORIES:
-      return searchCategories;
+      return searchCategories(state, action);
     default:
       return state;
   }

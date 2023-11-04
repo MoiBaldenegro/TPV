@@ -9,7 +9,7 @@ import {
 } from './actionTypes';
 
 // Create Categories
-export const createCategory = (category) => async (dispatch) => {
+export const createCategoryAction = (category) => async (dispatch) => {
   dispatch({ type: CATEGORIES_REQUEST });
   try {
     if (Array.isArray(category)) {
