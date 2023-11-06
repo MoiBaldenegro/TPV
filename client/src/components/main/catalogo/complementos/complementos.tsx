@@ -157,7 +157,16 @@ export default function Complementos() {
                 <th>Acciones</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+              {allDishes?.map((element, index) => (
+                <tr key={index}>
+                  <td>{element.category}</td>
+                  <td>{element.code}</td>
+                  <td>{element.dishesName}</td>
+                  <td>{element.priceToGo}</td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
         <div className={styles.tableFooter}></div>
