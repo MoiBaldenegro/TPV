@@ -1,17 +1,28 @@
 import styles from './complementos.module.css';
-
+// hooks
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 // icons
 import exportIcon from '../../../../assets/public/exportIcon.svg';
 import importIcon from '../../../../assets/public/importIcon.svg';
 import createIcon from '../../../../assets/public/createIcon.svg';
+import update from '../../../../assets/categorias/updateIcon.svg';
+import deleteIcon from '../../../../assets/categorias/bloquedIcon.svg';
 import helpIcon from '../../../../assets/public/helpIcon.svg';
 // import arrow from "../../../../assets/public/arrow.svg"
 import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
-import { useSelector } from 'react-redux';
+// Actions
+import { getDishesAction } from '../../../../redux/actions/catalogo/dishesActions/getDishes';
 
 export default function Complementos() {
+  const dispatch = useDispatch();
   const { allDishes } = useSelector((state) => state.dishes);
+
+  useEffect(() => {
+    dispatch(getDishesAction());
+  }, []);
   return (
     <div className={styles.container}>
       <section className={styles.head}>
@@ -164,6 +175,14 @@ export default function Complementos() {
                   <td>{element.code}</td>
                   <td>{element.dishesName}</td>
                   <td>{element.priceToGo}</td>
+                  <>
+                    <button className={styles.actionButtonsFirst}>
+                      <img src={update} alt="update-icon" />
+                    </button>
+                    <button className={styles.actionButtonsSecond}>
+                      <img src={deleteIcon} alt="delete-icon" />
+                    </button>
+                  </>
                 </tr>
               ))}
             </tbody>

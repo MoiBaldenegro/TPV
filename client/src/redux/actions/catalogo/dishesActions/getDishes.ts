@@ -2,12 +2,12 @@ import axios from 'axios';
 import { DISHES_FAILURE, DISHES_REQUEST, GET_DISHES } from './actionTypes';
 
 // Get dishes
-export function getDishesAction(dishes) {
+export function getDishesAction() {
   return async (dispatch) => {
     dispatch({ type: DISHES_REQUEST });
     try {
       const dishesArray = await axios(
-        'https://tomate-server.onrender.com/categories',
+        'https://tomate-server.onrender.com/dishes',
       );
       if (dishesArray.status === 200) {
         dispatch({ type: GET_DISHES, payload: dishesArray.data });

@@ -17,9 +17,6 @@ export function dishesFailure(state, action) {
 export function createDishes(state) {}
 
 // Get
-
-//Search
-
 export function getDishes(state, action) {
   return {
     ...state,
@@ -29,3 +26,5 @@ export function getDishes(state, action) {
     conflict: null,
   };
 }
+
+//Search

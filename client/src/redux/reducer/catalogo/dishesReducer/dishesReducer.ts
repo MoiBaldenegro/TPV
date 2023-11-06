@@ -16,13 +16,13 @@ export default function dishesReducer(state = initialState, action) {
   switch (action.type) {
     // Public
     case DISHES_FAILURE:
-      return dishesFailure;
+      return dishesFailure(state, action);
     // Create
     case CREATE_DISHES_REQUEST:
-      return dishesRequest;
+      return dishesRequest(state);
     // Get
     case GET_DISHES:
-      return getDishes;
+      return getDishes(state, action);
     default:
       return state;
   }
