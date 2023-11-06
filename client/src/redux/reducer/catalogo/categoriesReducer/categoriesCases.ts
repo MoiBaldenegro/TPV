@@ -37,6 +37,8 @@ export function getCategories(state, action) {
     ...state,
     allCategories: action.payload,
     loading: false,
+    error: null,
+    conflict: null,
   };
 }
 // Search

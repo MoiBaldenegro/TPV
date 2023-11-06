@@ -1,0 +1,11 @@
+// Public
+export const DISHES_FAILURE = 'CATEGORIES_FAILURE';
+export const DISHES_REQUEST = 'CATEGORIES_REQUEST';
+export const SEARCH_DISHES = 'SEARCH_CATEGORIES';
+
+// Create
+export const DISHES_CONFLICT = 'CATEGORIES_CONFLICT';
+export const SAVE_DISHES = 'SAVE_CATEGORIES';
+
+// Get
+export const GET_DISHES = 'GET_CATEGORIES';

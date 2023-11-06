@@ -15,7 +15,6 @@ export const getCategoriesAction = () => {
         'https://tomate-server.onrender.com/categories',
       );
       if (response.status === 200) {
-        console.log(response);
         dispatch({ type: GET_CATEGORIES, payload: response.data });
         return;
       }
