@@ -8,14 +8,15 @@ import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getModifiers } from '../../../../redux/reducer/catalogo/modifiersReducer/modifiersCases';
+import { getModifiersAction } from '../../../../redux/actions/catalogo/modifiersActions/getModifiers';
 
 export default function Modificaciones() {
   const dispatch = useDispatch();
   const { allModifiers } = useSelector((state) => state.modifiers);
 
   useEffect(() => {
-    dispatch(getModifiers());
+    alert('aca');
+    dispatch(getModifiersAction());
   }, []);
   return (
     <div className={styles.container}>
@@ -36,7 +37,6 @@ export default function Modificaciones() {
           </button>
         </div>
       </section>
-
       <section className={styles.mainSection}>
         <div className={styles.mainHead}>
           <div className={styles.mainHeadLeft}>

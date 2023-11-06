@@ -1,0 +1,11 @@
+// Public
+export const MENUS_FAILURE = 'CATEGORIES_FAILURE';
+export const MENUS_REQUEST = 'CATEGORIES_REQUEST';
+export const SEARCH_MENUS = 'SEARCH_CATEGORIES';
+
+// Create
+export const MENUS_CONFLICT = 'CATEGORIES_CONFLICT';
+export const SAVE_MENUS = 'SAVE_CATEGORIES';
+
+// Get
+export const GET_MENUS = 'GET_CATEGORIES';

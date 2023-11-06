@@ -6,7 +6,7 @@ import {
 } from './actionTypes';
 
 // Get modifiers
-export function getDishesAction() {
+export function getModifiersAction() {
   return async (dispatch) => {
     dispatch({ type: MODIFIERS_REQUEST });
     try {
