@@ -1,11 +1,11 @@
 //public
-export function dishesRequest(state) {
+export function modifiersRequest(state) {
   return {
     ...state,
     loading: true,
   };
 }
-export function dishesFailure(state, action) {
+export function modifiersFailure(state, action) {
   return {
     ...state,
     loading: false,
@@ -14,7 +14,7 @@ export function dishesFailure(state, action) {
 }
 
 // Create
-export function dishesConflict(state, action) {
+export function modifiersConflict(state, action) {
   return {
     ...state,
     loading: true,
@@ -22,7 +22,7 @@ export function dishesConflict(state, action) {
   };
 }
 
-export function saveDishes(state) {
+export function saveModifiers(state) {
   return {
     ...state,
     error: null,
@@ -32,10 +32,10 @@ export function saveDishes(state) {
 }
 
 // Get
-export function getDishes(state, action) {
+export function getModifiers(state, action) {
   return {
     ...state,
-    allDishes: action.payload,
+    allModifiers: action.payload,
     loading: false,
     error: null,
     conflict: null,
@@ -43,13 +43,13 @@ export function getDishes(state, action) {
 }
 
 // Search
-export function searchDishes(state, action) {
+export function searchModifiers(state, action) {
   const value = action.payload;
-  const dishesSearch = state.allDishes.filter((element) =>
+  const modifiersSearch = state.allModifiers.filter((element) =>
     element.categoryName.toLowerCase().includes(value.toLowerCase()),
   );
   return {
     ...state,
-    allCategories: dishesSearch,
+    allCategories: modifiersSearch,
   };
 }

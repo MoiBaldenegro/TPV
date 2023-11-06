@@ -1,9 +1,19 @@
 import {
   DISHES_FAILURE,
   GET_DISHES,
+  DISHES_REQUEST,
+  DISHES_CONFLICT,
+  SAVE_DISHES,
+  SEARCH_DISHES,
 } from '../../../actions/catalogo/dishesActions/actionTypes';
-import { CREATE_DISHES_REQUEST } from '../../../actions/catalogo/dishesActions/dishesActions';
-import { dishesFailure, dishesRequest, getDishes } from './dishesCases';
+import {
+  dishesConflict,
+  dishesFailure,
+  dishesRequest,
+  getDishes,
+  saveDishes,
+  searchDishes,
+} from './dishesCases';
 
 let initialState = {
   allDishes: [],
@@ -15,14 +25,21 @@ let initialState = {
 export default function dishesReducer(state = initialState, action) {
   switch (action.type) {
     // Public
+    case DISHES_REQUEST:
+      return dishesRequest(state);
     case DISHES_FAILURE:
       return dishesFailure(state, action);
     // Create
-    case CREATE_DISHES_REQUEST:
-      return dishesRequest(state);
+    case DISHES_CONFLICT:
+      return dishesConflict(state, action);
+    case SAVE_DISHES:
+      return saveDishes(state);
     // Get
     case GET_DISHES:
       return getDishes(state, action);
+    // Search
+    case SEARCH_DISHES:
+      return searchDishes(state, action);
     default:
       return state;
   }
