@@ -1,6 +1,7 @@
 import styles from './menusYRecetas.module.css';
 // Hook
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 // icons
 import exportIcon from '../../../../assets/public/exportIcon.svg';
@@ -10,12 +11,16 @@ import helpIcon from '../../../../assets/public/helpIcon.svg';
 // import arrow from "../../../../assets/public/arrow.svg"
 import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
+import { getMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/getMenu';
 
 export default function MenusYRecetas() {
   const dispatch = useDispatch();
-  const { allMenus } = useSelector();
+  const { allMenus } = useSelector((state) => state.menus);
 
   const week = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
+  useEffect(() => {
+    dispatch(getMenusAction());
+  }, []);
   return (
     <div className={styles.container}>
       <section className={styles.head}>
