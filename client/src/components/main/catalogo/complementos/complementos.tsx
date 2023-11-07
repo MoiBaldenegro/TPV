@@ -159,30 +159,53 @@ export default function Complementos() {
         </div>
         <div className={styles.tableContainer}>
           <table className={styles.table}>
-            <thead>
+            <thead className={styles.thead}>
               <tr>
-                <th>Categoria</th>
-                <th>Clave</th>
-                <th>Complemento</th>
-                <th>Restaurante</th>
-                <th>Acciones</th>
+                <th className={styles.tHeadCategoria}>Categoria</th>
+                <th className={styles.tHeadClave}>Clave</th>
+                <th className={styles.tHeadComplemento}>Complemento</th>
+                <th className={styles.tHeadVenta}>Restaurante</th>
+                <th className={styles.tHeadActions}>Acciones</th>
               </tr>
             </thead>
             <tbody>
               {allDishes?.map((element, index) => (
                 <tr key={index}>
-                  <td>{element.category}</td>
-                  <td>{element.code}</td>
-                  <td>{element.dishesName}</td>
-                  <td>{element.priceToGo}</td>
-                  <>
-                    <button className={styles.actionButtonsFirst}>
-                      <img src={update} alt="update-icon" />
-                    </button>
-                    <button className={styles.actionButtonsSecond}>
-                      <img src={deleteIcon} alt="delete-icon" />
-                    </button>
-                  </>
+                  <td className={styles.tableRows}>{element.category}</td>
+                  <td className={styles.tableRows}>{element.code}</td>
+                  <td className={styles.tableRows}>{element.dishesName}</td>
+                  <td className={styles.tableRows}>{element.priceToGo}</td>
+                  <td className={styles.buttonsContainer}>
+                    {element.status === 'enabled' ? (
+                      <>
+                        <button className={styles.actionButtonsFirst}>
+                          <img src={update} alt="update-icon" />
+                        </button>
+                        <button
+                          className={styles.actionButtonsSecond}
+                          onClick={() => {
+                            onDelete(categoria._id);
+                          }}
+                        >
+                          <img src={deleteIcon} alt="delete-icon" />
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button className={styles.actionButtonsFirstEnabled}>
+                          <img src={update} alt="update-icon" />
+                        </button>
+                        <button
+                          className={styles.actionButtonsSecond}
+                          onClick={() => {
+                            onDelete(categoria._id);
+                          }}
+                        >
+                          <img src={enabledIcon} alt="enabled-icon" />
+                        </button>
+                      </>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

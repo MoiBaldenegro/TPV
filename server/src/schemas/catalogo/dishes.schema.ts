@@ -45,6 +45,11 @@ export class Dishes {
     default: 0.0,
   })
   priceDelivery: number;
+
+  @Prop({
+    default: 'enabled',
+  })
+  status: 'disabled' | 'enabled';
 }
 
 export const DishesSchema = SchemaFactory.createForClass(Dishes);

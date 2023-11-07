@@ -294,3 +294,43 @@
    }
   }
 
+  .table{
+    margin: 25px;
+    width: 74vw;
+    height: 50vh;
+}
+
+.tHeadCategoria,
+.tHeadClave,
+.tHeadComplemento,
+.tHeadVenta,
+.tHeadActions{
+  text-align: left;
+  text-indent: 8px;
+  background-color: #F9F9F966;
+  width: 464px;
+  height:56px;
+  padding: 16px;
+  gap: 8px;
+}
+.tHeadCategoria{
+  width: 25%;
+}
+.tHeadClave{
+  width: 18%;
+}
+.tHeadComplemento{
+  width: 28%;
+}
+.tHeadActions{
+  text-indent: 40px;
+}
+
+.tableRows{
+  text-indent: 25px;
+  }
+  .tableRows,
+  .buttonsContainer{
+      border-top: 1px solid #F9F9F9;
+  }
+
