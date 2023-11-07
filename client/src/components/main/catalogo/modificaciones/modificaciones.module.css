@@ -270,14 +270,7 @@
     height: 17.06px;
     margin-left: 15px;
   }
-  .tableContainer{
-    width: 97%;
-    height: 620px;
-    border-radius: 8px;
-    border: 1px solid #f9f9f9;
-    background: #F9F9F94D;
-
-  }
+ 
   
   /* toggle Fullscreen */
   @media (max-height: 1050px) {

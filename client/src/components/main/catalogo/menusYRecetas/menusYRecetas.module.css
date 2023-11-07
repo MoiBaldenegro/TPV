@@ -273,13 +273,7 @@
     height: 17.06px;
     margin-left: 15px;
   }
-  .tableContainer{
-    width: 97%;
-    height: 444px;
-    border-radius: 8px;
-    border: 1px solid #f9f9f9;
-    background: #F9F9F94D;
-  }
+
   .weekContainer{
     display: flex;
     align-items: center;
@@ -310,3 +304,93 @@
     margin-bottom: -10px;
    }
   }
+
+  .table{
+    background: #F9F9F980;
+    width: 1,418px;
+    height: 56px;
+    padding: 0px, 16px, 0px, 16px;
+    border-radius: 8px;
+    border: 1px solid #F9F9F9;
+    margin: 25px;
+    
+}
+.tHeadCategoria,
+.tHeadClave,
+.tHeadProducto,
+.tHeadPorcion,
+.tHeadPrice,
+.tHeadSuggestedPrice,
+.tHeadUtility,
+.tHeadActions{
+  text-align: left;
+  text-indent: 8px;
+  background-color: #F9F9F966;
+  width: 464px;
+  height:56px;
+  padding: 16px;
+  gap: 8px;
+}
+.tHeadCategoria{
+  width: 22%;
+}
+.tHeadClave{
+  width: 10%;
+}
+.tHeadProducto{
+  width: 23%;
+}
+.tHeadActions{
+  text-indent: 15px;
+}
+.tHeadPorcion{
+  width: 8%;
+}
+.tHeadPrice{
+  width: 8%;
+}
+.tHeadSuggestedPrice{
+  width: 8%;
+}
+.tHeadUtility{
+  width: 8%;
+}
+.tableRows{
+text-indent: 25px;
+}
+.tableRows,
+.buttonsContainer{
+    border-top: 1px solid #F9F9F9;
+}
+
+.actionButtonsSecond,
+.actionButtonsFirst,
+.actionButtonsFirstDetails,
+.actionButtonsFirstEnabled{
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    transition: 200ms;
+    margin: 10px 10px;
+}
+.actionButtonsFirstDetails{
+  background-color: #7c78784f;
+  margin-left: 1vw;
+}
+.actionButtonsFirst{
+    background: rgba(116, 160, 22, 1);
+}
+.actionButtonsFirstEnabled{
+    background: rgba(249, 249, 249, 0.1);
+}
+.actionButtonsSecond{
+    background: var(--color-accent-red-primary);
+}
+.actionButtonsSecond:hover,
+.actionButtonsFirst:hover,
+.actionButtonsFirstEnabled:hover,
+.actionButtonsFirstDetails:hover{
+   /*  opacity: .6; */
+   filter:brightness(0.85);
+}

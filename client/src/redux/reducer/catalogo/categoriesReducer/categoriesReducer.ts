@@ -5,6 +5,7 @@ import {
   SAVE_CATEGORIES,
   GET_CATEGORIES,
   SEARCH_CATEGORIES,
+  DISCONTINUE_CATEGORY,
 } from '../../../actions/catalogo/categoriesActions/actionTypes';
 import {
   searchCategories,
@@ -13,6 +14,7 @@ import {
   categoriesRequest,
   getCategories,
   saveCategories,
+  discontinueCategories,
 } from './categoriesCases';
 
 const initialState = {
@@ -40,6 +42,9 @@ export default function categoriesReducer(state = initialState, action) {
     // Search
     case SEARCH_CATEGORIES:
       return searchCategories(state, action);
+    // Update
+    case DISCONTINUE_CATEGORY:
+      return discontinueCategories(state, action);
     default:
       return state;
   }

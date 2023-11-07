@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import { useModal } from '../../../../hooks/useModals';
 import CreateCategories from './forms/createCategory.form';
 import SaveCategoriesModal from './modals/confirms/saveCategories';
+import { discontinueCategoriesAction } from '../../../../redux/actions/catalogo/categoriesActions/discontinueCategories';
 
 export default function Categorias() {
   const createCategory = useModal('createCategory');
@@ -25,6 +26,10 @@ export default function Categorias() {
   //////////////////////////////////////////////////////////////////////////////////////
   const dispatch = useDispatch();
   const { allCategories } = useSelector((state) => state.categories);
+
+  const toggleStatus = (id, body) => {
+    dispatch(discontinueCategoriesAction(id, body));
+  };
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -125,7 +130,14 @@ export default function Categorias() {
           </thead>
           <tbody>
             {allCategories?.map((categoria, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className={
+                  categoria.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{categoria.code}</td>
                 <td className={styles.tableRows}>{categoria.categoryName}</td>
                 <td className={styles.tableRows}>{categoria.createdAt}</td>
@@ -138,7 +150,7 @@ export default function Categorias() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          onDelete(categoria._id);
+                          toggleStatus(categoria._id, categoria.status);
                         }}
                       >
                         <img src={deleteIcon} alt="delete-icon" />
@@ -152,7 +164,7 @@ export default function Categorias() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          onDelete(categoria._id);
+                          toggleStatus(categoria._id, categoria.status);
                         }}
                       >
                         <img src={enabledIcon} alt="enabled-icon" />

@@ -158,7 +158,6 @@ export default function Complementos() {
             </div>
           </div>
         </div>
-
         <table className={styles.table}>
           <thead className={styles.thead}>
             <tr>
@@ -211,7 +210,6 @@ export default function Complementos() {
             ))}
           </tbody>
         </table>
-
         <div className={styles.tableFooter}></div>
       </section>
     </div>

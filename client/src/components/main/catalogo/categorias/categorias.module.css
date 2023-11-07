@@ -161,3 +161,11 @@ text-indent: 25px;
     background: #F9F9F91A;
     margin: 2vh 25px 0px 0px;   
 }
+.rowDisabled{
+    background-color: #2e2c2d31;
+    color: rgba(167, 161, 164, 0.555);
+    transition: 300ms;
+}
+.release{
+    transition: 300ms;
+}

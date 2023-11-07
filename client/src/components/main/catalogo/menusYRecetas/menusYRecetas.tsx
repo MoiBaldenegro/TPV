@@ -7,6 +7,11 @@ import { useEffect } from 'react';
 import exportIcon from '../../../../assets/public/exportIcon.svg';
 import importIcon from '../../../../assets/public/importIcon.svg';
 import createIcon from '../../../../assets/public/createIcon.svg';
+import update from '../../../../assets/public/updateIcon.svg';
+import deleteIcon from '../../../../assets/public/deleteIcon.svg';
+import enabledIcon from '../../../../assets/public/enabledIcon.svg';
+import eyeIcon from '../../../../assets/public/openEye.svg';
+
 import helpIcon from '../../../../assets/public/helpIcon.svg';
 // import arrow from "../../../../assets/public/arrow.svg"
 import filterIcon from '../../../../assets/public/filterIcon.svg';
@@ -98,35 +103,69 @@ export default function MenusYRecetas() {
             </div>
           </div>
         </div>
-        <div className={styles.tableContainer}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Categoria</th>
-                <th>Clave</th>
-                <th>Producto</th>
-                <th>Porcion</th>
-                <th>Costo</th>
-                <th>Precio sugerido</th>
-                <th>Utilidad</th>
-                <th>Acciones</th>
+
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th className={styles.tHeadCategoria}>Categoria</th>
+              <th className={styles.tHeadClave}>Clave</th>
+              <th className={styles.tHeadProducto}>Producto</th>
+              <th className={styles.tHeadPorcion}>Porcion</th>
+              <th className={styles.tHeadPrice}>Costo</th>
+              <th className={styles.tHeadSuggestedPrice}>Precio sugerido</th>
+              <th className={styles.tHeadUtility}>Utilidad</th>
+              <th className={styles.tHeadActions}>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allMenus?.map((element, index) => (
+              <tr key={index}>
+                <td className={styles.tableRows}>{element.category}</td>
+                <td className={styles.tableRows}>{element.code}</td>
+                <td className={styles.tableRows}>{element.productName}</td>
+                <td className={styles.tableRows}>{element.serving}</td>
+                <td className={styles.tableRows}>{element.unit}</td>
+                <td className={styles.tableRows}>{element.priceNotIVA}</td>
+                <td className={styles.tableRows}>{element.recommendedPrice}</td>
+                <td className={styles.buttonsContainer}>
+                  <button className={styles.actionButtonsFirstDetails}>
+                    <img src={eyeIcon} alt="open-eye-icon" />
+                  </button>
+                  {element.status === 'enabled' ? (
+                    <>
+                      <button className={styles.actionButtonsFirst}>
+                        <img src={update} alt="update-icon" />
+                      </button>
+                      <button
+                        className={styles.actionButtonsSecond}
+                        onClick={() => {
+                          onDelete(categoria._id);
+                        }}
+                      >
+                        <img src={deleteIcon} alt="delete-icon" />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button className={styles.actionButtonsFirstEnabled}>
+                        <img src={update} alt="update-icon" />
+                      </button>
+                      <button
+                        className={styles.actionButtonsSecond}
+                        onClick={() => {
+                          onDelete(categoria._id);
+                        }}
+                      >
+                        <img src={enabledIcon} alt="enabled-icon" />
+                      </button>
+                    </>
+                  )}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {allMenus?.map((element, index) => (
-                <tr key={index}>
-                  <td>{element.category}</td>
-                  <td>{element.code}</td>
-                  <td>{element.productName}</td>
-                  <td>{element.serving}</td>
-                  <td>{element.unit}</td>
-                  <td>{element.priceNotIVA}</td>
-                  <td>{element.recommendedPrice}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
+
         <div className={styles.tableFooter}></div>
       </section>
     </div>

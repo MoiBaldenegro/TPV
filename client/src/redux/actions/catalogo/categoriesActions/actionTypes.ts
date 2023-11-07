@@ -9,3 +9,6 @@ export const SAVE_CATEGORIES = 'SAVE_CATEGORIES';
 
 // Get
 export const GET_CATEGORIES = 'GET_CATEGORIES';
+
+// Update
+export const DISCONTINUE_CATEGORY = ' DISCONTINUE_CATEGORY';

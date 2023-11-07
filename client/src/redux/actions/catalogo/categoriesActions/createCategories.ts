@@ -40,6 +40,10 @@ export const createCategoryAction = (category) => async (dispatch) => {
         category,
       );
       if (!response.data) {
+        dispatch({
+          type: CATEGORIES_FAILURE,
+          error: 'Respuesta inesperada del servidor',
+        });
         throw new Error(
           'Ha ocurrido algo inesperado, la respuesta no contiene datos',
         );

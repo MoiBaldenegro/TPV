@@ -49,13 +49,13 @@ export class CategoriesController {
     try {
       console.log(`Moi: ${Body[1]}`);
       const categoriesService = this.categoriesService; // Capturar this en una variable
-  
+
       if (Array.isArray(body)) {
         await this.categoriesService.replace();
         const createdCategories = await Promise.all(
           body.map(async (element: CreateCategoryDto) => {
             return await categoriesService.create(element); // Usar la variable categoriesService
-          })
+          }),
         );
         return createdCategories;
       } else {
@@ -70,7 +70,6 @@ export class CategoriesController {
       }
     }
   }
-  
 
   @Delete(':id')
   @HttpCode(204)
@@ -93,7 +92,7 @@ export class CategoriesController {
         throw new NotFoundException('No se encontro la categoria');
       return categoryUpdated;
     } catch (error) {
-      throw new ConflictException('Ocurrio algo inesperado');
+      throw new NotFoundException('Ocurrio algo inesperado');
     }
   }
 }
