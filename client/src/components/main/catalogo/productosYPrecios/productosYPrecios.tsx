@@ -11,6 +11,7 @@ import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 import update from '../../../../assets/categorias/updateIcon.svg';
 import deleteIcon from '../../../../assets/categorias/bloquedIcon.svg';
+import enabledIcon from '../../../../assets/public/enabledIcon.svg';
 // import arrow from "../../../../assets/public/arrow.svg"
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../../../redux/actions/catalogo/productsActions/productsActions';
@@ -186,37 +187,60 @@ export default function ProductosYPrecios() {
             </div>
           </div>
         </div>
-        <div className={styles.tableContainer}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Categoria</th>
-                <th>Clave</th>
-                <th>Producto</th>
-                <th>Restaurante</th>
-                <th>Acciones</th>
+
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th className={styles.tHeadCategoria}>Categoria</th>
+              <th className={styles.tHeadClave}>Clave</th>
+              <th className={styles.tHeadProducto}>Producto</th>
+              <th className={styles.tHeadVenta}>Restaurante</th>
+              <th className={styles.tHeadActions}>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allProducts?.map((product) => (
+              <tr key={product._id}>
+                <td className={styles.tableRows}>{product.category}</td>
+                <td className={styles.tableRows}>{product.code}</td>
+                <td className={styles.tableRows}>{product.productName}</td>
+                <td className={styles.tableRows}>{product.priceInSite}</td>
+                <td className={styles.buttonsContainer}>
+                  {product.status === 'enabled' ? (
+                    <>
+                      <button className={styles.actionButtonsFirst}>
+                        <img src={update} alt="update-icon" />
+                      </button>
+                      <button
+                        className={styles.actionButtonsSecond}
+                        onClick={() => {
+                          onDelete(categoria._id);
+                        }}
+                      >
+                        <img src={deleteIcon} alt="delete-icon" />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button className={styles.actionButtonsFirstEnabled}>
+                        <img src={update} alt="update-icon" />
+                      </button>
+                      <button
+                        className={styles.actionButtonsSecond}
+                        onClick={() => {
+                          onDelete(categoria._id);
+                        }}
+                      >
+                        <img src={enabledIcon} alt="enabled-icon" />
+                      </button>
+                    </>
+                  )}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {allProducts?.map((product) => (
-                <tr key={product._id}>
-                  <td>{product.category}</td>
-                  <td>{product.code}</td>
-                  <td>{product.productName}</td>
-                  <td>{product.priceInSite}</td>
-                  <>
-                    <button className={styles.actionButtonsFirst}>
-                      <img src={update} alt="update-icon" />
-                    </button>
-                    <button className={styles.actionButtonsSecond}>
-                      <img src={deleteIcon} alt="delete-icon" />
-                    </button>
-                  </>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
+
         <div className={styles.tableFooter}></div>
       </section>
     </div>

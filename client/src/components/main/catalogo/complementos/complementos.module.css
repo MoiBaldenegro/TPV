@@ -273,15 +273,7 @@
     height: 17.06px;
     margin-left: 15px;
   }
-  .tableContainer{
-    width: 97%;
-    height: 444px;
-    border-radius: 8px;
-    border: 1px solid #f9f9f9;
-    background: #F9F9F94D;
 
-  }
-  
   /* toggle Fullscreen */
   @media (max-height: 1050px) {
    .tableContainer{
@@ -294,12 +286,17 @@
    }
   }
 
-  .table{
-    margin: 25px;
-    width: 74vw;
-    height: 50vh;
-}
 
+  .table{
+    background: #F9F9F980;
+    width: 1,418px;
+    height: 56px;
+    padding: 0px, 16px, 0px, 16px;
+    border-radius: 8px;
+    border: 1px solid #F9F9F9;
+    margin: 25px;
+    
+}
 .tHeadCategoria,
 .tHeadClave,
 .tHeadComplemento,
@@ -320,17 +317,47 @@
   width: 18%;
 }
 .tHeadComplemento{
-  width: 28%;
+  width: 32%;
 }
 .tHeadActions{
-  text-indent: 40px;
+  text-indent: 15px;
+}
+.tHeadVenta{
+  width: 14%;
+}
+.tableRows{
+text-indent: 25px;
+}
+.tableRows,
+.buttonsContainer{
+    border-top: 1px solid #F9F9F9;
 }
 
-.tableRows{
-  text-indent: 25px;
-  }
-  .tableRows,
-  .buttonsContainer{
-      border-top: 1px solid #F9F9F9;
-  }
+.actionButtonsSecond,
+.actionButtonsFirst,
+.actionButtonsFirstEnabled{
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    transition: 200ms;
+    margin: 10px 16px;
+}
+.actionButtonsFirst{
+    background: rgba(116, 160, 22, 1);
+    margin-left: 1.5vw;
+}
+.actionButtonsFirstEnabled{
+    background: rgba(249, 249, 249, 0.1);
+    margin-left: 1.5vw;
+}
+.actionButtonsSecond{
+    background: var(--color-accent-red-primary);
+}
+.actionButtonsSecond:hover,
+.actionButtonsFirst:hover,
+.actionButtonsFirstEnabled:hover{
+   /*  opacity: .6; */
+   filter:brightness(0.85);
+}
 

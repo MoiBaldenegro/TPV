@@ -30,4 +30,9 @@ export class updateProductDto {
   @IsNumber()
   @IsOptional()
   priceDelivery?: number;
+
+  @IsString()
+  @Length(1, 8)
+  @IsOptional()
+  status?: 'disabled' | 'enabled';
 }

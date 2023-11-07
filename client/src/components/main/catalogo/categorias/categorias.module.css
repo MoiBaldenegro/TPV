@@ -17,11 +17,7 @@
 h2{
     font-size: 35px;
 }
-.table{
-    margin: 25px;
-    width: 74vw;
-    height: 50vh;
-}
+
 .searchBarContainer{
     display: flex;
     flex-direction: column;
@@ -56,7 +52,10 @@ h2{
     padding: 0px, 16px, 0px, 16px;
     border-radius: 8px;
     border: 1px solid #F9F9F9;
+    margin: 25px;
+    
 }
+
 
 .actionButtonsSecond,
 .actionButtonsFirst,

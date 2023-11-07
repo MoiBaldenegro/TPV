@@ -42,6 +42,11 @@ export class Products {
     default: 0.0,
   })
   priceDelivery: number;
+
+  @Prop({
+    default: 'enabled',
+  })
+  status: 'disabled' | 'enabled';
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Products);
