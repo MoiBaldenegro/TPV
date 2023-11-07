@@ -35,4 +35,9 @@ export class updateMenusYRecetasDto {
   @Length(1, 6)
   @IsOptional()
   recommendedPrice?: string;
+
+  @IsString()
+  @Length(1, 8)
+  @IsOptional()
+  status?: 'disabled' | 'enabled';
 }

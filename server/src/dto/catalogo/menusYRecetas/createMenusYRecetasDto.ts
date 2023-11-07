@@ -1,4 +1,10 @@
-import { IsString, Length, IsDefined, IsNotEmpty } from 'class-validator';
+import {
+  IsString,
+  Length,
+  IsDefined,
+  IsNotEmpty,
+  IsOptional,
+} from 'class-validator';
 
 export class createMenusYRecetasDto {
   @IsString()
@@ -42,4 +48,9 @@ export class createMenusYRecetasDto {
   @IsDefined()
   @IsNotEmpty()
   recommendedPrice: string;
+
+  @IsString()
+  @Length(1, 8)
+  @IsOptional()
+  status?: 'disabled' | 'enabled';
 }

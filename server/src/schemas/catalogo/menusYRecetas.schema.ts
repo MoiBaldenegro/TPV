@@ -44,6 +44,11 @@ export class MenusYRecetas {
     trim: true,
   })
   recommendedPrice: string;
+
+  @Prop({
+    default: 'enabled',
+  })
+  status: 'disabled' | 'enabled';
 }
 
 export const MenusYRecetasSchema = SchemaFactory.createForClass(MenusYRecetas);
