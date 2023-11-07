@@ -20,4 +20,9 @@ export class updateModifierDto {
   @IsString()
   @IsOptional()
   modifierName?: string;
+
+  @IsString()
+  @Length(1, 8)
+  @IsOptional()
+  status?: 'disabled' | 'enabled';
 }

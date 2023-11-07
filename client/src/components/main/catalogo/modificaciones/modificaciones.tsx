@@ -6,6 +6,9 @@ import importIcon from '../../../../assets/public/importIcon.svg';
 import createIcon from '../../../../assets/public/createIcon.svg';
 import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
+import update from '../../../../assets/public/updateIcon.svg';
+import enabledIcon from '../../../../assets/public/enabledIcon.svg';
+import deleteIcon from '../../../../assets/public/deleteIcon.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getModifiersAction } from '../../../../redux/actions/catalogo/modifiersActions/getModifiers';
@@ -15,7 +18,6 @@ export default function Modificaciones() {
   const { allModifiers } = useSelector((state) => state.modifiers);
 
   useEffect(() => {
-    alert('aca');
     dispatch(getModifiersAction());
   }, []);
   return (
@@ -67,25 +69,56 @@ export default function Modificaciones() {
             </div>
           </div>
         </div>
-        <div className={styles.tableContainer}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Categoria</th>
-                <th>Modificador</th>
-                <th>Acciones</th>
+
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th className={styles.tHeadCategoria}>Categoria</th>
+              <th className={styles.tHeadModificador}>Modificador</th>
+              <th className={styles.tHeadActions}>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allModifiers?.map((element, index) => (
+              <tr key={index}>
+                <td className={styles.tableRows}>{element.category}</td>
+                <td className={styles.tableRows}>{element.modifierName}</td>
+                <td className={styles.buttonsContainer}>
+                  {element.status === 'enabled' ? (
+                    <>
+                      <button className={styles.actionButtonsFirst}>
+                        <img src={update} alt="update-icon" />
+                      </button>
+                      <button
+                        className={styles.actionButtonsSecond}
+                        onClick={() => {
+                          onDelete(categoria._id);
+                        }}
+                      >
+                        <img src={deleteIcon} alt="delete-icon" />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button className={styles.actionButtonsFirstEnabled}>
+                        <img src={update} alt="update-icon" />
+                      </button>
+                      <button
+                        className={styles.actionButtonsSecond}
+                        onClick={() => {
+                          onDelete(categoria._id);
+                        }}
+                      >
+                        <img src={enabledIcon} alt="enabled-icon" />
+                      </button>
+                    </>
+                  )}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {allModifiers?.map((element, index) => (
-                <tr key={index}>
-                  <td>{element.category}</td>
-                  <td>{element.modifierName}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
+
         <div className={styles.tableFooter}></div>
       </section>
     </div>

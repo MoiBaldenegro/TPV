@@ -1,4 +1,10 @@
-import { IsDefined, IsString, Length, IsNotEmpty } from 'class-validator';
+import {
+  IsDefined,
+  IsString,
+  Length,
+  IsNotEmpty,
+  IsOptional,
+} from 'class-validator';
 
 export class createModifierDto {
   @IsNotEmpty()
@@ -12,4 +18,9 @@ export class createModifierDto {
   @Length(1, 35)
   @IsString()
   modifierName: string;
+
+  @IsString()
+  @Length(1, 8)
+  @IsOptional()
+  status?: 'disabled' | 'enabled';
 }

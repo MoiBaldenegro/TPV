@@ -13,6 +13,11 @@ export class Modifier {
     trim: true,
   })
   modifierName: string;
+
+  @Prop({
+    default: 'enabled',
+  })
+  status: 'disabled' | 'enabled';
 }
 
 export const ModifierSchema = SchemaFactory.createForClass(Modifier);
