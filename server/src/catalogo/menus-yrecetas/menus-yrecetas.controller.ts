@@ -79,6 +79,7 @@ export class MenusYrecetasController {
       if (!updatedMenu) {
         throw new NotFoundException('No se ha encontrado el Menu');
       }
+      return updatedMenu;
     } catch (error) {
       throw new NotFoundException('Ocurrio algo inesperado');
     }

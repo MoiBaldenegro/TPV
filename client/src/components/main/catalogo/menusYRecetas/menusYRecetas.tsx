@@ -4,23 +4,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 // icons
-import exportIcon from '../../../../assets/public/exportIcon.svg';
-import importIcon from '../../../../assets/public/importIcon.svg';
 import createIcon from '../../../../assets/public/createIcon.svg';
 import update from '../../../../assets/public/updateIcon.svg';
 import deleteIcon from '../../../../assets/public/deleteIcon.svg';
 import enabledIcon from '../../../../assets/public/enabledIcon.svg';
 import eyeIcon from '../../../../assets/public/openEye.svg';
 
-import helpIcon from '../../../../assets/public/helpIcon.svg';
 // import arrow from "../../../../assets/public/arrow.svg"
 import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 import { getMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/getMenu';
+import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
 
 export default function MenusYRecetas() {
   const dispatch = useDispatch();
   const { allMenus } = useSelector((state) => state.menus);
+
+  const toggleStatus = (id, body) => {
+    dispatch(discontinueMenusAction(id, body));
+  };
 
   const week = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
   useEffect(() => {
@@ -139,7 +141,7 @@ export default function MenusYRecetas() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          onDelete(categoria._id);
+                          toggleStatus(element._id, element.status);
                         }}
                       >
                         <img src={deleteIcon} alt="delete-icon" />
@@ -153,7 +155,7 @@ export default function MenusYRecetas() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          onDelete(categoria._id);
+                          toggleStatus(element._id, element.status);
                         }}
                       >
                         <img src={enabledIcon} alt="enabled-icon" />

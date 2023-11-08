@@ -9,3 +9,6 @@ export const SAVE_MENUS = 'SAVE_CATEGORIES';
 
 // Get
 export const GET_MENUS = 'GET_CATEGORIES';
+
+// Update
+export const DISCONTINUE_MENUS = ' DISCONTINUE_MENUS';

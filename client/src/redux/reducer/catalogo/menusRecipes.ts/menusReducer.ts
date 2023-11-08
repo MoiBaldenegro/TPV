@@ -5,6 +5,7 @@ import {
   MENUS_CONFLICT,
   SAVE_MENUS,
   SEARCH_MENUS,
+  DISCONTINUE_MENUS,
 } from '../../../actions/catalogo/menusYRecipes/actionTypes';
 import {
   menusConflict,
@@ -13,6 +14,7 @@ import {
   getMenus,
   saveMenus,
   searchMenus,
+  discontinueMenus,
 } from './menusCases';
 
 let initialState = {
@@ -40,6 +42,9 @@ export default function menusReducer(state = initialState, action) {
     // Search
     case SEARCH_MENUS:
       return searchMenus(state, action);
+    // Update
+    case DISCONTINUE_MENUS:
+      return discontinueMenus(state, action);
     default:
       return state;
   }

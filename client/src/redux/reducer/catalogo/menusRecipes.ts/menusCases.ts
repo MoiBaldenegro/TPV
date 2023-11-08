@@ -1,3 +1,5 @@
+import { toggleStatus } from '../../utils/toggleStatus';
+
 //public
 export function menusRequest(state) {
   return {
@@ -51,5 +53,17 @@ export function searchMenus(state, action) {
   return {
     ...state,
     allCategories: menusSearch,
+  };
+}
+
+// Update
+export function discontinueMenus(state, action) {
+  const newMenusArray = toggleStatus(state.allMenus, action.payload);
+  return {
+    ...state,
+    allCategories: newMenusArray,
+    error: null,
+    conflict: null,
+    loading: false,
   };
 }
