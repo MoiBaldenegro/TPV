@@ -16,10 +16,15 @@ import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 // Actions
 import { getDishesAction } from '../../../../redux/actions/catalogo/dishesActions/getDishes';
+import { discontinueDishesAction } from '../../../../redux/actions/catalogo/dishesActions/discontinueDishes';
 
 export default function Complementos() {
   const dispatch = useDispatch();
   const { allDishes } = useSelector((state) => state.dishes);
+
+  const toggleStatus = (id, body) => {
+    dispatch(discontinueDishesAction(id, body));
+  };
 
   useEffect(() => {
     dispatch(getDishesAction());
@@ -170,7 +175,14 @@ export default function Complementos() {
           </thead>
           <tbody>
             {allDishes?.map((element, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.category}</td>
                 <td className={styles.tableRows}>{element.code}</td>
                 <td className={styles.tableRows}>{element.dishesName}</td>
@@ -184,7 +196,7 @@ export default function Complementos() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          onDelete(categoria._id);
+                          toggleStatus(element._id, element.status);
                         }}
                       >
                         <img src={deleteIcon} alt="delete-icon" />
@@ -198,7 +210,7 @@ export default function Complementos() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          onDelete(categoria._id);
+                          toggleStatus(element._id, element.status);
                         }}
                       >
                         <img src={enabledIcon} alt="enabled-icon" />

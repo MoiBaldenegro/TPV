@@ -33,6 +33,8 @@ export function saveModifiers(state) {
 
 // Get
 export function getModifiers(state, action) {
+  console.log(action.payload);
+
   return {
     ...state,
     allModifiers: action.payload,

@@ -5,8 +5,10 @@ import {
   DISHES_CONFLICT,
   SAVE_DISHES,
   SEARCH_DISHES,
+  DISCONTINUE_DISHES,
 } from '../../../actions/catalogo/dishesActions/actionTypes';
 import {
+  discontinueDishes,
   dishesConflict,
   dishesFailure,
   dishesRequest,
@@ -40,6 +42,9 @@ export default function dishesReducer(state = initialState, action) {
     // Search
     case SEARCH_DISHES:
       return searchDishes(state, action);
+    // Update
+    case DISCONTINUE_DISHES:
+      return discontinueDishes(state, action);
     default:
       return state;
   }

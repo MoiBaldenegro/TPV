@@ -1,3 +1,5 @@
+import { toggleStatus } from '../../utils/toggleStatus';
+
 //public
 export function dishesRequest(state) {
   return {
@@ -51,5 +53,17 @@ export function searchDishes(state, action) {
   return {
     ...state,
     allCategories: dishesSearch,
+  };
+}
+
+// Update
+export function discontinueDishes(state, action) {
+  const newDishesArray = toggleStatus(state.allDishes, action.payload);
+  return {
+    ...state,
+    allCategories: newDishesArray,
+    error: null,
+    conflict: null,
+    loading: false,
   };
 }

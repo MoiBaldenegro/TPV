@@ -14,15 +14,18 @@ import deleteIcon from '../../../../assets/categorias/bloquedIcon.svg';
 import enabledIcon from '../../../../assets/public/enabledIcon.svg';
 // import arrow from "../../../../assets/public/arrow.svg"
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../../../../redux/actions/catalogo/productsActions/productsActions';
+import { getProductsAndPricesAction } from '../../../../redux/actions/catalogo/productsAndpricesActions/getProductsAndPrices';
+import { discontinueProductsAndPricesAction } from '../../../../redux/actions/catalogo/productsAndpricesActions/discontinueProductsAndPrices';
 
 export default function ProductosYPrecios() {
   const dispatch = useDispatch();
-  const { allProducts } = useSelector((state) => state.products);
+  const { allProductsAndPrices } = useSelector((state) => state.products);
+  const toggleStatus = (id, body) => {
+    dispatch(discontinueProductsAndPricesAction(id, body));
+  };
 
   useEffect(() => {
-    dispatch(getProducts());
-    console.log(allProducts);
+    dispatch(getProductsAndPricesAction());
   }, []);
   return (
     <div className={styles.container}>
@@ -199,8 +202,15 @@ export default function ProductosYPrecios() {
             </tr>
           </thead>
           <tbody>
-            {allProducts?.map((product) => (
-              <tr key={product._id}>
+            {allProductsAndPrices?.map((product) => (
+              <tr
+                key={product._id}
+                className={
+                  product.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{product.category}</td>
                 <td className={styles.tableRows}>{product.code}</td>
                 <td className={styles.tableRows}>{product.productName}</td>
@@ -214,7 +224,7 @@ export default function ProductosYPrecios() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          onDelete(categoria._id);
+                          toggleStatus(product._id, product.status);
                         }}
                       >
                         <img src={deleteIcon} alt="delete-icon" />
@@ -228,7 +238,7 @@ export default function ProductosYPrecios() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          onDelete(categoria._id);
+                          toggleStatus(product._id, product.status);
                         }}
                       >
                         <img src={enabledIcon} alt="enabled-icon" />

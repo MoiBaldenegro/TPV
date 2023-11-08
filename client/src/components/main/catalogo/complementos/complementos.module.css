@@ -361,3 +361,12 @@ text-indent: 25px;
    filter:brightness(0.85);
 }
 
+.rowDisabled{
+  background-color: #2e2c2d31;
+  color: rgba(167, 161, 164, 0.555);
+  transition: 300ms;
+}
+.release{
+  transition: 300ms;
+}
+

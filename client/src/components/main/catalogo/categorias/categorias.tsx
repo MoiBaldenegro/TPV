@@ -40,10 +40,6 @@ export default function Categorias() {
     dispatch(searchCategoriesAction(searchValue));
   };
 
-  const onDelete = (id: string) => {
-    dispatch(deleteCategorie(id));
-  };
-
   useEffect(() => {
     dispatch(getCategoriesAction());
   }, []);

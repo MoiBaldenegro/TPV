@@ -1,3 +1,5 @@
+import { toggleStatus } from '../../utils/toggleStatus';
+
 // Public
 export function categoriesRequest(state) {
   return {
@@ -54,24 +56,12 @@ export function searchCategories(state, action) {
 }
 // Update
 export function discontinueCategories(state, action) {
-  const categoryId = action.payload._id;
-  const newValue = action.payload.status;
-  const ToggleCategory = state.allCategories.findIndex(
-    (category: any) => category._id === categoryId,
-  );
-  if (ToggleCategory !== -1) {
-    const objectModify = { ...state.allCategories[ToggleCategory] };
-
-    objectModify.status = newValue;
-
-    const newCategoriesArray = state.allCategories;
-    newCategoriesArray[ToggleCategory] = objectModify;
-    return {
-      ...state,
-      allCategories: newCategoriesArray,
-      error: null,
-      conflict: null,
-      loading: false,
-    };
-  }
+  const newCategoriesArray = toggleStatus(state.allCategories, action.payload);
+  return {
+    ...state,
+    allCategories: newCategoriesArray,
+    error: null,
+    conflict: null,
+    loading: false,
+  };
 }

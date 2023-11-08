@@ -9,3 +9,6 @@ export const SAVE_DISHES = 'SAVE_CATEGORIES';
 
 // Get
 export const GET_DISHES = 'GET_CATEGORIES';
+
+// Update
+export const DISCONTINUE_DISHES = ' DISCONTINUE_DISHES';

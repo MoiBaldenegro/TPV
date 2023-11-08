@@ -1,34 +1,33 @@
 import axios from 'axios';
 import {
-  CATEGORIES_FAILURE,
-  CATEGORIES_REQUEST,
-  DISCONTINUE_CATEGORY,
+  DISCONTINUE_DISHES,
+  DISHES_FAILURE,
+  DISHES_REQUEST,
 } from './actionTypes';
 
-export function discontinueCategoriesAction(id, body) {
+export function discontinueDishesAction(id, body) {
   return async (dispatch) => {
-    dispatch({ type: CATEGORIES_REQUEST });
+    dispatch({ type: DISHES_REQUEST });
     const bodyValue = body === 'enabled' ? 'disabled' : 'enabled';
     const solicitud = { status: bodyValue };
     try {
       const response = await axios.put(
-        `https://tomate-server.onrender.com/categories/${id}`,
+        `https://tomate-server.onrender.com/dishes/${id}`,
         solicitud,
       );
-      console.log(id, bodyValue);
       if (!response.data) {
         dispatch({
-          type: CATEGORIES_FAILURE,
+          type: DISHES_FAILURE,
           error: 'Respuesta inesperada del servidor',
         });
         throw new Error(
           'Ha ocurrido algo inesperado, la respuesta no contiene datos',
         );
       }
-      dispatch({ type: DISCONTINUE_CATEGORY, payload: response.data });
+      dispatch({ type: DISCONTINUE_DISHES, payload: response.data });
     } catch (error) {
       dispatch({
-        type: CATEGORIES_FAILURE,
+        type: DISHES_FAILURE,
         error: 'Respuesta inesperada del servidor',
       });
       throw new Error(`Ha ocurrido un error inesperado ${error}`);
