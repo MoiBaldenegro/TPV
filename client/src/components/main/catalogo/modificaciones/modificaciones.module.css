@@ -329,6 +329,7 @@ text-indent: 25px;
 .actionButtonsSecond,
 .actionButtonsFirst,
 .actionButtonsFirstEnabled{
+  position: relative;
     border: none;
     width: 32px;
     height: 32px;

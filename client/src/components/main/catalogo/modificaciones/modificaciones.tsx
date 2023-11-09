@@ -7,16 +7,18 @@ import createIcon from '../../../../assets/public/createIcon.svg';
 import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 import update from '../../../../assets/public/updateIcon.svg';
-import enabledIcon from '../../../../assets/public/enabledIcon.svg';
 import deleteIcon from '../../../../assets/public/deleteIcon.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getModifiersAction } from '../../../../redux/actions/catalogo/modifiersActions/getModifiers';
 import { deleteModifiersAction } from '../../../../redux/actions/catalogo/modifiersActions/deleteModifiers';
 import DeletedModifierModal from './modals/confirms/deleteModifier';
 import { useModal } from '../../../../hooks/useModals';
+import ButtonLoader from '../../../loaders/buttonLoader/buttonLoader';
 
 export default function Modificaciones() {
+  // LocalState
+  const [indexState, setIndexSate] = useState();
   // Modal props
   const deleteModifier = useModal('deleteModifier');
 
@@ -99,11 +101,16 @@ export default function Modificaciones() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
+                          setIndexSate(index);
                           dispatch(deleteModifiersAction(element._id));
                           deleteModifier.openModal();
                         }}
                       >
-                        <img src={deleteIcon} alt="delete-icon" />
+                        {loading && index === indexState ? (
+                          <ButtonLoader />
+                        ) : (
+                          <img src={deleteIcon} alt="delete-icon" />
+                        )}
                       </button>
                     </>
                   ) : (
@@ -118,7 +125,11 @@ export default function Modificaciones() {
                           deleteModifier.openModal();
                         }}
                       >
-                        <img src={enabledIcon} alt="enabled-icon" />
+                        {loading === indexState ? (
+                          <ButtonLoader />
+                        ) : (
+                          <img src={deleteIcon} alt="delete-icon" />
+                        )}
                       </button>
                     </>
                   )}
@@ -128,7 +139,8 @@ export default function Modificaciones() {
           </tbody>
         </table>
         {deleteModifier.isOpen &&
-        deleteModifier.modalName === 'deleteModifier' ? (
+        deleteModifier.modalName === 'deleteModifier' &&
+        !loading ? (
           <DeletedModifierModal
             actionType={getModifiersAction}
             isOpen={deleteModifier.isOpen}

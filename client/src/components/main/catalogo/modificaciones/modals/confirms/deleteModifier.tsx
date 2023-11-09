@@ -29,9 +29,7 @@ export default function DeletedModifierModal({
   }
   return (
     <div className={styles.container}>
-      {loading ? (
-        <ConfirmLoader />
-      ) : error ? (
+      {error ? (
         <div className={styles.modal}>
           <h1 className={styles.tittle}>No se pudo eliminar el modificador</h1>
           <button onClick={onClose}>X</button>
