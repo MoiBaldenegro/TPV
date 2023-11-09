@@ -1,14 +1,14 @@
 // Public
-export const MENUS_FAILURE = 'CATEGORIES_FAILURE';
-export const MENUS_REQUEST = 'CATEGORIES_REQUEST';
-export const SEARCH_MENUS = 'SEARCH_CATEGORIES';
+export const MENUS_FAILURE = 'MENUS_FAILURE';
+export const MENUS_REQUEST = 'MENUS_REQUEST';
+export const SEARCH_MENUS = 'SEARCH_MENUS';
 
 // Create
-export const MENUS_CONFLICT = 'CATEGORIES_CONFLICT';
-export const SAVE_MENUS = 'SAVE_CATEGORIES';
+export const MENUS_CONFLICT = 'MENUS_CONFLICT';
+export const SAVE_MENUS = 'SAVE_MENUS';
 
 // Get
-export const GET_MENUS = 'GET_CATEGORIES';
+export const GET_MENUS = 'GET_MENUS';
 
 // Update
 export const DISCONTINUE_MENUS = ' DISCONTINUE_MENUS';

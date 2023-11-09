@@ -12,6 +12,15 @@ export function modifiersFailure(state, action) {
     error: action.error,
   };
 }
+export function notFoundModifiers(state) {
+  return {
+    ...state,
+    allModifiers: [],
+    loading: false,
+    error: null,
+    conflict: null,
+  };
+}
 
 // Create
 export function modifiersConflict(state, action) {
@@ -51,5 +60,19 @@ export function searchModifiers(state, action) {
   return {
     ...state,
     allCategories: modifiersSearch,
+  };
+}
+// delete
+export function deletedModifier(state, action) {
+  const refreshArray = state.allModifiers.filter(
+    (modifier) => modifier._id !== action.payload._id,
+  );
+
+  return {
+    ...state,
+    allModifiers: refreshArray,
+    loading: false,
+    error: null,
+    conflict: null,
   };
 }

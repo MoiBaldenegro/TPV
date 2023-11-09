@@ -12,6 +12,7 @@ import deleteIcon from '../../../../assets/public/deleteIcon.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getModifiersAction } from '../../../../redux/actions/catalogo/modifiersActions/getModifiers';
+import { deleteModifiersAction } from '../../../../redux/actions/catalogo/modifiersActions/deleteModifiers';
 
 export default function Modificaciones() {
   const dispatch = useDispatch();
@@ -92,7 +93,7 @@ export default function Modificaciones() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          onDelete(categoria._id);
+                          dispatch(deleteModifiersAction(element._id));
                         }}
                       >
                         <img src={deleteIcon} alt="delete-icon" />
@@ -106,7 +107,7 @@ export default function Modificaciones() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          onDelete(categoria._id);
+                          dispatch(deleteModifiersAction(element._id));
                         }}
                       >
                         <img src={enabledIcon} alt="enabled-icon" />

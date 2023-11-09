@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 // icons
 import createIcon from '../../../../assets/public/createIcon.svg';
 import update from '../../../../assets/public/updateIcon.svg';
-import deleteIcon from '../../../../assets/public/deleteIcon.svg';
+import deleteIcon from '../../../../assets/public/bloquedIcon.svg';
 import enabledIcon from '../../../../assets/public/enabledIcon.svg';
 import eyeIcon from '../../../../assets/public/openEye.svg';
 

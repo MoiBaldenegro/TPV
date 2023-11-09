@@ -5,6 +5,7 @@ import {
   MODIFIERS_CONFLICT,
   SAVE_MODIFIERS,
   SEARCH_MODIFIERS,
+  DELETE_MODIFIERS,
 } from '../../../actions/catalogo/modifiersActions/actionTypes';
 import {
   modifiersConflict,
@@ -13,6 +14,7 @@ import {
   getModifiers,
   saveModifiers,
   searchModifiers,
+  deletedModifier,
 } from './modifiersCases';
 
 let initialState = {
@@ -40,6 +42,9 @@ export default function modifiersReducer(state = initialState, action) {
     // Search
     case SEARCH_MODIFIERS:
       return searchModifiers(state, action);
+    // Delete
+    case DELETE_MODIFIERS:
+      return deletedModifier;
     default:
       return state;
   }
