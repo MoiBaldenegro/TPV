@@ -13,10 +13,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getModifiersAction } from '../../../../redux/actions/catalogo/modifiersActions/getModifiers';
 import { deleteModifiersAction } from '../../../../redux/actions/catalogo/modifiersActions/deleteModifiers';
+import DeletedModifierModal from './modals/confirms/deleteModifier';
+import { useModal } from '../../../../hooks/useModals';
 
 export default function Modificaciones() {
+  // Modal props
+  const deleteModifier = useModal('deleteModifier');
+
   const dispatch = useDispatch();
   const { allModifiers } = useSelector((state) => state.modifiers);
+  const { loading } = useSelector((state) => state.modifiers);
 
   useEffect(() => {
     dispatch(getModifiersAction());
@@ -94,6 +100,7 @@ export default function Modificaciones() {
                         className={styles.actionButtonsSecond}
                         onClick={() => {
                           dispatch(deleteModifiersAction(element._id));
+                          deleteModifier.openModal();
                         }}
                       >
                         <img src={deleteIcon} alt="delete-icon" />
@@ -108,6 +115,7 @@ export default function Modificaciones() {
                         className={styles.actionButtonsSecond}
                         onClick={() => {
                           dispatch(deleteModifiersAction(element._id));
+                          deleteModifier.openModal();
                         }}
                       >
                         <img src={enabledIcon} alt="enabled-icon" />
@@ -119,6 +127,16 @@ export default function Modificaciones() {
             ))}
           </tbody>
         </table>
+        {deleteModifier.isOpen &&
+        deleteModifier.modalName === 'deleteModifier' ? (
+          <DeletedModifierModal
+            actionType={getModifiersAction}
+            isOpen={deleteModifier.isOpen}
+            onClose={deleteModifier.closeModal}
+          >
+            Modificador eliminado
+          </DeletedModifierModal>
+        ) : null}
 
         <div className={styles.tableFooter}></div>
       </section>

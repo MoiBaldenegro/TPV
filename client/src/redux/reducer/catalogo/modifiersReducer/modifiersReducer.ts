@@ -44,7 +44,7 @@ export default function modifiersReducer(state = initialState, action) {
       return searchModifiers(state, action);
     // Delete
     case DELETE_MODIFIERS:
-      return deletedModifier;
+      return deletedModifier(state, action);
     default:
       return state;
   }

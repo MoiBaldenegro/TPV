@@ -62,7 +62,7 @@ export function searchModifiers(state, action) {
     allCategories: modifiersSearch,
   };
 }
-// delete
+// Delete
 export function deletedModifier(state, action) {
   const refreshArray = state.allModifiers.filter(
     (modifier) => modifier._id !== action.payload._id,

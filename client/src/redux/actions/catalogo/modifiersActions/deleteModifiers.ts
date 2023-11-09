@@ -12,14 +12,7 @@ export function deleteModifiersAction(id) {
       const deletedModifier = await axios.delete(
         `https://tomate-server.onrender.com/modifications/${id}`,
       );
-      if (deletedModifier.status === 204) {
-        dispatch({ type: DELETE_MODIFIERS });
-      }
-      dispatch({
-        type: MODIFIERS_FAILURE,
-        error: 'Ha ocurrido algo inesperado, no se elimino el elemento',
-      });
-      throw new Error('Ha ocurrido algo inesperado');
+      dispatch({ type: DELETE_MODIFIERS, payload: deletedModifier });
     } catch (error) {
       dispatch({
         type: MODIFIERS_FAILURE,
