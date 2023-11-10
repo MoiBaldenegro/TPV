@@ -19,16 +19,19 @@ import ButtonLoader from '../../../loaders/buttonLoader/buttonLoader';
 export default function Modificaciones() {
   // LocalState
   const [indexState, setIndexSate] = useState();
+  const [refresh, setRefresh] = useState(false);
   // Modal props
   const deleteModifier = useModal('deleteModifier');
 
   const dispatch = useDispatch();
-  const { allModifiers } = useSelector((state) => state.modifiers);
-  const { loading } = useSelector((state) => state.modifiers);
+  const { allModifiers, loading, error } = useSelector(
+    (state) => state.modifiers,
+  );
 
   useEffect(() => {
     dispatch(getModifiersAction());
-  }, []);
+    console.log('Me ejecute');
+  }, [refresh]);
   return (
     <div className={styles.container}>
       <section className={styles.head}>
@@ -104,6 +107,7 @@ export default function Modificaciones() {
                           setIndexSate(index);
                           dispatch(deleteModifiersAction(element._id));
                           deleteModifier.openModal();
+                          setRefresh(!refresh);
                         }}
                       >
                         {loading && index === indexState ? (
@@ -121,8 +125,10 @@ export default function Modificaciones() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
+                          setIndexSate(index);
                           dispatch(deleteModifiersAction(element._id));
                           deleteModifier.openModal();
+                          setRefresh(!refresh);
                         }}
                       >
                         {loading === indexState ? (
@@ -140,7 +146,7 @@ export default function Modificaciones() {
         </table>
         {deleteModifier.isOpen &&
         deleteModifier.modalName === 'deleteModifier' &&
-        !loading ? (
+        !error ? null : (
           <DeletedModifierModal
             actionType={getModifiersAction}
             isOpen={deleteModifier.isOpen}
@@ -148,7 +154,7 @@ export default function Modificaciones() {
           >
             Modificador eliminado
           </DeletedModifierModal>
-        ) : null}
+        )}
 
         <div className={styles.tableFooter}></div>
       </section>

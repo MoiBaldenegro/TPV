@@ -14,7 +14,7 @@ import searchIcon from '../../../../assets/categorias/searchIcon.svg';
 import UploadFiles from './modals/uploadCategories/uploadCategories';
 import { useEffect } from 'react';
 import { useModal } from '../../../../hooks/useModals';
-import CreateCategories from './forms/createCategory.form';
+import CreateCategories from './forms/createCategories/createCategory.form';
 import SaveCategoriesModal from './modals/confirms/saveCategories';
 import { discontinueCategoriesAction } from '../../../../redux/actions/catalogo/categoriesActions/discontinueCategories';
 
