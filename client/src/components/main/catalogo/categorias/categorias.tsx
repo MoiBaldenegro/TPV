@@ -17,11 +17,13 @@ import { useModal } from '../../../../hooks/useModals';
 import CreateCategories from './forms/createCategories/createCategory.form';
 import SaveCategoriesModal from './modals/confirms/saveCategories';
 import { discontinueCategoriesAction } from '../../../../redux/actions/catalogo/categoriesActions/discontinueCategories';
+import UpdateOneCategory from './forms/updateCategory/updateOneCategory';
 
 export default function Categorias() {
   const createCategory = useModal('createCategory');
   const uploadCategories = useModal('uploadCategories');
   const saveCategories = useModal('saveCategories');
+  const updateOneCategory = useModal('updateOneCategory');
 
   //////////////////////////////////////////////////////////////////////////////////////
   const dispatch = useDispatch();
@@ -86,7 +88,7 @@ export default function Categorias() {
               isOpen={createCategory.isOpen}
               onClose={createCategory.closeModal}
             >
-              <h3>Crear categoria</h3>
+              <strong>Crear categoria</strong>
             </CreateCategories>
           ) : null}
           {saveCategories.isOpen &&
@@ -98,6 +100,15 @@ export default function Categorias() {
             >
               Categorias guardadas
             </SaveCategoriesModal>
+          ) : null}
+          {updateOneCategory.isOpen &&
+          updateOneCategory.modalName === 'updateOneCategory' ? (
+            <UpdateOneCategory
+              isOpen={updateOneCategory.isOpen}
+              onClose={updateOneCategory.closeModal}
+            >
+              Editar Categoria
+            </UpdateOneCategory>
           ) : null}
         </div>
       </div>
@@ -140,7 +151,10 @@ export default function Categorias() {
                 <td className={styles.buttonsContainer}>
                   {categoria.status === 'enabled' ? (
                     <>
-                      <button className={styles.actionButtonsFirst}>
+                      <button
+                        className={styles.actionButtonsFirst}
+                        onClick={updateOneCategory.openModal}
+                      >
                         <img src={update} alt="update-icon" />
                       </button>
                       <button
