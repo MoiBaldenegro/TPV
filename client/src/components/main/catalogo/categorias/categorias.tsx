@@ -12,26 +12,39 @@ import importIcon from '../../../../assets/categorias/importIcon.svg';
 import createIcon from '../../../../assets/categorias/createIcon.svg';
 import searchIcon from '../../../../assets/categorias/searchIcon.svg';
 import UploadFiles from './modals/uploadCategories/uploadCategories';
+import AuthDiscontinueModal from '../../../modals/authDiscontinue/authDiscontinue';
 import { useEffect } from 'react';
 import { useModal } from '../../../../hooks/useModals';
 import CreateCategories from './forms/createCategories/createCategory.form';
 import SaveCategoriesModal from './modals/confirms/saveCategories';
 import { discontinueCategoriesAction } from '../../../../redux/actions/catalogo/categoriesActions/discontinueCategories';
 import UpdateOneCategory from './forms/updateCategory/updateOneCategory';
+import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
+//hooks
+import { useState } from 'react';
 
 export default function Categorias() {
   const createCategory = useModal('createCategory');
   const uploadCategories = useModal('uploadCategories');
   const saveCategories = useModal('saveCategories');
   const updateOneCategory = useModal('updateOneCategory');
+  const AuthDiscontinue = useModal('AuthDiscontinue');
+  const confirmChanges = useModal('confirmChanges');
 
   //////////////////////////////////////////////////////////////////////////////////////
+
+  const [buttonParams, setButtonParams] = useState();
   const dispatch = useDispatch();
   const { allCategories } = useSelector((state) => state.categories);
 
-  const toggleStatus = (id, body) => {
-    dispatch(discontinueCategoriesAction(id, body));
+  const toggleStatus = () => {
+    console.log(buttonParams);
+    dispatch(discontinueCategoriesAction(buttonParams.id, buttonParams.body));
   };
+
+  function restoreStatus(id, body) {
+    dispatch(discontinueCategoriesAction(id, body));
+  }
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -110,7 +123,28 @@ export default function Categorias() {
               Editar Categoria
             </UpdateOneCategory>
           ) : null}
+          {AuthDiscontinue.isOpen &&
+          AuthDiscontinue.modalName === 'AuthDiscontinue' ? (
+            <AuthDiscontinueModal
+              handleStatus={toggleStatus}
+              isOpen={AuthDiscontinue.isOpen}
+              onClose={AuthDiscontinue.closeModal}
+              openModal={confirmChanges.openModal}
+            >
+              Descontinuar categoria
+            </AuthDiscontinueModal>
+          ) : null}
         </div>
+        {confirmChanges.isOpen &&
+        confirmChanges.modalName === 'confirmChanges' ? (
+          <ConfirmChangesModal
+            isOpen={confirmChanges.isOpen}
+            onClose={confirmChanges.closeModal}
+            actionType={getCategoriesAction}
+          >
+            Cambios guardados
+          </ConfirmChangesModal>
+        ) : null}
       </div>
       <div className={styles.searchBarContainer}>
         <div className={styles.searchInputContainer}>
@@ -160,7 +194,11 @@ export default function Categorias() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          toggleStatus(categoria._id, categoria.status);
+                          AuthDiscontinue.openModal(),
+                            setButtonParams({
+                              id: categoria._id,
+                              body: categoria.status,
+                            });
                         }}
                       >
                         <img src={deleteIcon} alt="delete-icon" />
@@ -174,7 +212,7 @@ export default function Categorias() {
                       <button
                         className={styles.actionButtonsSecond}
                         onClick={() => {
-                          toggleStatus(categoria._id, categoria.status);
+                          restoreStatus(categoria._id, categoria.status);
                         }}
                       >
                         <img src={enabledIcon} alt="enabled-icon" />

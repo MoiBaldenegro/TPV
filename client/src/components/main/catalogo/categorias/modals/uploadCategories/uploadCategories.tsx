@@ -63,7 +63,7 @@ export default function UploadFiles({
           }}
         >
           {' '}
-          <img src={importIcon} alt="" />
+          <img src={importIcon} alt="import-icon" />
           Importar
         </button>
       </div>
