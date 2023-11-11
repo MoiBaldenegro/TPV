@@ -12,7 +12,7 @@
     align-items: center;
     z-index: 1000;
     transition: 1s;
-    background: rgba(214, 208, 208, 0.616);
+    background: rgba(0, 0, 0, 0.911);
   }
   .modalContent {
     display: flex;
@@ -20,8 +20,8 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 1120px;
-    height: 736px;
+    width: 1800px;
+    height: 900px;
     padding: 32px;
     border-radius: 32px;
     background: var(--color-primary);
@@ -32,14 +32,14 @@
   .closeButton {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 20px;
     cursor: pointer;
     background: none;
     border: none;
     font-size: 18px;
-    color: #333;
+    color: #cfcece;
+  font-weight: 900;
   }
-
 /* estilos de select */
 .customSelect{
   position: relative;
@@ -180,4 +180,13 @@ border-radius: 8px;
 gap: 8px;
 background: #F9F9F91A;
 
+}
+
+table{
+  border: 1px solid #f9f9f9;
+  width: 95%;
+  height: 90%;
+}
+td{
+  border: 1px solid #f9f9f9;
 }

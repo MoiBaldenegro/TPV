@@ -49,43 +49,76 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
         <button className={styles.closeButton} onClick={onClose}>
           X
         </button>
-        <div className={styles.contentContainer}>
-          {children}
-          <div className={styles.formContainer}>
-            <div className={styles.formLeft}>
-              <h3>General</h3>
-              <div>
-                <input
-                  type="text"
-                  name="code"
-                  placeholder="code"
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="categoryName"
-                  placeholder="Nombre de la subcategoría"
-                  onChange={handleChange}
-                  className={styles.inputCategory}
-                />
-              </div>
-            </div>
-            <div className={styles.formRight}>
-              <h3>Complementos</h3>
-              <span>Contenido sugerido</span>
-              <button className={styles.buttonFormRight}>
-                <img src={createIcon} alt="" />
-                Agregar subcategorias
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className={styles.buttonsContainer}>
-          <button onClick={onSubmit} className={styles.buttonCreate}>
-            <img src={disquet} alt="" />
-            Guardar categoría
-          </button>
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Subcategoria 1</th>
+              <th>Subcategoria 2</th>
+              <th>Subcategoria 3</th>
+              <th>Subcategoria 4</th>
+              <th>Subcategoria 5</th>
+              <th>Subcategoria 6</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );
