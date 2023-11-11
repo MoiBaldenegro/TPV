@@ -186,6 +186,8 @@ table{
   border: 1px solid #f9f9f9;
   width: 95%;
   height: 90%;
+  background-color: rgba(106, 112, 112, 0.438);
+  border-radius: 8px;
 }
 td{
   border: 1px solid #f9f9f9;
