@@ -30,7 +30,6 @@ export class BillsController {
       throw new NotFoundException('Ha ocurrido algo inesperado');
     }
   }
-  // new commit
   @Get(':id')
   async findOne(@Param('id') id: string) {
     try {
