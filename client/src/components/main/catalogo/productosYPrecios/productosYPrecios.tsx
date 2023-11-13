@@ -16,6 +16,9 @@ import enabledIcon from '../../../../assets/public/enabledIcon.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsAndPricesAction } from '../../../../redux/actions/catalogo/productsAndpricesActions/getProductsAndPrices';
 import { discontinueProductsAndPricesAction } from '../../../../redux/actions/catalogo/productsAndpricesActions/discontinueProductsAndPrices';
+import { useModal } from '../../../../hooks/useModals';
+import UploadFiles from '../../../forms/uploadFile/uploadFile';
+import { createProductsAndPrices } from '../../../../redux/actions/catalogo/productsAndpricesActions/createProduct';
 
 export default function ProductosYPrecios() {
   const dispatch = useDispatch();
@@ -23,7 +26,9 @@ export default function ProductosYPrecios() {
   const toggleStatus = (id, body) => {
     dispatch(discontinueProductsAndPricesAction(id, body));
   };
-
+  // MODALS
+  const uploadProduct = useModal('uploadProduct');
+  const saveProducts = useModal('saveProducts');
   useEffect(() => {
     dispatch(getProductsAndPricesAction());
   }, []);
@@ -36,7 +41,7 @@ export default function ProductosYPrecios() {
             <img src={exportIcon} alt="export-icon" />
             Exportar productos
           </button>
-          <button className={styles.btnHead}>
+          <button className={styles.btnHead} onClick={uploadProduct.openModal}>
             <img src={importIcon} alt="import-icon" />
             Importar productos
           </button>
@@ -45,6 +50,16 @@ export default function ProductosYPrecios() {
             <span>Crear producto</span>
           </button>
         </div>
+        {uploadProduct.isOpen && uploadProduct.modalName === 'uploadProduct' ? (
+          <UploadFiles
+            openModal={saveProducts.openModal}
+            isOpen={uploadProduct.isOpen}
+            onClose={uploadProduct.closeModal}
+            actionType={createProductsAndPrices}
+          >
+            Cargar plantilla de productos
+          </UploadFiles>
+        ) : null}
       </section>
       <section className={styles.updateSection}>
         <div className={styles.leftSection}>

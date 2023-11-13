@@ -4,6 +4,7 @@ import { Products } from '../../schemas/catalogo/products.schema';
 import { Model } from 'mongoose';
 import { createProductDto } from 'src/dto/catalogo/products/createProduct.dto';
 import { updateProductDto } from 'src/dto/catalogo/products/updatedProduct.dto';
+import { DeleteResult } from 'mongodb';
 
 @Injectable()
 export class ProductsService {
@@ -29,5 +30,8 @@ export class ProductsService {
     return await this.productsModel.findByIdAndUpdate(id, updatedProduct, {
       new: true,
     });
+  }
+  async replace(): Promise<DeleteResult> {
+    return await this.productsModel.deleteMany({}).exec();
   }
 }

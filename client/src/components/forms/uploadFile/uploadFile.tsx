@@ -1,19 +1,19 @@
-import styles from './uploadCategories.module.css';
+import styles from './uploadFile.module.css';
 //hooks
 import { useDropzone } from 'react-dropzone';
 //dependecies
 //icons
-import importIcon from '../../../../../../assets/public/importIcon.svg';
-import iconExcel from '../../../../../../assets/public/iconExcel.svg';
-import closeIcon from '../../../../../../assets/public/closeIcon.svg';
-import { createCategoryAction } from '../../../../../../redux/actions/catalogo/categoriesActions/createCategories';
-import useUpload from '../../../../../../hooks/useUpload';
+import importIcon from '../../../assets/public/importIcon.svg';
+import iconExcel from '../../../assets/public/iconExcel.svg';
+import closeIcon from '../../../assets/public/closeIcon.svg';
+import useUpload from '../../../hooks/useUpload';
 
 interface Props {
   isOpen: any;
   onClose: any;
   children: any;
   openModal: any;
+  actionType: (arg: any) => void;
 }
 
 export default function UploadFiles({
@@ -21,9 +21,9 @@ export default function UploadFiles({
   onClose,
   children,
   openModal,
+  actionType,
 }: Props) {
-  const { handleUpload, resetFiles, onDrop, files } =
-    useUpload(createCategoryAction);
+  const { handleUpload, resetFiles, onDrop, files } = useUpload(actionType);
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   if (!isOpen) return null;

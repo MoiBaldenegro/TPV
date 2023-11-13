@@ -44,15 +44,30 @@ export class ProductsController {
   }
 
   @Post()
-  async create(@Body() body: createProductDto) {
+  async create(@Body() body: createProductDto | createProductDto[]) {
+    const proService = this.productService;
     try {
-      return await this.productService.create(body);
+      if (Array.isArray(body)) {
+        await this.productService.replace();
+        const createdProduct = await Promise.all(
+          body.map(async (element: createProductDto) => {
+            return await proService.create(element);
+          }),
+        );
+        return createdProduct;
+      } else {
+        const createdProduct = await this.productService.create(body); // Usar la variable categoriesService
+        return createdProduct;
+      }
     } catch (error) {
-      if (error.code === 11000)
-        throw new ConflictException('Este producto ya existe');
-      throw new NotFoundException('Ha ocurrido algo inesperado');
-    }
+      if (error.code === 11000) {
+        throw new ConflictException('El producto ya existe');
+      } else {
+        throw new NotFoundException('Ha ocurrido algo inesperado');
+      }
+      
   }
+
   @Delete(':id')
   @HttpCode(204)
   async delete(@Param('id') id: string) {
