@@ -22,7 +22,7 @@ export class BillsController {
   async findAll() {
     try {
       const BillsArray = await this.billService.findAll();
-      if (BillsArray) {
+      if (!BillsArray) {
         throw new NotFoundException('No se encuentran cuentas activas');
       }
       return BillsArray;
@@ -30,7 +30,7 @@ export class BillsController {
       throw new NotFoundException('Ha ocurrido algo inesperado');
     }
   }
-
+  // new commit
   @Get(':id')
   async findOne(@Param('id') id: string) {
     try {
