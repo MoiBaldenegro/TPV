@@ -44,7 +44,7 @@ export class NotesController {
     }
   }
 
-  @Post(':id')
+  @Post()
   async create(@Body() body: createNoteDto) {
     try {
       const newNote = await this.noteService.create(body);
