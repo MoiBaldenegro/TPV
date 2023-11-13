@@ -5,14 +5,18 @@ import dishesReducer from './catalogo/dishesReducer/dishesReducer';
 import modifiersReducer from './catalogo/modifiersReducer/modifiersReducer';
 import menusReducer from './catalogo/menusRecipes.ts/menusReducer';
 import productsAndPricesReducer from './catalogo/productsAndRecipes/productsAndPricesReducer';
+import billsReducer from './ventas/billsReducer/billsReducer';
 
 const rootReducer = combineReducers({
+  // Catalogo
   auth: authReducer,
   categories: categoriesReducer,
   products: productsAndPricesReducer,
   dishes: dishesReducer,
   modifiers: modifiersReducer,
   menus: menusReducer,
+  // Ventas
+  bills: billsReducer,
 });
 
 export default rootReducer;
