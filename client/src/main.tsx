@@ -22,15 +22,11 @@ import MenusYRecetas from './components/main/catalogo/menusYRecetas/menusYReceta
 import Main from './components/main/main.tsx';
 import Cuentas from './components/main/ventas/cuentas/cuentas.tsx';
 import Notas from './components/main/ventas/notas/notas.tsx';
-import Productos from './components/main/ventas/products/products.tsx';
 import Pagos from './components/main/ventas/pagos/pagos.tsx';
 import Descuentos from './components/main/ventas/descuentos/descuentos.tsx';
 import Cancelaciones from './components/main/ventas/cancelaciones/cancelaciones.tsx';
 import MotivosDeCancelacion from './components/main/ventas/motivosDeCancelaiones/motivosDeCancelaciones.tsx';
 import SaveCategoriesModal from './components/main/catalogo/categorias/modals/confirms/saveCategories.tsx';
-import Loader from './components/loaders/loader.tsx';
-import TomateLoader from './components/loaders/tomateLoader/tomateLoader.tsx';
-import ConfirmLoader from './components/loaders/confirmsLoader/confirmsLoader.tsx';
 
 const router = createBrowserRouter([
   {
@@ -90,10 +86,6 @@ const router = createBrowserRouter([
               {
                 path: 'notes',
                 element: <Notas />,
-              },
-              {
-                path: 'products',
-                element: <Productos />,
               },
               {
                 path: 'payments',
