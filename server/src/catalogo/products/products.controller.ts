@@ -65,7 +65,7 @@ export class ProductsController {
       } else {
         throw new NotFoundException('Ha ocurrido algo inesperado');
       }
-      
+    }
   }
 
   @Delete(':id')
