@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 //icons
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 import filterIcon from '../../../../assets/public/filterIcon.svg';
+import eyeIcon from '../../../../assets/public/openEye.svg';
 import { getNotesAction } from '../../../../redux/actions/ventas/notesActions/getNotes';
 
 export default function Notas() {
@@ -51,8 +52,42 @@ export default function Notas() {
         </div>
 
         <table className={styles.table}>
-          <thead></thead>
-          <tbody></tbody>
+          <thead>
+            <tr>
+              <th>Cuenta</th>
+              <th>Nota</th>
+              <th>Folio de pago</th>
+              <th>Tipo de venta</th>
+              <th>Abierta por</th>
+              <th>Total</th>
+              <th>Estatus</th>
+              <th>Cajero</th>
+              <th>Fecha de creacion</th>
+              <th>Fecha de pago</th>
+              <th>Detalles</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allNotes?.map((element, index) => (
+              <tr key={index}>
+                <td>{element.checkCode}</td>
+                <td>{element.noteNumber}</td>
+                <td>{element.paymentCode}</td>
+                <td>{element.sellType}</td>
+                <td>{element.user}</td>
+                <td>{element.checkTotal}</td>
+                <td>{element.status}</td>
+                <td>{element.cashier}</td>
+                <td>{element.createdAt}</td>
+                <td>{element.paymentDate}</td>
+                <td>
+                  <button className={styles.actionButtonsFirstDetails}>
+                    <img src={eyeIcon} alt="open-eye-icon" />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
 
         <div className={styles.tableFooter}></div>
