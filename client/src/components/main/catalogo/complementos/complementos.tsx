@@ -3,6 +3,7 @@ import styles from './complementos.module.css';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useModal } from '../../../../hooks/useModals';
 // icons
 import exportIcon from '../../../../assets/public/exportIcon.svg';
 import importIcon from '../../../../assets/public/importIcon.svg';
@@ -17,8 +18,16 @@ import searchIcon from '../../../../assets/public/searchIcon.svg';
 // Actions
 import { getDishesAction } from '../../../../redux/actions/catalogo/dishesActions/getDishes';
 import { discontinueDishesAction } from '../../../../redux/actions/catalogo/dishesActions/discontinueDishes';
+import { createDishes } from '../../../../redux/actions/catalogo/dishesActions/createDishes';
+
+// Components
+import UploadFiles from '../../../forms/uploadFile/uploadFile';
 
 export default function Complementos() {
+  // MODALS
+  const uploadPayment = useModal('uploadPayment');
+  const savePayments = useModal('savePayments');
+
   const dispatch = useDispatch();
   const { allDishes } = useSelector((state) => state.dishes);
 
@@ -38,7 +47,7 @@ export default function Complementos() {
             <img src={exportIcon} alt="export-icon" />
             Exportar complementos
           </button>
-          <button className={styles.btnHead}>
+          <button className={styles.btnHead} onClick={uploadPayment.openModal}>
             <img src={importIcon} alt="import-icon" />
             Importar complementos
           </button>
@@ -46,6 +55,17 @@ export default function Complementos() {
             <img src={createIcon} alt="create-icon" />
             <span>Crear complemento</span>
           </button>
+          {uploadPayment.isOpen &&
+          uploadPayment.modalName === 'uploadPayment' ? (
+            <UploadFiles
+              openModal={savePayments.openModal}
+              isOpen={uploadPayment.isOpen}
+              onClose={uploadPayment.closeModal}
+              actionType={createDishes}
+            >
+              Cargar plantilla de complementos
+            </UploadFiles>
+          ) : null}
         </div>
       </section>
       <section className={styles.updateSection}>
