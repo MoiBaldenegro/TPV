@@ -16,6 +16,7 @@ import { CancellationsModule } from './ventas/cancellations/cancellations.module
 import { CancellationReasonModule } from './ventas/cancellation-reason/cancellation-reason.module';
 import { ExcelModule } from './utils/chargeFiles/excel/excel/excel.module';
 import { TillModule } from './caja/till/till.module';
+import { ShiftsModule } from './usuarios/shifts/shifts.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { TillModule } from './caja/till/till.module';
     CancellationReasonModule,
     ExcelModule,
     TillModule,
+    ShiftsModule,
   ],
   controllers: [],
   providers: [],
