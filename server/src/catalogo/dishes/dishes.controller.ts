@@ -45,13 +45,27 @@ export class DishesController {
   }
 
   @Post()
-  async create(@Body() body: createDishesDto) {
+  async create(@Body() body: createDishesDto | createDishesDto[]) {
+    const dishService = this.dishesService;
     try {
-      return await this.dishesService.create(body);
+      if (Array.isArray(body)) {
+        await this.dishesService.replace();
+        const createdDishes = await Promise.all(
+          body.map(async (element: createDishesDto) => {
+            return await dishService.create(element);
+          }),
+        );
+        return createdDishes;
+      } else {
+        const createdDishes = await this.dishesService.create(body); // Usar la variable categoriesService
+        return createdDishes;
+      }
     } catch (error) {
-      if (error.code === 11000)
-        throw new ConflictException('El complemento ya existe');
-      throw new NotFoundException('Ha ocurrido algo inesperado');
+      if (error.code === 11000) {
+        throw new ConflictException('El producto ya existe');
+      } else {
+        throw new NotFoundException('Ha ocurrido algo inesperado');
+      }
     }
   }
 
