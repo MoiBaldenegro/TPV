@@ -7,6 +7,7 @@ import menusReducer from './catalogo/menusRecipes.ts/menusReducer';
 import productsAndPricesReducer from './catalogo/productsAndRecipes/productsAndPricesReducer';
 import billsReducer from './ventas/billsReducer/billsReducer';
 import notesReducer from './ventas/notesReducer/notesReducer';
+import paymentsReducer from './ventas/paymentsReducer/paymentsReducer';
 
 const rootReducer = combineReducers({
   // Catalogo
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   // Ventas
   bills: billsReducer,
   notes: notesReducer,
+  payments: paymentsReducer,
 });
 
 export default rootReducer;

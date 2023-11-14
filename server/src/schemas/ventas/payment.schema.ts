@@ -31,7 +31,7 @@ export class Payment {
     required: true,
     trim: true,
   })
-  checkTotal: true;
+  checkTotal: string;
 
   @Prop({
     required: true,
@@ -51,7 +51,7 @@ export class Payment {
     trim: true,
     // default: "cash"
   })
-  paymentType: true;
+  paymentType: string;
 
   @Prop({
     required: true,
