@@ -47,23 +47,16 @@ export default function VentasMenu({
           Pagos
         </NavLink>
         <NavLink
-          to="ventas/discounts"
-          className={deployItemClass}
-          onClick={() => handleBoard('ventas', true, 4)}
-        >
-          Descuentos
-        </NavLink>
-        <NavLink
           to="ventas/cancellations"
           className={deployItemClass}
-          onClick={() => handleBoard('ventas', true, 5)}
+          onClick={() => handleBoard('ventas', true, 4)}
         >
           Cancelaciones
         </NavLink>
         <NavLink
           to="ventas/cancellationsReasons"
           className={deployItemClass}
-          onClick={() => handleBoard('ventas', true, 6)}
+          onClick={() => handleBoard('ventas', true, 5)}
         >
           Motivos de cancelación
         </NavLink>

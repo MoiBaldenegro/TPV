@@ -1,5 +1,6 @@
-import LinesUsuariosModule from '../ventas/lines';
+import LinesUsuariosModule from './lines';
 import styles from '../ventas/ventasMenu.module.css';
+
 // dependencies
 import { NavLink } from 'react-router-dom';
 

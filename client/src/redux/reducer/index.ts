@@ -8,6 +8,8 @@ import productsAndPricesReducer from './catalogo/productsAndRecipes/productsAndP
 import billsReducer from './ventas/billsReducer/billsReducer';
 import notesReducer from './ventas/notesReducer/notesReducer';
 import paymentsReducer from './ventas/paymentsReducer/paymentsReducer';
+import cancellationsReducer from './ventas/cancellationReducer/cancellationReducer';
+import cancellationReasonsReducer from './ventas/cancellationReasonReducer/cancellationReasonReducer';
 
 const rootReducer = combineReducers({
   // Catalogo
@@ -21,6 +23,9 @@ const rootReducer = combineReducers({
   bills: billsReducer,
   notes: notesReducer,
   payments: paymentsReducer,
+  cancellations: cancellationsReducer,
+  cancellationReasons: cancellationReasonsReducer,
+  // Usuarios
 });
 
 export default rootReducer;

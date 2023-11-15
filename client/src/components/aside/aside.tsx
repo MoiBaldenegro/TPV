@@ -128,7 +128,7 @@ export default function Aside() {
           </div>
         </div>
         <NavLink
-          onClick={() => handleBoard(toggleThree, !active, 1)}
+          onClick={() => handleBoard(toggleTwo, !active, 1)}
           to="ventas/bills"
           className={activeClassName}
         >
@@ -181,19 +181,19 @@ export default function Aside() {
         <NavLink
           to="usuarios"
           className={activeClassName}
-          onClick={() => handleBoard(toggleTwo, !active, 1)}
+          onClick={() => handleBoard(toggleThree, !active, 1)}
         >
           <div className={styles.iconContainer}>
             <img src={usuarios} className={styles.icon} alt="usuarios" />
             <span>Usuarios</span>
           </div>
-          <UsuariosMenu
-            main={main}
-            redLinePosition={redLinePosition}
-            handleBoard={handleBoard}
-          />
           <img src={arrow} className={styles.arrowIcon} alt="icon" />
         </NavLink>
+        <UsuariosMenu
+          main={main}
+          redLinePosition={redLinePosition}
+          handleBoard={handleBoard}
+        />
         <NavLink to="tables" className={activeClassName}>
           <div className={styles.iconContainer}>
             <img src={mesas} className={styles.icon} alt="mesas" />

@@ -1,4 +1,5 @@
 import styles from '../ventas/lines.module.css';
+import styling from './styling.module.css';
 // icons
 import line from '../../../assets/dashboard/line.png';
 import redLine from '../../../assets/dashboard/redLine.png';
@@ -11,7 +12,7 @@ export default function LinesUsuariosModule({ redLinePosition }: Props) {
   return (
     <div>
       <div className={styles.linesContainer}>
-        <img src={line} className={styles.line} alt="line" />
+        <img src={line} className={styling.line} alt="line" />
         <img
           src={redLine}
           className={styles.redLine}
