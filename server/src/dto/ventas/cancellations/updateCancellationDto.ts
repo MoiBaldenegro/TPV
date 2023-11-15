@@ -11,7 +11,7 @@ export class UpdateCancellationDto {
 
   @IsOptional()
   @IsString()
-  CancellationMount: string;
+  cancellationMount: string;
 
   @IsOptional()
   @IsString()

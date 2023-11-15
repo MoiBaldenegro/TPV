@@ -11,7 +11,7 @@ export class CreateCancellationDto {
 
   @IsDefined()
   @IsString()
-  CancellationMount: string;
+  cancellationMount: string;
 
   @IsDefined()
   @IsString()

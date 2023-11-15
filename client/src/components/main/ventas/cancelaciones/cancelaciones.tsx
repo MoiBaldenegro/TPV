@@ -68,11 +68,11 @@ export default function Cancelaciones() {
               <tr key={index}>
                 <td>{element.checkCode}</td>
                 <td>{element.sellType}</td>
-                <td>{element.cancelationMount}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{element.CancellationMount}</td>
+                <td>{element.cancellationBy}</td>
+                <td>{element.cancellationFor}</td>
+                <td>{element.cancellationReason}</td>
+                <td>{element.cancellationDate}</td>
               </tr>
             ))}
           </tbody>
