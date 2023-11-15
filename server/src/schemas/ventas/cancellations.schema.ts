@@ -19,7 +19,7 @@ export class Cancellations {
     required: true,
     trim: true,
   })
-  CancellationMount: string;
+  cancellationMount: string;
 
   @Prop({
     required: true,

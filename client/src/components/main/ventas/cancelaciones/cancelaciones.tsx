@@ -50,12 +50,33 @@ export default function Cancelaciones() {
             </div>
           </div>
         </div>
-        <div className={styles.tableContainer}>
-          <table className={styles.table}>
-            <thead></thead>
-            <tbody></tbody>
-          </table>
-        </div>
+
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Cuenta</th>
+              <th>Tipo de venta</th>
+              <th>Monto cancelado</th>
+              <th>Cancelada por</th>
+              <th>Cancelada a</th>
+              <th>Motivo de cancelacion</th>
+              <th>Fecha de cancelacion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allCancellations?.map((element, index) => (
+              <tr key={index}>
+                <td>{element.checkCode}</td>
+                <td>{element.sellType}</td>
+                <td>{element.cancelationMount}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         <div className={styles.tableFooter}></div>
       </section>
     </div>
