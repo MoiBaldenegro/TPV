@@ -23,6 +23,7 @@ import redLine from '../../assets/dashboard/redLine.png';
 import styles from '../aside/aside.module.css';
 import VentasMenu from './ventas/ventasMenu';
 import useAside from '../../hooks/useAside';
+import UsuariosMenu from './usuarios/usuariosMenu';
 // Actions
 
 export default function Aside() {
@@ -39,6 +40,7 @@ export default function Aside() {
   };
   const toggle = main === 'catalogo' ? 'hidden' : 'catalogo';
   const toggleTwo = main === 'ventas' ? 'lo que sea' : 'ventas';
+  const toggleThree = main === 'usuariosMenu' ? 'lo que sea' : 'usuariosMenu';
   const activeClassName = ({ isActive }) =>
     isActive ? styles.isActive : styles.notActive;
   const deployItemClass = ({ isActive }) =>
@@ -126,7 +128,7 @@ export default function Aside() {
           </div>
         </div>
         <NavLink
-          onClick={() => handleBoard(toggleTwo, !active, 1)}
+          onClick={() => handleBoard(toggleThree, !active, 1)}
           to="ventas/bills"
           className={activeClassName}
         >
@@ -176,11 +178,20 @@ export default function Aside() {
           </div>
           <img src={arrow} className={styles.arrowIcon} alt="icon" />
         </NavLink>
-        <NavLink to="users" className={activeClassName}>
+        <NavLink
+          to="usuarios"
+          className={activeClassName}
+          onClick={() => handleBoard(toggleTwo, !active, 1)}
+        >
           <div className={styles.iconContainer}>
             <img src={usuarios} className={styles.icon} alt="usuarios" />
             <span>Usuarios</span>
           </div>
+          <UsuariosMenu
+            main={main}
+            redLinePosition={redLinePosition}
+            handleBoard={handleBoard}
+          />
           <img src={arrow} className={styles.arrowIcon} alt="icon" />
         </NavLink>
         <NavLink to="tables" className={activeClassName}>

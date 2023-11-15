@@ -126,6 +126,10 @@ const router = createBrowserRouter([
             ],
           },
           {
+            path: 'usuarios',
+            element: <Main />,
+          },
+          {
             path: 'test',
             element: (
               <SaveCategoriesModal
