@@ -10,7 +10,7 @@ import filterIcon from '../../../../assets/public/filterIcon.svg';
 
 export default function MotivosDeCancelacion() {
   const dispatch = useDispatch();
-  const { allCancellationResons } = useSelector(
+  const { allCancellationReasons } = useSelector(
     (state) => state.cancellationReasons,
   );
 
@@ -55,12 +55,29 @@ export default function MotivosDeCancelacion() {
             </div>
           </div>
         </div>
-        <div className={styles.tableContainer}>
-          <table className={styles.table}>
-            <thead></thead>
-            <tbody></tbody>
-          </table>
-        </div>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Clave</th>
+              <th>Motivo de cancelacion</th>
+              <th>Ultima actualizacion</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allCancellationReasons?.map((element, index) => (
+              <tr key={index}>
+                <td>{element.keyReason}</td>
+                <td>{element.reasonName}</td>
+                <td>{element.createdAt}</td>
+                <td>
+                  <button>Accion 1</button>
+                  <button>Accion 2</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         <div className={styles.tableFooter}></div>
       </section>
     </div>

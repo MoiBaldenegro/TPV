@@ -12,7 +12,7 @@ export const getCancellationReasonsAction = () => {
     dispatch({ type: CANCELLATIONREASONS_REQUEST });
     try {
       const response = await axios(
-        'https://tomate-server.onrender.com/cancellationReasons',
+        'https://tomate-server.onrender.com/cancellation-reason',
       );
       if (response.status === 200) {
         dispatch({ type: GET_CANCELLATIONREASONS, payload: response.data });
