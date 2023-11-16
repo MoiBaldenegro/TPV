@@ -11,7 +11,7 @@ export const createModifiers = (modifiers) => async (dispatch) => {
   try {
     if (Array.isArray(modifiers)) {
       const res = await axios.post(
-        'https://tomate-server.onrender.com/modifiers',
+        'https://tomate-server.onrender.com/modifications',
         modifiers,
       );
       if (!res.data) {
@@ -33,7 +33,7 @@ export const createModifiers = (modifiers) => async (dispatch) => {
       dispatch({ type: SAVE_MODIFIERS });
     } else {
       const response = await axios.post(
-        'https://tomate-server.onrender.com/modifiers',
+        'https://tomate-server.onrender.com/modications',
         modifiers,
       );
       if (!response.data) {
