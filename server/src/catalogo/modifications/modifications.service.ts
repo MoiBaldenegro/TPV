@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { createModifierDto } from 'src/dto/catalogo/modifiers/createModifierDto';
 import { updateModifierDto } from 'src/dto/catalogo/modifiers/updateModifierDto';
 import { Modifier } from 'src/schemas/catalogo/modifiers.Schema';
+import { DeleteResult } from 'mongodb';
 
 @Injectable()
 export class ModificationsService {
@@ -31,5 +32,8 @@ export class ModificationsService {
     return await this.modifierModel.findByIdAndUpdate(id, updatedModifier, {
       new: true,
     });
+  }
+  async replace(): Promise<DeleteResult> {
+    return await this.modifierModel.deleteMany({}).exec();
   }
 }

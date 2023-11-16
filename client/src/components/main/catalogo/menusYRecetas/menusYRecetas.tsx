@@ -2,6 +2,7 @@ import styles from './menusYRecetas.module.css';
 // Hook
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useModal } from '../../../../hooks/useModals';
 
 // icons
 import createIcon from '../../../../assets/public/createIcon.svg';
@@ -19,6 +20,9 @@ import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menus
 export default function MenusYRecetas() {
   const dispatch = useDispatch();
   const { allMenus } = useSelector((state) => state.menus);
+  // MODALS
+  const uploadMenus = useModal('uploadMenus');
+  const saveMenus = useModal('saveMenus');
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueMenusAction(id, body));

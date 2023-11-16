@@ -47,14 +47,27 @@ export class ModificationsController {
   }
 
   @Post()
-  async create(@Body() body: createModifierDto) {
+  async create(@Body() body: createModifierDto | createModifierDto[]) {
+    const modService = this.modifierService;
     try {
-      return await this.modifierService.create(body);
+      if (Array.isArray(body)) {
+        await this.modifierService.replace();
+        const createdModifier = await Promise.all(
+          body.map(async (element: createModifierDto) => {
+            return await modService.create(element);
+          }),
+        );
+        return createdModifier;
+      } else {
+        const createdModifier = await this.modifierService.create(body); // Usar la variable categoriesService
+        return createdModifier;
+      }
     } catch (error) {
       if (error.code === 11000) {
-        throw new ConflictException('Ya existe el modificador');
+        throw new ConflictException('El Modificador ya existe');
+      } else {
+        throw new NotFoundException('Ha ocurrido algo inesperado');
       }
-      throw new NotFoundException('Ha ocurrido algo inesperado');
     }
   }
 
