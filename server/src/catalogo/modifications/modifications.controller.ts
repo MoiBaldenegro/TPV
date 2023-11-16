@@ -59,7 +59,7 @@ export class ModificationsController {
         );
         return createdModifier;
       } else {
-        const createdModifier = await this.modifierService.create(body); // Usar la variable categoriesService
+        const createdModifier = await this.modifierService.create(body);
         return createdModifier;
       }
     } catch (error) {

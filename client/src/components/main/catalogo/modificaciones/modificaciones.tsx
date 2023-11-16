@@ -15,7 +15,7 @@ import { deleteModifiersAction } from '../../../../redux/actions/catalogo/modifi
 import DeletedModifierModal from './modals/confirms/deleteModifier';
 import { useModal } from '../../../../hooks/useModals';
 import ButtonLoader from '../../../loaders/buttonLoader/buttonLoader';
-import UploadFiles from '../categorias/modals/uploadCategories/uploadCategories';
+import UploadFiles from '../../../forms/uploadFile/uploadFile';
 import { createModifiers } from '../../../../redux/actions/catalogo/modifiersActions/createModifiers';
 
 export default function Modificaciones() {
