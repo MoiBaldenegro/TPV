@@ -15,6 +15,8 @@ import { deleteModifiersAction } from '../../../../redux/actions/catalogo/modifi
 import DeletedModifierModal from './modals/confirms/deleteModifier';
 import { useModal } from '../../../../hooks/useModals';
 import ButtonLoader from '../../../loaders/buttonLoader/buttonLoader';
+import UploadFiles from '../categorias/modals/uploadCategories/uploadCategories';
+import { createModifiers } from '../../../../redux/actions/catalogo/modifiersActions/createModifiers';
 
 export default function Modificaciones() {
   // LocalState
@@ -22,6 +24,10 @@ export default function Modificaciones() {
   const [refresh, setRefresh] = useState(false);
   // Modal props
   const deleteModifier = useModal('deleteModifier');
+
+  // MODALS
+  const uploadModifier = useModal('uploadModifier');
+  const saveModifier = useModal('saveModifier');
 
   const dispatch = useDispatch();
   const { allModifiers, loading, error } = useSelector(
@@ -41,7 +47,7 @@ export default function Modificaciones() {
             <img src={exportIcon} alt="export-icon" />
             Exportar modificadores
           </button>
-          <button className={styles.btnHead}>
+          <button className={styles.btnHead} onClick={uploadModifier.openModal}>
             <img src={importIcon} alt="import-icon" />
             Importar modificadores
           </button>
@@ -49,6 +55,17 @@ export default function Modificaciones() {
             <img src={createIcon} alt="create-icon" />
             <span>Crear modificador</span>
           </button>
+          {uploadModifier.isOpen &&
+          uploadModifier.modalName === 'uploadModifier' ? (
+            <UploadFiles
+              openModal={saveModifier.openModal}
+              isOpen={uploadModifier.isOpen}
+              onClose={uploadModifier.closeModal}
+              actionType={createModifiers}
+            >
+              Cargar plantilla de modificadores
+            </UploadFiles>
+          ) : null}
         </div>
       </section>
       <section className={styles.mainSection}>

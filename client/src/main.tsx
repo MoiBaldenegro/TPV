@@ -124,6 +124,11 @@ const router = createBrowserRouter([
           {
             path: 'usuarios',
             element: <Main />,
+            children: [
+              {
+                path: '',
+              },
+            ],
           },
           {
             path: 'test',
