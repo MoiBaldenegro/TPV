@@ -1,4 +1,5 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
+import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
 
 @Schema({ timestamps: true })
 export class Category {
