@@ -230,7 +230,7 @@ export default function Categorias() {
                         {subCategory.categoryName}
                       </td>
                       <td className={styles.tableRows}>
-                        {subCategory.createdAt}
+                        {categoria.createdAt}
                       </td>
                       <td className={styles.buttonsContainer}>
                         {subCategory.status === 'enabled' ? (
@@ -289,7 +289,7 @@ export default function Categorias() {
                               {subSubCategory.categoryName}
                             </td>
                             <td className={styles.tableRows}>
-                              {subSubCategory.createdAt}
+                              {categoria.createdAt}
                             </td>
                             <td className={styles.buttonsContainer}>
                               {subSubCategory.status === 'enabled' ? (
@@ -350,7 +350,7 @@ export default function Categorias() {
                                     {subSubSubCategory.categoryName}
                                   </td>
                                   <td className={styles.tableRows}>
-                                    {subSubSubCategory.createdAt}
+                                    {categoria.createdAt}
                                   </td>
                                   <td className={styles.buttonsContainer}>
                                     {subSubSubCategory.status === 'enabled' ? (
@@ -417,11 +417,11 @@ export default function Categorias() {
                                       <td className={styles.tableRows}>
                                         {subSubSubSubCategory.code}
                                       </td>
-                                      <td className={styles.tableRows}>
+                                      <td className={styles.tableRowsName}>
                                         {subSubSubSubCategory.categoryName}
                                       </td>
                                       <td className={styles.tableRows}>
-                                        {subSubSubSubCategory.createdAt}
+                                        {categoria.createdAt}
                                       </td>
                                       <td className={styles.buttonsContainer}>
                                         {subSubSubSubCategory.status ===
