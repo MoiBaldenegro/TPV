@@ -170,15 +170,33 @@ text-indent: 25px;
     transition: 300ms;
 }
 .subCategoryRow{
-    background: rgba(0, 0, 0, 0.226)
+    background: #707173
 
 }
 .subCategoryRowTwo{
-    background: rgba(0, 0, 0, 0.411)
+    background: #5C5D60
 }
 .subCategoryRowThree{
-    background: rgba(0, 0, 0, 0.589)
+    background: #494A4C
 }
 .subCategoryRowFour{
-    background: rgba(0, 0, 0, 0.884)
+    background: #353639
+}
+
+.tableRowsNameFour{
+    text-indent: 100px;
+}
+
+
+.tableRowsNameThree{
+    text-indent: 80px;
+}
+
+
+.tableRowsNameTwo{
+    text-indent: 60px;
+}
+
+.tableRowsNameOne{
+    text-indent: 40px;
 }

@@ -226,7 +226,7 @@ export default function Categorias() {
                   <React.Fragment key={subIndex}>
                     <tr key={subIndex} className={styles.subCategoryRow}>
                       <td className={styles.tableRows}>{subCategory.code}</td>
-                      <td className={styles.tableRows}>
+                      <td className={styles.tableRowsNameOne}>
                         {subCategory.categoryName}
                       </td>
                       <td className={styles.tableRows}>
@@ -285,7 +285,7 @@ export default function Categorias() {
                             <td className={styles.tableRows}>
                               {subSubCategory.code}
                             </td>
-                            <td className={styles.tableRows}>
+                            <td className={styles.tableRowsNameTwo}>
                               {subSubCategory.categoryName}
                             </td>
                             <td className={styles.tableRows}>
@@ -346,7 +346,7 @@ export default function Categorias() {
                                   <td className={styles.tableRows}>
                                     {subSubSubCategory.code}
                                   </td>
-                                  <td className={styles.tableRows}>
+                                  <td className={styles.tableRowsNameThree}>
                                     {subSubSubCategory.categoryName}
                                   </td>
                                   <td className={styles.tableRows}>
@@ -417,7 +417,7 @@ export default function Categorias() {
                                       <td className={styles.tableRows}>
                                         {subSubSubSubCategory.code}
                                       </td>
-                                      <td className={styles.tableRowsName}>
+                                      <td className={styles.tableRowsNameFour}>
                                         {subSubSubSubCategory.categoryName}
                                       </td>
                                       <td className={styles.tableRows}>
