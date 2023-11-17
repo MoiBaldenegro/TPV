@@ -2,7 +2,30 @@ import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true })
 export class Category {
-  // ... (resto del esquema)
+  @Prop({
+    unique: true,
+    required: true,
+    trim: true,
+  })
+  code: string;
+
+  @Prop({
+    unique: true,
+    required: true,
+    trim: true,
+  })
+  categoryName: string;
+
+  @Prop({ type: Array, default: () => [] })
+  subCategories: CreateCategoryDto[];
+
+  @Prop()
+  parentCategory: string | null;
+
+  @Prop({
+    default: 'enabled',
+  })
+  status: 'disabled' | 'enabled';
 
   // Método para llenar automáticamente las subcategorías hasta el nivel 5
   fillSubCategories(depth = 1, subCategoriesCount = 2): void {
@@ -36,10 +59,10 @@ export class Category {
   }
 }
 
+export const CategorySchema = SchemaFactory.createForClass(Category);
+
 // Middleware pre que se ejecuta antes de guardar un documento
 CategorySchema.pre('save', function (next) {
   this.fillSubCategories(); // Llenar automáticamente las subcategorías antes de guardar
   next();
 });
-
-export const CategorySchema = SchemaFactory.createForClass(Category);
