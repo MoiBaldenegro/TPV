@@ -170,5 +170,15 @@ text-indent: 25px;
     transition: 300ms;
 }
 .subCategoryRow{
-    background-color: #99000F;
+    background: rgba(0, 0, 0, 0.226)
+
+}
+.subCategoryRowTwo{
+    background: rgba(0, 0, 0, 0.411)
+}
+.subCategoryRowThree{
+    background: rgba(0, 0, 0, 0.589)
+}
+.subCategoryRowFour{
+    background: rgba(0, 0, 0, 0.884)
 }

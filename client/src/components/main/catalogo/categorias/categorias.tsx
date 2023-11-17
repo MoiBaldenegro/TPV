@@ -223,118 +223,290 @@ export default function Categorias() {
                   </td>
                 </tr>
                 {categoria.subCategories?.map((subCategory, subIndex) => (
-                  <tr key={subIndex} className={styles.subCategoryRow}>
-                    <td className={styles.tableRows}>{subCategory.code}</td>
-                    <td className={styles.tableRows}>
-                      {subCategory.categoryName}
-                    </td>
-                    <td className={styles.tableRows}>
-                      {subCategory.createdAt}
-                    </td>
-                    <td className={styles.buttonsContainer}>
-                      {subCategory.status === 'enabled' ? (
-                        <>
-                          <button
-                            className={styles.actionButtonsFirst}
-                            onClick={() =>
-                              updateOneCategory.openModal(subCategory)
-                            }
-                          >
-                            <img src={update} alt="update-icon" />
-                          </button>
-                          <button
-                            className={styles.actionButtonsSecond}
-                            onClick={() => {
-                              AuthDiscontinue.openModal();
-                              setButtonParams({
-                                id: subCategory._id,
-                                body: subCategory.status,
-                              });
-                            }}
-                          >
-                            <img src={deleteIcon} alt="delete-icon" />
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <button className={styles.actionButtonsFirstEnabled}>
-                            <img src={update} alt="update-icon" />
-                          </button>
-                          <button
-                            className={styles.actionButtonsSecond}
-                            onClick={() => {
-                              restoreStatus(
-                                subCategory._id,
-                                subCategory.status,
-                              );
-                            }}
-                          >
-                            <img src={enabledIcon} alt="enabled-icon" />
-                          </button>
-                        </>
-                      )}
-                    </td>
-                  </tr>
-                )
-                {subCategory.subCategories?.map((subCategory, subIndex) => (
-                  <tr key={subIndex} className={styles.subCategoryRow}>
-                    <td className={styles.tableRows}>{subCategory.code}</td>
-                    <td className={styles.tableRows}>
-                      {subCategory.categoryName}
-                    </td>
-                    <td className={styles.tableRows}>
-                      {subCategory.createdAt}
-                    </td>
-                    <td className={styles.buttonsContainer}>
-                      {subCategory.status === 'enabled' ? (
-                        <>
-                          <button
-                            className={styles.actionButtonsFirst}
-                            onClick={() =>
-                              updateOneCategory.openModal(subCategory)
-                            }
-                          >
-                            <img src={update} alt="update-icon" />
-                          </button>
-                          <button
-                            className={styles.actionButtonsSecond}
-                            onClick={() => {
-                              AuthDiscontinue.openModal();
-                              setButtonParams({
-                                id: subCategory._id,
-                                body: subCategory.status,
-                              });
-                            }}
-                          >
-                            <img src={deleteIcon} alt="delete-icon" />
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <button className={styles.actionButtonsFirstEnabled}>
-                            <img src={update} alt="update-icon" />
-                          </button>
-                          <button
-                            className={styles.actionButtonsSecond}
-                            onClick={() => {
-                              restoreStatus(
-                                subCategory._id,
-                                subCategory.status,
-                              );
-                            }}
-                          >
-                            <img src={enabledIcon} alt="enabled-icon" />
-                          </button>
-                        </>
-                      )}
-                    </td>
-                  </tr>
-                ))})
-                }
+                  <React.Fragment key={subIndex}>
+                    <tr key={subIndex} className={styles.subCategoryRow}>
+                      <td className={styles.tableRows}>{subCategory.code}</td>
+                      <td className={styles.tableRows}>
+                        {subCategory.categoryName}
+                      </td>
+                      <td className={styles.tableRows}>
+                        {subCategory.createdAt}
+                      </td>
+                      <td className={styles.buttonsContainer}>
+                        {subCategory.status === 'enabled' ? (
+                          <>
+                            <button
+                              className={styles.actionButtonsFirst}
+                              onClick={() =>
+                                updateOneCategory.openModal(subCategory)
+                              }
+                            >
+                              <img src={update} alt="update-icon" />
+                            </button>
+                            <button
+                              className={styles.actionButtonsSecond}
+                              onClick={() => {
+                                AuthDiscontinue.openModal();
+                                setButtonParams({
+                                  id: subCategory._id,
+                                  body: subCategory.status,
+                                });
+                              }}
+                            >
+                              <img src={deleteIcon} alt="delete-icon" />
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              className={styles.actionButtonsFirstEnabled}
+                            >
+                              <img src={update} alt="update-icon" />
+                            </button>
+                            <button
+                              className={styles.actionButtonsSecond}
+                              onClick={() => {
+                                restoreStatus(
+                                  subCategory._id,
+                                  subCategory.status,
+                                );
+                              }}
+                            >
+                              <img src={enabledIcon} alt="enabled-icon" />
+                            </button>
+                          </>
+                        )}
+                      </td>
+                    </tr>
+                    {subCategory.subCategories?.map(
+                      (subSubCategory, subSubIndex) => (
+                        <React.Fragment key={subSubIndex}>
+                          <tr className={styles.subCategoryRowTwo}>
+                            <td className={styles.tableRows}>
+                              {subSubCategory.code}
+                            </td>
+                            <td className={styles.tableRows}>
+                              {subSubCategory.categoryName}
+                            </td>
+                            <td className={styles.tableRows}>
+                              {subSubCategory.createdAt}
+                            </td>
+                            <td className={styles.buttonsContainer}>
+                              {subSubCategory.status === 'enabled' ? (
+                                <>
+                                  <button
+                                    className={styles.actionButtonsFirst}
+                                    onClick={() =>
+                                      updateOneCategory.openModal(
+                                        subSubCategory,
+                                      )
+                                    }
+                                  >
+                                    <img src={update} alt="update-icon" />
+                                  </button>
+                                  <button
+                                    className={styles.actionButtonsSecond}
+                                    onClick={() => {
+                                      AuthDiscontinue.openModal();
+                                      setButtonParams({
+                                        id: subSubCategory._id,
+                                        body: subSubCategory.status,
+                                      });
+                                    }}
+                                  >
+                                    <img src={deleteIcon} alt="delete-icon" />
+                                  </button>
+                                </>
+                              ) : (
+                                <>
+                                  <button
+                                    className={styles.actionButtonsFirstEnabled}
+                                  >
+                                    <img src={update} alt="update-icon" />
+                                  </button>
+                                  <button
+                                    className={styles.actionButtonsSecond}
+                                    onClick={() => {
+                                      restoreStatus(
+                                        subSubCategory._id,
+                                        subSubCategory.status,
+                                      );
+                                    }}
+                                  >
+                                    <img src={enabledIcon} alt="enabled-icon" />
+                                  </button>
+                                </>
+                              )}
+                            </td>
+                          </tr>
+                          {subSubCategory.subCategories?.map(
+                            (subSubSubCategory, subSubSubIndex) => (
+                              <React.Fragment key={subSubSubIndex}>
+                                <tr className={styles.subCategoryRowThree}>
+                                  <td className={styles.tableRows}>
+                                    {subSubSubCategory.code}
+                                  </td>
+                                  <td className={styles.tableRows}>
+                                    {subSubSubCategory.categoryName}
+                                  </td>
+                                  <td className={styles.tableRows}>
+                                    {subSubSubCategory.createdAt}
+                                  </td>
+                                  <td className={styles.buttonsContainer}>
+                                    {subSubSubCategory.status === 'enabled' ? (
+                                      <>
+                                        <button
+                                          className={styles.actionButtonsFirst}
+                                          onClick={() =>
+                                            updateOneCategory.openModal(
+                                              subSubSubCategory,
+                                            )
+                                          }
+                                        >
+                                          <img src={update} alt="update-icon" />
+                                        </button>
+                                        <button
+                                          className={styles.actionButtonsSecond}
+                                          onClick={() => {
+                                            AuthDiscontinue.openModal();
+                                            setButtonParams({
+                                              id: subSubSubCategory._id,
+                                              body: subSubSubCategory.status,
+                                            });
+                                          }}
+                                        >
+                                          <img
+                                            src={deleteIcon}
+                                            alt="delete-icon"
+                                          />
+                                        </button>
+                                      </>
+                                    ) : (
+                                      <>
+                                        <button
+                                          className={
+                                            styles.actionButtonsFirstEnabled
+                                          }
+                                        >
+                                          <img src={update} alt="update-icon" />
+                                        </button>
+                                        <button
+                                          className={styles.actionButtonsSecond}
+                                          onClick={() => {
+                                            restoreStatus(
+                                              subSubSubCategory._id,
+                                              subSubSubCategory.status,
+                                            );
+                                          }}
+                                        >
+                                          <img
+                                            src={enabledIcon}
+                                            alt="enabled-icon"
+                                          />
+                                        </button>
+                                      </>
+                                    )}
+                                  </td>
+                                </tr>
+                                {subSubSubCategory.subCategories?.map(
+                                  (subSubSubSubCategory, subSubSubSubIndex) => (
+                                    <tr
+                                      key={subSubSubSubIndex}
+                                      className={styles.subCategoryRowFour}
+                                    >
+                                      <td className={styles.tableRows}>
+                                        {subSubSubSubCategory.code}
+                                      </td>
+                                      <td className={styles.tableRows}>
+                                        {subSubSubSubCategory.categoryName}
+                                      </td>
+                                      <td className={styles.tableRows}>
+                                        {subSubSubSubCategory.createdAt}
+                                      </td>
+                                      <td className={styles.buttonsContainer}>
+                                        {subSubSubSubCategory.status ===
+                                        'enabled' ? (
+                                          <>
+                                            <button
+                                              className={
+                                                styles.actionButtonsFirst
+                                              }
+                                              onClick={() =>
+                                                updateOneCategory.openModal(
+                                                  subSubSubSubCategory,
+                                                )
+                                              }
+                                            >
+                                              <img
+                                                src={update}
+                                                alt="update-icon"
+                                              />
+                                            </button>
+                                            <button
+                                              className={
+                                                styles.actionButtonsSecond
+                                              }
+                                              onClick={() => {
+                                                AuthDiscontinue.openModal();
+                                                setButtonParams({
+                                                  id: subSubSubSubCategory._id,
+                                                  body: subSubSubSubCategory.status,
+                                                });
+                                              }}
+                                            >
+                                              <img
+                                                src={deleteIcon}
+                                                alt="delete-icon"
+                                              />
+                                            </button>
+                                          </>
+                                        ) : (
+                                          <>
+                                            <button
+                                              className={
+                                                styles.actionButtonsFirstEnabled
+                                              }
+                                            >
+                                              <img
+                                                src={update}
+                                                alt="update-icon"
+                                              />
+                                            </button>
+                                            <button
+                                              className={
+                                                styles.actionButtonsSecond
+                                              }
+                                              onClick={() => {
+                                                restoreStatus(
+                                                  subSubSubSubCategory._id,
+                                                  subSubSubSubCategory.status,
+                                                );
+                                              }}
+                                            >
+                                              <img
+                                                src={enabledIcon}
+                                                alt="enabled-icon"
+                                              />
+                                            </button>
+                                          </>
+                                        )}
+                                      </td>
+                                    </tr>
+                                  ),
+                                )}
+                              </React.Fragment>
+                            ),
+                          )}
+                        </React.Fragment>
+                      ),
+                    )}
+                  </React.Fragment>
+                ))}
               </React.Fragment>
             ))}
           </tbody>
         </table>
+        ;
       </div>
     </section>
   );
