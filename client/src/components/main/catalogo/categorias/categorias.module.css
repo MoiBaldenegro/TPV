@@ -169,3 +169,6 @@ text-indent: 25px;
 .release{
     transition: 300ms;
 }
+.subCategoryRow{
+    background-color: #99000F;
+}

@@ -232,7 +232,6 @@ export default function Categorias() {
                       {subCategory.createdAt}
                     </td>
                     <td className={styles.buttonsContainer}>
-                      {/* Botones para subcategorías */}
                       {subCategory.status === 'enabled' ? (
                         <>
                           <button
@@ -276,7 +275,62 @@ export default function Categorias() {
                       )}
                     </td>
                   </tr>
-                ))}
+                )
+                {subCategory.subCategories?.map((subCategory, subIndex) => (
+                  <tr key={subIndex} className={styles.subCategoryRow}>
+                    <td className={styles.tableRows}>{subCategory.code}</td>
+                    <td className={styles.tableRows}>
+                      {subCategory.categoryName}
+                    </td>
+                    <td className={styles.tableRows}>
+                      {subCategory.createdAt}
+                    </td>
+                    <td className={styles.buttonsContainer}>
+                      {subCategory.status === 'enabled' ? (
+                        <>
+                          <button
+                            className={styles.actionButtonsFirst}
+                            onClick={() =>
+                              updateOneCategory.openModal(subCategory)
+                            }
+                          >
+                            <img src={update} alt="update-icon" />
+                          </button>
+                          <button
+                            className={styles.actionButtonsSecond}
+                            onClick={() => {
+                              AuthDiscontinue.openModal();
+                              setButtonParams({
+                                id: subCategory._id,
+                                body: subCategory.status,
+                              });
+                            }}
+                          >
+                            <img src={deleteIcon} alt="delete-icon" />
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button className={styles.actionButtonsFirstEnabled}>
+                            <img src={update} alt="update-icon" />
+                          </button>
+                          <button
+                            className={styles.actionButtonsSecond}
+                            onClick={() => {
+                              restoreStatus(
+                                subCategory._id,
+                                subCategory.status,
+                              );
+                            }}
+                          >
+                            <img src={enabledIcon} alt="enabled-icon" />
+                          </button>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                ))})
+                }
               </React.Fragment>
             ))}
           </tbody>
