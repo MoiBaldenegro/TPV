@@ -66,7 +66,7 @@ export default function UsuariosMenu({
           className={deployItemClass}
           onClick={() => handleBoard('usuariosMenu', true, 6)}
         >
-          Asistentes
+          Asistencias
         </NavLink>
       </div>
     </div>

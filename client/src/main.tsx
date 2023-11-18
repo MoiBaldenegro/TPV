@@ -28,6 +28,12 @@ import Cancelaciones from './components/main/ventas/cancelaciones/cancelaciones.
 import MotivosDeCancelacion from './components/main/ventas/motivosDeCancelaiones/motivosDeCancelaciones.tsx';
 import SaveCategoriesModal from './components/main/catalogo/categorias/modals/confirms/saveCategories.tsx';
 import FirstSubcategories from './components/main/catalogo/categorias/subcategorias/firstSubcategories/firstSubcategory.tsx';
+import Turnos from './components/main/usuarios/turnos/turnos.tsx';
+import Departamentos from './components/main/usuarios/departamentos/departamentos.tsx';
+import Perfiles from './components/main/usuarios/perfiles/perfiles.tsx';
+import Empleados from './components/main/usuarios/empleados/empleados.tsx';
+import Autorizaciones from './components/main/usuarios/autorizaciones/autorizaciones.tsx';
+import Asistencias from './components/main/usuarios/asistentes/asistencias.tsx';
 
 const router = createBrowserRouter([
   {
@@ -127,19 +133,30 @@ const router = createBrowserRouter([
             element: <Main />,
             children: [
               {
-                path: '',
+                path: 'shifts',
+                element: <Turnos />,
+              },
+              {
+                path: 'departaments',
+                element: <Departamentos />,
+              },
+              {
+                path: 'profiles',
+                element: <Perfiles />,
+              },
+              {
+                path: 'employees',
+                element: <Empleados />,
+              },
+              {
+                path: 'authorizations',
+                element: <Autorizaciones />,
+              },
+              {
+                path: 'assistants',
+                element: <Asistencias />,
               },
             ],
-          },
-          {
-            path: 'test',
-            element: (
-              <SaveCategoriesModal
-                isOpen={'asdfas'}
-                onClose={'asdaf'}
-                children={'asedfaf'}
-              />
-            ),
           },
         ],
       },

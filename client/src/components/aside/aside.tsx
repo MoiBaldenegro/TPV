@@ -179,7 +179,7 @@ export default function Aside() {
           <img src={arrow} className={styles.arrowIcon} alt="icon" />
         </NavLink>
         <NavLink
-          to="usuarios"
+          to="usuarios/shifts"
           className={activeClassName}
           onClick={() => handleBoard(toggleThree, !active, 1)}
         >
