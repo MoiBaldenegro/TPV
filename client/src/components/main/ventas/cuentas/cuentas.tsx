@@ -54,27 +54,27 @@ export default function Cuentas() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Cuenta</th>
-              <th>Tipo de venta</th>
-              <th>Abierta por</th>
-              <th> Total</th>
-              <th>Status</th>
-              <th>Fecha de creacion</th>
-              <th>Fecha de Pago</th>
-              <th>Detalles</th>
+              <th className={styles.tHeadCuenta}>Cuenta</th>
+              <th className={styles.tHeadTipoDeVenta}>Tipo de venta</th>
+              <th className={styles.tHeadAbiertaPor}>Abierta por</th>
+              <th className={styles.tHeadTotal}> Total</th>
+              <th className={styles.tHeadStatus}>Status</th>
+              <th className={styles.tHeadFechaDeCreacion}>Fecha de creacion</th>
+              <th className={styles.tHeadFechaDePago}>Fecha de Pago</th>
+              <th className={styles.tHeadDetalles}>Detalles</th>
             </tr>
           </thead>
           <tbody>
             {allBills?.map((element, index) => (
               <tr key={index}>
-                <td>{element.billCode}</td>
-                <td>{element.sellType}</td>
+                <td className={styles.tableRows}>{element.billCode}</td>
+                <td className={styles.tableRows}>{element.sellType}</td>
                 <td>{element.user}</td>
                 <td>{element.checkTotal}</td>
                 <td>{element.status}</td>
                 <td>{element.createdAt}</td>
                 <td>{element.paymentDate}</td>
-                <td>
+                <td className={styles.buttonsContainer}>
                   <button className={styles.actionButtonsFirstDetails}>
                     <img src={eyeIcon} alt="open-eye-icon" />
                   </button>

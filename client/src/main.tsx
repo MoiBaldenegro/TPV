@@ -164,7 +164,7 @@ const router = createBrowserRouter([
   },
   {
     path: '*',
-    element: <FirstSubcategories />,
+    element: <NotFound />,
   },
 ]);
 

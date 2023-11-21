@@ -294,11 +294,14 @@
   margin: 25px;
   
 }
-.tHeadCategoria,
-.tHeadClave,
-.tHeadModificador,
-.tHeadVenta,
-.tHeadActions{
+.tHeadCuenta,
+.tHeadTipoDeVenta,
+.tHeadAbiertaPor,
+.tHeadTotal,
+.tHeadStatus,
+.tHeadFechaDeCreacion,
+.tHeadFechaDePago,
+.tHeadDetalles{
 text-align: left;
 text-indent: 8px;
 background-color: #F9F9F966;
@@ -307,16 +310,29 @@ height:56px;
 padding: 16px;
 gap: 8px;
 }
-.tHeadCategoria{
-width: 40%;
+.tHeadCuenta{
+width: 12%;
 }
 
-.tHeadModificador{
-width: 48%;
+.tHeadTipoDeVenta{
+width: 12%;
 }
-.tHeadActions{
-text-indent: 12%;
+.tHeadAbiertaPor{
+width: 12%;
 }
+.tHeadTotal{
+width: 12%;
+}
+.tHeadStatus{
+width: 12%;
+}
+.tHeadFechaDeCreacion{
+width: 20%;
+}
+.tHeadFechaDePago{
+width: 12%;
+}
+  
 
 .tableRows{
 text-indent: 25px;
