@@ -1,3 +1,12 @@
-.container{
-    background-color: aqua;
+.tittle{
+    border: none;
+    color: White;
+}
+.section{
+    width: 1,482px;
+height: 720px;
+gap: 32px;
+border: 1px solid #f9f9f9;
+
+
 }
