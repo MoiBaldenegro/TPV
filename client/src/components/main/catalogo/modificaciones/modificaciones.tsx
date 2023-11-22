@@ -10,7 +10,10 @@ import update from '../../../../assets/public/updateIcon.svg';
 import deleteIcon from '../../../../assets/public/deleteIcon.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getModifiersAction } from '../../../../redux/actions/catalogo/modifiersActions/getModifiers';
+import {
+  getModifiersAction,
+  searchModifiersAction,
+} from '../../../../redux/actions/catalogo/modifiersActions/getModifiers';
 import { deleteModifiersAction } from '../../../../redux/actions/catalogo/modifiersActions/deleteModifiers';
 import DeletedModifierModal from './modals/confirms/deleteModifier';
 import { useModal } from '../../../../hooks/useModals';
@@ -28,6 +31,15 @@ export default function Modificaciones() {
   // MODALS
   const uploadModifier = useModal('uploadModifier');
   const saveModifier = useModal('saveModifier');
+  // Events
+  const handleChange = (event) => {
+    event.preventDefault();
+    const searchValue = event.target.value;
+    if (searchValue.length < 1) {
+      dispatch(getModifiersAction());
+    }
+    dispatch(searchModifiersAction(searchValue));
+  };
 
   const dispatch = useDispatch();
   const { allModifiers, loading, error } = useSelector(
@@ -94,6 +106,7 @@ export default function Modificaciones() {
                 type="text"
                 className={styles.searchBarTableInput}
                 placeholder="Ejemplo de modificador"
+                onChange={handleChange}
               />
             </div>
           </div>

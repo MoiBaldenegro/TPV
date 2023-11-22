@@ -3,6 +3,7 @@ import {
   MODIFIERS_FAILURE,
   MODIFIERS_REQUEST,
   GET_MODIFIERS,
+  SEARCH_MODIFIERS,
 } from './actionTypes';
 
 // Get modifiers
@@ -29,3 +30,9 @@ export function getModifiersAction() {
     }
   };
 }
+
+// search categories
+export const searchModifiersAction = (payload) => ({
+  type: SEARCH_MODIFIERS,
+  payload,
+});

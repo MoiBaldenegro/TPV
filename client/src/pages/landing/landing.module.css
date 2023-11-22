@@ -38,3 +38,24 @@
  
 
   }
+  .ws{
+    position: absolute;
+    top: 86%;
+    left: 3%;
+    height: 80px;
+  }
+
+
+  .ws{
+ 
+    background-size: cover;
+    text-indent: -9999px; /* Oculta el texto del enlace */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el icono */
+    transition: transform 0.4s ease; /* Agrega una transición de escala */
+  }
+
+  .ws:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 5px 1px #67c55b;
+    border-radius: 50%;
+}

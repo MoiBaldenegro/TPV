@@ -55,11 +55,11 @@ export function getModifiers(state, action) {
 export function searchModifiers(state, action) {
   const value = action.payload;
   const modifiersSearch = state.allModifiers.filter((element) =>
-    element.categoryName.toLowerCase().includes(value.toLowerCase()),
+    element.modifierName.toLowerCase().includes(value.toLowerCase()),
   );
   return {
     ...state,
-    allCategories: modifiersSearch,
+    allModifiers: modifiersSearch,
   };
 }
 // Delete
