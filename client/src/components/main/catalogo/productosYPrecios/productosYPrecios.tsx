@@ -14,7 +14,10 @@ import deleteIcon from '../../../../assets/categorias/bloquedIcon.svg';
 import enabledIcon from '../../../../assets/public/enabledIcon.svg';
 // import arrow from "../../../../assets/public/arrow.svg"
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsAndPricesAction } from '../../../../redux/actions/catalogo/productsAndpricesActions/getProductsAndPrices';
+import {
+  getProductsAndPricesAction,
+  searchProductsAndPricesAction,
+} from '../../../../redux/actions/catalogo/productsAndpricesActions/getProductsAndPrices';
 import { discontinueProductsAndPricesAction } from '../../../../redux/actions/catalogo/productsAndpricesActions/discontinueProductsAndPrices';
 import { useModal } from '../../../../hooks/useModals';
 import UploadFiles from '../../../forms/uploadFile/uploadFile';
@@ -29,6 +32,15 @@ export default function ProductosYPrecios() {
   // MODALS
   const uploadProduct = useModal('uploadProduct');
   const saveProducts = useModal('saveProducts');
+  // Events
+  const handleChange = (event) => {
+    event.preventDefault();
+    const searchValue = event.target.value;
+    if (searchValue.length < 1) {
+      dispatch(getProductsAndPricesAction());
+    }
+    dispatch(searchProductsAndPricesAction(searchValue));
+  };
   useEffect(() => {
     dispatch(getProductsAndPricesAction());
   }, []);
@@ -201,6 +213,7 @@ export default function ProductosYPrecios() {
                 type="text"
                 className={styles.searchBarTableInput}
                 placeholder="producto de ejemplo"
+                onChange={handleChange}
               />
             </div>
           </div>

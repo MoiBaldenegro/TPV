@@ -3,6 +3,7 @@ import {
   PRODUCTSANDPRICES_FAILURE,
   PRODUCTSANDPRICES_REQUEST,
   GET_PRODUCTSANDPRICES,
+  SEARCH_PRODUCTSANDPRICES,
 } from './actionTypes';
 
 // Get productsAndPrices
@@ -32,3 +33,9 @@ export function getProductsAndPricesAction() {
     }
   };
 }
+
+// search products
+export const searchProductsAndPricesAction = (payload) => ({
+  type: SEARCH_PRODUCTSANDPRICES,
+  payload,
+});

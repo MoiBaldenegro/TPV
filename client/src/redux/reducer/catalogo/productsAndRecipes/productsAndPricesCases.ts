@@ -47,7 +47,7 @@ export function getProductsAndPrices(state, action) {
 export function searchProductsAndPrices(state, action) {
   const value = action.payload;
   const productsAndPricesSearch = state.allProductsAndPrices.filter((element) =>
-    element.categoryName.toLowerCase().includes(value.toLowerCase()),
+    element.productName.toLowerCase().includes(value.toLowerCase()),
   );
   return {
     ...state,
