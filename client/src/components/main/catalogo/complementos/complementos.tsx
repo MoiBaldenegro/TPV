@@ -16,7 +16,10 @@ import helpIcon from '../../../../assets/public/helpIcon.svg';
 import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 // Actions
-import { getDishesAction } from '../../../../redux/actions/catalogo/dishesActions/getDishes';
+import {
+  getDishesAction,
+  searchDishesAction,
+} from '../../../../redux/actions/catalogo/dishesActions/getDishes';
 import { discontinueDishesAction } from '../../../../redux/actions/catalogo/dishesActions/discontinueDishes';
 import { createDishes } from '../../../../redux/actions/catalogo/dishesActions/createDishes';
 
@@ -33,6 +36,15 @@ export default function Complementos() {
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueDishesAction(id, body));
+  };
+  // Events
+  const handleChange = (event) => {
+    event.preventDefault();
+    const searchValue = event.target.value;
+    if (searchValue.length < 1) {
+      dispatch(getDishesAction());
+    }
+    dispatch(searchDishesAction(searchValue));
   };
 
   useEffect(() => {
@@ -179,6 +191,7 @@ export default function Complementos() {
                 type="text"
                 className={styles.searchBarTableInput}
                 placeholder="Ejemplo de complemento"
+                onChange={handleChange}
               />
             </div>
           </div>

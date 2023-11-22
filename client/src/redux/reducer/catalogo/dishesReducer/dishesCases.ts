@@ -48,11 +48,13 @@ export function getDishes(state, action) {
 export function searchDishes(state, action) {
   const value = action.payload;
   const dishesSearch = state.allDishes.filter((element) =>
-    element.categoryName.toLowerCase().includes(value.toLowerCase()),
+    element.dishesName.toLowerCase().includes(value.toLowerCase()),
   );
+  console.log(dishesSearch);
+
   return {
     ...state,
-    allCategories: dishesSearch,
+    allDishes: dishesSearch,
   };
 }
 

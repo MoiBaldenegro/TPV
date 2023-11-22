@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { DISHES_FAILURE, DISHES_REQUEST, GET_DISHES } from './actionTypes';
+import {
+  DISHES_FAILURE,
+  DISHES_REQUEST,
+  GET_DISHES,
+  SEARCH_DISHES,
+} from './actionTypes';
 
 // Get dishes
 export function getDishesAction() {
@@ -25,3 +30,9 @@ export function getDishesAction() {
     }
   };
 }
+
+// search categories
+export const searchDishesAction = (payload) => ({
+  type: SEARCH_DISHES,
+  payload,
+});
