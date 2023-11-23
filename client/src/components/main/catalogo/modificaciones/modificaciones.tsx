@@ -20,6 +20,7 @@ import { useModal } from '../../../../hooks/useModals';
 import ButtonLoader from '../../../loaders/buttonLoader/buttonLoader';
 import UploadFiles from '../../../forms/uploadFile/uploadFile';
 import { createModifiers } from '../../../../redux/actions/catalogo/modifiersActions/createModifiers';
+import CreateModifierModal from './forms/createModifierModal';
 
 export default function Modificaciones() {
   // LocalState
@@ -31,6 +32,7 @@ export default function Modificaciones() {
   // MODALS
   const uploadModifier = useModal('uploadModifier');
   const saveModifier = useModal('saveModifier');
+  const createModifier = useModal('createModifier');
   // Events
   const handleChange = (event) => {
     event.preventDefault();
@@ -63,7 +65,10 @@ export default function Modificaciones() {
             <img src={importIcon} alt="import-icon" />
             Importar modificadores
           </button>
-          <button className={styles.btnHeadCreate}>
+          <button
+            className={styles.btnHeadCreate}
+            onClick={createModifier.openModal}
+          >
             <img src={createIcon} alt="create-icon" />
             <span>Crear modificador</span>
           </button>
@@ -77,6 +82,15 @@ export default function Modificaciones() {
             >
               Cargar plantilla de modificadores
             </UploadFiles>
+          ) : null}
+          {createModifier.isOpen &&
+          createModifier.modalName === 'createModifier' ? (
+            <CreateModifierModal
+              isOpen={createModifier.isOpen}
+              onClose={createModifier.closeModal}
+            >
+              <strong>Crear complemento</strong>
+            </CreateModifierModal>
           ) : null}
         </div>
       </section>

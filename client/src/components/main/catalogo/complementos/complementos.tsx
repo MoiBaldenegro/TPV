@@ -11,8 +11,7 @@ import createIcon from '../../../../assets/public/createIcon.svg';
 import update from '../../../../assets/categorias/updateIcon.svg';
 import deleteIcon from '../../../../assets/categorias/bloquedIcon.svg';
 import enabledIcon from '../../../../assets/public/enabledIcon.svg';
-import helpIcon from '../../../../assets/public/helpIcon.svg';
-// import arrow from "../../../../assets/public/arrow.svg"
+
 import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 // Actions
@@ -21,15 +20,16 @@ import {
   searchDishesAction,
 } from '../../../../redux/actions/catalogo/dishesActions/getDishes';
 import { discontinueDishesAction } from '../../../../redux/actions/catalogo/dishesActions/discontinueDishes';
-import { createDishes } from '../../../../redux/actions/catalogo/dishesActions/createDishes';
 
 // Components
 import UploadFiles from '../../../forms/uploadFile/uploadFile';
+import CreateDishesModal from './forms/createDishes';
 
 export default function Complementos() {
   // MODALS
   const uploadPayment = useModal('uploadPayment');
   const savePayments = useModal('savePayments');
+  const createDishes = useModal('createDishes');
 
   const dispatch = useDispatch();
   const { allDishes } = useSelector((state) => state.dishes);
@@ -63,7 +63,10 @@ export default function Complementos() {
             <img src={importIcon} alt="import-icon" />
             Importar complementos
           </button>
-          <button className={styles.btnHeadCreate}>
+          <button
+            className={styles.btnHeadCreate}
+            onClick={createDishes.openModal}
+          >
             <img src={createIcon} alt="create-icon" />
             <span>Crear complemento</span>
           </button>
@@ -77,6 +80,14 @@ export default function Complementos() {
             >
               Cargar plantilla de complementos
             </UploadFiles>
+          ) : null}
+          {createDishes.isOpen && createDishes.modalName === 'createDishes' ? (
+            <CreateDishesModal
+              isOpen={createDishes.isOpen}
+              onClose={createDishes.closeModal}
+            >
+              <strong>Crear complemento</strong>
+            </CreateDishesModal>
           ) : null}
         </div>
       </section>

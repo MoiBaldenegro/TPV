@@ -16,6 +16,7 @@ import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 import { getMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/getMenu';
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
+import CreateMenuModal from './forms/createMenu';
 
 export default function MenusYRecetas() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function MenusYRecetas() {
   // MODALS
   const uploadMenus = useModal('uploadMenus');
   const saveMenus = useModal('saveMenus');
+  const createMenu = useModal('createMenu');
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueMenusAction(id, body));
@@ -37,10 +39,21 @@ export default function MenusYRecetas() {
       <section className={styles.head}>
         <h2>Menus y recetas</h2>
         <div>
-          <button className={styles.btnHeadCreate}>
+          <button
+            className={styles.btnHeadCreate}
+            onClick={createMenu.openModal}
+          >
             <img src={createIcon} alt="create-icon" />
             <span>Crear receta</span>
           </button>
+          {createMenu.isOpen && createMenu.modalName === 'createMenu' ? (
+            <CreateMenuModal
+              isOpen={createMenu.isOpen}
+              onClose={createMenu.closeModal}
+            >
+              <strong>Crear Menu</strong>
+            </CreateMenuModal>
+          ) : null}
         </div>
       </section>
       <section className={styles.updateSection}>

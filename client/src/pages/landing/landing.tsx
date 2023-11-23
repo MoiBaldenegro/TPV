@@ -15,8 +15,7 @@ export default function Landing() {
         <img src={tomateLogo} alt="" />
         <button className={styles.btnBack}>
           <NavLink to="/login" className={styles.btnBackLink}>
-            {' '}
-            START{' '}
+            START
           </NavLink>
         </button>
         <img

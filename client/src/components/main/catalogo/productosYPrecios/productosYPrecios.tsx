@@ -22,6 +22,7 @@ import { discontinueProductsAndPricesAction } from '../../../../redux/actions/ca
 import { useModal } from '../../../../hooks/useModals';
 import UploadFiles from '../../../forms/uploadFile/uploadFile';
 import { createProductsAndPrices } from '../../../../redux/actions/catalogo/productsAndpricesActions/createProduct';
+import CreateProductsModal from './forms/createProducts';
 
 export default function ProductosYPrecios() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export default function ProductosYPrecios() {
   // MODALS
   const uploadProduct = useModal('uploadProduct');
   const saveProducts = useModal('saveProducts');
+  const createProducts = useModal('createProducts');
   // Events
   const handleChange = (event) => {
     event.preventDefault();
@@ -57,7 +59,10 @@ export default function ProductosYPrecios() {
             <img src={importIcon} alt="import-icon" />
             Importar productos
           </button>
-          <button className={styles.btnHeadCreate}>
+          <button
+            className={styles.btnHeadCreate}
+            onClick={createProducts.openModal}
+          >
             <img src={createIcon} alt="create-icon" />
             <span>Crear producto</span>
           </button>
@@ -71,6 +76,15 @@ export default function ProductosYPrecios() {
           >
             Cargar plantilla de productos
           </UploadFiles>
+        ) : null}
+        {createProducts.isOpen &&
+        createProducts.modalName === 'createProducts' ? (
+          <CreateProductsModal
+            isOpen={createProducts.isOpen}
+            onClose={createProducts.closeModal}
+          >
+            <strong>Crear producto</strong>
+          </CreateProductsModal>
         ) : null}
       </section>
       <section className={styles.updateSection}>
