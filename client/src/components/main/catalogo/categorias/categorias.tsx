@@ -13,6 +13,7 @@ import importIcon from '../../../../assets/categorias/importIcon.svg';
 import createIcon from '../../../../assets/categorias/createIcon.svg';
 import searchIcon from '../../../../assets/categorias/searchIcon.svg';
 import UploadFiles from './modals/uploadCategories/uploadCategories';
+import downArrow from '../../../../assets/public/downArrow.svg';
 import AuthDiscontinueModal from '../../../modals/authDiscontinue/authDiscontinue';
 import { useEffect } from 'react';
 import { useModal } from '../../../../hooks/useModals';
@@ -181,7 +182,14 @@ export default function Categorias() {
                   }
                 >
                   <td className={styles.tableRows}>{categoria.code}</td>
-                  <td className={styles.tableRows}>{categoria.categoryName}</td>
+                  <td className={styles.tableRows}>
+                    {categoria.categoryName}
+                    <img
+                      src={downArrow}
+                      alt="down-arrow-icon"
+                      className={styles.downArrow}
+                    />
+                  </td>
                   <td className={styles.tableRows}>{categoria.createdAt}</td>
                   <td className={styles.buttonsContainer}>
                     {categoria.status === 'enabled' ? (
@@ -228,6 +236,11 @@ export default function Categorias() {
                       <td className={styles.tableRows}>{subCategory.code}</td>
                       <td className={styles.tableRowsNameOne}>
                         {subCategory.categoryName}
+                        <img
+                          src={downArrow}
+                          alt="down-arrow-icon"
+                          className={styles.downArrow}
+                        />
                       </td>
                       <td className={styles.tableRows}>
                         {categoria.createdAt}
@@ -287,6 +300,11 @@ export default function Categorias() {
                             </td>
                             <td className={styles.tableRowsNameTwo}>
                               {subSubCategory.categoryName}
+                              <img
+                                src={downArrow}
+                                alt="down-arrow-icon"
+                                className={styles.downArrow}
+                              />
                             </td>
                             <td className={styles.tableRows}>
                               {categoria.createdAt}
@@ -348,6 +366,11 @@ export default function Categorias() {
                                   </td>
                                   <td className={styles.tableRowsNameThree}>
                                     {subSubSubCategory.categoryName}
+                                    <img
+                                      src={downArrow}
+                                      alt="down-arrow-icon"
+                                      className={styles.downArrow}
+                                    />
                                   </td>
                                   <td className={styles.tableRows}>
                                     {categoria.createdAt}
@@ -419,6 +442,11 @@ export default function Categorias() {
                                       </td>
                                       <td className={styles.tableRowsNameFour}>
                                         {subSubSubSubCategory.categoryName}
+                                        <img
+                                          src={downArrow}
+                                          alt="down-arrow-icon"
+                                          className={styles.downArrow}
+                                        />
                                       </td>
                                       <td className={styles.tableRows}>
                                         {categoria.createdAt}
