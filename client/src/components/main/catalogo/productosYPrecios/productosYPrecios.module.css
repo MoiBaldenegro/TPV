@@ -278,6 +278,9 @@
     border-radius: 8px;
     border: 1px solid #f9f9f9;
     background: #F9F9F94D;
+    min-height: 56px;
+    max-height: 700px;
+    overflow: auto;
 
   }
   
@@ -296,12 +299,13 @@
   /* table */
   .table{
     background: #F9F9F980;
-    width: 1,418px;
-    height: 56px;
+    max-width: 1,418px;
+   
     padding: 0px, 16px, 0px, 16px;
     border-radius: 8px;
     border: 1px solid #F9F9F9;
     margin: 25px;
+    
     
 }
 .tHeadCategoria,

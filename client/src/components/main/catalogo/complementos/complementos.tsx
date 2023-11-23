@@ -86,7 +86,7 @@ export default function Complementos() {
               isOpen={createDishes.isOpen}
               onClose={createDishes.closeModal}
             >
-              <strong>Crear complemento</strong>
+              Crear complemento
             </CreateDishesModal>
           ) : null}
         </div>

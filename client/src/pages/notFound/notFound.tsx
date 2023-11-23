@@ -9,7 +9,9 @@ export default function NotFound() {
     <div className={styles.loginPage}>
       <main className={styles.centerContainer}>
         <img src={tomateLogo} alt="" />
-        <h1>Este modulo se encuentra actualmente en construccion...</h1>
+        <h1 className={styles.text}>
+          Este modulo se encuentra actualmente en construccion...
+        </h1>
         <button className={styles.btnBack}>
           <NavLink to="/login" className={styles.btnBackLink}>
             RETURN

@@ -3,6 +3,7 @@ import styles from './createProducts.module.css';
 import { useState } from 'react';
 //Icons
 import arrow from './../../../../../assets/public/arrow.svg';
+import arrowRigth from './../../../../../assets/public/arrowRigth.svg';
 interface Props {
   isOpen: any;
   onClose: any;
@@ -22,7 +23,7 @@ export default function CreateProductsModal({
         </button>
         <div className={styles.tittleContainer}>
           <h1 className={styles.tittle}>{children}</h1>
-          <span>
+          <span className={styles.textTittle}>
             Seleccione la categoría a la que se asignarán los productos.
           </span>
         </div>
@@ -46,6 +47,10 @@ export default function CreateProductsModal({
             </div>
           </div>
         </div>
+        <button className={styles.nextButton}>
+          Siguiente
+          <img src={arrowRigth} alt="arrow-rigth" />
+        </button>
       </section>
     </div>
   );

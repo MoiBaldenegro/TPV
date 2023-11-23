@@ -21,14 +21,14 @@
     color: #f9f9f9;
     border: none;
 }
-.btnHead .btnHeadCreate, img, span{
+.btnHead .btnHeadCreate{
     text-align: center;
     vertical-align: middle;
 }
 .btnHead,
 .btnHeadCreate,
-.btnHead img,
-.btnHeadCreate img{
+.btnHead,
+.btnHeadCreate {
     margin-right: 10px;
 }
 .btnHeadCreate{

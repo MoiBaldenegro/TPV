@@ -39,20 +39,21 @@ h2{
     height: 48px;
     min-height: 48px;
     padding: 12px, 16px, 12px, 16px;
-    border: none;
     border-radius: 8px;
     gap: 10px;
     background: transparent;
 } 
 
 .table{
+    border-collapse: separate;
+  border-spacing: 0 1px;
     background: #F9F9F980;
     width: 1,418px;
     height: 56px;
     padding: 0px, 16px, 0px, 16px;
     border-radius: 8px;
-    border: 1px solid #F9F9F9;
     margin: 25px;
+    overflow: hidden;
     
 }
 
@@ -87,7 +88,6 @@ text-indent: 25px;
 }
 .tableRows,
 .buttonsContainer{
-    border-top: 1px solid #F9F9F9;
 }
 .tHeadClave,
 .tHeadCategoria,

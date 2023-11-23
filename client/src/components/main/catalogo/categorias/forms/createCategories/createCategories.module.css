@@ -38,68 +38,9 @@
     border: none;
     font-size: 18px;
     color: #cfcece;
-  font-weight: 900;
+    font-weight: 900;
   }
-/* estilos de select */
-.customSelect{
-  position: relative;
-  width: 448px;
-  height: 48px;
-  background: rgba(249, 249, 249, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 6px;
- 
-}
-.selectTrigger {
-  cursor: pointer;
-  border-radius: 4px;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  font-size: var(--font-size-small);
-}
 
-.options {
-  position: absolute;
-  background-color: var(--color-gray-hover);
-  top: 120%;
-  left: 0;
-  width: 144px;
-  display: block;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 6px;
-  color: #333;
-  font-size: var(--font-size-small);
-}
-
-.customSelect:hover .options  {
-  display: block;
-  display: flex;
-  flex-direction: column;
-}
-.hidden{
-  display: none;
-}
-.option {
-  padding: 12px;
-  cursor: pointer;
-  border-bottom: 1px solid #33333333;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-}
-.option:hover {
-  background-color: #6e717442;
-  
-}
 
 .contentContainer{
   display: flex;
@@ -140,10 +81,10 @@ gap: 16px;
   border: none;
   outline: none;
   width: 448px;
-height: 48px;
-padding: 12px, 16px, 12px, 16px ;
-border-radius: 8px;
-background: #F9F9F91A;
+  height: 48px;
+  padding: 12px, 16px, 12px, 16px ;
+  border-radius: 8px;
+  background: #F9F9F91A;
 }
 .inputCategory::placeholder{
   text-indent: 15px;
@@ -153,11 +94,11 @@ background: #F9F9F91A;
   border: none;
   color: var(--color-white);
   width: 186px;
-height: 48px;
-padding: 12px, 16px, 12px, 16px;
-border-radius: 8px;
-gap: 8px;
-background: #F9F9F91A;
+  height: 48px;
+  padding: 12px, 16px, 12px, 16px;
+  border-radius: 8px;
+  gap: 8px;
+  background: #F9F9F91A;
 
 
 }
@@ -166,7 +107,6 @@ background: #F9F9F91A;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  border: 1px solid #f9f9f9;
 
 }
 .buttonFormRight{
@@ -174,21 +114,17 @@ background: #F9F9F91A;
   outline: none;
   color: var(--color-white);
   width: 222px;
-height: 48px;
-padding: 12px, 16px, 12px, 16px;
-border-radius: 8px;
-gap: 8px;
-background: #F9F9F91A;
+  height: 48px;
+  padding: 12px, 16px, 12px, 16px;
+  border-radius: 8px;
+  gap: 8px;
+  background: #F9F9F91A;
 
 }
 
 table{
-  border: 1px solid #f9f9f9;
   width: 95%;
   height: 90%;
   background-color: rgba(106, 112, 112, 0.438);
   border-radius: 8px;
-}
-td{
-  border: 1px solid #f9f9f9;
 }
