@@ -83,7 +83,7 @@ export default function ProductosYPrecios() {
             isOpen={createProducts.isOpen}
             onClose={createProducts.closeModal}
           >
-            <strong>Crear producto</strong>
+            Crear producto
           </CreateProductsModal>
         ) : null}
       </section>
