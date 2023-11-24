@@ -24,8 +24,11 @@ import UpdateOneCategory from './forms/updateCategory/updateOneCategory';
 import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
 //hooks
 import { useState } from 'react';
+// Utils
+import { toggleCategory } from './utils/categoryExpansion';
 
 export default function Categorias() {
+  // Modales
   const createCategory = useModal('createCategory');
   const uploadCategories = useModal('uploadCategories');
   const saveCategories = useModal('saveCategories');
@@ -34,6 +37,9 @@ export default function Categorias() {
   const confirmChanges = useModal('confirmChanges');
 
   //////////////////////////////////////////////////////////////////////////////////////
+  // States
+  // Category expansion
+  const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
 
   const [buttonParams, setButtonParams] = useState();
   const dispatch = useDispatch();
@@ -59,6 +65,7 @@ export default function Categorias() {
 
   useEffect(() => {
     dispatch(getCategoriesAction());
+    console.log(expandedCategories);
   }, []);
 
   return (
@@ -188,6 +195,12 @@ export default function Categorias() {
                       src={downArrow}
                       alt="down-arrow-icon"
                       className={styles.downArrow}
+                      onClick={() =>
+                        toggleCategory({
+                          categoryId: categoria._id,
+                          setExpandedCategories,
+                        })
+                      }
                     />
                   </td>
                   <td className={styles.tableRows}>{categoria.createdAt}</td>
@@ -203,11 +216,7 @@ export default function Categorias() {
                         <button
                           className={styles.actionButtonsSecond}
                           onClick={() => {
-                            AuthDiscontinue.openModal();
-                            setButtonParams({
-                              id: categoria._id,
-                              body: categoria.status,
-                            });
+                            console.log(expandedCategories);
                           }}
                         >
                           <img src={deleteIcon} alt="delete-icon" />
@@ -230,94 +239,40 @@ export default function Categorias() {
                     )}
                   </td>
                 </tr>
-                {categoria.subCategories?.map((subCategory, subIndex) => (
-                  <React.Fragment key={subIndex}>
-                    <tr key={subIndex} className={styles.subCategoryRow}>
-                      <td className={styles.tableRows}>{subCategory.code}</td>
-                      <td className={styles.tableRowsNameOne}>
-                        {subCategory.categoryName}
-                        <img
-                          src={downArrow}
-                          alt="down-arrow-icon"
-                          className={styles.downArrow}
-                        />
-                      </td>
-                      <td className={styles.tableRows}>
-                        {categoria.createdAt}
-                      </td>
-                      <td className={styles.buttonsContainer}>
-                        {subCategory.status === 'enabled' ? (
-                          <>
-                            <button
-                              className={styles.actionButtonsFirst}
-                              onClick={() =>
-                                updateOneCategory.openModal(subCategory)
-                              }
-                            >
-                              <img src={update} alt="update-icon" />
-                            </button>
-                            <button
-                              className={styles.actionButtonsSecond}
-                              onClick={() => {
-                                AuthDiscontinue.openModal();
-                                setButtonParams({
-                                  id: subCategory._id,
-                                  body: subCategory.status,
-                                });
-                              }}
-                            >
-                              <img src={deleteIcon} alt="delete-icon" />
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            <button
-                              className={styles.actionButtonsFirstEnabled}
-                            >
-                              <img src={update} alt="update-icon" />
-                            </button>
-                            <button
-                              className={styles.actionButtonsSecond}
-                              onClick={() => {
-                                restoreStatus(
-                                  subCategory._id,
-                                  subCategory.status,
-                                );
-                              }}
-                            >
-                              <img src={enabledIcon} alt="enabled-icon" />
-                            </button>
-                          </>
-                        )}
-                      </td>
-                    </tr>
-                    {subCategory.subCategories?.map(
-                      (subSubCategory, subSubIndex) => (
-                        <React.Fragment key={subSubIndex}>
-                          <tr className={styles.subCategoryRowTwo}>
+                {expandedCategories.includes(categoria._id) &&
+                  categoria.subCategories && (
+                    <>
+                      {categoria.subCategories?.map((subCategory, subIndex) => (
+                        <React.Fragment key={subIndex}>
+                          <tr key={subIndex} className={styles.subCategoryRow}>
                             <td className={styles.tableRows}>
-                              {subSubCategory.code}
+                              {subCategory.code}
                             </td>
-                            <td className={styles.tableRowsNameTwo}>
-                              {subSubCategory.categoryName}
+                            <td className={styles.tableRowsNameOne}>
+                              {subCategory.categoryName}
+
                               <img
                                 src={downArrow}
                                 alt="down-arrow-icon"
                                 className={styles.downArrow}
+                                onClick={() =>
+                                  toggleCategory({
+                                    categoryId: subCategory.code,
+                                    setExpandedCategories,
+                                  })
+                                }
                               />
                             </td>
                             <td className={styles.tableRows}>
                               {categoria.createdAt}
                             </td>
                             <td className={styles.buttonsContainer}>
-                              {subSubCategory.status === 'enabled' ? (
+                              {subCategory.status === 'enabled' ? (
                                 <>
                                   <button
                                     className={styles.actionButtonsFirst}
                                     onClick={() =>
-                                      updateOneCategory.openModal(
-                                        subSubCategory,
-                                      )
+                                      updateOneCategory.openModal(subCategory)
                                     }
                                   >
                                     <img src={update} alt="update-icon" />
@@ -327,8 +282,8 @@ export default function Categorias() {
                                     onClick={() => {
                                       AuthDiscontinue.openModal();
                                       setButtonParams({
-                                        id: subSubCategory._id,
-                                        body: subSubCategory.status,
+                                        id: subCategory._id,
+                                        body: subCategory.status,
                                       });
                                     }}
                                   >
@@ -346,8 +301,8 @@ export default function Categorias() {
                                     className={styles.actionButtonsSecond}
                                     onClick={() => {
                                       restoreStatus(
-                                        subSubCategory._id,
-                                        subSubCategory.status,
+                                        subCategory._id,
+                                        subCategory.status,
                                       );
                                     }}
                                   >
@@ -357,184 +312,380 @@ export default function Categorias() {
                               )}
                             </td>
                           </tr>
-                          {subSubCategory.subCategories?.map(
-                            (subSubSubCategory, subSubSubIndex) => (
-                              <React.Fragment key={subSubSubIndex}>
-                                <tr className={styles.subCategoryRowThree}>
-                                  <td className={styles.tableRows}>
-                                    {subSubSubCategory.code}
-                                  </td>
-                                  <td className={styles.tableRowsNameThree}>
-                                    {subSubSubCategory.categoryName}
-                                    <img
-                                      src={downArrow}
-                                      alt="down-arrow-icon"
-                                      className={styles.downArrow}
-                                    />
-                                  </td>
-                                  <td className={styles.tableRows}>
-                                    {categoria.createdAt}
-                                  </td>
-                                  <td className={styles.buttonsContainer}>
-                                    {subSubSubCategory.status === 'enabled' ? (
-                                      <>
-                                        <button
-                                          className={styles.actionButtonsFirst}
-                                          onClick={() =>
-                                            updateOneCategory.openModal(
-                                              subSubSubCategory,
-                                            )
-                                          }
-                                        >
-                                          <img src={update} alt="update-icon" />
-                                        </button>
-                                        <button
-                                          className={styles.actionButtonsSecond}
-                                          onClick={() => {
-                                            AuthDiscontinue.openModal();
-                                            setButtonParams({
-                                              id: subSubSubCategory._id,
-                                              body: subSubSubCategory.status,
-                                            });
-                                          }}
-                                        >
+                          {expandedCategories.includes(subCategory.code) &&
+                            subCategory.subCategories && (
+                              <>
+                                {subCategory.subCategories?.map(
+                                  (subSubCategory, subSubIndex) => (
+                                    <React.Fragment key={subSubIndex}>
+                                      <tr className={styles.subCategoryRowTwo}>
+                                        <td className={styles.tableRows}>
+                                          {subSubCategory.code}
+                                        </td>
+                                        <td className={styles.tableRowsNameTwo}>
+                                          {subSubCategory.categoryName}
                                           <img
-                                            src={deleteIcon}
-                                            alt="delete-icon"
+                                            src={downArrow}
+                                            alt="down-arrow-icon"
+                                            className={styles.downArrow}
+                                            onClick={() =>
+                                              toggleCategory({
+                                                categoryId: subSubCategory.code,
+                                                setExpandedCategories,
+                                              })
+                                            }
                                           />
-                                        </button>
-                                      </>
-                                    ) : (
-                                      <>
-                                        <button
-                                          className={
-                                            styles.actionButtonsFirstEnabled
-                                          }
-                                        >
-                                          <img src={update} alt="update-icon" />
-                                        </button>
-                                        <button
-                                          className={styles.actionButtonsSecond}
-                                          onClick={() => {
-                                            restoreStatus(
-                                              subSubSubCategory._id,
-                                              subSubSubCategory.status,
-                                            );
-                                          }}
-                                        >
-                                          <img
-                                            src={enabledIcon}
-                                            alt="enabled-icon"
-                                          />
-                                        </button>
-                                      </>
-                                    )}
-                                  </td>
-                                </tr>
-                                {subSubSubCategory.subCategories?.map(
-                                  (subSubSubSubCategory, subSubSubSubIndex) => (
-                                    <tr
-                                      key={subSubSubSubIndex}
-                                      className={styles.subCategoryRowFour}
-                                    >
-                                      <td className={styles.tableRows}>
-                                        {subSubSubSubCategory.code}
-                                      </td>
-                                      <td className={styles.tableRowsNameFour}>
-                                        {subSubSubSubCategory.categoryName}
-                                        <img
-                                          src={downArrow}
-                                          alt="down-arrow-icon"
-                                          className={styles.downArrow}
-                                        />
-                                      </td>
-                                      <td className={styles.tableRows}>
-                                        {categoria.createdAt}
-                                      </td>
-                                      <td className={styles.buttonsContainer}>
-                                        {subSubSubSubCategory.status ===
-                                        'enabled' ? (
+                                        </td>
+                                        <td className={styles.tableRows}>
+                                          {categoria.createdAt}
+                                        </td>
+                                        <td className={styles.buttonsContainer}>
+                                          {subSubCategory.status ===
+                                          'enabled' ? (
+                                            <>
+                                              <button
+                                                className={
+                                                  styles.actionButtonsFirst
+                                                }
+                                                onClick={() =>
+                                                  updateOneCategory.openModal(
+                                                    subSubCategory,
+                                                  )
+                                                }
+                                              >
+                                                <img
+                                                  src={update}
+                                                  alt="update-icon"
+                                                />
+                                              </button>
+                                              <button
+                                                className={
+                                                  styles.actionButtonsSecond
+                                                }
+                                                onClick={() => {
+                                                  AuthDiscontinue.openModal();
+                                                  setButtonParams({
+                                                    id: subSubCategory._id,
+                                                    body: subSubCategory.status,
+                                                  });
+                                                }}
+                                              >
+                                                <img
+                                                  src={deleteIcon}
+                                                  alt="delete-icon"
+                                                />
+                                              </button>
+                                            </>
+                                          ) : (
+                                            <>
+                                              <button
+                                                className={
+                                                  styles.actionButtonsFirstEnabled
+                                                }
+                                              >
+                                                <img
+                                                  src={update}
+                                                  alt="update-icon"
+                                                />
+                                              </button>
+                                              <button
+                                                className={
+                                                  styles.actionButtonsSecond
+                                                }
+                                                onClick={() => {
+                                                  restoreStatus(
+                                                    subSubCategory._id,
+                                                    subSubCategory.status,
+                                                  );
+                                                }}
+                                              >
+                                                <img
+                                                  src={enabledIcon}
+                                                  alt="enabled-icon"
+                                                />
+                                              </button>
+                                            </>
+                                          )}
+                                        </td>
+                                      </tr>
+                                      {expandedCategories.includes(
+                                        subSubCategory.code,
+                                      ) &&
+                                        subSubCategory.subCategories && (
                                           <>
-                                            <button
-                                              className={
-                                                styles.actionButtonsFirst
-                                              }
-                                              onClick={() =>
-                                                updateOneCategory.openModal(
-                                                  subSubSubSubCategory,
-                                                )
-                                              }
-                                            >
-                                              <img
-                                                src={update}
-                                                alt="update-icon"
-                                              />
-                                            </button>
-                                            <button
-                                              className={
-                                                styles.actionButtonsSecond
-                                              }
-                                              onClick={() => {
-                                                AuthDiscontinue.openModal();
-                                                setButtonParams({
-                                                  id: subSubSubSubCategory._id,
-                                                  body: subSubSubSubCategory.status,
-                                                });
-                                              }}
-                                            >
-                                              <img
-                                                src={deleteIcon}
-                                                alt="delete-icon"
-                                              />
-                                            </button>
-                                          </>
-                                        ) : (
-                                          <>
-                                            <button
-                                              className={
-                                                styles.actionButtonsFirstEnabled
-                                              }
-                                            >
-                                              <img
-                                                src={update}
-                                                alt="update-icon"
-                                              />
-                                            </button>
-                                            <button
-                                              className={
-                                                styles.actionButtonsSecond
-                                              }
-                                              onClick={() => {
-                                                restoreStatus(
-                                                  subSubSubSubCategory._id,
-                                                  subSubSubSubCategory.status,
-                                                );
-                                              }}
-                                            >
-                                              <img
-                                                src={enabledIcon}
-                                                alt="enabled-icon"
-                                              />
-                                            </button>
+                                            {subSubCategory.subCategories?.map(
+                                              (
+                                                subSubSubCategory,
+                                                subSubSubIndex,
+                                              ) => (
+                                                <React.Fragment
+                                                  key={subSubSubIndex}
+                                                >
+                                                  <tr
+                                                    className={
+                                                      styles.subCategoryRowThree
+                                                    }
+                                                  >
+                                                    <td
+                                                      className={
+                                                        styles.tableRows
+                                                      }
+                                                    >
+                                                      {subSubSubCategory.code}
+                                                    </td>
+                                                    <td
+                                                      className={
+                                                        styles.tableRowsNameThree
+                                                      }
+                                                    >
+                                                      {
+                                                        subSubSubCategory.categoryName
+                                                      }
+                                                      <img
+                                                        src={downArrow}
+                                                        alt="down-arrow-icon"
+                                                        className={
+                                                          styles.downArrow
+                                                        }
+                                                        onClick={() =>
+                                                          toggleCategory({
+                                                            categoryId:
+                                                              subSubSubCategory.code,
+                                                            setExpandedCategories,
+                                                          })
+                                                        }
+                                                      />
+                                                    </td>
+                                                    <td
+                                                      className={
+                                                        styles.tableRows
+                                                      }
+                                                    >
+                                                      {categoria.createdAt}
+                                                    </td>
+                                                    <td
+                                                      className={
+                                                        styles.buttonsContainer
+                                                      }
+                                                    >
+                                                      {subSubSubCategory.status ===
+                                                      'enabled' ? (
+                                                        <>
+                                                          <button
+                                                            className={
+                                                              styles.actionButtonsFirst
+                                                            }
+                                                            onClick={() =>
+                                                              updateOneCategory.openModal(
+                                                                subSubSubCategory,
+                                                              )
+                                                            }
+                                                          >
+                                                            <img
+                                                              src={update}
+                                                              alt="update-icon"
+                                                            />
+                                                          </button>
+                                                          <button
+                                                            className={
+                                                              styles.actionButtonsSecond
+                                                            }
+                                                            onClick={() => {
+                                                              AuthDiscontinue.openModal();
+                                                              setButtonParams({
+                                                                id: subSubSubCategory._id,
+                                                                body: subSubSubCategory.status,
+                                                              });
+                                                            }}
+                                                          >
+                                                            <img
+                                                              src={deleteIcon}
+                                                              alt="delete-icon"
+                                                            />
+                                                          </button>
+                                                        </>
+                                                      ) : (
+                                                        <>
+                                                          <button
+                                                            className={
+                                                              styles.actionButtonsFirstEnabled
+                                                            }
+                                                          >
+                                                            <img
+                                                              src={update}
+                                                              alt="update-icon"
+                                                            />
+                                                          </button>
+                                                          <button
+                                                            className={
+                                                              styles.actionButtonsSecond
+                                                            }
+                                                            onClick={() => {
+                                                              restoreStatus(
+                                                                subSubSubCategory._id,
+                                                                subSubSubCategory.status,
+                                                              );
+                                                            }}
+                                                          >
+                                                            <img
+                                                              src={enabledIcon}
+                                                              alt="enabled-icon"
+                                                            />
+                                                          </button>
+                                                        </>
+                                                      )}
+                                                    </td>
+                                                  </tr>
+                                                  {expandedCategories.includes(
+                                                    subSubSubCategory.code,
+                                                  ) &&
+                                                    subSubSubCategory.subCategories && (
+                                                      <>
+                                                        {subSubSubCategory.subCategories?.map(
+                                                          (
+                                                            subSubSubSubCategory,
+                                                            subSubSubSubIndex,
+                                                          ) => (
+                                                            <tr
+                                                              key={
+                                                                subSubSubSubIndex
+                                                              }
+                                                              className={
+                                                                styles.subCategoryRowFour
+                                                              }
+                                                            >
+                                                              <td
+                                                                className={
+                                                                  styles.tableRows
+                                                                }
+                                                              >
+                                                                {
+                                                                  subSubSubSubCategory.code
+                                                                }
+                                                              </td>
+                                                              <td
+                                                                className={
+                                                                  styles.tableRowsNameFour
+                                                                }
+                                                              >
+                                                                {
+                                                                  subSubSubSubCategory.categoryName
+                                                                }
+                                                              </td>
+                                                              <td
+                                                                className={
+                                                                  styles.tableRows
+                                                                }
+                                                              >
+                                                                {
+                                                                  categoria.createdAt
+                                                                }
+                                                              </td>
+                                                              <td
+                                                                className={
+                                                                  styles.buttonsContainer
+                                                                }
+                                                              >
+                                                                {subSubSubSubCategory.status ===
+                                                                'enabled' ? (
+                                                                  <>
+                                                                    <button
+                                                                      className={
+                                                                        styles.actionButtonsFirst
+                                                                      }
+                                                                      onClick={() =>
+                                                                        updateOneCategory.openModal(
+                                                                          subSubSubSubCategory,
+                                                                        )
+                                                                      }
+                                                                    >
+                                                                      <img
+                                                                        src={
+                                                                          update
+                                                                        }
+                                                                        alt="update-icon"
+                                                                      />
+                                                                    </button>
+                                                                    <button
+                                                                      className={
+                                                                        styles.actionButtonsSecond
+                                                                      }
+                                                                      onClick={() => {
+                                                                        AuthDiscontinue.openModal();
+                                                                        setButtonParams(
+                                                                          {
+                                                                            id: subSubSubSubCategory._id,
+                                                                            body: subSubSubSubCategory.status,
+                                                                          },
+                                                                        );
+                                                                      }}
+                                                                    >
+                                                                      <img
+                                                                        src={
+                                                                          deleteIcon
+                                                                        }
+                                                                        alt="delete-icon"
+                                                                      />
+                                                                    </button>
+                                                                  </>
+                                                                ) : (
+                                                                  <>
+                                                                    <button
+                                                                      className={
+                                                                        styles.actionButtonsFirstEnabled
+                                                                      }
+                                                                    >
+                                                                      <img
+                                                                        src={
+                                                                          update
+                                                                        }
+                                                                        alt="update-icon"
+                                                                      />
+                                                                    </button>
+                                                                    <button
+                                                                      className={
+                                                                        styles.actionButtonsSecond
+                                                                      }
+                                                                      onClick={() => {
+                                                                        restoreStatus(
+                                                                          subSubSubSubCategory._id,
+                                                                          subSubSubSubCategory.status,
+                                                                        );
+                                                                      }}
+                                                                    >
+                                                                      <img
+                                                                        src={
+                                                                          enabledIcon
+                                                                        }
+                                                                        alt="enabled-icon"
+                                                                      />
+                                                                    </button>
+                                                                  </>
+                                                                )}
+                                                              </td>
+                                                            </tr>
+                                                          ),
+                                                        )}
+                                                      </>
+                                                    )}
+                                                </React.Fragment>
+                                              ),
+                                            )}
                                           </>
                                         )}
-                                      </td>
-                                    </tr>
+                                    </React.Fragment>
                                   ),
                                 )}
-                              </React.Fragment>
-                            ),
-                          )}
+                              </>
+                            )}
                         </React.Fragment>
-                      ),
-                    )}
-                  </React.Fragment>
-                ))}
+                      ))}
+                    </>
+                  )}
               </React.Fragment>
             ))}
           </tbody>
         </table>
-        ;
       </div>
     </section>
   );
