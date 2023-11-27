@@ -31,7 +31,7 @@ export class Category {
   })
   categoryName: string;
 
-  @Prop({ type: [SubCategoryDto], default: () => [] })
+  @Prop({ type: [{ name: String }], default: () => [] })
   @ValidateNested({ each: true })
   @Type(() => SubCategoryDto)
   subCategories: SubCategoryDto[];
