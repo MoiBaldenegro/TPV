@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import {
   Departament,
   departamentSchema,
-} from 'src/schemas/usuarios/departaments.Dto';
+} from 'src/schemas/usuarios/departaments.Schema';
 
 @Module({
   imports: [

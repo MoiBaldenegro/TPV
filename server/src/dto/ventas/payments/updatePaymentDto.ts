@@ -3,38 +3,38 @@ import { IsString, IsDefined } from 'class-validator';
 export class UpdatePaymentDto {
   @IsString()
   @IsDefined()
-  paymentCode: string;
+  paymentCode?: string;
 
   @IsDefined()
   @IsString()
-  check: string;
+  check?: string;
 
   @IsDefined()
   @IsString()
-  noteCode: string;
+  noteCode?: string;
 
   @IsDefined()
   @IsString()
-  sellType: string; // este tendra que ser un enum
+  sellType?: string; // este tendra que ser un enum
 
   @IsString()
-  checkTotal: true;
+  checkTotal?: true;
 
   @IsString()
-  tips: string;
+  tips?: string;
 
   @IsString()
-  paymentTotal: string;
+  paymentTotal?: string;
 
   @IsString()
-  paymentType: true;
+  paymentType?: true;
 
   @IsDefined()
-  cashier: string;
+  cashier?: string;
 
   @IsString()
-  paymentDate: string;
+  paymentDate?: string;
 
   @IsString()
-  billing: 'billed' | 'unbilled';
+  billing?: 'billed' | 'unbilled';
 }

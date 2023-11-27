@@ -3,13 +3,13 @@ import { IsOptional, IsString } from 'class-validator';
 export class updateShiftDto {
   @IsString()
   @IsOptional()
-  shiftName: string;
+  shiftName?: string;
 
   @IsString()
   @IsOptional()
-  timeStartShift: string;
+  timeStartShift?: string;
 
   @IsString()
   @IsOptional()
-  timeEndShift: string;
+  timeEndShift?: string;
 }

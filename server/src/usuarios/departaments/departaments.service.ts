@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { createDepartamentDto } from 'src/dto/usuarios/departaments/createDepartamentsDto';
 import { updateDepartamentDto } from 'src/dto/usuarios/departaments/updateDepartamentsDto';
-import { Departament } from 'src/schemas/usuarios/departaments.Dto';
+import { Departament } from 'src/schemas/usuarios/departaments.Schema';
 
 @Injectable()
 export class DepartamentsService {

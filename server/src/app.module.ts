@@ -18,6 +18,7 @@ import { ExcelModule } from './utils/chargeFiles/excel/excel/excel.module';
 import { TillModule } from './caja/till/till.module';
 import { ShiftsModule } from './usuarios/shifts/shifts.module';
 import { DepartamentsModule } from './usuarios/departaments/departaments.module';
+import { ProfilesModule } from './usuarios/profiles/profiles.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { DepartamentsModule } from './usuarios/departaments/departaments.module'
     TillModule,
     ShiftsModule,
     DepartamentsModule,
+    ProfilesModule,
   ],
   controllers: [],
   providers: [],
