@@ -2,10 +2,10 @@ import axios from 'axios';
 import {
   CATEGORIES_FAILURE,
   CATEGORIES_REQUEST,
-  DISCONTINUE_SUBCATEGORY,
+  DISCONTINUE_CATEGORY,
 } from './actionTypes';
 
-export function discontinueCategoriesAction(id, body) {
+export function discontinueSubcategoriesAction(id, body) {
   return async (dispatch) => {
     dispatch({ type: CATEGORIES_REQUEST });
     const bodyValue = body === 'enabled' ? 'disabled' : 'enabled';
@@ -24,7 +24,7 @@ export function discontinueCategoriesAction(id, body) {
           'Ha ocurrido algo inesperado, la respuesta no contiene datos',
         );
       }
-      dispatch({ type: DISCONTINUE_SUBCATEGORY, payload: response.data });
+      dispatch({ type: DISCONTINUE_CATEGORY, payload: response.data });
     } catch (error) {
       dispatch({
         type: CATEGORIES_FAILURE,

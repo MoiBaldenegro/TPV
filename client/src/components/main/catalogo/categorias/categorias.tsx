@@ -46,7 +46,6 @@ export default function Categorias() {
   const { allCategories } = useSelector((state) => state.categories);
 
   const toggleStatus = () => {
-    console.log(buttonParams);
     dispatch(discontinueCategoriesAction(buttonParams.id, buttonParams.body));
   };
 

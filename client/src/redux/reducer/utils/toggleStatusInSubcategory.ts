@@ -1,4 +1,4 @@
-/* export function toggleStatus(state, object) {
+export function toggleStatus(state, object) {
   const newValue = object.status;
   const objectId = object._id;
 
@@ -16,4 +16,3 @@
     throw new Error('Algo fallo');
   }
 }
- */

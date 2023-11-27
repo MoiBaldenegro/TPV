@@ -1,13 +1,9 @@
 export function toggleStatus(state, object) {
   const newValue = object.status;
-  const objectCode = object.code;
+  const objectId = object._id;
 
   // Aca continuamos con la logica
-  const statusToggle = state.findIndex((item: any) => item.code === objectCode);
-  /* 
-  if (!statusToggle) {
-    const toggleCode = 
-  } */
+  const statusToggle = state.findIndex((item: any) => item._id === objectId);
 
   if (statusToggle !== -1) {
     const objectModify = { ...state[statusToggle] };

@@ -1,5 +1,19 @@
+// category.schema.ts
+
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
+import {
+  IsNotEmpty,
+  IsString,
+  IsOptional,
+  ValidateNested,
+} from 'class-validator';
+import { Type } from 'class-transformer';
+
+class SubCategoryDto {
+  @IsNotEmpty()
+  @IsString()
+  name: string;
+}
 
 @Schema({ timestamps: true })
 export class Category {
@@ -17,8 +31,10 @@ export class Category {
   })
   categoryName: string;
 
-  @Prop({ type: Array, default: () => [] })
-  subCategories: CreateCategoryDto[];
+  @Prop({ type: [SubCategoryDto], default: () => [] })
+  @ValidateNested({ each: true })
+  @Type(() => SubCategoryDto)
+  subCategories: SubCategoryDto[];
 
   @Prop()
   parentCategory: string | null;
