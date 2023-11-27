@@ -216,7 +216,11 @@ export default function Categorias() {
                         <button
                           className={styles.actionButtonsSecond}
                           onClick={() => {
-                            console.log(expandedCategories);
+                            AuthDiscontinue.openModal();
+                            setButtonParams({
+                              id: categoria._id,
+                              body: categoria.status,
+                            });
                           }}
                         >
                           <img src={deleteIcon} alt="delete-icon" />
@@ -282,7 +286,7 @@ export default function Categorias() {
                                     onClick={() => {
                                       AuthDiscontinue.openModal();
                                       setButtonParams({
-                                        id: subCategory._id,
+                                        id: categoria._id,
                                         body: subCategory.status,
                                       });
                                     }}
