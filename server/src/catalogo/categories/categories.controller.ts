@@ -13,7 +13,6 @@ import {
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
 import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dto';
-import { CreateBillDto } from 'src/dto/ventas/bills/createBill.Dto';
 
 @Controller('categories')
 export class CategoriesController {
@@ -92,6 +91,22 @@ export class CategoriesController {
       return categoryUpdated;
     } catch (error) {
       throw new NotFoundException('Ocurrio algo inesperado');
+    }
+  }
+
+  @Put(':code/update-status')
+  async updateStatus(
+    @Param('code') code: string,
+    @Body() payload: { newStatus: 'disabled' | 'enabled' },
+  ) {
+    try {
+      const resultado = await this.categoriesService.updateSubcategories(
+        code,
+        payload.newStatus,
+      );
+      return { mensaje: resultado };
+    } catch (error) {
+      return { error: error.message };
     }
   }
 }
