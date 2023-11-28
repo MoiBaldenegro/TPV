@@ -12,7 +12,7 @@ export class CategoriesService {
     @InjectModel(Category.name) private categoryModel: Model<Category>,
   ) {}
 
-  async findAll() {
+  async findAll(): Promise<Category[]> {
     return await this.categoryModel.find().populate('subCategories').exec();
   }
 

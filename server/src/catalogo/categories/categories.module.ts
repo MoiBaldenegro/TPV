@@ -6,6 +6,10 @@ import {
   Category,
   CategorySchema,
 } from 'src/schemas/catalogo/categories.schema';
+import {
+  SubCategoryOne,
+  SubCategoryOneSchema,
+} from 'src/schemas/catalogo/subcategories/subCategoryOne.Schema';
 
 @Module({
   imports: [
@@ -13,6 +17,10 @@ import {
       {
         name: Category.name,
         schema: CategorySchema,
+      },
+      {
+        name: SubCategoryOne.name,
+        schema: SubCategoryOneSchema,
       },
     ]),
   ],

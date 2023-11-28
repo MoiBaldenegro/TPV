@@ -4,7 +4,6 @@ import { DeleteResult } from 'mongodb';
 import { Model } from 'mongoose';
 import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
 import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dto';
-import { Category } from 'src/schemas/catalogo/categories.schema';
 import { SubCategoryOne } from 'src/schemas/catalogo/subcategories/subCategoryOne.Schema';
 
 @Injectable()
