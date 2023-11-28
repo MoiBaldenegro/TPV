@@ -18,6 +18,7 @@ export class Category {
   })
   categoryName: string;
 
+  // categories.schema.ts
   @Prop({
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'SubCategoryOne' }],
   })

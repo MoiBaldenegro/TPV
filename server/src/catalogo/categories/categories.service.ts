@@ -11,11 +11,15 @@ export class CategoriesService {
   constructor(
     @InjectModel(Category.name) private categoryModel: Model<Category>,
   ) {}
-
+  // categories.service.ts
   async findAll(): Promise<Category[]> {
-    return await this.categoryModel.find().populate('subCategories').exec();
+    try {
+      return await this.categoryModel.find().populate('subCategories').exec();
+    } catch (error) {
+      console.error('Error al buscar categorías:', error);
+      throw error;
+    }
   }
-
   /*create(createCategory: any){
        const newCtegory = this.categoryModel.create(createCategory);
        return newCtegory;

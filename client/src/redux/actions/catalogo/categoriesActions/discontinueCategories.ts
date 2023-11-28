@@ -34,3 +34,34 @@ export function discontinueCategoriesAction(id, body) {
     }
   };
 }
+export function discontinueSubCategoriesAction(id, body) {
+  return async (dispatch) => {
+    console.log(id);
+    console.log(body);
+    dispatch({ type: CATEGORIES_REQUEST });
+    const bodyValue = body === 'enabled' ? 'disabled' : 'enabled';
+    const solicitud = { status: bodyValue };
+    try {
+      const response = await axios.put(
+        `https://tomate-server.onrender.com/subcategory-one/${id}`,
+        solicitud,
+      );
+      if (!response.data) {
+        dispatch({
+          type: CATEGORIES_FAILURE,
+          error: 'Respuesta inesperada del servidor',
+        });
+        throw new Error(
+          'Ha ocurrido algo inesperado, la respuesta no contiene datos',
+        );
+      }
+      dispatch({ type: DISCONTINUE_CATEGORY, payload: response.data });
+    } catch (error) {
+      dispatch({
+        type: CATEGORIES_FAILURE,
+        error: 'Respuesta inesperada del servidor',
+      });
+      throw new Error(`Ha ocurrido un error inesperado ${error}`);
+    }
+  };
+}

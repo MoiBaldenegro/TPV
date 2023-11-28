@@ -19,7 +19,10 @@ import { useEffect } from 'react';
 import { useModal } from '../../../../hooks/useModals';
 import CreateCategories from './forms/createCategories/createCategory.form';
 import SaveCategoriesModal from './modals/confirms/saveCategories';
-import { discontinueCategoriesAction } from '../../../../redux/actions/catalogo/categoriesActions/discontinueCategories';
+import {
+  discontinueCategoriesAction,
+  discontinueSubCategoriesAction,
+} from '../../../../redux/actions/catalogo/categoriesActions/discontinueCategories';
 import UpdateOneCategory from './forms/updateCategory/updateOneCategory';
 import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
 //hooks
@@ -34,6 +37,7 @@ export default function Categorias() {
   const saveCategories = useModal('saveCategories');
   const updateOneCategory = useModal('updateOneCategory');
   const AuthDiscontinue = useModal('AuthDiscontinue');
+  const AuthDiscontinueSub = useModal('AuthDiscontinueSub');
   const confirmChanges = useModal('confirmChanges');
 
   //////////////////////////////////////////////////////////////////////////////////////
@@ -48,9 +52,17 @@ export default function Categorias() {
   const toggleStatus = () => {
     dispatch(discontinueCategoriesAction(buttonParams.id, buttonParams.body));
   };
+  const toggleStatusSub = () => {
+    dispatch(
+      discontinueSubCategoriesAction(buttonParams.id, buttonParams.body),
+    );
+  };
 
   function restoreStatus(id, body) {
     dispatch(discontinueCategoriesAction(id, body));
+  }
+  function restoreSubStatus(id, body) {
+    dispatch(discontinueSubCategoriesAction(id, body));
   }
 
   const handleChange = (event) => {
@@ -137,6 +149,17 @@ export default function Categorias() {
               handleStatus={toggleStatus}
               isOpen={AuthDiscontinue.isOpen}
               onClose={AuthDiscontinue.closeModal}
+              openModal={confirmChanges.openModal}
+            >
+              Descontinuar categoria
+            </AuthDiscontinueModal>
+          ) : null}
+          {AuthDiscontinueSub.isOpen &&
+          AuthDiscontinueSub.modalName === 'AuthDiscontinueSub' ? (
+            <AuthDiscontinueModal
+              handleStatus={toggleStatusSub}
+              isOpen={AuthDiscontinueSub.isOpen}
+              onClose={AuthDiscontinueSub.closeModal}
               openModal={confirmChanges.openModal}
             >
               Descontinuar categoria
@@ -260,7 +283,7 @@ export default function Categorias() {
                                 className={styles.downArrow}
                                 onClick={() =>
                                   toggleCategory({
-                                    categoryId: subCategory.code,
+                                    categoryId: subCategory._id,
                                     setExpandedCategories,
                                   })
                                 }
@@ -283,9 +306,9 @@ export default function Categorias() {
                                   <button
                                     className={styles.actionButtonsSecond}
                                     onClick={() => {
-                                      AuthDiscontinue.openModal();
+                                      AuthDiscontinueSub.openModal();
                                       setButtonParams({
-                                        id: categoria._id,
+                                        id: subCategory._id,
                                         body: subCategory.status,
                                       });
                                     }}
@@ -303,7 +326,7 @@ export default function Categorias() {
                                   <button
                                     className={styles.actionButtonsSecond}
                                     onClick={() => {
-                                      restoreStatus(
+                                      restoreSubStatus(
                                         subCategory._id,
                                         subCategory.status,
                                       );

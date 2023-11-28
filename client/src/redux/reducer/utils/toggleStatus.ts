@@ -1,19 +1,36 @@
-export function toggleStatus(state, object) {
+export function toggleStatus(state: any[], object: any): any[] {
   const newValue = object.status;
   const objectId = object._id;
+  // Función recursiva para buscar el objeto por su _id
+  function findAndToggleStatus(categories: any[]): boolean {
+    for (let i = 0; i < categories.length; i++) {
+      const category = categories[i];
 
-  // Aca continuamos con la logica
-  const statusToggle = state.findIndex((item: any) => item._id === objectId);
+      if (category._id === objectId) {
+        // Encontramos el objeto, actualizamos el valor de la propiedad status
+        category.status = newValue;
+        return true;
+      }
 
-  if (statusToggle !== -1) {
-    const objectModify = { ...state[statusToggle] };
+      // Si la categoría tiene subcategorías, llamamos recursivamente a la función
+      if (category.subCategories && category.subCategories.length > 0) {
+        const subCategoryUpdated = findAndToggleStatus(category.subCategories);
+        if (subCategoryUpdated) {
+          return true;
+        }
+      }
+    }
 
-    objectModify.status = newValue;
-
-    const newArray = state;
-    newArray[statusToggle] = objectModify;
-    return newArray;
-  } else {
-    throw new Error('Algo fallo');
+    return false;
   }
+
+  // Iniciamos la búsqueda recursiva en el estado
+  const statusToggle = findAndToggleStatus(state);
+
+  if (!statusToggle) {
+    console.error('El objeto no se encuentra en el estado.');
+  }
+
+  // Devolvemos una nueva copia del estado con el objeto modificado o el estado original si no se encuentra el objeto
+  return [...state];
 }

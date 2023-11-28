@@ -13,12 +13,14 @@ import {
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
 import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dto';
+import { Category } from 'src/schemas/catalogo/categories.schema';
 
 @Controller('categories')
 export class CategoriesController {
   constructor(private categoriesService: CategoriesService) {}
+  // categories.controller.ts
   @Get()
-  async findAll() {
+  async findAll(): Promise<Category[]> {
     try {
       const categoriesArray = await this.categoriesService.findAll();
       if (!categoriesArray || categoriesArray.length === 0) {
@@ -26,6 +28,7 @@ export class CategoriesController {
       }
       return categoriesArray;
     } catch (error) {
+      console.error('Error al buscar categorías:', error);
       throw new ConflictException(
         'Ocurrió un error inesperado al buscar categorías.',
       );
