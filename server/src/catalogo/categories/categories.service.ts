@@ -13,7 +13,7 @@ export class CategoriesService {
   ) {}
 
   async findAll() {
-    return await this.categoryModel.find().populate('subCategoryOne').exec();
+    return await this.categoryModel.find().populate('subCategories').exec();
   }
 
   /*create(createCategory: any){
