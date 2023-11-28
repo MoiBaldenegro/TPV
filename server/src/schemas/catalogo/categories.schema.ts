@@ -20,7 +20,6 @@ export class Category {
 
   @Prop({
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'SubCategoryOne' }],
-    default: [],
   })
   subCategories: SubCategoryOne[];
 
