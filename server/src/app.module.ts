@@ -19,6 +19,7 @@ import { TillModule } from './caja/till/till.module';
 import { ShiftsModule } from './usuarios/shifts/shifts.module';
 import { DepartamentsModule } from './usuarios/departaments/departaments.module';
 import { ProfilesModule } from './usuarios/profiles/profiles.module';
+import { SubcategoryOneModule } from './catalogo/categories/subcategory-one/subcategory-one.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { ProfilesModule } from './usuarios/profiles/profiles.module';
     ShiftsModule,
     DepartamentsModule,
     ProfilesModule,
+    SubcategoryOneModule,
   ],
   controllers: [],
   providers: [],
