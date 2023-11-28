@@ -1,5 +1,6 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
+import { Schema as MongooseSchema } from 'mongoose';
+import { SubCategoryOne } from './subcategories/subCategoryOne.Schema';
 
 @Schema({ timestamps: true })
 export class Category {
@@ -17,8 +18,11 @@ export class Category {
   })
   categoryName: string;
 
-  @Prop({ type: Array, default: () => [] })
-  subCategories: CreateCategoryDto[];
+  @Prop({
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'SubCategoryOne' }],
+    default: [],
+  })
+  subCategories: SubCategoryOne[];
 
   @Prop()
   parentCategory: string | null;

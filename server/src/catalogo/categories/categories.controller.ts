@@ -93,20 +93,4 @@ export class CategoriesController {
       throw new NotFoundException('Ocurrio algo inesperado');
     }
   }
-
-  @Put(':code/update-status')
-  async updateStatus(
-    @Param('code') code: string,
-    @Body() payload: { newStatus: 'disabled' | 'enabled' },
-  ) {
-    try {
-      const resultado = await this.categoriesService.updateSubcategories(
-        code,
-        payload.newStatus,
-      );
-      return { mensaje: resultado };
-    } catch (error) {
-      return { error: error.message };
-    }
-  }
 }
