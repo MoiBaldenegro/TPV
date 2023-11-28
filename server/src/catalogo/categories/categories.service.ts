@@ -55,10 +55,13 @@ export class CategoriesService {
   }
 
   async replace(): Promise<DeleteResult> {
-      return await this.categoryModel.deleteMany({}).exec();
+    return await this.categoryModel.deleteMany({}).exec();
   }
 
-  async updateSubcategories(code: string, newStatus: 'disabled' | 'enabled'): Promise<string> {
+  async updateSubcategories(
+    code: string,
+    newStatus: 'disabled' | 'enabled',
+  ): Promise<string> {
     try {
       const subcategorySelected = await this.categoryModel.findOne({
         'subCategories.code': code,
@@ -67,7 +70,7 @@ export class CategoriesService {
       if (subcategorySelected) {
         await this.categoryModel.updateOne(
           { 'subCategories.code': code },
-          { $set: { 'subCategories.$.status': newStatus } }
+          { $set: { 'subCategories.$.status': newStatus } },
         );
         return 'Actualización exitosa';
       } else {
@@ -76,7 +79,7 @@ export class CategoriesService {
     } catch (error) {
       throw new Error(`Error al actualizar: ${error.message}`);
     }
-    
+  }
 }
 
 /*
