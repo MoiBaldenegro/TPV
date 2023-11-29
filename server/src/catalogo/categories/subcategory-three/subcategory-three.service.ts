@@ -20,7 +20,6 @@ export class SubcategoryThreeService {
         .find()
         .populate({
           path: 'subCategories',
-          populate: { path: 'subCategories' },
         })
         .exec();
     } catch (error) {
