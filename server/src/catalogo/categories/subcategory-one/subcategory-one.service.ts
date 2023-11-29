@@ -13,7 +13,7 @@ export class SubcategoryOneService {
     private subcategoryOneModel: Model<SubCategoryOne>,
   ) {}
 
-  async findAll(): Promise<Category[]> {
+  async findAll() {
     try {
       return await this.subcategoryOneModel
         .find()
