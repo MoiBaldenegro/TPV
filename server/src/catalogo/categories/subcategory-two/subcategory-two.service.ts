@@ -15,9 +15,16 @@ export class SubcategoryTwoService {
   ) {}
 
   async findAll() {
-    return await this.subcategoryTwoModel.find();
+    try {
+      return await this.subcategoryTwoModel
+        .find()
+        .populate('subCategories')
+        .exec();
+    } catch (error) {
+      console.error('Error al buscar categorías:', error);
+      throw error;
+    }
   }
-
   /*create(createCategory: any){
          const newCtegory = this.categoryModel.create(createCategory);
          return newCtegory;
