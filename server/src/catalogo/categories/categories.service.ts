@@ -91,10 +91,12 @@ export class CategoriesService {
     newData: any,
   ): Promise<void> {
     // Actualiza la categoría actual
-    await this.categoryModel.findByIdAndUpdate(category._id, newData);
+    const updatedCategory = await this.categoryModel
+      .findByIdAndUpdate(category._id, newData, { new: true })
+      .lean();
 
     // Recorre las subcategorías descendientes y actualízalas
-    for (const subcategory of category.subCategories) {
+    for (const subcategory of updatedCategory.subCategories) {
       await this.updateSubcategoryAndBelowRecursively(subcategory, newData);
     }
   }
