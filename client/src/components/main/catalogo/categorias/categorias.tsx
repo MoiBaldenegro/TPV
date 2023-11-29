@@ -57,7 +57,6 @@ export default function Categorias() {
   };
 
   function restoreStatus(id, body, path) {
-    console.log(buttonParams);
     dispatch(discontinueCategoriesAction(id, body, path));
   }
 
@@ -72,7 +71,6 @@ export default function Categorias() {
 
   useEffect(() => {
     dispatch(getCategoriesAction());
-    console.log(expandedCategories);
   }, []);
 
   return (

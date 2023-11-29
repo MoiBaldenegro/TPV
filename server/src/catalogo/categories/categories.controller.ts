@@ -89,6 +89,11 @@ export class CategoriesController {
   async update(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
     try {
       const categoryUpdated = await this.categoriesService.update(id, body);
+      /*
+      if (categoryUpdated.subCategories.length > 0) {
+        console.log('entre aca');
+        const upd = categoryUpdated.subCategories.
+      } */
       if (!categoryUpdated)
         throw new NotFoundException('No se encontro la categoria');
       return categoryUpdated;
