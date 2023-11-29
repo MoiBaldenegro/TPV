@@ -10,7 +10,7 @@ import { SubCategoryThree } from 'src/schemas/catalogo/subcategories/subCategory
 @Injectable()
 export class SubcategoryThreeService {
   constructor(
-    @InjectModel(Category.name)
+    @InjectModel(SubCategoryThree.name)
     private subcategoryThreeModel: Model<SubCategoryThree>,
   ) {}
   // categories.service.ts

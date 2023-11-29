@@ -6,10 +6,7 @@ import {
   SubCategoryThree,
   SubCategoryThreeSchema,
 } from 'src/schemas/catalogo/subcategories/subCategoryThree.Schema';
-import {
-  SubCategoryTwo,
-  SubCategoryTwoSchema,
-} from 'src/schemas/catalogo/subcategories/subCategoryTwo.schema';
+
 import {
   SubCategoryFour,
   SubCategoryFourSchema,
