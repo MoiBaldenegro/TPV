@@ -18,7 +18,12 @@ export class CategoriesService {
         .find()
         .populate({
           path: 'subCategories',
-          populate: { path: 'subCategories' },
+          populate: {
+            path: 'subCategories',
+            populate: {
+              path: 'subCategories',
+            },
+          },
         })
         .exec();
     } catch (error) {
