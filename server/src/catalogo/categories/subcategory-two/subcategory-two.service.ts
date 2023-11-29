@@ -11,11 +11,11 @@ import { SubCategoryTwo } from 'src/schemas/catalogo/subcategories/subCategoryTw
 export class SubcategoryTwoService {
   constructor(
     @InjectModel(SubCategoryTwo.name)
-    private ssubcategoryTwoModel: Model<SubCategoryTwo>,
+    private subcategoryTwoModel: Model<SubCategoryTwo>,
   ) {}
 
   async findAll() {
-    return await this.ssubcategoryTwoModel.find();
+    return await this.subcategoryTwoModel.find();
   }
 
   /*create(createCategory: any){
@@ -39,24 +39,24 @@ export class SubcategoryTwoService {
       }
       console.log(newCode);
       createCategory.code = newCode; */
-    const newCategory = new this.ssubcategoryTwoModel(createCategory);
+    const newCategory = new this.subcategoryTwoModel(createCategory);
     return await newCategory.save();
   }
 
   async findOne(id: string) {
-    return await this.ssubcategoryTwoModel.findById(id);
+    return await this.subcategoryTwoModel.findById(id);
   }
 
   async delete(id: string) {
-    return await this.ssubcategoryTwoModel.findByIdAndDelete(id);
+    return await this.subcategoryTwoModel.findByIdAndDelete(id);
   }
   async update(id: string, category: UpdateCategoryDto) {
-    return await this.ssubcategoryTwoModel.findByIdAndUpdate(id, category, {
+    return await this.subcategoryTwoModel.findByIdAndUpdate(id, category, {
       new: true,
     });
   }
 
   async replace(): Promise<DeleteResult> {
-    return await this.ssubcategoryTwoModel.deleteMany({}).exec();
+    return await this.subcategoryTwoModel.deleteMany({}).exec();
   }
 }

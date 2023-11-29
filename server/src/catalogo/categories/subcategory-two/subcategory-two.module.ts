@@ -1,9 +1,22 @@
 import { Module } from '@nestjs/common';
 import { SubcategoryTwoController } from './subcategory-two.controller';
 import { SubcategoryTwoService } from './subcategory-two.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import {
+  SubCategoryTwo,
+  SubCategoryTwoSchema,
+} from 'src/schemas/catalogo/subcategories/subCategoryTwo.schema';
 
 @Module({
+  imports: [
+    MongooseModule.forFeature([
+      {
+        name: SubCategoryTwo.name,
+        schema: SubCategoryTwoSchema,
+      },
+    ]),
+  ],
   controllers: [SubcategoryTwoController],
-  providers: [SubcategoryTwoService]
+  providers: [SubcategoryTwoService],
 })
 export class SubcategoryTwoModule {}
