@@ -84,7 +84,7 @@ export class CategoriesController {
       throw new ConflictException('Ocurrio algo inesperado');
     }
   }
-  /*
+
   @Put(':id')
   async update(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
     try {
@@ -94,29 +94,6 @@ export class CategoriesController {
       return categoryUpdated;
     } catch (error) {
       throw new NotFoundException('Ocurrio algo inesperado');
-    }
-  } */
-
-  @Put(':id')
-  async update(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
-    try {
-      // Llama a la función de servicio para realizar la actualización en cascada
-      await this.categoriesService.updateSubcategoryAndBelow(id, body);
-
-      // Puedes devolver una respuesta personalizada o simplemente un mensaje de éxito
-      return {
-        message: 'Categoría y subcategorías actualizadas correctamente.',
-      };
-    } catch (error) {
-      // Maneja errores específicos, si es necesario
-      if (error instanceof NotFoundException) {
-        throw new NotFoundException(error.message);
-      } else {
-        // Maneja otros errores de manera genérica
-        throw new NotFoundException(
-          'Ocurrió algo inesperado al actualizar la categoría.',
-        );
-      }
     }
   }
 }

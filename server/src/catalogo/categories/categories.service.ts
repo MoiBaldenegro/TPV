@@ -75,29 +75,4 @@ export class CategoriesService {
   async replace(): Promise<DeleteResult> {
     return await this.categoryModel.deleteMany({}).exec();
   }
-
-  async updateSubcategoryAndBelow(id: string, newData: any): Promise<void> {
-    const categoryToUpdate = await this.categoryModel.findById(id);
-
-    if (!categoryToUpdate) {
-      throw new NotFoundException(`No se encontró la categoría con id ${id}`);
-    }
-
-    await this.updateSubcategoryAndBelowRecursively(categoryToUpdate, newData);
-  }
-
-  private async updateSubcategoryAndBelowRecursively(
-    category: any,
-    newData: any,
-  ): Promise<void> {
-    // Actualiza la categoría actual
-    const updatedCategory = await this.categoryModel
-      .findByIdAndUpdate(category._id, newData, { new: true })
-      .lean();
-
-    // Recorre las subcategorías descendientes y actualízalas
-    for (const subcategory of updatedCategory.subCategories) {
-      await this.updateSubcategoryAndBelowRecursively(subcategory, newData);
-    }
-  }
 }
