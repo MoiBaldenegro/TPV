@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Category } from '../../schemas/catalogo/categories.schema';
@@ -74,5 +74,28 @@ export class CategoriesService {
 
   async replace(): Promise<DeleteResult> {
     return await this.categoryModel.deleteMany({}).exec();
+  }
+
+  async updateSubcategoryAndBelow(id: string, newData: any): Promise<void> {
+    const categoryToUpdate = await this.categoryModel.findById(id);
+
+    if (!categoryToUpdate) {
+      throw new NotFoundException(`No se encontró la categoría con id ${id}`);
+    }
+
+    await this.updateSubcategoryAndBelowRecursively(categoryToUpdate, newData);
+  }
+
+  private async updateSubcategoryAndBelowRecursively(
+    category: any,
+    newData: any,
+  ): Promise<void> {
+    // Actualiza la categoría actual
+    await this.categoryModel.findByIdAndUpdate(category._id, newData);
+
+    // Recorre las subcategorías descendientes y actualízalas
+    for (const subcategory of category.subCategories) {
+      await this.updateSubcategoryAndBelowRecursively(subcategory, newData);
+    }
   }
 }

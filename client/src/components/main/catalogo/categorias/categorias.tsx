@@ -198,17 +198,20 @@ export default function Categorias() {
                   <td className={styles.tableRows}>{categoria.code}</td>
                   <td className={styles.tableRows}>
                     {categoria.categoryName}
-                    <img
-                      src={downArrow}
-                      alt="down-arrow-icon"
-                      className={styles.downArrow}
-                      onClick={() =>
-                        toggleCategory({
-                          categoryId: categoria._id,
-                          setExpandedCategories,
-                        })
-                      }
-                    />
+                    {categoria.subCategories &&
+                    categoria.subCategories.length > 0 ? (
+                      <img
+                        src={downArrow}
+                        alt="down-arrow-icon"
+                        className={styles.downArrow}
+                        onClick={() =>
+                          toggleCategory({
+                            categoryId: categoria._id,
+                            setExpandedCategories,
+                          })
+                        }
+                      />
+                    ) : null}
                   </td>
                   <td className={styles.tableRows}>{categoria.createdAt}</td>
                   <td className={styles.buttonsContainer}>
@@ -266,18 +269,20 @@ export default function Categorias() {
                             </td>
                             <td className={styles.tableRowsNameOne}>
                               {subCategory.categoryName}
-
-                              <img
-                                src={downArrow}
-                                alt="down-arrow-icon"
-                                className={styles.downArrow}
-                                onClick={() =>
-                                  toggleCategory({
-                                    categoryId: subCategory._id,
-                                    setExpandedCategories,
-                                  })
-                                }
-                              />
+                              {subCategory.subCategories &&
+                              subCategory.subCategories.length > 0 ? (
+                                <img
+                                  src={downArrow}
+                                  alt="down-arrow-icon"
+                                  className={styles.downArrow}
+                                  onClick={() =>
+                                    toggleCategory({
+                                      categoryId: subCategory._id,
+                                      setExpandedCategories,
+                                    })
+                                  }
+                                />
+                              ) : null}
                             </td>
                             <td className={styles.tableRows}>
                               {categoria.createdAt}
@@ -342,17 +347,22 @@ export default function Categorias() {
                                         </td>
                                         <td className={styles.tableRowsNameTwo}>
                                           {subSubCategory.categoryName}
-                                          <img
-                                            src={downArrow}
-                                            alt="down-arrow-icon"
-                                            className={styles.downArrow}
-                                            onClick={() =>
-                                              toggleCategory({
-                                                categoryId: subSubCategory._id,
-                                                setExpandedCategories,
-                                              })
-                                            }
-                                          />
+                                          {subCategory.subCategories &&
+                                          subCategory.subCategories.length >
+                                            0 ? (
+                                            <img
+                                              src={downArrow}
+                                              alt="down-arrow-icon"
+                                              className={styles.downArrow}
+                                              onClick={() =>
+                                                toggleCategory({
+                                                  categoryId:
+                                                    subSubCategory._id,
+                                                  setExpandedCategories,
+                                                })
+                                              }
+                                            />
+                                          ) : null}
                                         </td>
                                         <td className={styles.tableRows}>
                                           {categoria.createdAt}
@@ -461,20 +471,25 @@ export default function Categorias() {
                                                       {
                                                         subSubSubCategory.categoryName
                                                       }
-                                                      <img
-                                                        src={downArrow}
-                                                        alt="down-arrow-icon"
-                                                        className={
-                                                          styles.downArrow
-                                                        }
-                                                        onClick={() =>
-                                                          toggleCategory({
-                                                            categoryId:
-                                                              subSubSubCategory._id,
-                                                            setExpandedCategories,
-                                                          })
-                                                        }
-                                                      />
+                                                      {subSubCategory.subCategories &&
+                                                      subSubCategory
+                                                        .subCategories.length >
+                                                        0 ? (
+                                                        <img
+                                                          src={downArrow}
+                                                          alt="down-arrow-icon"
+                                                          className={
+                                                            styles.downArrow
+                                                          }
+                                                          onClick={() =>
+                                                            toggleCategory({
+                                                              categoryId:
+                                                                subSubSubCategory._id,
+                                                              setExpandedCategories,
+                                                            })
+                                                          }
+                                                        />
+                                                      ) : null}
                                                     </td>
                                                     <td
                                                       className={
@@ -559,7 +574,7 @@ export default function Categorias() {
                                                     </td>
                                                   </tr>
                                                   {expandedCategories.includes(
-                                                    subSubSubCategory.code,
+                                                    subSubSubCategory._id,
                                                   ) &&
                                                     subSubSubCategory.subCategories && (
                                                       <>
@@ -638,6 +653,7 @@ export default function Categorias() {
                                                                           {
                                                                             id: subSubSubSubCategory._id,
                                                                             body: subSubSubSubCategory.status,
+                                                                            path: 'subcategory-four',
                                                                           },
                                                                         );
                                                                       }}
@@ -672,6 +688,7 @@ export default function Categorias() {
                                                                         restoreStatus(
                                                                           subSubSubSubCategory._id,
                                                                           subSubSubSubCategory.status,
+                                                                          'subcategory-four',
                                                                         );
                                                                       }}
                                                                     >
