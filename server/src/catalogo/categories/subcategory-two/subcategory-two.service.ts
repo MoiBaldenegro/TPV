@@ -5,16 +5,17 @@ import { Model } from 'mongoose';
 import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
 import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dto';
 import { SubCategoryOne } from 'src/schemas/catalogo/subcategories/subCategoryOne.Schema';
+import { SubCategoryTwo } from 'src/schemas/catalogo/subcategories/subCategoryTwo.schema';
 
 @Injectable()
 export class SubcategoryTwoService {
   constructor(
-    @InjectModel(SubCategoryOne.name)
-    private subcategoryOneModel: Model<SubCategoryOne>,
+    @InjectModel(SubCategoryTwo.name)
+    private ssubcategoryTwoModel: Model<SubCategoryTwo>,
   ) {}
 
   async findAll() {
-    return await this.subcategoryOneModel.find();
+    return await this.ssubcategoryTwoModel.find();
   }
 
   /*create(createCategory: any){
@@ -38,24 +39,24 @@ export class SubcategoryTwoService {
       }
       console.log(newCode);
       createCategory.code = newCode; */
-    const newCategory = new this.subcategoryOneModel(createCategory);
+    const newCategory = new this.ssubcategoryTwoModel(createCategory);
     return await newCategory.save();
   }
 
   async findOne(id: string) {
-    return await this.subcategoryOneModel.findById(id);
+    return await this.ssubcategoryTwoModel.findById(id);
   }
 
   async delete(id: string) {
-    return await this.subcategoryOneModel.findByIdAndDelete(id);
+    return await this.ssubcategoryTwoModel.findByIdAndDelete(id);
   }
   async update(id: string, category: UpdateCategoryDto) {
-    return await this.subcategoryOneModel.findByIdAndUpdate(id, category, {
+    return await this.ssubcategoryTwoModel.findByIdAndUpdate(id, category, {
       new: true,
     });
   }
 
   async replace(): Promise<DeleteResult> {
-    return await this.subcategoryOneModel.deleteMany({}).exec();
+    return await this.ssubcategoryTwoModel.deleteMany({}).exec();
   }
 }
