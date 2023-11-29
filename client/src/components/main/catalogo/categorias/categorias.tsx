@@ -34,7 +34,6 @@ export default function Categorias() {
   const saveCategories = useModal('saveCategories');
   const updateOneCategory = useModal('updateOneCategory');
   const AuthDiscontinue = useModal('AuthDiscontinue');
-  const AuthDiscontinueSub = useModal('AuthDiscontinueSub');
   const confirmChanges = useModal('confirmChanges');
 
   //////////////////////////////////////////////////////////////////////////////////////

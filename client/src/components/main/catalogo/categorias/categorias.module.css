@@ -82,10 +82,14 @@
 .tableRows{
 text-indent: 25px;
 }
-.downArrow{
+.downArrow,
+.downArrowDisabled{
     margin-left: 8px;
     width: 4.72;
     height: 8px;
+}
+.downArrowDisabled{
+   opacity: .2;
 }
 .tableRows,
 .buttonsContainer{
