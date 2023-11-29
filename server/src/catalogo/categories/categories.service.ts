@@ -14,7 +14,13 @@ export class CategoriesService {
   // categories.service.ts
   async findAll(): Promise<Category[]> {
     try {
-      return await this.categoryModel.find().populate('subCategories').exec();
+      return await this.categoryModel
+        .find()
+        .populate({
+          path: 'subcategories',
+          populate: { path: 'subcategories' },
+        })
+        .exec();
     } catch (error) {
       console.error('Error al buscar categorías:', error);
       throw error;
