@@ -12,13 +12,13 @@ export class CategoriesService {
     @InjectModel(Category.name) private categoryModel: Model<Category>,
   ) {}
   // categories.service.ts
-  async findAll(): Promise<Category[]> {
+  async findAll() {
     try {
       return await this.categoryModel
         .find()
         .populate({
-          path: 'subcategories',
-          populate: { path: 'subcategories' },
+          path: 'subCategories',
+          populate: { path: 'subCategories' },
         })
         .exec();
     } catch (error) {
