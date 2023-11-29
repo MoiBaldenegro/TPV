@@ -19,7 +19,7 @@ export class SubCategoryThree {
   categoryName: string;
 
   @Prop({
-    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'SubCategoryOne' }],
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'SubCategoryTwo' }],
   })
   subCategories: SubCategoryFour[];
 
