@@ -19,10 +19,7 @@ import { useEffect } from 'react';
 import { useModal } from '../../../../hooks/useModals';
 import CreateCategories from './forms/createCategories/createCategory.form';
 import SaveCategoriesModal from './modals/confirms/saveCategories';
-import {
-  discontinueCategoriesAction,
-  discontinueSubCategoriesAction,
-} from '../../../../redux/actions/catalogo/categoriesActions/discontinueCategories';
+import { discontinueCategoriesAction } from '../../../../redux/actions/catalogo/categoriesActions/discontinueCategories';
 import UpdateOneCategory from './forms/updateCategory/updateOneCategory';
 import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
 //hooks
@@ -50,19 +47,18 @@ export default function Categorias() {
   const { allCategories } = useSelector((state) => state.categories);
 
   const toggleStatus = () => {
-    dispatch(discontinueCategoriesAction(buttonParams.id, buttonParams.body));
-  };
-  const toggleStatusSub = () => {
     dispatch(
-      discontinueSubCategoriesAction(buttonParams.id, buttonParams.body),
+      discontinueCategoriesAction(
+        buttonParams.id,
+        buttonParams.body,
+        buttonParams.path,
+      ),
     );
   };
 
-  function restoreStatus(id, body) {
-    dispatch(discontinueCategoriesAction(id, body));
-  }
-  function restoreSubStatus(id, body) {
-    dispatch(discontinueSubCategoriesAction(id, body));
+  function restoreStatus(id, body, path) {
+    console.log(buttonParams);
+    dispatch(discontinueCategoriesAction(id, body, path));
   }
 
   const handleChange = (event) => {
@@ -154,17 +150,6 @@ export default function Categorias() {
               Descontinuar categoria
             </AuthDiscontinueModal>
           ) : null}
-          {AuthDiscontinueSub.isOpen &&
-          AuthDiscontinueSub.modalName === 'AuthDiscontinueSub' ? (
-            <AuthDiscontinueModal
-              handleStatus={toggleStatusSub}
-              isOpen={AuthDiscontinueSub.isOpen}
-              onClose={AuthDiscontinueSub.closeModal}
-              openModal={confirmChanges.openModal}
-            >
-              Descontinuar categoria
-            </AuthDiscontinueModal>
-          ) : null}
         </div>
         {confirmChanges.isOpen &&
         confirmChanges.modalName === 'confirmChanges' ? (
@@ -242,6 +227,7 @@ export default function Categorias() {
                             setButtonParams({
                               id: categoria._id,
                               body: categoria.status,
+                              path: 'categories',
                             });
                           }}
                         >
@@ -256,7 +242,11 @@ export default function Categorias() {
                         <button
                           className={styles.actionButtonsSecond}
                           onClick={() => {
-                            restoreStatus(categoria._id, categoria.status);
+                            restoreStatus(
+                              categoria._id,
+                              categoria.status,
+                              'categories',
+                            );
                           }}
                         >
                           <img src={enabledIcon} alt="enabled-icon" />
@@ -306,10 +296,11 @@ export default function Categorias() {
                                   <button
                                     className={styles.actionButtonsSecond}
                                     onClick={() => {
-                                      AuthDiscontinueSub.openModal();
+                                      AuthDiscontinue.openModal();
                                       setButtonParams({
                                         id: subCategory._id,
                                         body: subCategory.status,
+                                        path: 'subcategory-one',
                                       });
                                     }}
                                   >
@@ -326,9 +317,10 @@ export default function Categorias() {
                                   <button
                                     className={styles.actionButtonsSecond}
                                     onClick={() => {
-                                      restoreSubStatus(
+                                      restoreStatus(
                                         subCategory._id,
                                         subCategory.status,
+                                        'subcategory-one',
                                       );
                                     }}
                                   >
@@ -338,7 +330,7 @@ export default function Categorias() {
                               )}
                             </td>
                           </tr>
-                          {expandedCategories.includes(subCategory.code) &&
+                          {expandedCategories.includes(subCategory._id) &&
                             subCategory.subCategories && (
                               <>
                                 {subCategory.subCategories?.map(
@@ -356,7 +348,7 @@ export default function Categorias() {
                                             className={styles.downArrow}
                                             onClick={() =>
                                               toggleCategory({
-                                                categoryId: subSubCategory.code,
+                                                categoryId: subSubCategory._id,
                                                 setExpandedCategories,
                                               })
                                             }
@@ -393,6 +385,7 @@ export default function Categorias() {
                                                   setButtonParams({
                                                     id: subSubCategory._id,
                                                     body: subSubCategory.status,
+                                                    path: 'subcategory-two',
                                                   });
                                                 }}
                                               >
@@ -422,6 +415,7 @@ export default function Categorias() {
                                                   restoreStatus(
                                                     subSubCategory._id,
                                                     subSubCategory.status,
+                                                    'subcategory-two',
                                                   );
                                                 }}
                                               >
