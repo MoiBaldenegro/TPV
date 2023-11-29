@@ -429,7 +429,7 @@ export default function Categorias() {
                                         </td>
                                       </tr>
                                       {expandedCategories.includes(
-                                        subSubCategory.code,
+                                        subSubCategory._id,
                                       ) &&
                                         subSubCategory.subCategories && (
                                           <>
@@ -470,7 +470,7 @@ export default function Categorias() {
                                                         onClick={() =>
                                                           toggleCategory({
                                                             categoryId:
-                                                              subSubSubCategory.code,
+                                                              subSubSubCategory._id,
                                                             setExpandedCategories,
                                                           })
                                                         }
@@ -515,6 +515,7 @@ export default function Categorias() {
                                                               setButtonParams({
                                                                 id: subSubSubCategory._id,
                                                                 body: subSubSubCategory.status,
+                                                                path: 'subcategory-three',
                                                               });
                                                             }}
                                                           >
@@ -544,6 +545,7 @@ export default function Categorias() {
                                                               restoreStatus(
                                                                 subSubSubCategory._id,
                                                                 subSubSubCategory.status,
+                                                                'subcategory-three',
                                                               );
                                                             }}
                                                           >
