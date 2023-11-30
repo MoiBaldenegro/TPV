@@ -91,9 +91,7 @@ text-indent: 25px;
 .downArrowDisabled{
    opacity: .2;
 }
-.tableRows,
-.buttonsContainer{
-}
+
 .tHeadClave,
 .tHeadCategoria,
 .tHeadDate,
@@ -175,17 +173,21 @@ text-indent: 25px;
     transition: 300ms;
 }
 .subCategoryRow{
-    background: #707173
+    background: #707173;
+    transition: 300ms;
 
 }
 .subCategoryRowTwo{
-    background: #5C5D60
+    background: #5C5D60;
+    transition: 300ms;
 }
 .subCategoryRowThree{
-    background: #494A4C
+    background: #494A4C;
+    transition: 300ms;
 }
 .subCategoryRowFour{
-    background: #353639
+    background: #353639;
+    transition: 300ms;
 }
 
 .tableRowsNameFour{

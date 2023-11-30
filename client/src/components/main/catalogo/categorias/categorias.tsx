@@ -196,7 +196,8 @@ export default function Categorias() {
                   <td className={styles.tableRows}>
                     {categoria.categoryName}
                     {categoria.subCategories &&
-                    categoria.subCategories.length > 0 ? (
+                    categoria.subCategories.length > 0 &&
+                    categoria.status !== 'disabled' ? (
                       <img
                         src={downArrow}
                         alt="down-arrow-icon"
@@ -256,18 +257,27 @@ export default function Categorias() {
                   </td>
                 </tr>
                 {expandedCategories.includes(categoria._id) &&
-                  categoria.subCategories && (
+                  categoria.subCategories &&
+                  categoria.status !== 'disabled' && (
                     <>
                       {categoria.subCategories?.map((subCategory, subIndex) => (
                         <React.Fragment key={subIndex}>
-                          <tr key={subIndex} className={styles.subCategoryRow}>
+                          <tr
+                            key={subIndex}
+                            className={
+                              subCategory.status === 'disabled'
+                                ? styles.rowDisabled
+                                : styles.subCategoryRow
+                            }
+                          >
                             <td className={styles.tableRows}>
                               {subCategory.code}
                             </td>
                             <td className={styles.tableRowsNameOne}>
                               {subCategory.categoryName}
                               {subCategory.subCategories &&
-                              subCategory.subCategories.length > 0 ? (
+                              subCategory.subCategories.length > 0 &&
+                              subCategory.status !== 'disabled' ? (
                                 <img
                                   src={downArrow}
                                   alt="down-arrow-icon"
@@ -333,12 +343,19 @@ export default function Categorias() {
                             </td>
                           </tr>
                           {expandedCategories.includes(subCategory._id) &&
-                            subCategory.subCategories && (
+                            subCategory.subCategories &&
+                            subCategory.status !== 'disabled' && (
                               <>
                                 {subCategory.subCategories?.map(
                                   (subSubCategory, subSubIndex) => (
                                     <React.Fragment key={subSubIndex}>
-                                      <tr className={styles.subCategoryRowTwo}>
+                                      <tr
+                                        className={
+                                          subSubCategory.status === 'disabled'
+                                            ? styles.rowDisabled
+                                            : styles.subCategoryRowTwo
+                                        }
+                                      >
                                         <td className={styles.tableRows}>
                                           {subSubCategory.code}
                                         </td>
@@ -346,7 +363,9 @@ export default function Categorias() {
                                           {subSubCategory.categoryName}
                                           {subCategory.subCategories &&
                                           subCategory.subCategories.length >
-                                            0 ? (
+                                            0 &&
+                                          subSubCategory.status !==
+                                            'disabled' ? (
                                             <img
                                               src={downArrow}
                                               alt="down-arrow-icon"
@@ -438,7 +457,9 @@ export default function Categorias() {
                                       {expandedCategories.includes(
                                         subSubCategory._id,
                                       ) &&
-                                        subSubCategory.subCategories && (
+                                        subSubCategory.subCategories &&
+                                        subSubCategory.status !==
+                                          'disabled' && (
                                           <>
                                             {subSubCategory.subCategories?.map(
                                               (
@@ -450,7 +471,10 @@ export default function Categorias() {
                                                 >
                                                   <tr
                                                     className={
-                                                      styles.subCategoryRowThree
+                                                      subSubSubCategory.status ===
+                                                      'disabled'
+                                                        ? styles.rowDisabled
+                                                        : styles.subCategoryRowThree
                                                     }
                                                   >
                                                     <td
@@ -471,7 +495,9 @@ export default function Categorias() {
                                                       {subSubCategory.subCategories &&
                                                       subSubCategory
                                                         .subCategories.length >
-                                                        0 ? (
+                                                        0 &&
+                                                      subSubSubCategory.status !==
+                                                        'disabled' ? (
                                                         <img
                                                           src={downArrow}
                                                           alt="down-arrow-icon"
@@ -573,7 +599,9 @@ export default function Categorias() {
                                                   {expandedCategories.includes(
                                                     subSubSubCategory._id,
                                                   ) &&
-                                                    subSubSubCategory.subCategories && (
+                                                    subSubSubCategory.subCategories &&
+                                                    subSubSubCategory.status !==
+                                                      'disabled' && (
                                                       <>
                                                         {subSubSubCategory.subCategories?.map(
                                                           (
@@ -585,7 +613,10 @@ export default function Categorias() {
                                                                 subSubSubSubIndex
                                                               }
                                                               className={
-                                                                styles.subCategoryRowFour
+                                                                subSubSubSubCategory.status ===
+                                                                'disabled'
+                                                                  ? styles.rowDisabled
+                                                                  : styles.subCategoryRowFour
                                                               }
                                                             >
                                                               <td

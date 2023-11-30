@@ -5,11 +5,14 @@ import { Category } from '../../schemas/catalogo/categories.schema';
 import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
 import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dto';
 import { DeleteResult } from 'mongodb';
+import { SubCategoryOne } from 'src/schemas/catalogo/subcategories/subCategoryOne.Schema';
 
 @Injectable()
 export class CategoriesService {
   constructor(
     @InjectModel(Category.name) private categoryModel: Model<Category>,
+    @InjectModel(SubCategoryOne.name)
+    private subcategoryOneModel: Model<SubCategoryOne>,
   ) {}
   // categories.service.ts
   async findAll() {
@@ -66,13 +69,55 @@ export class CategoriesService {
   async delete(id: string) {
     return await this.categoryModel.findByIdAndDelete(id);
   }
+  /*
   async update(id: string, category: UpdateCategoryDto) {
     return await this.categoryModel.findByIdAndUpdate(id, category, {
       new: true,
     });
-  }
+  } */
 
   async replace(): Promise<DeleteResult> {
     return await this.categoryModel.deleteMany({}).exec();
+  }
+
+  async update(id: string, category: UpdateCategoryDto) {
+    // Actualiza la categoría principal
+    const updatedCategory = await this.categoryModel.findByIdAndUpdate(
+      id,
+      category,
+      {
+        new: true,
+      },
+    );
+
+    // Si la categoría principal no existe, lanza una excepción
+    if (!updatedCategory) {
+      throw new NotFoundException('Categoría no encontrada');
+    }
+
+    // Actualiza recursivamente las subcategorías
+    await this.updateSubcategoriesStatus(
+      updatedCategory.subCategories,
+      category.status,
+    );
+
+    return updatedCategory;
+  }
+
+  private async updateSubcategoriesStatus(
+    subcategories: any[],
+    status: string,
+  ) {
+    for (const subcategory of subcategories) {
+      // Actualiza el estado de la subcategoría
+      await this.subcategoryOneModel.findByIdAndUpdate(subcategory._id, {
+        status,
+      });
+
+      // Si la subcategoría tiene subcategorías, actualiza recursivamente
+      if (subcategory.subCategories.length > 0) {
+        await this.updateSubcategoriesStatus(subcategory.subCategories, status);
+      }
+    }
   }
 }
