@@ -81,9 +81,6 @@ export class CategoriesService {
             path: 'subCategories',
             populate: {
               path: 'subCategories',
-              populate: {
-                path: 'subCategories',
-              },
             },
           },
         },
