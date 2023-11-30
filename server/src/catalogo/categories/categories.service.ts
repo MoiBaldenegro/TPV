@@ -110,7 +110,7 @@ export class CategoriesService {
   ) {
     for (const subcategory of subcategories) {
       // Actualiza el estado de la subcategoría
-      if (subcategory.status !== status) {
+      if (subcategory.status === 'disabled') {
         continue;
       }
       await this.subcategoryOneModel.findByIdAndUpdate(subcategory._id, {
