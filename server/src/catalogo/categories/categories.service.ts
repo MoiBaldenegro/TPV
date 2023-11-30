@@ -69,18 +69,18 @@ export class CategoriesService {
   async delete(id: string) {
     return await this.categoryModel.findByIdAndDelete(id);
   }
-  /*
+
   async update(id: string, category: UpdateCategoryDto) {
     return await this.categoryModel.findByIdAndUpdate(id, category, {
       new: true,
     });
-  } */
+  }
 
   async replace(): Promise<DeleteResult> {
     return await this.categoryModel.deleteMany({}).exec();
   }
 
-  async update(id: string, category: UpdateCategoryDto) {
+  async discontinue(id: string, category: UpdateCategoryDto) {
     // Actualiza la categoría principal
     const updatedCategory = await this.categoryModel.findByIdAndUpdate(
       id,
@@ -110,14 +110,12 @@ export class CategoriesService {
   ) {
     for (const subcategory of subcategories) {
       // Actualiza el estado de la subcategoría
+      if (subcategory.status !== status) {
+        continue;
+      }
       await this.subcategoryOneModel.findByIdAndUpdate(subcategory._id, {
         status,
       });
-
-      // Si la subcategoría tiene subcategorías, actualiza recursivamente
-      if (subcategory.subCategories.length > 0) {
-        await this.updateSubcategoriesStatus(subcategory.subCategories, status);
-      }
     }
   }
 }
