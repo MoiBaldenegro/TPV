@@ -6,6 +6,7 @@ import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dt
 import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dto';
 import { DeleteResult } from 'mongodb';
 import { SubCategoryOne } from 'src/schemas/catalogo/subcategories/subCategoryOne.Schema';
+import { SubCategoryTwo } from 'src/schemas/catalogo/subcategories/subCategoryTwo.schema';
 
 @Injectable()
 export class CategoriesService {
@@ -13,6 +14,8 @@ export class CategoriesService {
     @InjectModel(Category.name) private categoryModel: Model<Category>,
     @InjectModel(SubCategoryOne.name)
     private subcategoryOneModel: Model<SubCategoryOne>,
+    @InjectModel(SubCategoryOne.name)
+    private subcategoryTwoModel: Model<SubCategoryTwo>,
   ) {}
   // categories.service.ts
   async findAll() {
@@ -114,7 +117,12 @@ export class CategoriesService {
       if (subcategory.status === 'disabled') {
         continue;
       } */
-      await this.subcategoryOneModel.findByIdAndUpdate(subcategory._id, {
+      if (subcategory.subCategories && subcategory.subCategories.length >= 1) {
+        await this.subcategoryOneModel.findByIdAndUpdate(subcategory._id, {
+          status,
+        });
+      }
+      await this.subcategoryTwoModel.findByIdAndUpdate(subcategory._id, {
         status,
       });
     }

@@ -70,7 +70,7 @@ export default function Categorias() {
 
   useEffect(() => {
     dispatch(getCategoriesAction());
-  }, []);
+  }, [expandedCategories]);
 
   return (
     <section className={styles.categorias}>

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { DeleteResult } from 'mongodb';
 import { Model } from 'mongoose';
@@ -65,5 +65,44 @@ export class SubcategoryTwoService {
 
   async replace(): Promise<DeleteResult> {
     return await this.subcategoryTwoModel.deleteMany({}).exec();
+  }
+  async discontinue(id: string, category: UpdateCategoryDto) {
+    const updatedCategory = await this.subcategoryTwoModel.findByIdAndUpdate(
+      id,
+      category,
+      {
+        new: true,
+      },
+    );
+
+    // Si la categoría principal no existe, lanza una excepción
+    if (!updatedCategory) {
+      throw new NotFoundException('Categoría no encontrada');
+    }
+
+    // Actualiza recursivamente las subcategorías
+    await this.updateSubcategoriesStatus(
+      updatedCategory.subCategories,
+      category.status,
+    );
+
+    return updatedCategory;
+  }
+
+  private async updateSubcategoriesStatus(
+    subcategories: any[],
+    status: string,
+  ) {
+    for (const subcategory of subcategories) {
+      // Actualiza el estado de la subcategoría
+      /*
+      if (subcategory.status === 'disabled') {
+        continue;
+      } */
+
+      await this.subcategoryTwoModel.findByIdAndUpdate(subcategory._id, {
+        status,
+      });
+    }
   }
 }
