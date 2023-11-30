@@ -57,4 +57,4 @@ export class SubcategoryFourService {
   async replace(): Promise<DeleteResult> {
     return await this.subcategoryFourModel.deleteMany({}).exec();
   }
-}
+} //
