@@ -7,8 +7,8 @@ import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dt
 import { DeleteResult } from 'mongodb';
 import { SubCategoryOne } from 'src/schemas/catalogo/subcategories/subCategoryOne.Schema';
 import { SubCategoryTwo } from 'src/schemas/catalogo/subcategories/subCategoryTwo.schema';
-import { SubCategoryThree } from 'src/schemas/catalogo/subcategories/subCategoryThree.schema';
-import { SubCategoryFour } from 'src/schemas/catalogo/subcategories/subCategoryFour.schema';
+import { SubCategoryThree } from 'src/schemas/catalogo/subcategories/subCategoryThree.Schema';
+import { SubCategoryFour } from 'src/schemas/catalogo/subcategories/subCategoryFour.Schema';
 
 @Injectable()
 export class CategoriesService {
@@ -75,7 +75,7 @@ export class CategoriesService {
 
   async discontinue(id: string, category: UpdateCategoryDto) {
     const updatedCategory = await this.categoryModel
-      .findByIdAndUpdate(id, category, { new: true })
+      .findOneAndUpdate({ _id: id }, category, { new: true })
       .populate({
         path: 'subCategories',
         populate: {
@@ -84,10 +84,14 @@ export class CategoriesService {
             path: 'subCategories',
             populate: {
               path: 'subCategories',
+              populate: {
+                path: 'subCategories',
+              },
             },
           },
         },
-      });
+      })
+      .exec();
 
     if (!updatedCategory) {
       throw new NotFoundException('Categoría no encontrada');
