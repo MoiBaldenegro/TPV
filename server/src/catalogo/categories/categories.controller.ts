@@ -102,7 +102,7 @@ export class CategoriesController {
     }
   }
 
-  @Put(':id')
+  @Put('discontinue/:id')
   async discontinue(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
     try {
       const categoryUpdated = await this.categoriesService.discontinue(
