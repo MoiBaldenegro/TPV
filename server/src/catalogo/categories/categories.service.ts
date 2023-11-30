@@ -14,7 +14,7 @@ export class CategoriesService {
     @InjectModel(Category.name) private categoryModel: Model<Category>,
     @InjectModel(SubCategoryOne.name)
     private subcategoryOneModel: Model<SubCategoryOne>,
-    @InjectModel(SubCategoryOne.name)
+    @InjectModel(SubCategoryTwo.name)
     private subcategoryTwoModel: Model<SubCategoryTwo>,
   ) {}
   // categories.service.ts
