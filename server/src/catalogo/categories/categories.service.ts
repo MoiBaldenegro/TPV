@@ -7,6 +7,8 @@ import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dt
 import { DeleteResult } from 'mongodb';
 import { SubCategoryOne } from 'src/schemas/catalogo/subcategories/subCategoryOne.Schema';
 import { SubCategoryTwo } from 'src/schemas/catalogo/subcategories/subCategoryTwo.schema';
+import { SubCategoryThree } from 'src/schemas/catalogo/subcategories/subCategoryThree.schema';
+import { SubCategoryFour } from 'src/schemas/catalogo/subcategories/subCategoryFour.schema';
 
 @Injectable()
 export class CategoriesService {
@@ -16,8 +18,12 @@ export class CategoriesService {
     private subcategoryOneModel: Model<SubCategoryOne>,
     @InjectModel(SubCategoryTwo.name)
     private subcategoryTwoModel: Model<SubCategoryTwo>,
+    @InjectModel(SubCategoryThree.name)
+    private subcategoryThreeModel: Model<SubCategoryThree>,
+    @InjectModel(SubCategoryFour.name)
+    private subcategoryFourModel: Model<SubCategoryFour>,
   ) {}
-  // categories.service.ts
+
   async findAll() {
     try {
       return await this.categoryModel
@@ -30,6 +36,9 @@ export class CategoriesService {
               path: 'subCategories',
               populate: {
                 path: 'subCategories',
+                populate: {
+                  path: 'subCategories',
+                },
               },
             },
           },
@@ -40,27 +49,8 @@ export class CategoriesService {
       throw error;
     }
   }
-  /*create(createCategory: any){
-       const newCtegory = this.categoryModel.create(createCategory);
-       return newCtegory;
-    } */
 
   async create(createCategory: CreateCategoryDto) {
-    /* const lastCategory = await this.categoryModel.findOne(
-      {},
-      { code: 1 },
-      { sort: { code: -1 } },
-    ); // encontramos la ultima categoria creada
-    let newCode: string;
-    if (lastCategory) {
-      const lastCode = lastCategory.code;
-      const nextNumber = lastCode + 1;
-      newCode = nextNumber.toString().padStart(2, '0'); // Asegura que el código tenga al menos 2 dígitos.
-    } else {
-      newCode = '01';
-    }
-    console.log(newCode);
-    createCategory.code = newCode; */
     const newCategory = new this.categoryModel(createCategory);
     return await newCategory.save();
   }
@@ -84,21 +74,25 @@ export class CategoriesService {
   }
 
   async discontinue(id: string, category: UpdateCategoryDto) {
-    // Actualiza la categoría principal
-    const updatedCategory = await this.categoryModel.findByIdAndUpdate(
-      id,
-      category,
-      {
-        new: true,
-      },
-    );
+    const updatedCategory = await this.categoryModel
+      .findByIdAndUpdate(id, category, { new: true })
+      .populate({
+        path: 'subCategories',
+        populate: {
+          path: 'subCategories',
+          populate: {
+            path: 'subCategories',
+            populate: {
+              path: 'subCategories',
+            },
+          },
+        },
+      });
 
-    // Si la categoría principal no existe, lanza una excepción
     if (!updatedCategory) {
       throw new NotFoundException('Categoría no encontrada');
     }
 
-    // Actualiza recursivamente las subcategorías
     await this.updateSubcategoriesStatus(
       updatedCategory.subCategories,
       category.status,
@@ -112,18 +106,42 @@ export class CategoriesService {
     status: string,
   ) {
     for (const subcategory of subcategories) {
-      // Actualiza el estado de la subcategoría
-      /*
-      if (subcategory.status === 'disabled') {
-        continue;
-      } */
       if (subcategory.subCategories && subcategory.subCategories.length >= 1) {
         for (const subcategorytwo of subcategory.subCategories) {
+          if (
+            subcategorytwo.subCategories &&
+            subcategorytwo.subCategories.length >= 1
+          ) {
+            for (const subcategorythree of subcategorytwo.subCategories) {
+              if (
+                subcategorythree.subCategories &&
+                subcategorythree.subCategories.length >= 1
+              ) {
+                for (const subcategoryfour of subcategorythree.subCategories) {
+                  await this.subcategoryFourModel.findByIdAndUpdate(
+                    subcategoryfour._id,
+                    {
+                      status,
+                    },
+                  );
+                }
+              }
+
+              await this.subcategoryThreeModel.findByIdAndUpdate(
+                subcategorythree._id,
+                {
+                  status,
+                },
+              );
+            }
+          }
+
           await this.subcategoryTwoModel.findByIdAndUpdate(subcategorytwo._id, {
             status,
           });
         }
       }
+
       await this.subcategoryOneModel.findByIdAndUpdate(subcategory._id, {
         status,
       });
