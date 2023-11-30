@@ -118,9 +118,11 @@ export class CategoriesService {
         continue;
       } */
       if (subcategory.subCategories && subcategory.subCategories.length >= 1) {
-        await this.subcategoryOneModel.findByIdAndUpdate(subcategory._id, {
-          status,
-        });
+        for (const subcategorytwo of subcategory.subCategories) {
+          await this.subcategoryOneModel.findByIdAndUpdate(subcategory._id, {
+            status,
+          });
+        }
       }
       await this.subcategoryTwoModel.findByIdAndUpdate(subcategory._id, {
         status,
