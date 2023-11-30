@@ -13,7 +13,7 @@ export function discontinueCategoriesAction(id, body, path) {
 
     try {
       const response = await axios.put(
-        `https://tomate-server.onrender.com/discontinue/${path}/${id}`,
+        `https://tomate-server.onrender.com/${path}/discontinue/${id}`,
         solicitud,
       );
       if (!response.data) {
