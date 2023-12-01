@@ -82,10 +82,13 @@ export class SubcategoryTwoController {
     }
   }
 
-  @Put(':id')
+  @Put('discontinue/:id')
   async update(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
     try {
-      const categoryUpdated = await this.subcategoryTwoService.update(id, body);
+      const categoryUpdated = await this.subcategoryTwoService.discontinue(
+        id,
+        body,
+      );
       if (!categoryUpdated)
         throw new NotFoundException('No se encontro la categoria');
       return categoryUpdated;

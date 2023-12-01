@@ -85,7 +85,10 @@ export class SubcategoryOneController {
   @Put('discontinue/:id')
   async update(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
     try {
-      const categoryUpdated = await this.subcategoryOneService.update(id, body);
+      const categoryUpdated = await this.subcategoryOneService.discontinue(
+        id,
+        body,
+      );
       if (!categoryUpdated)
         throw new NotFoundException('No se encontro la categoria');
       return categoryUpdated;

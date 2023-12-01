@@ -10,6 +10,10 @@ import {
   SubCategoryThree,
   SubCategoryThreeSchema,
 } from 'src/schemas/catalogo/subcategories/subCategoryThree.Schema';
+import {
+  SubCategoryFour,
+  SubCategoryFourSchema,
+} from 'src/schemas/catalogo/subcategories/subCategoryFour.Schema';
 
 @Module({
   imports: [
@@ -21,6 +25,10 @@ import {
       {
         name: SubCategoryThree.name,
         schema: SubCategoryThreeSchema,
+      },
+      {
+        name: SubCategoryFour.name,
+        schema: SubCategoryFourSchema,
       },
     ]),
   ],
