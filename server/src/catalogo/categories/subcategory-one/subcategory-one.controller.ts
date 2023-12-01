@@ -82,7 +82,7 @@ export class SubcategoryOneController {
     }
   }
 
-  @Put(':id')
+  @Put('discontinue/:id')
   async update(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
     try {
       const categoryUpdated = await this.subcategoryOneService.update(id, body);
