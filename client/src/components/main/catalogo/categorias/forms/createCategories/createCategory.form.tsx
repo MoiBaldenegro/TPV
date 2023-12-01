@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import disquet from '../../../../../../assets/public/disquetIcon.svg';
 import createIcon from '../../../../../../assets/public/disquetIcon.svg';
 import { createCategoryAction } from '../../../../../../redux/actions/catalogo/categoriesActions/createCategories';
+import Spreadsheet from '../../../../../excelClone/components/spreadSheet/spreadsheet';
+import TableExcels from '../../../../../excelClone/tableExcel';
 
 interface Props {
   isOpen: any;
@@ -49,76 +51,7 @@ function CreateCategories({ isOpen, onClose, children }: Props) {
         <button className={styles.closeButton} onClick={onClose}>
           X
         </button>
-        <table>
-          <thead>
-            <tr>
-              <th>Subcategoria 1</th>
-              <th>Subcategoria 2</th>
-              <th>Subcategoria 3</th>
-              <th>Subcategoria 4</th>
-              <th>Subcategoria 5</th>
-              <th>Subcategoria 6</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-            </tr>
-          </tbody>
-        </table>
+        <TableExcels />
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import notesReducer from './ventas/notesReducer/notesReducer';
 import paymentsReducer from './ventas/paymentsReducer/paymentsReducer';
 import cancellationsReducer from './ventas/cancellationReducer/cancellationReducer';
 import cancellationReasonsReducer from './ventas/cancellationReasonReducer/cancellationReasonReducer';
+import { spreadsheetReducer } from './tableExcelsReducer/spreadSheet.Reducer';
 
 const rootReducer = combineReducers({
   // Catalogo
@@ -26,6 +27,9 @@ const rootReducer = combineReducers({
   cancellations: cancellationsReducer,
   cancellationReasons: cancellationReasonsReducer,
   // Usuarios
+
+  // TableExcels
+  spreadsheet: spreadsheetReducer,
 });
 
 export default rootReducer;

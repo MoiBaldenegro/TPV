@@ -1,0 +1,9 @@
+.inputCell{
+    background-color: transparent;
+    width: 295.6px;
+    height: 40px;
+    padding: 8px, 16px, 8px, 16px;
+    border: none;
+    outline: none;
+    border: 1px solid #f9f9f9;
+}
