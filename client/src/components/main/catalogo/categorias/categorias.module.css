@@ -166,8 +166,9 @@ text-indent: 25px;
 }
 .rowDisabled{
     background-color: #2e2c2d31;
-    color: rgba(167, 161, 164, 0.555);
+    color: rgba(167, 161, 161, 0.555);
     transition: 300ms;
+    outline: 1px solid #99000F;
 }
 .release{
     transition: 300ms;
