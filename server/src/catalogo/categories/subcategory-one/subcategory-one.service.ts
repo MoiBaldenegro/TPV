@@ -4,20 +4,37 @@ import { DeleteResult } from 'mongodb';
 import { Model } from 'mongoose';
 import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
 import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dto';
+import { SubCategoryFour } from 'src/schemas/catalogo/subcategories/subCategoryFour.Schema';
 import { SubCategoryOne } from 'src/schemas/catalogo/subcategories/subCategoryOne.Schema';
+import { SubCategoryThree } from 'src/schemas/catalogo/subcategories/subCategoryThree.Schema';
+import { SubCategoryTwo } from 'src/schemas/catalogo/subcategories/subCategoryTwo.schema';
 
 @Injectable()
 export class SubcategoryOneService {
   constructor(
     @InjectModel(SubCategoryOne.name)
     private subcategoryOneModel: Model<SubCategoryOne>,
+    @InjectModel(SubCategoryTwo.name)
+    private subcategoryTwoModel: Model<SubCategoryTwo>,
+    @InjectModel(SubCategoryThree.name)
+    private subcategoryThreeModel: Model<SubCategoryThree>,
+    @InjectModel(SubCategoryFour.name)
+    private subcategoryFourModel: Model<SubCategoryFour>,
   ) {}
 
   async findAll() {
     try {
       return await this.subcategoryOneModel
         .find()
-        .populate('subCategories')
+        .populate({
+          path: 'subCategories',
+          populate: {
+            path: 'subCategories',
+            populate: {
+              path: 'subCategories',
+            },
+          },
+        })
         .exec();
     } catch (error) {
       console.error('Error al buscar categorías:', error);
@@ -67,20 +84,23 @@ export class SubcategoryOneService {
   }
 
   async discontinue(id: string, category: UpdateCategoryDto) {
-    const updatedCategory = await this.subcategoryOneModel.findByIdAndUpdate(
-      id,
-      category,
-      {
-        new: true,
-      },
-    );
+    const updatedCategory = await this.subcategoryOneModel
+      .findOneAndUpdate({ _id: id }, category, { new: true })
+      .populate({
+        path: 'subCategories',
+        populate: {
+          path: 'subCategories',
+          populate: {
+            path: 'subCategories',
+          },
+        },
+      })
+      .exec();
 
-    // Si la categoría principal no existe, lanza una excepción
     if (!updatedCategory) {
       throw new NotFoundException('Categoría no encontrada');
     }
 
-    // Actualiza recursivamente las subcategorías
     await this.updateSubcategoriesStatus(
       updatedCategory.subCategories,
       category.status,
@@ -93,14 +113,36 @@ export class SubcategoryOneService {
     subcategories: any[],
     status: string,
   ) {
-    for (const subcategory of subcategories) {
-      // Actualiza el estado de la subcategoría
-      /*
-      if (subcategory.status === 'disabled') {
-        continue;
-      } */
+    for (const subcategorytwo of subcategories) {
+      if (
+        subcategorytwo.subCategories &&
+        subcategorytwo.subCategories.length >= 1
+      ) {
+        for (const subcategorythree of subcategorytwo.subCategories) {
+          if (
+            subcategorythree.subCategories &&
+            subcategorythree.subCategories.length >= 1
+          ) {
+            for (const subcategoryfour of subcategorythree.subCategories) {
+              await this.subcategoryFourModel.findByIdAndUpdate(
+                subcategoryfour._id,
+                {
+                  status,
+                },
+              );
+            }
+          }
 
-      await this.subcategoryOneModel.findByIdAndUpdate(subcategory._id, {
+          await this.subcategoryThreeModel.findByIdAndUpdate(
+            subcategorythree._id,
+            {
+              status,
+            },
+          );
+        }
+      }
+
+      await this.subcategoryTwoModel.findByIdAndUpdate(subcategorytwo._id, {
         status,
       });
     }
