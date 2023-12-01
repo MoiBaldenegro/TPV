@@ -83,7 +83,7 @@ export class SubcategoryTwoController {
   }
 
   @Put('discontinue/:id')
-  async update(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
+  async discontinue(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
     try {
       const categoryUpdated = await this.subcategoryTwoService.discontinue(
         id,

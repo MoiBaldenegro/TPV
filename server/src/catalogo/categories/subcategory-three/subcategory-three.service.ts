@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { DeleteResult } from 'mongodb';
 import { Model } from 'mongoose';
 import { CreateCategoryDto } from 'src/dto/catalogo/categories/createCategory.dto';
 import { UpdateCategoryDto } from 'src/dto/catalogo/categories/updateCategory.dto';
-import { Category } from 'src/schemas/catalogo/categories.schema';
+import { SubCategoryFour } from 'src/schemas/catalogo/subcategories/subCategoryFour.Schema';
 import { SubCategoryThree } from 'src/schemas/catalogo/subcategories/subCategoryThree.Schema';
 
 @Injectable()
@@ -12,6 +12,8 @@ export class SubcategoryThreeService {
   constructor(
     @InjectModel(SubCategoryThree.name)
     private subcategoryThreeModel: Model<SubCategoryThree>,
+    @InjectModel(SubCategoryFour.name)
+    private subcategoryFourModel: Model<SubCategoryFour>,
   ) {}
   // categories.service.ts
   async findAll() {
@@ -67,5 +69,38 @@ export class SubcategoryThreeService {
 
   async replace(): Promise<DeleteResult> {
     return await this.subcategoryThreeModel.deleteMany({}).exec();
+  }
+  async discontinue(id: string, category: UpdateCategoryDto) {
+    const updatedCategory = await this.subcategoryThreeModel
+      .findOneAndUpdate({ _id: id }, category, { new: true })
+      .populate({
+        path: 'subCategories',
+        populate: {
+          path: 'subCategories',
+        },
+      })
+      .exec();
+
+    if (!updatedCategory) {
+      throw new NotFoundException('Categoría no encontrada');
+    }
+
+    await this.updateSubcategoriesStatus(
+      updatedCategory.subCategories,
+      category.status,
+    );
+
+    return updatedCategory;
+  }
+
+  private async updateSubcategoriesStatus(
+    subcategories: any[],
+    status: string,
+  ) {
+    for (const subcategoryfour of subcategories) {
+      await this.subcategoryFourModel.findByIdAndUpdate(subcategoryfour._id, {
+        status,
+      });
+    }
   }
 }
