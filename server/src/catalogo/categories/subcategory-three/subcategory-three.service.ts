@@ -75,9 +75,6 @@ export class SubcategoryThreeService {
       .findOneAndUpdate({ _id: id }, category, { new: true })
       .populate({
         path: 'subCategories',
-        populate: {
-          path: 'subCategories',
-        },
       })
       .exec();
 
