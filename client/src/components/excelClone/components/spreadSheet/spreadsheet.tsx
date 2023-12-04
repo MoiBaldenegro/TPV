@@ -1,3 +1,4 @@
+import React from 'react';
 // Styles
 import styles from './spreadsheet.module.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,27 +10,73 @@ import { useEffect } from 'react';
 const Spreadsheet = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.spreadsheet.data);
+  const categoriesData = useSelector((state) => state.categories);
 
   const handleCellFocus = (row, col) => {
     console.log(`Row: ${row}, Col: ${col}`);
     dispatch(selectCell(row, col));
   };
+  const head = [
+    '',
+    'Categoría principal',
+    'Subcategoria 1',
+    'Subcategoria 2',
+    'Subcategoria 3',
+    'Subcategoria 4',
+  ];
   useEffect(() => {
-    console.log(data);
+    console.log(categoriesData.allCategories);
   }, []);
 
   return (
     <div className={styles.spreadsheet}>
       <Column
-        colData={data.map((rowData) => rowData[0])}
+        colData={head.map((rowData) => rowData)}
         onFocus={(rowIndex) => handleCellFocus(rowIndex, 0)}
       />
-      {data.map((rowData, rowIndex) => (
-        <Row
-          key={rowIndex}
-          rowData={rowData}
-          onFocus={(colIndex) => handleCellFocus(rowIndex, colIndex)}
-        />
+      {categoriesData.allCategories.map((rowData, rowIndex) => (
+        <React.Fragment key={rowIndex}>
+          {
+            <Row
+              rowData={rowData}
+              onFocus={(colIndex) => handleCellFocus(rowIndex, colIndex)}
+              rowIndex={rowIndex}
+            />
+          }
+          {rowData.subCategories &&
+            rowData.subCategories.length > 0 &&
+            rowData.subCategories.map((subcatData, subcatIndex) => (
+              <div key={subcatIndex}>
+                {subcatIndex > 0 && (
+                  <Row
+                    key={subcatIndex}
+                    rowData={rowData}
+                    onFocus={(colIndex) => handleCellFocus(rowIndex, colIndex)}
+                    rowIndex={subcatIndex + 1}
+                  />
+                )}
+
+                {subcatData.subCategories &&
+                  subcatData.subCategories.length > 0 &&
+                  subcatData.subCategories.map(
+                    (subcatTwoData, subcatTwoIndex) => (
+                      <div key={subcatIndex}>
+                        {
+                          <Row
+                            key={subcatIndex}
+                            rowData={rowData.subCategories}
+                            onFocus={(colIndex) =>
+                              handleCellFocus(rowIndex, colIndex)
+                            }
+                            rowIndex={subcatIndex}
+                          />
+                        }
+                      </div>
+                    ),
+                  )}
+              </div>
+            ))}
+        </React.Fragment>
       ))}
     </div>
   );

@@ -34,3 +34,4 @@ export class SubCategoryOne {
 
 export const SubCategoryOneSchema =
   SchemaFactory.createForClass(SubCategoryOne);
+  

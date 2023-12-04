@@ -5,19 +5,28 @@ import Cell from '../cell/cell';
 import { useEffect } from 'react';
 
 const Row = ({ rowData, onFocus, rowIndex }) => {
-  useEffect(() => {
-    console.log(rowData);
-  }, []);
+  const oneSubcategory =
+    rowData.subCategories && rowData.subCategories[rowIndex]
+      ? rowData.subCategories[rowIndex].categoryName
+      : '';
+  const impData = [
+    rowIndex + 1,
+    rowData.categoryName,
+    oneSubcategory,
+    'sadf',
+    oneSubcategory.subCategories,
+    '',
+  ];
 
   return (
     <div className={styles.row}>
-      {rowData.map((cellData, colIndex) => (
+      {impData.map((cellData, colIndex) => (
         <Cell
           key={colIndex}
-          value={rowIndex} // Por que rowindex es el valor???????????????????? IMPORTANTE!!
-          onFocus={() => onFocus()}
+          value={cellData}
+          onFocus={() => onFocus(colIndex)}
           row={rowIndex}
-          col={0}
+          col={colIndex}
         />
       ))}
     </div>

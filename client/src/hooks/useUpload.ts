@@ -53,6 +53,7 @@ const useUpload = (actionCallback) => {
         workbook.SheetNames.forEach((sheetName) => {
           const sheet = workbook.Sheets[sheetName];
           const sheetData = utils.sheet_to_json(sheet);
+          console.log(sheetData);
           dispatch(actionCallback(sheetData));
           setFiles(null);
         });
