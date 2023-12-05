@@ -9,7 +9,8 @@ const Column = ({ colData, onFocus }) => {
           value={cellData}
           onFocus={() => onFocus(rowIndex)}
           row={rowIndex}
-          col={0} // necesitamos mandar un valor aca
+          col={0}
+          istittle={true} // necesitamos mandar un valor aca
         />
       ))}
     </div>

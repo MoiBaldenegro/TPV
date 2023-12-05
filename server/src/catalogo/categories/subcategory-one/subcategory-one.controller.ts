@@ -82,6 +82,18 @@ export class SubcategoryOneController {
     }
   }
 
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
+    try {
+      const categoryUpdated = await this.subcategoryOneService.update(id, body);
+      if (!categoryUpdated)
+        throw new NotFoundException('No se encontro la categoria');
+      return categoryUpdated;
+    } catch (error) {
+      throw new NotFoundException('Ocurrio algo inesperado');
+    }
+  }
+
   @Put('discontinue/:id')
   async discontinue(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
     try {

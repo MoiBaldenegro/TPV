@@ -41,36 +41,35 @@ const Spreadsheet = () => {
               rowData={rowData}
               onFocus={(colIndex) => handleCellFocus(rowIndex, colIndex)}
               rowIndex={rowIndex}
+              istittle={false}
             />
           }
           {rowData.subCategories &&
             rowData.subCategories.length > 0 &&
             rowData.subCategories.map((subcatData, subcatIndex) => (
               <div key={subcatIndex}>
-                {subcatIndex > 0 && (
-                  <Row
-                    key={subcatIndex}
-                    rowData={rowData}
-                    onFocus={(colIndex) => handleCellFocus(rowIndex, colIndex)}
-                    rowIndex={subcatIndex + 1}
-                  />
-                )}
+                <Row
+                  key={subcatIndex}
+                  rowData={rowData}
+                  onFocus={(colIndex) => handleCellFocus(rowIndex, colIndex)}
+                  rowIndex={subcatIndex}
+                  istittle={false}
+                />
 
                 {subcatData.subCategories &&
                   subcatData.subCategories.length > 0 &&
                   subcatData.subCategories.map(
                     (subcatTwoData, subcatTwoIndex) => (
-                      <div key={subcatIndex}>
-                        {
-                          <Row
-                            key={subcatIndex}
-                            rowData={rowData.subCategories}
-                            onFocus={(colIndex) =>
-                              handleCellFocus(rowIndex, colIndex)
-                            }
-                            rowIndex={subcatIndex}
-                          />
-                        }
+                      <div key={subcatTwoIndex}>
+                        <Row
+                          key={subcatIndex}
+                          rowData={rowData}
+                          onFocus={(colIndex) =>
+                            handleCellFocus(rowIndex, colIndex)
+                          }
+                          rowIndex={subcatTwoIndex}
+                          istittle={false}
+                        />
                       </div>
                     ),
                   )}

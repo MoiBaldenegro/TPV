@@ -81,6 +81,17 @@ export class SubcategoryTwoController {
       throw new ConflictException('Ocurrio algo inesperado');
     }
   }
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
+    try {
+      const categoryUpdated = await this.subcategoryTwoService.update(id, body);
+      if (!categoryUpdated)
+        throw new NotFoundException('No se encontro la categoria');
+      return categoryUpdated;
+    } catch (error) {
+      throw new NotFoundException('Ocurrio algo inesperado');
+    }
+  }
 
   @Put('discontinue/:id')
   async discontinue(@Param('id') id: string, @Body() body: UpdateCategoryDto) {
