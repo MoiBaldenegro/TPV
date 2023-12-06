@@ -5,58 +5,32 @@ import Cell from '../cell/cell';
 import { useEffect } from 'react';
 
 const Row = ({ rowData, onFocus, rowIndex, istittle }) => {
-  const oneSubcategory =
-    rowData.subCategories && rowData.subCategories[rowIndex]
-      ? rowData.subCategories[rowIndex].categoryName
-      : '';
-  const twoSubcategory = rowData.subCategories[rowIndex]?.subCategories[
-    rowIndex - 1
-  ]?.categoryName
-    ? rowData.subCategories[rowIndex]?.subCategories[rowIndex - 1]?.categoryName
-    : null;
-
+  const fourSubcategory = rowData.subCategories[rowIndex]?.subCategories[
+    rowIndex
+  ]?.subCategories[rowIndex]?.subCategories[rowIndex]?.categoryName
+    ? rowData.subCategories[rowIndex]?.subCategories[rowIndex]?.subCategories[
+        rowIndex
+      ]?.subCategories[rowIndex]?.categoryName
+    : rowData.subCategories[rowIndex]?.subCategories[rowIndex]?.categoryName
+    ? rowData.subCategories[rowIndex]?.subCategories[rowIndex]?.categoryName
+    : rowData.subCategories[rowIndex]?.categoryName
+    ? rowData.subCategories[rowIndex]?.categoryName
+    : rowData.categoryName;
   const threeSubcategory =
-    rowData?.subCategories[rowIndex]?.subCategories[rowIndex - 1]
-      ?.subCategories[0]?.categoryName;
-
-  const fourSubcategory =
-    rowData.subCategories[rowIndex]?.subCategories[rowIndex - 1]
-      ?.subCategories[0]?.subCategories[0]?.categoryName;
+    rowData.subCategories[rowIndex]?.subCategories[rowIndex]?.subCategories[
+      rowIndex
+    ]?.categoryName;
 
   const impData = [
-    rowIndex + 1,
-    rowData.categoryName,
-    oneSubcategory ? oneSubcategory : rowData.categoryName,
-    twoSubcategory
-      ? twoSubcategory
-      : oneSubcategory
-      ? oneSubcategory
-      : rowData.categoryName,
-    threeSubcategory
-      ? threeSubcategory
-      : twoSubcategory
-      ? twoSubcategory
-      : oneSubcategory
-      ? oneSubcategory
-      : rowData.categoryName,
-    fourSubcategory
-      ? fourSubcategory
-      : threeSubcategory
-      ? threeSubcategory
-      : twoSubcategory
-      ? twoSubcategory
-      : oneSubcategory
-      ? oneSubcategory
-      : rowData.categoryName,
+    rowIndex,
+    fourSubcategory,
+    fourSubcategory,
+    fourSubcategory,
+    threeSubcategory,
+    fourSubcategory,
   ];
   useEffect(() => {
-    console.log(
-      `Intentando renderizar: ${
-        rowData.subCategories[rowIndex]?.subCategories[rowIndex - 1]
-          ?.subCategories[0]?.subCategories[0]?.categoryName
-      }`,
-    );
-    console.log(`con el indice: ${rowIndex}`);
+    console.log(rowIndex);
   });
 
   return (
@@ -76,3 +50,30 @@ const Row = ({ rowData, onFocus, rowIndex, istittle }) => {
 };
 
 export default Row;
+
+/* 
+function mapCategories(categories) {
+  return categories.map(category => {
+    const mappedCategory = {
+      _id: category._id,
+      code: category.code,
+      categoryName: category.categoryName,
+      subCategories: mapCategories(category.subCategories),
+      parentCategory: category.parentCategory,
+      status: category.status,
+      createdAt: category.createdAt,
+      updatedAt: category.updatedAt,
+      __v: category.__v
+    };
+
+    return mappedCategory;
+  });
+}
+
+const originalArray = [
+  // ... tu array original
+];
+
+const mappedArray = mapCategories(originalArray);
+console.log(mappedArray);
+*/
