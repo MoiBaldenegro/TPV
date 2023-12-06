@@ -5,6 +5,30 @@ import Cell from '../cell/cell';
 import { useEffect } from 'react';
 
 const Row = ({ rowData, onFocus, rowIndex, istittle }) => {
+  const impData = [rowIndex, '', '', '', '', ''];
+  useEffect(() => {
+    console.log(rowIndex);
+  });
+
+  return (
+    <div className={styles.row}>
+      {impData.map((cellData, colIndex) => (
+        <Cell
+          key={colIndex}
+          value={cellData}
+          onFocus={() => onFocus(colIndex)}
+          row={rowIndex}
+          col={colIndex}
+          istittle={istittle}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default Row;
+/*
+const Row = ({ rowData, onFocus, rowIndex, istittle }) => {
   const fourSubcategory = rowData.subCategories[rowIndex]?.subCategories[
     rowIndex
   ]?.subCategories[rowIndex]?.subCategories[rowIndex]?.categoryName
@@ -49,7 +73,7 @@ const Row = ({ rowData, onFocus, rowIndex, istittle }) => {
   );
 };
 
-export default Row;
+export default Row; */
 
 /* 
 function mapCategories(categories) {
