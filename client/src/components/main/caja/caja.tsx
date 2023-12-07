@@ -40,12 +40,74 @@ export default function Caja() {
             </div>
           </div>
         </div>
-        <div className={styles.tableContainer}>
-          <table className={styles.table}>
-            <thead></thead>
-            <tbody></tbody>
-          </table>
-        </div>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th className={styles.tHeadAccount}>Cuenta</th>
+              <th className={styles.tHeadNote}>Nota</th>
+              <th className={styles.tHeadPaymentNumber}>Folio de pago</th>
+              <th className={styles.tHeadSellType}>Tipo de venta</th>
+              <th className={styles.tHeadOpenBy}>Abierta por</th>
+              <th className={styles.tHeadTotal}>Total</th>
+              <th className={styles.tHeadStatus}>Estatus</th>
+              <th className={styles.tHeadCashier}>Cajero</th>
+              <th className={styles.tHeadCreationDate}>Fecha de creacion</th>
+              <th className={styles.tHeadPaymentDate}>Fecha de pago</th>
+              <th className={styles.tHeadDetails}>Detalles</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/*allNotes?.map((element, index) => (
+              <tr key={index}>
+                <td className={styles.tableRows}>{element.checkCode}</td>
+                <td className={styles.tableRows}>{element.noteNumber}</td>
+                <td className={styles.tableRows}>{element.paymentCode}</td>
+                <td className={styles.tableRows}>{element.sellType}</td>
+                <td className={styles.tableRows}>{element.user}</td>
+                <td className={styles.tableRows}>{element.checkTotal}</td>
+                <td className={styles.tableRows}>
+                  {' '}
+                  {element.status === 'enabled' ? (
+                    <>
+                      <img
+                        className={styles.statusIcon}
+                        src={enabledIcon}
+                        alt="enabled-icon"
+                      />
+                      {element.status}
+                    </>
+                  ) : element.status === 'disabled' ? (
+                    <>
+                      <img
+                        className={styles.statusIcon}
+                        src={disabledIcon}
+                        alt="disabled-icon"
+                      />
+                      {element.status}
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        className={styles.statusIcon}
+                        src={pendingIcon}
+                        alt="pending-icon"
+                      />
+                      {element.status}
+                    </>
+                  )}
+                </td>
+                <td className={styles.tableRows}>{element.cashier}</td>
+                <td className={styles.tableRows}>{element.createdAt}</td>
+                <td className={styles.tableRows}>{element.paymentDate}</td>
+                <td className={styles.tableRows}>
+                  <button className={styles.actionButtonsFirstDetails}>
+                    <img src={eyeIcon} alt="open-eye-icon" />
+                  </button>
+                </td>
+              </tr>
+                  )) */}
+          </tbody>
+        </table>
         <div className={styles.tableFooter}></div>
       </section>
     </div>

@@ -54,25 +54,33 @@ export default function Cancelaciones() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Cuenta</th>
-              <th>Tipo de venta</th>
-              <th>Monto cancelado</th>
-              <th>Cancelada por</th>
-              <th>Cancelada a</th>
-              <th>Motivo de cancelacion</th>
-              <th>Fecha de cancelacion</th>
+              <th className={styles.tHeadAccount}>Cuenta</th>
+              <th className={styles.tHeadSellType}>Tipo de venta</th>
+              <th className={styles.tHeadMountCancelled}>Monto cancelado</th>
+              <th className={styles.tHeadCancelledBy}>Cancelada por</th>
+              <th className={styles.tHeadCancelledFor}>Cancelada a</th>
+              <th className={styles.tHeadCancellationReason}>
+                Motivo de cancelacion
+              </th>
+              <th className={styles.tHeadCancellationDate}>
+                Fecha de cancelacion
+              </th>
             </tr>
           </thead>
           <tbody>
             {allCancellations?.map((element, index) => (
               <tr key={index}>
-                <td>{element.checkCode}</td>
-                <td>{element.sellType}</td>
-                <td>{element.CancellationMount}</td>
-                <td>{element.cancellationBy}</td>
-                <td>{element.cancellationFor}</td>
-                <td>{element.cancellationReason}</td>
-                <td>{element.cancellationDate}</td>
+                <td className={styles.tableRows}>{element.checkCode}</td>
+                <td className={styles.tableRows}>{element.sellType}</td>
+                <td className={styles.tableRows}>
+                  {element.CancellationMount}
+                </td>
+                <td className={styles.tableRows}>{element.cancellationBy}</td>
+                <td className={styles.tableRows}>{element.cancellationFor}</td>
+                <td className={styles.tableRows}>
+                  {element.cancellationReason}
+                </td>
+                <td className={styles.tableRows}>{element.cancellationDate}</td>
               </tr>
             ))}
           </tbody>

@@ -296,11 +296,17 @@
   overflow: hidden;   
 }
 
-.tHeadCategoria,
-.tHeadClave,
-.tHeadModificador,
-.tHeadVenta,
-.tHeadActions{
+.tHeadPaymentNumber,
+.tHeadAccount,
+.tHeadNoteNumber,
+.tHeadSellType,
+.tHeadNoteTotal,
+.tHeadTips,
+.tHeadTotalPayment,
+.tHeadPaymentType,
+.tHeadCashier,
+.tHeadPaymentDate,
+.tHeadBill{
 text-align: left;
 text-indent: 8px;
 background-color: #F9F9F966;
@@ -312,7 +318,6 @@ gap: 8px;
 .tHeadCategoria{
 width: 40%;
 }
-
 .tHeadModificador{
 width: 48%;
 }

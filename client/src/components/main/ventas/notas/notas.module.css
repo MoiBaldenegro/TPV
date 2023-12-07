@@ -296,11 +296,17 @@
   overflow: hidden;   
 }
 
-.tHeadCategoria,
-.tHeadClave,
-.tHeadModificador,
-.tHeadVenta,
-.tHeadActions{
+.tHeadAccount,
+.tHeadNote,
+.tHeadPaymentNumber,
+.tHeadSellType,
+.tHeadOpenBy,
+.tHeadTotal,
+.tHeadStatus,
+.tHeadCashier,
+.tHeadCreationDate,
+.tHeadPaymentDate,
+.tHeadDetails{
 text-align: left;
 text-indent: 8px;
 background-color: #F9F9F966;
@@ -309,28 +315,23 @@ height:56px;
 padding: 16px;
 gap: 8px;
 }
-.tHeadCategoria{
-width: 40%;
+.tHeadAccount,
+.tHeadNote,
+.tHeadPaymentNumber,
+.tHeadSellType,
+.tHeadOpenBy,
+.tHeadTotal,
+.tHeadStatus,
+.tHeadCashier,
+.tHeadCreationDate,
+.tHeadPaymentDate,
+.tHeadDetails {
+  width: 10%;
 }
-
-.tHeadModificador{
-width: 48%;
-}
-.tHeadActions{
-text-indent: 12%;
-}
-
-.tableRows{
-text-indent: 25px;
-}
-.tableRows,
-.buttonsContainer{
-  border-top: 1px solid #F9F9F9;
-}
-
 .actionButtonsSecond,
 .actionButtonsFirst,
-.actionButtonsFirstEnabled{
+.actionButtonsFirstEnabled,
+.actionButtonsFirstDetails{
 position: relative;
   border: none;
   width: 32px;
@@ -339,9 +340,10 @@ position: relative;
   transition: 200ms;
   margin: 10px 16px;
 }
-.actionButtonsFirst{
-  background: rgba(116, 160, 22, 1);
-  margin-left: 1.5vw;
+
+.actionButtonsFirstDetails{
+  background-color: #7c78784f;
+  margin-left: 1vw;
 }
 .actionButtonsFirstEnabled{
   background: rgba(249, 249, 249, 0.1);
@@ -352,8 +354,23 @@ position: relative;
 }
 .actionButtonsSecond:hover,
 .actionButtonsFirst:hover,
-.actionButtonsFirstEnabled:hover{
+.actionButtonsFirstEnabled:hover,
+.actionButtonsFirstDetails:hover{
  /*  opacity: .6; */
  filter:brightness(0.85);
 }
+.tableRows{
+  text-indent: 25px;
+}
+ .tableRows,
+.buttonsContainer{
+  border-top: 1px solid #F9F9F9;
+}
+.statusIcon{
+  border-radius: 50px;
+margin: 3px 8px;
+box-shadow: -1px 1px 3px 1px #f9f9f925;
+filter: brightness(1.1);
+}
+
 

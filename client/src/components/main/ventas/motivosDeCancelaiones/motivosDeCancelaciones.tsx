@@ -7,6 +7,9 @@ import { getCancellationReasonsAction } from '../../../../redux/actions/ventas/c
 //icons
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 import filterIcon from '../../../../assets/public/filterIcon.svg';
+import update from '../../../../assets/public/updateIcon.svg';
+import enabledIcon from '../../../../assets/public/enabledIcon.svg';
+import deleteIcon from '../../../../assets/public/deleteIcon.svg';
 
 export default function MotivosDeCancelacion() {
   const dispatch = useDispatch();
@@ -58,21 +61,50 @@ export default function MotivosDeCancelacion() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Clave</th>
-              <th>Motivo de cancelacion</th>
-              <th>Ultima actualizacion</th>
-              <th>Acciones</th>
+              <th className={styles.tHeadCode}>Clave</th>
+              <th className={styles.tHeadCancellationReason}>
+                Motivo de cancelacion
+              </th>
+              <th className={styles.tHeadUpdateDate}>Ultima actualizacion</th>
+              <th className={styles.tHeadActions}>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {allCancellationReasons?.map((element, index) => (
               <tr key={index}>
-                <td>{element.keyReason}</td>
-                <td>{element.reasonName}</td>
-                <td>{element.createdAt}</td>
-                <td>
-                  <button>Accion 1</button>
-                  <button>Accion 2</button>
+                <td className={styles.tableRows}>{element.keyReason}</td>
+                <td className={styles.tableRows}>{element.reasonName}</td>
+                <td className={styles.tableRows}>{element.createdAt}</td>
+                <td className={styles.buttonsContainer}>
+                  {element.status === 'enabled' ? (
+                    <>
+                      <button className={styles.actionButtonsFirst}>
+                        <img src={update} alt="update-icon" />
+                      </button>
+                      <button
+                        className={styles.actionButtonsSecond}
+                        onClick={() => {
+                          toggleStatus(element._id, element.status);
+                        }}
+                      >
+                        <img src={deleteIcon} alt="delete-icon" />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button className={styles.actionButtonsFirstEnabled}>
+                        <img src={update} alt="update-icon" />
+                      </button>
+                      <button
+                        className={styles.actionButtonsSecond}
+                        onClick={() => {
+                          toggleStatus(element._id, element.status);
+                        }}
+                      >
+                        <img src={enabledIcon} alt="enabled-icon" />
+                      </button>
+                    </>
+                  )}
                 </td>
               </tr>
             ))}

@@ -299,11 +299,13 @@
   overflow: hidden;   
 }
 
-.tHeadCategoria,
-.tHeadClave,
-.tHeadComplemento,
-.tHeadVenta,
-.tHeadActions{
+.tHeadAccount,
+.tHeadSellType,
+.tHeadMountCancelled,
+.tHeadCancelledBy,
+.tHeadCancelledFor,
+.tHeadCancellationReason,
+.tHeadCancellationDate{
 text-align: left;
 text-indent: 8px;
 background-color: #F9F9F966;
@@ -312,27 +314,17 @@ height:56px;
 padding: 16px;
 gap: 8px;
 }
-.tHeadCategoria{
-width: 25%;
-}
-.tHeadClave{
-width: 18%;
-}
-.tHeadComplemento{
-width: 32%;
-}
-.tHeadActions{
-text-indent: 15px;
-}
-.tHeadVenta{
-width: 14%;
-}
+
 .tableRows{
 text-indent: 25px;
+padding: 2vh;
 }
 .tableRows,
 .buttonsContainer{
   border-top: 1px solid #F9F9F9;
+}
+.tHeadCancellationReason{
+  width: 20%;
 }
 
 .actionButtonsSecond,

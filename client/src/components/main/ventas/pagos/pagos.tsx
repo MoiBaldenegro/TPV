@@ -53,33 +53,33 @@ export default function Pagos() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Folio de pago</th>
-              <th>Cuenta</th>
-              <th>Nota</th>
-              <th>Tipo de venta</th>
-              <th>Total de la nota</th>
-              <th>Propina</th>
-              <th>Total pagado</th>
-              <th>Forma de pago</th>
-              <th>Cajero</th>
-              <th>Fecha de pago</th>
-              <th>Facturacion</th>
+              <th className={styles.tHeadPaymentNumber}>Folio de pago</th>
+              <th className={styles.tHeadAccount}>Cuenta</th>
+              <th className={styles.tHeadNoteNumber}>Nota</th>
+              <th className={styles.tHeadSellType}>Tipo de venta</th>
+              <th className={styles.tHeadNoteTotal}>Total de la nota</th>
+              <th className={styles.tHeadTips}>Propina</th>
+              <th className={styles.tHeadTotalPayment}>Total pagado</th>
+              <th className={styles.tHeadPaymentType}>Forma de pago</th>
+              <th className={styles.tHeadCashier}>Cajero</th>
+              <th className={styles.tHeadPaymentDate}>Fecha de pago</th>
+              <th className={styles.tHeadBill}>Facturacion</th>
             </tr>
           </thead>
           <tbody>
             {allPayments?.map((element, index) => (
               <tr key={index}>
-                <td>{element.paymentCode}</td>
-                <td>{element.check}</td>
-                <td>{element.noteCode}</td>
-                <td>{element.sellType}</td>
-                <td>{element.checkTotal}</td>
-                <td>{element.tips}</td>
-                <td>{element.paymentTotal}</td>
-                <td>{element.paymentType}</td>
-                <td>{element.cashier}</td>
-                <td>{element.paymentDate}</td>
-                <td>{element.billing}</td>
+                <td className={styles.tableRows}>{element.paymentCode}</td>
+                <td className={styles.tableRows}>{element.check}</td>
+                <td className={styles.tableRows}>{element.noteCode}</td>
+                <td className={styles.tableRows}>{element.sellType}</td>
+                <td className={styles.tableRows}>{element.checkTotal}</td>
+                <td className={styles.tableRows}>{element.tips}</td>
+                <td className={styles.tableRows}>{element.paymentTotal}</td>
+                <td className={styles.tableRows}>{element.paymentType}</td>
+                <td className={styles.tableRows}>{element.cashier}</td>
+                <td className={styles.tableRows}>{element.paymentDate}</td>
+                <td className={styles.tableRows}>{element.billing}</td>
               </tr>
             ))}
           </tbody>

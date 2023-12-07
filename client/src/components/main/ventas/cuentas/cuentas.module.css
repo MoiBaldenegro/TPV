@@ -346,7 +346,8 @@ text-indent: 25px;
 
 .actionButtonsSecond,
 .actionButtonsFirst,
-.actionButtonsFirstEnabled{
+.actionButtonsFirstEnabled,
+.actionButtonsFirstDetails{
 position: relative;
   border: none;
   width: 32px;
@@ -354,6 +355,10 @@ position: relative;
   border-radius: 8px;
   transition: 200ms;
   margin: 10px 16px;
+}
+.actionButtonsFirstDetails{
+  background-color: #7c78784f;
+  margin-left: 1vw;
 }
 .actionButtonsFirst{
   background: rgba(116, 160, 22, 1);
@@ -368,8 +373,15 @@ position: relative;
 }
 .actionButtonsSecond:hover,
 .actionButtonsFirst:hover,
-.actionButtonsFirstEnabled:hover{
+.actionButtonsFirstEnabled:hover,
+.actionButtonsFirstDetails:hover{
  /*  opacity: .6; */
  filter:brightness(0.85);
+}
+.statusIcon{
+  border-radius: 50px;
+margin: 3px 8px;
+box-shadow: -1px 1px 3px 1px #f9f9f925;
+filter: brightness(1.1);
 }
 

@@ -7,6 +7,9 @@ import { useEffect } from 'react';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 import filterIcon from '../../../../assets/public/filterIcon.svg';
 import eyeIcon from '../../../../assets/public/openEye.svg';
+import enabledIcon from '../../../../assets/public/StatusIcon(enabled).svg';
+import disabledIcon from '../../../../assets/public/StatusIcon(disabled).svg';
+import pendingIcon from '../../../../assets/public/StatusIcon(pending).svg';
 import { getBillsAction } from '../../../../redux/actions/ventas/billsActions/getBillsAction';
 
 export default function Cuentas() {
@@ -69,11 +72,41 @@ export default function Cuentas() {
               <tr key={index}>
                 <td className={styles.tableRows}>{element.billCode}</td>
                 <td className={styles.tableRows}>{element.sellType}</td>
-                <td>{element.user}</td>
-                <td>{element.checkTotal}</td>
-                <td>{element.status}</td>
-                <td>{element.createdAt}</td>
-                <td>{element.paymentDate}</td>
+                <td className={styles.tableRows}>{element.user}</td>
+                <td className={styles.tableRows}>{element.checkTotal}</td>
+                <td className={styles.tableRows}>
+                  {element.status === 'enabled' ? (
+                    <>
+                      <img
+                        className={styles.statusIcon}
+                        src={enabledIcon}
+                        alt="enabled-icon"
+                      />
+                      {element.status}
+                    </>
+                  ) : element.status === 'disabled' ? (
+                    <>
+                      <img
+                        className={styles.statusIcon}
+                        src={disabledIcon}
+                        alt="disabled-icon"
+                      />
+                      {element.status}
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        className={styles.statusIcon}
+                        src={pendingIcon}
+                        alt="pending-icon"
+                      />
+                      {element.status}
+                    </>
+                  )}
+                </td>
+
+                <td className={styles.tableRows}>{element.createdAt}</td>
+                <td className={styles.tableRows}>{element.paymentDate}</td>
                 <td className={styles.buttonsContainer}>
                   <button className={styles.actionButtonsFirstDetails}>
                     <img src={eyeIcon} alt="open-eye-icon" />

@@ -43,8 +43,8 @@
 
 .table{
     border-collapse: separate;
-    border-spacing: 0 1px;
-    background: #F9F9F980;
+    border-spacing: 0 1px ;
+    background: rgba(221, 218, 218, 0.502);
     width: 1,418px;
     height: 56px;
     padding: 0px, 16px, 0px, 16px;
@@ -169,6 +169,7 @@ text-indent: 25px;
     color: rgba(167, 161, 161, 0.555);
     transition: 300ms;
     outline: 1px solid #99000F;
+
 }
 .release{
     transition: 300ms;

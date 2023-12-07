@@ -296,10 +296,9 @@
   overflow: hidden;   
 }
 
-.tHeadCategoria,
-.tHeadClave,
-.tHeadModificador,
-.tHeadVenta,
+.tHeadCode,
+.tHeadCancellationReason,
+.tHeadUpdateDate,
 .tHeadActions{
 text-align: left;
 text-indent: 8px;
@@ -309,17 +308,19 @@ height:56px;
 padding: 16px;
 gap: 8px;
 }
-.tHeadCategoria{
-width: 40%;
+.tHeadCode{
+width: 15%;
 }
 
-.tHeadModificador{
-width: 48%;
+.tHeadCancellationReason{
+width: 50%;
 }
 .tHeadActions{
-text-indent: 12%;
+text-indent: 10%;
 }
-
+.tHeadUpdateDate{
+  width: 25%;
+}
 .tableRows{
 text-indent: 25px;
 }
