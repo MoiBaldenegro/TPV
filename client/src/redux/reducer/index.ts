@@ -11,6 +11,7 @@ import paymentsReducer from './ventas/paymentsReducer/paymentsReducer';
 import cancellationsReducer from './ventas/cancellationReducer/cancellationReducer';
 import cancellationReasonsReducer from './ventas/cancellationReasonReducer/cancellationReasonReducer';
 import { spreadsheetReducer } from './tableExcelsReducer/spreadSheet.Reducer';
+import tillsReducer from './caja/tillReducer';
 
 const rootReducer = combineReducers({
   // Catalogo
@@ -29,6 +30,8 @@ const rootReducer = combineReducers({
   // Usuarios
 
   // TableExcels
+  // Caja
+  tills: tillsReducer,
   spreadsheet: spreadsheetReducer,
 });
 
