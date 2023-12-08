@@ -359,12 +359,11 @@ position: relative;
  /*  opacity: .6; */
  filter:brightness(0.85);
 }
-.tableRows{
-  text-indent: 25px;
-}
+
  .tableRows,
 .buttonsContainer{
   border-top: 1px solid #F9F9F9;
+  text-indent: 25px;
 }
 .statusIcon{
   border-radius: 50px;

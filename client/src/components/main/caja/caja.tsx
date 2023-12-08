@@ -1,10 +1,19 @@
 import styles from './caja.module.css';
+//Hooks
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTillsAction } from '../../../redux/actions/caja/getTill';
 
 //icons
 import searchIcon from '../../../assets/public/searchIcon.svg';
 import filterIcon from '../../../assets/public/filterIcon.svg';
-
+import eyeIcon from '../../../assets/public/openEye.svg';
 export default function Caja() {
+  const dispatch = useDispatch();
+  const { allTills } = useSelector((state) => state.tills);
+  useEffect(() => {
+    dispatch(getTillsAction());
+  }, []);
   return (
     <div className={styles.container}>
       <section className={styles.head}>
@@ -43,69 +52,39 @@ export default function Caja() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th className={styles.tHeadAccount}>Cuenta</th>
-              <th className={styles.tHeadNote}>Nota</th>
-              <th className={styles.tHeadPaymentNumber}>Folio de pago</th>
-              <th className={styles.tHeadSellType}>Tipo de venta</th>
-              <th className={styles.tHeadOpenBy}>Abierta por</th>
-              <th className={styles.tHeadTotal}>Total</th>
-              <th className={styles.tHeadStatus}>Estatus</th>
+              <th className={styles.tHeadDate}>Fecha</th>
+              <th className={styles.tHeadTill}>Caja</th>
               <th className={styles.tHeadCashier}>Cajero</th>
-              <th className={styles.tHeadCreationDate}>Fecha de creacion</th>
-              <th className={styles.tHeadPaymentDate}>Fecha de pago</th>
+              <th className={styles.tHeadCash}>Efectivo</th>
+              <th className={styles.tHeadDebit}>Débito</th>
+              <th className={styles.tHeadCredit}>Crédito</th>
+              <th className={styles.tHeadTransfer}>Transferencia</th>
+              <th className={styles.tHeadDeliveryOne}>Rappi</th>
+              <th className={styles.tHeadDeliveryTwo}>Dídi Food</th>
+              <th className={styles.tHeadDeliveryThree}>Uber Eats</th>
               <th className={styles.tHeadDetails}>Detalles</th>
             </tr>
           </thead>
           <tbody>
-            {/*allNotes?.map((element, index) => (
+            {allTills?.map((element, index) => (
               <tr key={index}>
-                <td className={styles.tableRows}>{element.checkCode}</td>
-                <td className={styles.tableRows}>{element.noteNumber}</td>
-                <td className={styles.tableRows}>{element.paymentCode}</td>
-                <td className={styles.tableRows}>{element.sellType}</td>
-                <td className={styles.tableRows}>{element.user}</td>
-                <td className={styles.tableRows}>{element.checkTotal}</td>
-                <td className={styles.tableRows}>
-                  {' '}
-                  {element.status === 'enabled' ? (
-                    <>
-                      <img
-                        className={styles.statusIcon}
-                        src={enabledIcon}
-                        alt="enabled-icon"
-                      />
-                      {element.status}
-                    </>
-                  ) : element.status === 'disabled' ? (
-                    <>
-                      <img
-                        className={styles.statusIcon}
-                        src={disabledIcon}
-                        alt="disabled-icon"
-                      />
-                      {element.status}
-                    </>
-                  ) : (
-                    <>
-                      <img
-                        className={styles.statusIcon}
-                        src={pendingIcon}
-                        alt="pending-icon"
-                      />
-                      {element.status}
-                    </>
-                  )}
-                </td>
-                <td className={styles.tableRows}>{element.cashier}</td>
                 <td className={styles.tableRows}>{element.createdAt}</td>
-                <td className={styles.tableRows}>{element.paymentDate}</td>
+                <td className={styles.tableRows}>{element.device}</td>
+                <td className={styles.tableRows}>{element.user}</td>
+                <td className={styles.tableRows}>{element.cash}</td>
+                <td className={styles.tableRows}>{element.debit}</td>
+                <td className={styles.tableRows}>{element.credit}</td>
+                <td className={styles.tableRows}>{element.trnsfer}</td>
+                <td className={styles.tableRows}>{element.rappi}</td>
+                <td className={styles.tableRows}>{element.didi}</td>
+                <td className={styles.tableRows}>{element.uber}</td>
                 <td className={styles.tableRows}>
                   <button className={styles.actionButtonsFirstDetails}>
                     <img src={eyeIcon} alt="open-eye-icon" />
                   </button>
                 </td>
               </tr>
-                  )) */}
+            ))}
           </tbody>
         </table>
         <div className={styles.tableFooter}></div>
