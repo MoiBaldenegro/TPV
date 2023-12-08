@@ -17,7 +17,7 @@ export class CreateSellTypeDto {
   @IsNotEmpty()
   @Length(0, 35)
   @IsString()
-  SellName: string;
+  sellName: string;
 
   @IsString()
   @IsDefined()
