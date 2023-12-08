@@ -24,6 +24,7 @@ import { SubcategoryTwoModule } from './catalogo/categories/subcategory-two/subc
 import { SubcategoryFourModule } from './catalogo/categories/subcategory-four/subcategory-four.module';
 import { SubcategoryThreeModule } from './catalogo/categories/subcategory-three/subcategory-three.module';
 import { SellTypesModule } from './sell-types/sell-types.module';
+import { EmployeesModule } from './usuarios/employees/employees.module';
 
 @Module({
   imports: [
@@ -54,6 +55,7 @@ import { SellTypesModule } from './sell-types/sell-types.module';
     SubcategoryThreeModule,
     SubcategoryFourModule,
     SellTypesModule,
+    EmployeesModule,
   ],
   controllers: [],
   providers: [],
