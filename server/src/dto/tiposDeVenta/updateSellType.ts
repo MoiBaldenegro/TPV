@@ -8,16 +8,16 @@ export class UpdateSellTypeDto {
 
   @IsOptional()
   @Length(1, 35)
-  @IsNumber()
+  @IsString()
   SellName?: string;
 
   @IsOptional()
   @Length(1, 35)
-  @IsNumber()
+  @IsString()
   color?: string;
 
   @IsOptional()
   @Length(1, 35)
-  @IsNumber()
+  @IsString()
   status?: 'enabled' | 'disabled';
 }

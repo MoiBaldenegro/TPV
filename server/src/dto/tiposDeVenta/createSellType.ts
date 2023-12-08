@@ -1,4 +1,10 @@
-import { Length, IsDefined, IsNotEmpty, IsNumber } from 'class-validator';
+import {
+  Length,
+  IsDefined,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+} from 'class-validator';
 
 export class CreateSellTypeDto {
   @IsNumber()
@@ -7,19 +13,19 @@ export class CreateSellTypeDto {
   @Length(1, 35)
   code: string;
 
-  @IsNumber()
   @IsDefined()
   @IsNotEmpty()
   @Length(1, 35)
+  @IsString()
   SellName: string;
 
-  @IsNumber()
+  @IsString()
   @IsDefined()
   @IsNotEmpty()
   @Length(1, 35)
   color: string;
 
-  @IsNumber()
+  @IsString()
   @IsDefined()
   @IsNotEmpty()
   @Length(1, 35)
