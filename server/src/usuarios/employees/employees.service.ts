@@ -6,9 +6,7 @@ import { Employee } from 'src/schemas/usuarios/employee.schema';
 
 @Injectable()
 export class EmployeesService {
-  constructor(
-    @Inject(Employee.name) private readonly employeeModel: Model<Employee>,
-  ) {}
+  constructor(@Inject(Employee.name) private employeeModel: Model<Employee>) {}
 
   async findAll() {
     return this.employeeModel.find();
