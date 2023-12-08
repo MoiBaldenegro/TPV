@@ -7,7 +7,7 @@ export class SellType {
     trim: true,
     required: true,
   })
-  code: string;
+  code: number;
 
   @Prop({
     trim: true,

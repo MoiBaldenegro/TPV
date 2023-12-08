@@ -1,23 +1,23 @@
-import { IsString, Length, IsOptional } from 'class-validator';
+import { IsString, Length, IsOptional, IsNumber } from 'class-validator';
 
 export class UpdateSellTypeDto {
   @IsOptional()
-  @IsString()
+  @IsNumber()
   @Length(1, 35)
-  code?: string;
+  code?: number;
 
   @IsOptional()
   @Length(1, 35)
-  @IsString()
+  @IsNumber()
   SellName?: string;
 
   @IsOptional()
   @Length(1, 35)
-  @IsString()
+  @IsNumber()
   color?: string;
 
   @IsOptional()
   @Length(1, 35)
-  @IsString()
+  @IsNumber()
   status?: 'enabled' | 'disabled';
 }
