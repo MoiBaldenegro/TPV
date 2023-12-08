@@ -8,7 +8,7 @@ import { SellType } from 'src/schemas/TiposDeVenta/SellType.schema';
 @Injectable()
 export class SellTypesService {
   constructor(
-    @InjectModel(SellType.name) private readonly sellTypeModel: Model<SellType>,
+    @InjectModel(SellType.name) private sellTypeModel: Model<SellType>,
   ) {}
 
   async findAll() {
