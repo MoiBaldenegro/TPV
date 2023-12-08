@@ -23,6 +23,7 @@ import { SubcategoryOneModule } from './catalogo/categories/subcategory-one/subc
 import { SubcategoryTwoModule } from './catalogo/categories/subcategory-two/subcategory-two.module';
 import { SubcategoryFourModule } from './catalogo/categories/subcategory-four/subcategory-four.module';
 import { SubcategoryThreeModule } from './catalogo/categories/subcategory-three/subcategory-three.module';
+import { SellTypesModule } from './sell-types/sell-types.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { SubcategoryThreeModule } from './catalogo/categories/subcategory-three/
     SubcategoryTwoModule,
     SubcategoryThreeModule,
     SubcategoryFourModule,
+    SellTypesModule,
   ],
   controllers: [],
   providers: [],
