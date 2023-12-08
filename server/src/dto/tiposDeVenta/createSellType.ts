@@ -10,7 +10,7 @@ export class CreateSellTypeDto {
   @IsNumber()
   @IsDefined()
   @IsNotEmpty()
-  code: string;
+  code: number;
 
   @IsDefined()
   @IsNotEmpty()
