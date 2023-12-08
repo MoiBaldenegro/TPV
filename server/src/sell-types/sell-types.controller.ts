@@ -15,7 +15,7 @@ import { CreateSellTypeDto } from 'src/dto/tiposDeVenta/createSellType';
 
 @Controller('sell-types')
 export class SellTypesController {
-  constructor(private readonly sellTypeService: SellTypesService) {}
+  constructor(private sellTypeService: SellTypesService) {}
 
   @Get()
   async findAll() {
