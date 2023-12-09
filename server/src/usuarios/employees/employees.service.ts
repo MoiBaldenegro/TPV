@@ -1,4 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateEmployeeDto } from 'src/dto/usuarios/empleados/createEmployeeDto';
 import { UpdateEmployeeDto } from 'src/dto/usuarios/empleados/updateEmployeeDto';
@@ -6,7 +7,9 @@ import { Employee } from 'src/schemas/usuarios/employee.schema';
 
 @Injectable()
 export class EmployeesService {
-  constructor(@Inject(Employee.name) private employeeModel: Model<Employee>) {}
+  constructor(
+    @InjectModel(Employee.name) private employeeModel: Model<Employee>,
+  ) {}
 
   async findAll() {
     return this.employeeModel.find();
