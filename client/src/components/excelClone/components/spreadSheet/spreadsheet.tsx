@@ -1,10 +1,12 @@
-import React from 'react';
 // Styles
 import styles from './spreadsheet.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import Row from '../row/row';
 import Column from '../column/column';
-import { useEffect } from 'react';
+import SubCategoryOne from '../subcategories/subcategoriesOne';
+import Row from '../row/row';
+import SubCategoryTwo from '../subcategories/subCategoriesTwo.tsx/subCategorieTwo';
+import SubCategoryThree from '../subcategories/subCategoriesThree/subCategoriesThree';
+import SubCategoryFour from '../subcategories/subCategoriesFour.tsx/subCategoriesFour';
 
 const Spreadsheet = () => {
   const dispatch = useDispatch();
@@ -20,41 +22,68 @@ const Spreadsheet = () => {
     'Subcategoria 4',
   ];
 
-  const RecursiveRow = ({ data, index, fatherIndex, subIndexTwo }) => (
-    <React.Fragment key={index}>
-      <Row
-        key={`CO${index}`}
-        rowData={data}
-        rowIndex={index}
-        istittle={false}
-        fatherIndex={fatherIndex}
-        subIndexTwo={subIndexTwo}
-      />
-      {data.subCategories?.map((childData, childIndex) => (
-        <RecursiveRow
-          fatherIndex={fatherIndex}
-          subIndexTwo={childIndex}
-          key={`CO${index}-${childIndex}`}
-          data={childData}
-          index={childIndex}
-        />
-      ))}
-    </React.Fragment>
-  );
-
   return (
     <div className={styles.spreadsheet}>
       <Column colData={head.map((rowData) => rowData)} />
       {allCategories?.map((categoryData, categoryIndex) => (
         <>
+          <Row
+            rowIndex={categoryIndex}
+            key={categoryIndex}
+            rowData={categoryData}
+            istittle={false}
+            fatherIndex={categoryIndex}
+            subIndexTwo={categoryIndex}
+          />
           {categoryData.subCategories?.map((childData, childIndex) => (
-            <RecursiveRow
-              fatherIndex={categoryIndex}
-              subIndexTwo={childIndex}
-              key={`CO${categoryIndex}-${childIndex}`}
-              data={childData}
-              index={childIndex}
-            />
+            <>
+              <SubCategoryOne
+                rowIndex={childIndex}
+                key={childIndex}
+                rowData={childData}
+                istittle={false}
+                fatherIndex={categoryIndex}
+                subcategoryOneIndex={childIndex}
+              />
+              {childData.subCategories?.map((childDataTwo, childIndexTwo) => (
+                <>
+                  <SubCategoryTwo
+                    rowIndex={childIndexTwo}
+                    key={childIndexTwo}
+                    rowData={childDataTwo}
+                    istittle={false}
+                    fatherIndex={childIndex}
+                    subcategoryTwoIndex={childIndexTwo}
+                  />
+                  {childDataTwo.subCategories?.map(
+                    (childDataThree, childIndexThree) => (
+                      <>
+                        <SubCategoryThree
+                          rowIndex={childIndexThree}
+                          key={childIndexThree}
+                          rowData={childDataThree}
+                          istittle={false}
+                          fatherIndex={childIndexTwo - 1} // El enigma sin resolver M16
+                          subcategoryThreeIndex={childIndexThree}
+                        />
+                        {childDataThree.subCategories?.map(
+                          (childDataFour, childIndexFour) => (
+                            <SubCategoryFour
+                              rowIndex={childIndexFour}
+                              key={childIndexFour}
+                              rowData={childDataFour}
+                              istittle={false}
+                              fatherIndex={childIndexThree}
+                              subcategoryFourIndex={childIndexFour}
+                            />
+                          ),
+                        )}
+                      </>
+                    ),
+                  )}
+                </>
+              ))}
+            </>
           ))}
         </>
       ))}

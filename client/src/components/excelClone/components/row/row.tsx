@@ -9,24 +9,18 @@ const Row = ({ rowData, rowIndex, istittle, fatherIndex, subIndexTwo }) => {
   const { allCategories } = useSelector((state) => state.categories);
   const impData = [
     rowIndex,
-    allCategories[fatherIndex]?.categoryName,
-    '',
-    '',
-    rowData.categoryName ? rowData.categoryName : 'simon',
-    rowData.categoryName ? rowData.categoryName : 'simon',
+    rowData.categoryName,
+    rowData.categoryName,
+    rowData.categoryName,
+    rowData.categoryName,
+    ,
+    rowData.categoryName,
   ];
-  useEffect(() => {
-    console.log(
-      `EN ${rowData.categoryName} FatherIndex${fatherIndex} y en subIndex${subIndexTwo}}`,
-    );
-  });
 
   return (
     <div className={styles.row}>
       {impData.map((cellData, colIndex) => (
         <Cell
-          fatherIndex={fatherIndex}
-          subIndexTwo={subIndexTwo}
           key={colIndex}
           value={cellData}
           row={rowIndex}
