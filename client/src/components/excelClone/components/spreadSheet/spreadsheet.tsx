@@ -4,18 +4,13 @@ import styles from './spreadsheet.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import Row from '../row/row';
 import Column from '../column/column';
-import { selectCell } from '../../../../redux/actions/tableExcels/selectCell';
 import { useEffect } from 'react';
 
 const Spreadsheet = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.spreadsheet.data);
-  const categoriesData = useSelector((state) => state.categories);
+  const { allCategories } = useSelector((state) => state.categories);
 
-  const handleCellFocus = (row, col) => {
-    console.log(`Row: ${row}, Col: ${col}`);
-    dispatch(selectCell(row, col));
-  };
   const head = [
     '',
     'Categoría principal',
@@ -24,18 +19,46 @@ const Spreadsheet = () => {
     'Subcategoria 3',
     'Subcategoria 4',
   ];
-  useEffect(() => {
-    console.log(categoriesData.allCategories);
-  }, []);
+
+  const RecursiveRow = ({ data, index, fatherIndex, subIndexTwo }) => (
+    <React.Fragment key={index}>
+      <Row
+        key={`CO${index}`}
+        rowData={data}
+        rowIndex={index}
+        istittle={false}
+        fatherIndex={fatherIndex}
+        subIndexTwo={subIndexTwo}
+      />
+      {data.subCategories?.map((childData, childIndex) => (
+        <RecursiveRow
+          fatherIndex={fatherIndex}
+          subIndexTwo={childIndex}
+          key={`CO${index}-${childIndex}`}
+          data={childData}
+          index={childIndex}
+        />
+      ))}
+    </React.Fragment>
+  );
 
   return (
     <div className={styles.spreadsheet}>
-      <Column
-        colData={head.map((rowData) => rowData)}
-        onFocus={(rowIndex) => handleCellFocus(rowIndex, 0)}
-      />
+      <Column colData={head.map((rowData) => rowData)} />
+      {allCategories?.map((categoryData, categoryIndex) => (
+        <>
+          {categoryData.subCategories?.map((childData, childIndex) => (
+            <RecursiveRow
+              fatherIndex={categoryIndex}
+              subIndexTwo={childIndex}
+              key={`CO${categoryIndex}-${childIndex}`}
+              data={childData}
+              index={childIndex}
+            />
+          ))}
+        </>
+      ))}
     </div>
   );
 };
-
 export default Spreadsheet;

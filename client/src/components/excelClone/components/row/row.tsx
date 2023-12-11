@@ -3,20 +3,32 @@ import styles from './row.module.css';
 import Cell from '../cell/cell';
 // Hooks
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-const Row = ({ rowData, onFocus, rowIndex, istittle }) => {
-  const impData = [rowIndex, '', '', '', '', ''];
+const Row = ({ rowData, rowIndex, istittle, fatherIndex, subIndexTwo }) => {
+  const { allCategories } = useSelector((state) => state.categories);
+  const impData = [
+    rowIndex,
+    allCategories[fatherIndex]?.categoryName,
+    '',
+    '',
+    rowData.categoryName ? rowData.categoryName : 'simon',
+    rowData.categoryName ? rowData.categoryName : 'simon',
+  ];
   useEffect(() => {
-    console.log(rowIndex);
+    console.log(
+      `EN ${rowData.categoryName} FatherIndex${fatherIndex} y en subIndex${subIndexTwo}}`,
+    );
   });
 
   return (
     <div className={styles.row}>
       {impData.map((cellData, colIndex) => (
         <Cell
+          fatherIndex={fatherIndex}
+          subIndexTwo={subIndexTwo}
           key={colIndex}
           value={cellData}
-          onFocus={() => onFocus(colIndex)}
           row={rowIndex}
           col={colIndex}
           istittle={istittle}

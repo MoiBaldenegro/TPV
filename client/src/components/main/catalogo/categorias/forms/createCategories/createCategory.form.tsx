@@ -2,10 +2,7 @@ import styles from './createCategories.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 // icons
-import disquet from '../../../../../../assets/public/disquetIcon.svg';
-import createIcon from '../../../../../../assets/public/disquetIcon.svg';
 import { createCategoryAction } from '../../../../../../redux/actions/catalogo/categoriesActions/createCategories';
-import Spreadsheet from '../../../../../excelClone/components/spreadSheet/spreadsheet';
 import TableExcels from '../../../../../excelClone/tableExcel';
 
 interface Props {

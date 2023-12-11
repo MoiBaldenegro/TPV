@@ -4,8 +4,9 @@ import { useDispatch } from 'react-redux';
 import { updateCell } from '../../../../redux/actions/tableExcels/updateCell';
 // Icons
 import createCellIcon from '../../../../assets/public/createCell.svg';
+import { useEffect } from 'react';
 
-const Cell = ({ value, row, col, istittle }) => {
+const Cell = ({ value, row, col, istittle, fatherIndex, subIndexTwo }) => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -17,7 +18,7 @@ const Cell = ({ value, row, col, istittle }) => {
     <div className={styles.inputContainer}>
       <input
         type="text"
-        value={value}
+        value={`${value} -  FI-${fatherIndex} -  SUB-${subIndexTwo}`}
         onChange={handleChange}
         className={istittle ? styles.istittle : styles.inputCell}
       />
