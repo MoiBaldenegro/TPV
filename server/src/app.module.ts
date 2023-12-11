@@ -25,6 +25,7 @@ import { SubcategoryFourModule } from './catalogo/categories/subcategory-four/su
 import { SubcategoryThreeModule } from './catalogo/categories/subcategory-three/subcategory-three.module';
 import { SellTypesModule } from './sell-types/sell-types.module';
 import { EmployeesModule } from './usuarios/employees/employees.module';
+import { XlsModule } from './exports/xls/xls.module';
 
 @Module({
   imports: [
@@ -56,6 +57,7 @@ import { EmployeesModule } from './usuarios/employees/employees.module';
     SubcategoryFourModule,
     SellTypesModule,
     EmployeesModule,
+    XlsModule,
   ],
   controllers: [],
   providers: [],
