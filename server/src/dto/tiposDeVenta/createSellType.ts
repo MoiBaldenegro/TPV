@@ -14,19 +14,19 @@ export class CreateSellTypeDto {
 
   @IsDefined()
   @IsNotEmpty()
-  @Length(0, 35)
+  @Length(1, 35)
   @IsString()
   sellName: string;
 
   @IsString()
   @IsDefined()
   @IsNotEmpty()
-  @Length(0, 35)
+  @Length(1, 35)
   color: string;
 
   @IsString()
   @IsDefined()
   @IsNotEmpty()
-  @Length(0, 35)
+  @Length(1, 35)
   status: 'enabled' | 'disabled';
 }

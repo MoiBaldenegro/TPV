@@ -52,7 +52,7 @@ export class SellTypesController {
       if (error.code === 11000) {
         throw new NotFoundException('Ya existe este turno');
       }
-      throw new NotFoundException('Ha ocurrido un error inesperado');
+      throw new NotFoundException(`Ha ocurrido un error inesperado: ${error}`);
     }
   }
 
