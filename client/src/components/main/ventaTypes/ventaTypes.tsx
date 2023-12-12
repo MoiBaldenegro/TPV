@@ -1,6 +1,14 @@
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './ventaTypes.module.css';
+import { useEffect } from 'react';
 
 export default function VentaTypes() {
+  const dispatch = useDispatch();
+  const { allSellTypes } = useSelector((state) => state.sellTypes);
+
+  useEffect(() => {
+    console.log(allSellTypes);
+  }, []);
   return (
     <div className={styles.container}>
       <section className={styles.head}>

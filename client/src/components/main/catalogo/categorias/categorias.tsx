@@ -26,6 +26,7 @@ import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
 import { useState } from 'react';
 // Utils
 import { toggleCategory } from './utils/categoryExpansion';
+import ExportCategoriesModal from './modals/exportCategories/exportCategories';
 
 export default function Categorias() {
   // Modales
@@ -35,6 +36,7 @@ export default function Categorias() {
   const updateOneCategory = useModal('updateOneCategory');
   const AuthDiscontinue = useModal('AuthDiscontinue');
   const confirmChanges = useModal('confirmChanges');
+  const exportCategories = useModal('exportCategories');
 
   //////////////////////////////////////////////////////////////////////////////////////
   // States
@@ -79,11 +81,17 @@ export default function Categorias() {
         <div className={styles.categoriesButtonsContainer}>
           <button
             className={styles.exportCategories}
-            onClick={saveCategories.openModal}
+            onClick={exportCategories.openModal}
           >
             <img src={exportIcon} alt="export-icon" />
             <span>Exportar categorias</span>
           </button>
+          <ExportCategoriesModal
+            isOpen={exportCategories.isOpen}
+            onClose={exportCategories.closeModal}
+          >
+            Confirmar
+          </ExportCategoriesModal>
           <button
             className={styles.importCategories}
             onClick={uploadCategories.openModal}

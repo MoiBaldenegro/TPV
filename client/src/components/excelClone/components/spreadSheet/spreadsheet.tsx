@@ -27,45 +27,56 @@ const Spreadsheet = () => {
       <Column colData={head.map((rowData) => rowData)} />
       {allCategories?.map((categoryData, categoryIndex) => (
         <>
-          <Row
-            rowIndex={categoryIndex}
-            key={categoryIndex}
-            rowData={categoryData}
-            istittle={false}
-            fatherIndex={categoryIndex}
-            subIndexTwo={categoryIndex}
-          />
+          {categoryData.subCategories?.length <= 0 && (
+            <Row
+              rowIndex={categoryIndex}
+              key={categoryIndex}
+              rowData={categoryData}
+              istittle={false}
+              fatherIndex={categoryIndex}
+              subIndexTwo={categoryIndex}
+            />
+          )}
+
           {categoryData.subCategories?.map((childData, childIndex) => (
             <>
-              <SubCategoryOne
-                rowIndex={childIndex}
-                key={childIndex}
-                rowData={childData}
-                istittle={false}
-                fatherIndex={categoryIndex}
-                subcategoryOneIndex={childIndex}
-              />
+              {childData.SubCategories?.length <= 0 && (
+                <SubCategoryOne
+                  rowIndex={childIndex}
+                  key={childIndex}
+                  rowData={childData}
+                  istittle={false}
+                  fatherIndex={categoryIndex}
+                  subcategoryOneIndex={childIndex}
+                />
+              )}
               {childData.subCategories?.map((childDataTwo, childIndexTwo) => (
                 <>
-                  <SubCategoryTwo
-                    rowIndex={childIndexTwo}
-                    key={childIndexTwo}
-                    rowData={childDataTwo}
-                    istittle={false}
-                    fatherIndex={childIndex}
-                    subcategoryTwoIndex={childIndexTwo}
-                  />
+                  {childDataTwo.subCategories?.length <= 0 && (
+                    <SubCategoryTwo
+                      rowIndex={childIndexTwo}
+                      key={childIndexTwo}
+                      rowData={childDataTwo}
+                      istittle={false}
+                      fatherIndex={childIndex}
+                      subcategoryTwoIndex={childIndexTwo}
+                    />
+                  )}
+
                   {childDataTwo.subCategories?.map(
                     (childDataThree, childIndexThree) => (
                       <>
-                        <SubCategoryThree
-                          rowIndex={childIndexThree}
-                          key={childIndexThree}
-                          rowData={childDataThree}
-                          istittle={false}
-                          fatherIndex={childIndexTwo - 1} // El enigma sin resolver M16
-                          subcategoryThreeIndex={childIndexThree}
-                        />
+                        {childDataThree.subCategories?.length <= 0 && (
+                          <SubCategoryThree
+                            rowIndex={childIndexThree}
+                            key={childIndexThree}
+                            rowData={childDataThree}
+                            istittle={false}
+                            fatherIndex={childIndexTwo - 1} // El enigma sin resolver M16
+                            subcategoryThreeIndex={childIndexThree}
+                          />
+                        )}
+
                         {childDataThree.subCategories?.map(
                           (childDataFour, childIndexFour) => (
                             <SubCategoryFour

@@ -6,7 +6,7 @@ import {
   TILLS_REQUEST,
 } from './actionTypes';
 
-//Get categories
+//Get till
 export const getTillsAction = () => {
   return async (dispatch) => {
     dispatch({ type: TILLS_REQUEST });
