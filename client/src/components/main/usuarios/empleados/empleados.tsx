@@ -53,12 +53,12 @@ export default function Empleados() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th className={styles.tHeadCategoria}>Código</th>
-              <th className={styles.tHeadClave}>Nombre completo</th>
-              <th className={styles.tHeadClave}>Estatus</th>
-              <th className={styles.tHeadClave}>Perfil</th>
-              <th className={styles.tHeadProducto}>Turno</th>
-              <th className={styles.tHeadProducto}>Última actualización</th>
+              <th className={styles.tHeadCode}>Código</th>
+              <th className={styles.tHeadName}>Nombre completo</th>
+              <th className={styles.tHeadStatus}>Estatus</th>
+              <th className={styles.tHeadProfile}>Perfil</th>
+              <th className={styles.tHeadShift}>Turno</th>
+              <th className={styles.tHeadCreatedAt}>Última actualización</th>
               <th className={styles.tHeadActions}>Acciones</th>
             </tr>
           </thead>

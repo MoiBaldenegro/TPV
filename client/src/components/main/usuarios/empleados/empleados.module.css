@@ -317,46 +317,37 @@
   overflow: hidden;   
 }
 
-.tHeadCategoria,
-.tHeadClave,
-.tHeadProducto,
-.tHeadPorcion,
-.tHeadPrice,
-.tHeadSuggestedPrice,
-.tHeadUtility,
+.tHeadCode,
+.tHeadName,
+.tHeadStatus,
+.tHeadProfile,
+.tHeadShift,
+.tHeadCreatedAt,
 .tHeadActions{
 text-align: left;
 text-indent: 8px;
 background-color: #F9F9F966;
-width: 464px;
 height:56px;
 padding: 16px;
 gap: 8px;
 }
-.tHeadCategoria{
-width: 22%;
+.tHeadName{
+width: 35%;
 }
-.tHeadClave{
-width: 10%;
-}
-.tHeadProducto{
-width: 23%;
-}
-.tHeadActions{
-text-indent: 15px;
-}
-.tHeadPorcion{
-width: 8%;
-}
-.tHeadPrice{
-width: 8%;
-}
-.tHeadSuggestedPrice{
-width: 8%;
-}
-.tHeadUtility{
-width: 8%;
-}
+.tHeadCode{
+  width: 10%;
+  }
+
+  .tHeadCreatedAt{
+    width: 25%;
+    }
+    .tHeadShift{
+      width: 15%;
+      }
+      .tHeadActions{
+        text-indent: -10px;
+        }
+
 .tableRows{
 text-indent: 25px;
 }
