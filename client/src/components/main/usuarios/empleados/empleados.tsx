@@ -2,7 +2,6 @@ import styles from './empleados.module.css';
 // Hook
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { useModal } from '../../../../hooks/useModals';
 
 // icons
 import createIcon from '../../../../assets/public/createIcon.svg';
@@ -11,23 +10,19 @@ import deleteIcon from '../../../../assets/public/bloquedIcon.svg';
 import enabledIcon from '../../../../assets/public/enabledIcon.svg';
 import searchIcon from '../../../../assets/categorias/searchIcon.svg';
 // Actions
-import { getMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/getMenu';
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
+import { getEmployeesAction } from '../../../../redux/actions/usuarios/employeesActions/getEmployees';
 
 export default function Empleados() {
   const dispatch = useDispatch();
-  const { allMenus } = useSelector((state) => state.menus);
-  // MODALS
-  const uploadMenus = useModal('uploadMenus');
-  const saveMenus = useModal('saveMenus');
+  const { allEmployees } = useSelector((state) => state.employees);
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueMenusAction(id, body));
   };
 
-  const week = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
   useEffect(() => {
-    dispatch(getMenusAction());
+    dispatch(getEmployeesAction());
   }, []);
   return (
     <div className={styles.container}>
@@ -68,14 +63,14 @@ export default function Empleados() {
             </tr>
           </thead>
           <tbody>
-            {allMenus?.map((element) => (
+            {allEmployees?.map((element) => (
               <tr key={element._id}>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
+                <td className={styles.tableRows}>{element.code}</td>
+                <td className={styles.tableRows}>{element.employeeName}</td>
+                <td className={styles.tableRows}>{element.status}</td>
+                <td className={styles.tableRows}>{element.profile}</td>
+                <td className={styles.tableRows}>{element.shift}</td>
+                <td className={styles.tableRows}>{element.createdAt}</td>
                 <td className={styles.buttonsContainer}>
                   {element.status === 'enabled' ? (
                     <>

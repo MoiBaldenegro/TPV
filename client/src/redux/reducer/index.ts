@@ -14,6 +14,7 @@ import { spreadsheetReducer } from './tableExcelsReducer/spreadSheet.Reducer';
 import tillsReducer from './caja/tillReducer';
 import sellTypesReducer from './TiposDeVentaReducer/sellTypesReducer';
 import departamentsReducer from './usuarios/departamentsReducer/departamentsReducer';
+import employeesReducer from './usuarios/employeesReducer/employeesReducer';
 
 const rootReducer = combineReducers({
   // Catalogo
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   cancellationReasons: cancellationReasonsReducer,
   // Usuarios
   departaments: departamentsReducer,
+  employees: employeesReducer,
 
   // TableExcels
   // Caja

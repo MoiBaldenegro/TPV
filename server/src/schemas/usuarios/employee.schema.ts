@@ -1,6 +1,6 @@
 import { SchemaFactory, Schema, Prop } from '@nestjs/mongoose';
 
-@Schema()
+@Schema({ timestamps: true })
 export class Employee {
   @Prop({
     unique: true,
