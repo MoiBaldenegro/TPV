@@ -13,7 +13,7 @@ export class SellType {
     trim: true,
     required: true,
   })
-  SellName: string;
+  sellName: string;
 
   @Prop({
     trim: true,
