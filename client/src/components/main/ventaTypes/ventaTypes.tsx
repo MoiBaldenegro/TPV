@@ -3,6 +3,11 @@ import styles from './ventaTypes.module.css';
 import { useEffect } from 'react';
 import { getSellTypesAction } from '../../../redux/actions/tiposDeVenta/getSellTypes';
 
+// Icons
+import update from '../../../assets/public/updateIcon.svg';
+import deleteIcon from '../../../assets/public/bloquedIcon.svg';
+import enabledIcon from '../../../assets/public/enabledIcon.svg';
+
 export default function VentaTypes() {
   const dispatch = useDispatch();
   const { allSellTypes } = useSelector((state) => state.sellTypes);
@@ -19,17 +24,48 @@ export default function VentaTypes() {
       <section className={styles.mainSection}>
         <table className={styles.table}>
           <thead>
-            <th>Clave</th>
-            <th>Tipo de venta</th>
-            <th>Última actualización</th>
-            <th>Acciones</th>
+            <th className={styles.tHeadCode}>Clave</th>
+            <th className={styles.tHeadSellType}>Tipo de venta</th>
+            <th className={styles.tHeadUpdateDate}>Última actualización</th>
+            <th className={styles.tHeadActions}>Acciones</th>
           </thead>
           <tbody>
             {allSellTypes?.map((element) => (
               <tr>
-                <td>{element.code}</td>
-                <td>{element.sellName}</td>
-                <td>{element.createAt}</td>
+                <td className={styles.tableRows}>{element.code}</td>
+                <td className={styles.tableRows}>{element.sellName}</td>
+                <td className={styles.tableRows}>{element.createdAt}</td>
+                <td className={styles.buttonsContainer}>
+                  {element.status === 'enabled' ? (
+                    <>
+                      <button className={styles.actionButtonsFirst}>
+                        <img src={update} alt="update-icon" />
+                      </button>
+                      <button
+                        className={styles.actionButtonsSecond}
+                        onClick={() => {
+                          toggleStatus(element._id, element.status);
+                        }}
+                      >
+                        <img src={deleteIcon} alt="delete-icon" />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button className={styles.actionButtonsFirstEnabled}>
+                        <img src={update} alt="update-icon" />
+                      </button>
+                      <button
+                        className={styles.actionButtonsSecond}
+                        onClick={() => {
+                          toggleStatus(element._id, element.status);
+                        }}
+                      >
+                        <img src={enabledIcon} alt="enabled-icon" />
+                      </button>
+                    </>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>

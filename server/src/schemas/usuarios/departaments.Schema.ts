@@ -7,7 +7,7 @@ export class Departament {
     required: true,
     trim: true,
   })
-  code: true;
+  code: string;
 
   @Prop({
     unique: true,

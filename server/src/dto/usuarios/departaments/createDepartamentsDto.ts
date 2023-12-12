@@ -5,7 +5,7 @@ export class createDepartamentDto {
   @IsDefined()
   @IsNotEmpty()
   @Length(1, 2)
-  code: true;
+  code: string;
 
   @IsString()
   @IsDefined()
