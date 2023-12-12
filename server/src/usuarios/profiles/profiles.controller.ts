@@ -24,6 +24,7 @@ export class ProfilesController {
       if (!profilesArray) {
         throw new NotFoundException('No se han encontrado perfiles');
       }
+      return profilesArray;
     } catch (error) {
       throw new NotFoundException('Ha ocurrido un error inesperado');
     }
