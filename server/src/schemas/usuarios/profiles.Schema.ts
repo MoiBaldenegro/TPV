@@ -18,7 +18,7 @@ export class Profile {
     required: true,
     trim: true,
   })
-  profileName: true;
+  profileName: string;
 }
 
 export const ProfileSchema = SchemaFactory.createForClass(Profile);
