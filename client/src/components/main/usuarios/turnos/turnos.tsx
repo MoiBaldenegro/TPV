@@ -2,35 +2,26 @@ import styles from './turnos.module.css';
 // Hook
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { useModal } from '../../../../hooks/useModals';
 
 // icons
 import createIcon from '../../../../assets/public/createIcon.svg';
 import update from '../../../../assets/public/updateIcon.svg';
 import deleteIcon from '../../../../assets/public/bloquedIcon.svg';
 import enabledIcon from '../../../../assets/public/enabledIcon.svg';
-import eyeIcon from '../../../../assets/public/openEye.svg';
 
-// import arrow from "../../../../assets/public/arrow.svg"
-import filterIcon from '../../../../assets/public/filterIcon.svg';
-import searchIcon from '../../../../assets/public/searchIcon.svg';
-import { getMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/getMenu';
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
+import { getShiftsAction } from '../../../../redux/actions/usuarios/shiftsActions/getShifts';
 
 export default function Turnos() {
   const dispatch = useDispatch();
-  const { allMenus } = useSelector((state) => state.menus);
-  // MODALS
-  const uploadMenus = useModal('uploadMenus');
-  const saveMenus = useModal('saveMenus');
+  const { allShifts } = useSelector((state) => state.shifts);
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueMenusAction(id, body));
   };
 
-  const week = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
   useEffect(() => {
-    dispatch(getMenusAction());
+    dispatch(getShiftsAction());
   }, []);
   return (
     <div className={styles.container}>
@@ -47,20 +38,20 @@ export default function Turnos() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th className={styles.tHeadCategoria}>Turno</th>
-              <th className={styles.tHeadClave}>Inicio de turno</th>
-              <th className={styles.tHeadProducto}>Fin de turno</th>
-              <th className={styles.tHeadPorcion}>Ultima actualizacion</th>
+              <th className={styles.tHeadShift}>Turno</th>
+              <th className={styles.tHeadStartShift}>Inicio de turno</th>
+              <th className={styles.tHeadEndShift}>Fin de turno</th>
+              <th className={styles.tHeadUpdateDate}>Ultima actualizacion</th>
               <th className={styles.tHeadActions}>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {allMenus?.map((element) => (
+            {allShifts?.map((element) => (
               <tr key={element._id}>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
+                <td className={styles.tableRows}>{element.shiftName}</td>
+                <td className={styles.tableRows}>{element.timeStartShift}</td>
+                <td className={styles.tableRows}>{element.timeEndShift}</td>
+                <td className={styles.tableRows}>{element.createdAt}</td>
                 <td className={styles.buttonsContainer}>
                   {element.status === 'enabled' ? (
                     <>

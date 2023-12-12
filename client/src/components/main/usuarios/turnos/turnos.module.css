@@ -45,7 +45,6 @@
     border-radius: 16px;
     background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
     align-items: center;
-
 }
 .leftSection{
     width: 378px;
@@ -317,46 +316,25 @@
     overflow: hidden;   
 }
 
-.tHeadCategoria,
-.tHeadClave,
-.tHeadProducto,
-.tHeadPorcion,
-.tHeadPrice,
-.tHeadSuggestedPrice,
-.tHeadUtility,
+.tHeadShift,
+.tHeadStartShift,
+.tHeadEndShift,
+.tHeadUpdateDate,
 .tHeadActions{
   text-align: left;
   text-indent: 8px;
   background-color: #F9F9F966;
-  width: 464px;
   height:56px;
   padding: 16px;
   gap: 8px;
 }
-.tHeadCategoria{
+.tHeadShift{
   width: 22%;
 }
-.tHeadClave{
-  width: 10%;
-}
-.tHeadProducto{
-  width: 23%;
-}
 .tHeadActions{
-  text-indent: 15px;
+  text-indent: -10px;
 }
-.tHeadPorcion{
-  width: 8%;
-}
-.tHeadPrice{
-  width: 8%;
-}
-.tHeadSuggestedPrice{
-  width: 8%;
-}
-.tHeadUtility{
-  width: 8%;
-}
+
 .tableRows{
 text-indent: 25px;
 }

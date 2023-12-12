@@ -2,7 +2,6 @@ import styles from './perfiles.module.css';
 // Hook
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { useModal } from '../../../../hooks/useModals';
 
 // icons
 import createIcon from '../../../../assets/public/createIcon.svg';
@@ -11,23 +10,19 @@ import deleteIcon from '../../../../assets/public/bloquedIcon.svg';
 import enabledIcon from '../../../../assets/public/enabledIcon.svg';
 import searchIcon from '../../../../assets/categorias/searchIcon.svg';
 // Actions
-import { getMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/getMenu';
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
+import { getProfilesAction } from '../../../../redux/actions/usuarios/profilesActions/getProfiles';
 
 export default function Perfiles() {
   const dispatch = useDispatch();
-  const { allMenus } = useSelector((state) => state.menus);
-  // MODALS
-  const uploadMenus = useModal('uploadMenus');
-  const saveMenus = useModal('saveMenus');
+  const { allProfiles } = useSelector((state) => state.profiles);
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueMenusAction(id, body));
   };
 
-  const week = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
   useEffect(() => {
-    dispatch(getMenusAction());
+    dispatch(getProfilesAction());
   }, []);
   return (
     <div className={styles.container}>
@@ -58,22 +53,20 @@ export default function Perfiles() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th className={styles.tHeadCategoria}>Departamento</th>
-              <th className={styles.tHeadClave}>Clave del perfil</th>
-              <th className={styles.tHeadClave}>Perfil</th>
-              <th className={styles.tHeadClave}>Turno</th>
-              <th className={styles.tHeadProducto}>Ultima Actualizacion</th>
+              <th className={styles.tHeadDepartament}>Departamento</th>
+              <th className={styles.tHeadCode}>Clave del perfil</th>
+              <th className={styles.tHeadProfile}>Perfil</th>
+              <th className={styles.tHeadCreatedAt}>Ultima Actualizacion</th>
               <th className={styles.tHeadActions}>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {allMenus?.map((element) => (
+            {allProfiles?.map((element) => (
               <tr key={element._id}>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
+                <td className={styles.tableRows}>{element.departament}</td>
+                <td className={styles.tableRows}>{element.code}</td>
+                <td className={styles.tableRows}>{element.profileName}</td>
+                <td className={styles.tableRows}>{element.createdAt}</td>
                 <td className={styles.buttonsContainer}>
                   {element.status === 'enabled' ? (
                     <>
