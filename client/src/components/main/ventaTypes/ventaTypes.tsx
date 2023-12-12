@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ventaTypes.module.css';
 import { useEffect } from 'react';
+import { getSellTypesAction } from '../../../redux/actions/tiposDeVenta/getSellTypes';
 
 export default function VentaTypes() {
   const dispatch = useDispatch();
   const { allSellTypes } = useSelector((state) => state.sellTypes);
 
   useEffect(() => {
+    dispatch(getSellTypesAction());
     console.log(allSellTypes);
   }, []);
   return (
@@ -23,12 +25,13 @@ export default function VentaTypes() {
             <th>Acciones</th>
           </thead>
           <tbody>
-            <tr>
-              <td>asd</td>
-              <td>asd</td>
-              <td>asd</td>
-              <td>asd</td>
-            </tr>
+            {allSellTypes?.map((element) => (
+              <tr>
+                <td>{element.code}</td>
+                <td>{element.sellName}</td>
+                <td>{element.createAt}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <div className={styles.tableFooter}></div>
