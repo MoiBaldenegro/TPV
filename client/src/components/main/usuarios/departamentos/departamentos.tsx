@@ -13,21 +13,18 @@ import searchIcon from '../../../../assets/categorias/searchIcon.svg';
 // Actions
 import { getMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/getMenu';
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
+import { getDepartamentsAction } from '../../../../redux/actions/usuarios/departamentsActions/getDepartaments';
 
 export default function Departamentos() {
   const dispatch = useDispatch();
-  const { allMenus } = useSelector((state) => state.menus);
-  // MODALS
-  const uploadMenus = useModal('uploadMenus');
-  const saveMenus = useModal('saveMenus');
+  const { allDepartaments } = useSelector((state) => state.departaments);
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueMenusAction(id, body));
   };
 
-  const week = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
   useEffect(() => {
-    dispatch(getMenusAction());
+    dispatch(getDepartamentsAction());
   }, []);
   return (
     <div className={styles.container}>
@@ -58,18 +55,18 @@ export default function Departamentos() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th className={styles.tHeadCategoria}>Clave</th>
-              <th className={styles.tHeadClave}>Departamento</th>
-              <th className={styles.tHeadProducto}>Ultima Actualizacion</th>
+              <th className={styles.tHeadClave}>Clave</th>
+              <th className={styles.tHeadCategoria}>Departamento</th>
+              <th className={styles.tHeadCreatedAt}>Ultima Actualizacion</th>
               <th className={styles.tHeadActions}>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {allMenus?.map((element) => (
+            {allDepartaments?.map((element) => (
               <tr key={element._id}>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
-                <td className={styles.tableRows}></td>
+                <td className={styles.tableRows}>{element.code}</td>
+                <td className={styles.tableRows}>{element.departamentName}</td>
+                <td className={styles.tableRows}>{element.createdAt}</td>
                 <td className={styles.buttonsContainer}>
                   {element.status === 'enabled' ? (
                     <>

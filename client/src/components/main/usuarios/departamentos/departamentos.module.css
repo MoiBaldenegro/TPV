@@ -319,7 +319,7 @@
 
 .tHeadCategoria,
 .tHeadClave,
-.tHeadProducto,
+.tHeadCreatedAt,
 .tHeadPorcion,
 .tHeadPrice,
 .tHeadSuggestedPrice,
@@ -334,29 +334,15 @@
   gap: 8px;
 }
 .tHeadCategoria{
-  width: 22%;
+  width: 50%;
 }
-.tHeadClave{
-  width: 10%;
-}
-.tHeadProducto{
-  width: 23%;
+.tHeadCreatedAt{
+  width: 35%;
 }
 .tHeadActions{
-  text-indent: 15px;
+  text-indent: -10px;
 }
-.tHeadPorcion{
-  width: 8%;
-}
-.tHeadPrice{
-  width: 8%;
-}
-.tHeadSuggestedPrice{
-  width: 8%;
-}
-.tHeadUtility{
-  width: 8%;
-}
+
 .tableRows{
 text-indent: 25px;
 }

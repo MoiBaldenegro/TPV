@@ -13,6 +13,7 @@ import cancellationReasonsReducer from './ventas/cancellationReasonReducer/cance
 import { spreadsheetReducer } from './tableExcelsReducer/spreadSheet.Reducer';
 import tillsReducer from './caja/tillReducer';
 import sellTypesReducer from './TiposDeVentaReducer/sellTypesReducer';
+import departamentsReducer from './usuarios/departamentsReducer/departamentsReducer';
 
 const rootReducer = combineReducers({
   // Catalogo
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   cancellations: cancellationsReducer,
   cancellationReasons: cancellationReasonsReducer,
   // Usuarios
+  departaments: departamentsReducer,
 
   // TableExcels
   // Caja
