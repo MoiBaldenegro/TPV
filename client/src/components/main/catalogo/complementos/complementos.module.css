@@ -30,6 +30,7 @@
 .btnHead img,
 .btnHeadCreate img{
     margin-right: 10px;
+    transition: 300ms;
 }
 .btnHeadCreate{
     width: 200px;
@@ -358,9 +359,11 @@ text-indent: 25px;
 }
 .actionButtonsSecond:hover,
 .actionButtonsFirst:hover,
-.actionButtonsFirstEnabled:hover{
+.actionButtonsFirstEnabled:hover,
+.btnHead:hover,
+.btnHeadCreate:hover{
    /*  opacity: .6; */
-   filter:brightness(0.85);
+   filter:brightness(0.80);
 }
 
 .rowDisabled{

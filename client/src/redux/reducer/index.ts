@@ -37,11 +37,10 @@ const rootReducer = combineReducers({
   employees: employeesReducer,
   profiles: profilesReducer,
   shifts: shiftsReducer,
-
   // TableExcels
+  spreadsheet: spreadsheetReducer,
   // Caja
   tills: tillsReducer,
-  spreadsheet: spreadsheetReducer,
   // Tipos de venta
   sellTypes: sellTypesReducer,
 });

@@ -20,6 +20,7 @@
     background: #F9F9F933;
     color: #f9f9f9;
     border: none;
+    transition: 300ms;
 }
 .btnHead .btnHeadCreate, img, span{
     text-align: center;
@@ -368,9 +369,10 @@ text-indent: 25px;
 }
 .actionButtonsSecond:hover,
 .actionButtonsFirst:hover,
-.actionButtonsFirstEnabled:hover{
+.actionButtonsFirstEnabled:hover,
+.btnHead:hover, .btnHeadCreate:hover{
    /*  opacity: .6; */
-   filter:brightness(0.85);
+   filter:brightness(0.80);
 }
 .rowDisabled{
   background-color: #2e2c2d31;

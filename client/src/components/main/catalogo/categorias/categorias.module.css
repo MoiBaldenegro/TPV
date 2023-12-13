@@ -75,9 +75,12 @@
 }
 .actionButtonsSecond:hover,
 .actionButtonsFirst:hover,
-.actionButtonsFirstEnabled:hover{
+.actionButtonsFirstEnabled:hover,
+.createCategories:hover,
+.importCategories:hover,
+.exportCategories:hover{
    /*  opacity: .6; */
-   filter:brightness(0.85);
+   filter:brightness(0.80);
 }
 .tableRows{
 text-indent: 25px;
@@ -133,17 +136,14 @@ text-indent: 25px;
     align-items: center;
     gap: 10px;
     border: none;
+    transition: 300ms;
 }
 
 .createCategories{
     background: #99000F;
     width: 160px;
 }
-.createCategories:hover,
-.importCategories:hover,
-.exportCategories:hover{
-    filter: brightness(0.8);
-}
+
 .searchIcon{
     margin-left: 15px;
 }

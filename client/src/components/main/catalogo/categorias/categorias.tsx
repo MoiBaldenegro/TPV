@@ -27,6 +27,7 @@ import { useState } from 'react';
 // Utils
 import { toggleCategory } from './utils/categoryExpansion';
 import ExportCategoriesModal from './modals/exportCategories/exportCategories';
+import { updateCategoriesAction } from '../../../../redux/actions/catalogo/categoriesActions/updateCategories';
 
 export default function Categorias() {
   // Modales
@@ -42,8 +43,9 @@ export default function Categorias() {
   // States
   // Category expansion
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
-
   const [buttonParams, setButtonParams] = useState();
+  // UpdateOneCategory
+  const [updateValue, setUpdateValue] = useState();
   const dispatch = useDispatch();
   const { allCategories } = useSelector((state) => state.categories);
 
@@ -60,6 +62,9 @@ export default function Categorias() {
   function restoreStatus(id, body, path) {
     dispatch(discontinueCategoriesAction(id, body, path));
   }
+  const updateCategory = (id, body, path) => {
+    dispatch(updateCategoriesAction(id, body, path));
+  };
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -138,8 +143,11 @@ export default function Categorias() {
           {updateOneCategory.isOpen &&
           updateOneCategory.modalName === 'updateOneCategory' ? (
             <UpdateOneCategory
+              actionType={updateCategory}
+              categoria={updateValue}
               isOpen={updateOneCategory.isOpen}
               onClose={updateOneCategory.closeModal}
+              openModal={confirmChanges.openModal}
             >
               Editar Categoria
             </UpdateOneCategory>
@@ -225,7 +233,14 @@ export default function Categorias() {
                       <>
                         <button
                           className={styles.actionButtonsFirst}
-                          onClick={() => updateOneCategory.openModal(categoria)}
+                          onClick={() => {
+                            updateOneCategory.openModal();
+                            setUpdateValue({
+                              id: categoria._id,
+                              body: categoria.categoryName,
+                              path: 'categories',
+                            });
+                          }}
                         >
                           <img src={update} alt="update-icon" />
                         </button>
@@ -307,9 +322,14 @@ export default function Categorias() {
                                 <>
                                   <button
                                     className={styles.actionButtonsFirst}
-                                    onClick={() =>
-                                      updateOneCategory.openModal(subCategory)
-                                    }
+                                    onClick={() => {
+                                      updateOneCategory.openModal();
+                                      setUpdateValue({
+                                        id: subCategory._id,
+                                        body: subCategory.categoryName,
+                                        path: 'subcategory-one',
+                                      });
+                                    }}
                                   >
                                     <img src={update} alt="update-icon" />
                                   </button>
@@ -399,11 +419,14 @@ export default function Categorias() {
                                                 className={
                                                   styles.actionButtonsFirst
                                                 }
-                                                onClick={() =>
-                                                  updateOneCategory.openModal(
-                                                    subSubCategory,
-                                                  )
-                                                }
+                                                onClick={() => {
+                                                  updateOneCategory.openModal();
+                                                  setUpdateValue({
+                                                    id: subSubCategory._id,
+                                                    body: subSubCategory.categoryName,
+                                                    path: 'subcategory-two',
+                                                  });
+                                                }}
                                               >
                                                 <img
                                                   src={update}
@@ -541,11 +564,14 @@ export default function Categorias() {
                                                             className={
                                                               styles.actionButtonsFirst
                                                             }
-                                                            onClick={() =>
-                                                              updateOneCategory.openModal(
-                                                                subSubSubCategory,
-                                                              )
-                                                            }
+                                                            onClick={() => {
+                                                              updateOneCategory.openModal();
+                                                              setUpdateValue({
+                                                                id: subSubSubCategory._id,
+                                                                body: subSubSubCategory.categoryName,
+                                                                path: 'subcategory-three',
+                                                              });
+                                                            }}
                                                           >
                                                             <img
                                                               src={update}
@@ -666,11 +692,16 @@ export default function Categorias() {
                                                                       className={
                                                                         styles.actionButtonsFirst
                                                                       }
-                                                                      onClick={() =>
-                                                                        updateOneCategory.openModal(
-                                                                          subSubSubSubCategory,
-                                                                        )
-                                                                      }
+                                                                      onClick={() => {
+                                                                        updateOneCategory.openModal();
+                                                                        setUpdateValue(
+                                                                          {
+                                                                            id: subSubSubSubCategory._id,
+                                                                            body: subSubSubSubCategory.categoryName,
+                                                                            path: 'subcategory-four',
+                                                                          },
+                                                                        );
+                                                                      }}
                                                                     >
                                                                       <img
                                                                         src={

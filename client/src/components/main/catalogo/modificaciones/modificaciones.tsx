@@ -21,6 +21,8 @@ import ButtonLoader from '../../../loaders/buttonLoader/buttonLoader';
 import UploadFiles from '../../../forms/uploadFile/uploadFile';
 import { createModifiers } from '../../../../redux/actions/catalogo/modifiersActions/createModifiers';
 import CreateModifierModal from './forms/createModifierModal';
+import ExportCategories from '../categorias/exporter/exportCategories';
+import { exportToExcel } from '../../../../utils/exporter';
 
 export default function Modificaciones() {
   // LocalState
@@ -57,7 +59,10 @@ export default function Modificaciones() {
       <section className={styles.head}>
         <h2>Modificadores</h2>
         <div>
-          <button className={styles.btnHead}>
+          <button
+            className={styles.btnHead}
+            onClick={() => exportToExcel(allModifiers)}
+          >
             <img src={exportIcon} alt="export-icon" />
             Exportar modificadores
           </button>

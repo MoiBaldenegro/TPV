@@ -24,6 +24,7 @@ import { discontinueDishesAction } from '../../../../redux/actions/catalogo/dish
 // Components
 import UploadFiles from '../../../forms/uploadFile/uploadFile';
 import CreateDishesModal from './forms/createDishes';
+import { exportToExcel } from '../../../../utils/exporter';
 
 export default function Complementos() {
   // MODALS
@@ -55,7 +56,12 @@ export default function Complementos() {
       <section className={styles.head}>
         <h2>Complementos</h2>
         <div>
-          <button className={styles.btnHead}>
+          <button
+            className={styles.btnHead}
+            onClick={() => {
+              exportToExcel(allDishes);
+            }}
+          >
             <img src={exportIcon} alt="export-icon" />
             Exportar complementos
           </button>

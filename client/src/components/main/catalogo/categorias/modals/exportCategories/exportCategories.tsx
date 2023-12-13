@@ -1,4 +1,4 @@
-import Exporter from '../../../../../exporter/exporter';
+import ExportCategories from '../../exporter/exportCategories';
 import styles from './exportCategories.module.css';
 interface Props {
   isOpen: any;
@@ -18,7 +18,7 @@ export default function ExportCategoriesModal({
           X
         </button>
         <h2>{children}</h2>
-        <Exporter />
+        <ExportCategories />
       </section>
     </div>
   );

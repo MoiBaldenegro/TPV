@@ -23,6 +23,7 @@ import { useModal } from '../../../../hooks/useModals';
 import UploadFiles from '../../../forms/uploadFile/uploadFile';
 import { createProductsAndPrices } from '../../../../redux/actions/catalogo/productsAndpricesActions/createProduct';
 import CreateProductsModal from './forms/createProducts';
+import { exportToExcel } from '../../../../utils/exporter';
 
 export default function ProductosYPrecios() {
   const dispatch = useDispatch();
@@ -51,7 +52,12 @@ export default function ProductosYPrecios() {
       <section className={styles.head}>
         <h2>Productos y precios</h2>
         <div>
-          <button className={styles.btnHead}>
+          <button
+            className={styles.btnHead}
+            onClick={() => {
+              exportToExcel(allProductsAndPrices);
+            }}
+          >
             <img src={exportIcon} alt="export-icon" />
             Exportar productos
           </button>
