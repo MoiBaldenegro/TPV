@@ -27,9 +27,10 @@ export default function CreateProductsModal({
     status: 'enabled',
   });
 
-  const handleChange = () => {
+  const handleChange = (name, event) => {
     console.log(product);
     setProduct({
+      ...product,
       [name]: event.target.value,
     });
   };
@@ -52,30 +53,34 @@ export default function CreateProductsModal({
             <input
               type="text"
               className={styles.input}
-              placeholder="Clave"
-              name="code"
-              onChange={handleChange}
+              placeholder="code"
+              onChange={(e) => {
+                handleChange('code', e);
+              }}
             />
             <input
               type="text"
               className={styles.input}
               placeholder="Categoria"
-              name="category"
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange('category', e);
+              }}
             />
             <input
               type="text"
               className={styles.input}
               placeholder="Nombre del producto"
-              name="categoryName"
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange('productName', e);
+              }}
             />
             <input
               type="text"
               className={styles.input}
               placeholder="Precio"
-              name="priceInSite"
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange('priceInSite', e);
+              }}
             />
           </form>
         </div>
