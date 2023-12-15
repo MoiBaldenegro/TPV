@@ -53,17 +53,17 @@ export default function CreateProductsModal({
             <input
               type="text"
               className={styles.input}
-              placeholder="code"
+              placeholder="Categoria"
               onChange={(e) => {
-                handleChange('code', e);
+                handleChange('category', e);
               }}
             />
             <input
               type="text"
               className={styles.input}
-              placeholder="Categoria"
+              placeholder="code"
               onChange={(e) => {
-                handleChange('category', e);
+                handleChange('code', e);
               }}
             />
             <input
