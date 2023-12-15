@@ -143,6 +143,18 @@
   margin-left: 380px;
   margin-top: 50px;
 
-
-
+  }
+  .form{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+  }
+ 
+  .input{
+    background-color: #fafafa2f;
+    padding: 8px;
+    border-radius: 8px;
+    color: #f9f9f9;
   }

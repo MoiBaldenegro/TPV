@@ -2,8 +2,9 @@ import styles from './createProducts.module.css';
 // Hooks
 import { useState } from 'react';
 //Icons
-import arrow from './../../../../../assets/public/arrow.svg';
 import arrowRigth from './../../../../../assets/public/arrowRigth.svg';
+import { useDispatch } from 'react-redux';
+import { createProductsAndPrices } from '../../../../../redux/actions/catalogo/productsAndpricesActions/createProduct';
 interface Props {
   isOpen: any;
   onClose: any;
@@ -15,14 +16,88 @@ export default function CreateProductsModal({
   children,
 }: Props) {
   const [toggleStatus, setToggleStatus] = useState(false);
+  const [product, setProduct] = useState({
+    code: 'ABC123',
+    category: 'Electronics',
+    productName: 'Smartphone',
+    priceInSite: '499.99',
+    priceToGo: '449.99',
+    priceCallOrder: '459.99',
+    priceDelivery: '479.99',
+    status: 'enabled',
+  });
+
+  const handleChange = () => {
+    console.log(product);
+    setProduct({
+      [name]: event.target.value,
+    });
+  };
+
+  const dispatch = useDispatch();
   return (
     <div className={styles.screen}>
       <section className={styles.modal}>
         <button className={styles.closeButton} onClick={onClose}>
           X
         </button>
+        <h1
+          className={styles.tittle}
+          style={{ marginLeft: '200px', marginTop: '25px' }}
+        >
+          {children}
+        </h1>
         <div className={styles.tittleContainer}>
-          <h1 className={styles.tittle}>{children}</h1>
+          <form action="" className={styles.form}>
+            <input
+              type="text"
+              className={styles.input}
+              placeholder="Clave"
+              name="code"
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              className={styles.input}
+              placeholder="Categoria"
+              name="category"
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              className={styles.input}
+              placeholder="Nombre del producto"
+              name="categoryName"
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              className={styles.input}
+              placeholder="Precio"
+              name="priceInSite"
+              onChange={handleChange}
+            />
+          </form>
+        </div>
+        <button
+          className={styles.nextButton}
+          onClick={() => {
+            dispatch(createProductsAndPrices(product));
+          }}
+        >
+          Siguiente
+          <img src={arrowRigth} alt="arrow-rigth" />
+        </button>
+      </section>
+    </div>
+  );
+}
+
+{
+  /*   
+
+
+<h1 className={styles.tittle}>{children}</h1>
           <span className={styles.textTittle}>
             Seleccione la categoría a la que se asignarán los productos.
           </span>
@@ -46,12 +121,11 @@ export default function CreateProductsModal({
               </div>
             </div>
           </div>
-        </div>
-        <button className={styles.nextButton}>
-          Siguiente
-          <img src={arrowRigth} alt="arrow-rigth" />
-        </button>
-      </section>
-    </div>
-  );
+
+
+
+
+
+
+*/
 }

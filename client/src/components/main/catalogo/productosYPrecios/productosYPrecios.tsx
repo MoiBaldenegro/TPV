@@ -24,7 +24,6 @@ import UploadFiles from '../../../forms/uploadFile/uploadFile';
 import { createProductsAndPrices } from '../../../../redux/actions/catalogo/productsAndpricesActions/createProduct';
 import CreateProductsModal from './forms/createProducts';
 import { exportToExcel } from '../../../../utils/exporter';
-import LinesComponent from '../../../elements/lines/lines';
 
 export default function ProductosYPrecios() {
   // Redux states
@@ -231,70 +230,49 @@ export default function ProductosYPrecios() {
                   >
                     {allCategories?.map((element) => (
                       <div className={styles.oneCategory}>
-                        <LinesComponent
-                          left="15px"
-                          top="40px"
-                          redLinePosition={1}
-                          items="290px"
-                        />
                         <span key={element._id} className={styles.option}>
                           {element.categoryName}
                         </span>
+                        <div></div>
                         {element.subCategories?.map((item) => (
                           <div className={styles.twoCategory}>
-                            <LinesComponent
-                              left="45px"
-                              top="82px"
-                              redLinePosition={1}
-                              items="80px"
-                            />
-                            <span key={item._id} className={styles.optionTwo}>
-                              {item.categoryName}
-                            </span>
-                            {item.subCategories?.map((itemThree) => (
-                              <div className={styles.threeCategory}>
-                                {itemThree.subCategories?.length >= 1 && (
-                                  <LinesComponent
-                                    left="70px"
-                                    top="164px"
-                                    redLinePosition={1}
-                                  />
-                                )}
-                                <span
-                                  key={itemThree._id}
-                                  className={styles.optionThree}
-                                >
-                                  {itemThree.categoryName}
-                                </span>
-                                {itemThree.subCategories?.map((itemFour) => (
-                                  <div className={styles.FourCategory}>
-                                    {itemFour.subCategories?.length >= 1 && (
-                                      <LinesComponent
-                                        left="90px"
-                                        top="208px"
-                                        redLinePosition={1}
-                                      />
-                                    )}
-                                    <span
-                                      key={itemFour._id}
-                                      className={styles.optionFour}
-                                    >
-                                      {itemFour.categoryName}
-                                    </span>
-                                    {itemFour.subCategories?.map((itemFive) => (
-                                      <div className={styles.fiveCategory}>
-                                        <span
-                                          key={itemFive._id}
-                                          className={styles.optionFive}
-                                        >
-                                          {itemFive.categoryName}
-                                        </span>
-                                      </div>
-                                    ))}
-                                  </div>
-                                ))}
-                              </div>
-                            ))}
+                            <div className={styles.twoCategoryRight}>
+                              <span key={item._id} className={styles.optionTwo}>
+                                {item.categoryName}
+                              </span>
+                              {item.subCategories?.map((itemThree) => (
+                                <div className={styles.threeCategory}>
+                                  <span
+                                    key={itemThree._id}
+                                    className={styles.optionThree}
+                                  >
+                                    {itemThree.categoryName}
+                                  </span>
+                                  {itemThree.subCategories?.map((itemFour) => (
+                                    <div className={styles.FourCategory}>
+                                      <span
+                                        key={itemFour._id}
+                                        className={styles.optionFour}
+                                      >
+                                        {itemFour.categoryName}
+                                      </span>
+                                      {itemFour.subCategories?.map(
+                                        (itemFive) => (
+                                          <div className={styles.fiveCategory}>
+                                            <span
+                                              key={itemFive._id}
+                                              className={styles.optionFive}
+                                            >
+                                              {itemFive.categoryName}
+                                            </span>
+                                          </div>
+                                        ),
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         ))}
                       </div>

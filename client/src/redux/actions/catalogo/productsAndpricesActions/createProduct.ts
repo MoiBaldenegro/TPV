@@ -8,7 +8,6 @@ import {
 
 export const createProductsAndPrices =
   (productsAndPrices) => async (dispatch) => {
-    console.log(`Depurando productos: ${productsAndPrices[1]._id}`);
     dispatch({ type: PRODUCTSANDPRICES_REQUEST });
     try {
       if (Array.isArray(productsAndPrices)) {

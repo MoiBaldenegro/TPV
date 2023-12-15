@@ -446,16 +446,12 @@ text-indent: 25px;
 
 }
 .optionTwo{
-  margin-left: 2vw;
 }
 .optionThree{
-  margin-left: 4vw;
 }
 .optionFour{
-  margin-left: 6vw;
 }
 .optionFive{
-  margin-left: 8vw;
 }
 .option:hover {
   background-color: #6e717442;
@@ -465,15 +461,17 @@ text-indent: 25px;
 /* //////////////*/
 
 .oneCategory{
-  width: 100%;
-  
+  width: 100%; 
+  position: relative;
 }
 .twoCategory{
-  border: 1px solid #ff0000;
+  display: flex;
   position:relative ;
 }
 
 .threeCategory{
+  border: 1px solid #1900ff;
+  position:relative;
 }
 
 .FourCategory{

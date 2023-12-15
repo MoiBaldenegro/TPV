@@ -23,25 +23,25 @@ export class Products {
     trim: true,
     default: 0.0,
   })
-  priceInSite: number;
+  priceInSite: string;
   @Prop({
     required: true,
     trim: true,
     default: 0.0,
   })
-  priceToGo: number;
+  priceToGo: string;
   @Prop({
     required: true,
     trim: true,
     default: 0.0,
   })
-  priceCallOrder: number;
+  priceCallOrder: string;
   @Prop({
     required: true,
     trim: true,
     default: 0.0,
   })
-  priceDelivery: number;
+  priceDelivery: string;
 
   @Prop({
     default: 'enabled',
