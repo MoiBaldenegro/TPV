@@ -24,10 +24,15 @@ import UploadFiles from '../../../forms/uploadFile/uploadFile';
 import { createProductsAndPrices } from '../../../../redux/actions/catalogo/productsAndpricesActions/createProduct';
 import CreateProductsModal from './forms/createProducts';
 import { exportToExcel } from '../../../../utils/exporter';
+import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
 
 export default function ProductosYPrecios() {
+  // Modals
+  const confirmChanges = useModal('confirmChanges');
   // Redux states
   const { allCategories } = useSelector((state) => state.categories);
+  const { loading } = useSelector((state) => state.products);
+  const { error } = useSelector((state) => state.products);
   // States
   const [activeSelect, setActiveSelect] = useState(false);
   const dispatch = useDispatch();
@@ -92,9 +97,22 @@ export default function ProductosYPrecios() {
           <CreateProductsModal
             isOpen={createProducts.isOpen}
             onClose={createProducts.closeModal}
+            openModal={confirmChanges.openModal}
           >
             Crear producto
           </CreateProductsModal>
+        ) : null}
+        {confirmChanges.isOpen &&
+        confirmChanges.modalName === 'confirmChanges' ? (
+          <ConfirmChangesModal
+            loading={loading}
+            errors={error}
+            isOpen={confirmChanges.isOpen}
+            onClose={confirmChanges.closeModal}
+            actionType={getProductsAndPricesAction}
+          >
+            Cambios guardados
+          </ConfirmChangesModal>
         ) : null}
       </section>
       <section className={styles.updateSection}>

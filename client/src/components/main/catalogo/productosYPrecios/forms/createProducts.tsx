@@ -6,11 +6,13 @@ import arrowRigth from './../../../../../assets/public/arrowRigth.svg';
 import { useDispatch } from 'react-redux';
 import { createProductsAndPrices } from '../../../../../redux/actions/catalogo/productsAndpricesActions/createProduct';
 interface Props {
+  openModal: () => void;
   isOpen: any;
   onClose: any;
   children: any;
 }
 export default function CreateProductsModal({
+  openModal,
   isOpen,
   onClose,
   children,
@@ -87,7 +89,7 @@ export default function CreateProductsModal({
         <button
           className={styles.nextButton}
           onClick={() => {
-            dispatch(createProductsAndPrices(product));
+            dispatch(createProductsAndPrices(product)), openModal(), onClose();
           }}
         >
           Siguiente

@@ -26,7 +26,7 @@ export const createProductsAndPrices =
         }
         if (res.status === 409) {
           dispatch({
-            type: PRODUCTSANDPRICES_CONFLICT,
+            type: PRODUCTSANDPRICES_FAILURE,
             error: 'Se han encontrado productos duplicados',
           });
           throw new Error('Este producto ya se encuentra listada');
@@ -42,7 +42,7 @@ export const createProductsAndPrices =
             'Ha ocurrido algo inesperado, la respuesta no contiene datos',
           );
         }
-        alert('producto creado con éxito.');
+        dispatch({ type: SAVE_PRODUCTSANDPRICES });
       }
     } catch (error) {
       if (axios.isCancel(error)) {
@@ -53,7 +53,7 @@ export const createProductsAndPrices =
         throw new Error(`La solicitud fue cancelada: ${error}`);
       } else if (error.response && error.response.status === 409) {
         dispatch({
-          type: PRODUCTSANDPRICES_CONFLICT,
+          type: PRODUCTSANDPRICES_FAILURE,
           error: 'Se han encontrado productos duplicados',
         });
         throw new Error('Este producto ya se encuentra listado');

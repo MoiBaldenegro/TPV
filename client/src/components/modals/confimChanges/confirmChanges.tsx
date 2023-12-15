@@ -5,6 +5,8 @@ import ConfirmLoader from '../../../components/loaders/confirmsLoader/confirmsLo
 import checkIcon from '../../../assets/public/checkIcon.svg';
 
 interface Props {
+  loading: any;
+  errors: any;
   isOpen: any;
   onClose: any;
   children: any;
@@ -12,17 +14,17 @@ interface Props {
 }
 
 export default function ConfirmChangesModal({
+  loading,
+  errors,
   isOpen,
   onClose,
   children,
   actionType,
 }: Props) {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.categories);
-  const { error } = useSelector((state) => state.categories);
 
   if (!isOpen) return null;
-  if (!loading && !error) {
+  if (!loading && !errors) {
     setTimeout(async () => {
       dispatch(actionType());
       onClose();
@@ -32,7 +34,7 @@ export default function ConfirmChangesModal({
     <div className={styles.container}>
       {loading ? (
         <ConfirmLoader />
-      ) : error ? (
+      ) : errors ? (
         <div>
           <h1>hay errores</h1>
         </div>
