@@ -71,7 +71,14 @@ export default function MotivosDeCancelacion() {
           </thead>
           <tbody>
             {allCancellationReasons?.map((element, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.keyReason}</td>
                 <td className={styles.tableRows}>{element.reasonName}</td>
                 <td className={styles.tableRows}>{element.createdAt}</td>

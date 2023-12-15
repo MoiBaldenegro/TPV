@@ -138,7 +138,14 @@ export default function MenusYRecetas() {
           </thead>
           <tbody>
             {allMenus?.map((element, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.category}</td>
                 <td className={styles.tableRows}>{element.code}</td>
                 <td className={styles.tableRows}>{element.productName}</td>

@@ -67,7 +67,14 @@ export default function Caja() {
           </thead>
           <tbody>
             {allTills?.map((element, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.createdAt}</td>
                 <td className={styles.tableRows}>{element.device}</td>
                 <td className={styles.tableRows}>{element.user}</td>

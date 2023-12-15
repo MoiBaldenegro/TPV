@@ -364,3 +364,12 @@ transition: 300ms;
 transition: 300ms;
 }
 
+.rowDisabled:hover,
+.release:hover{
+    background-color: #2e2c2d21;
+    transition: 300ms;
+}
+.release{
+  transition: 300ms;
+}
+

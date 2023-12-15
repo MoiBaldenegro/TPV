@@ -1,6 +1,7 @@
+// styles
 import styles from './productosYPrecios.module.css';
 //hooks
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // icons
 import exportIcon from '../../../../assets/public/exportIcon.svg';
@@ -12,7 +13,6 @@ import searchIcon from '../../../../assets/public/searchIcon.svg';
 import update from '../../../../assets/categorias/updateIcon.svg';
 import deleteIcon from '../../../../assets/categorias/bloquedIcon.svg';
 import enabledIcon from '../../../../assets/public/enabledIcon.svg';
-// import arrow from "../../../../assets/public/arrow.svg"
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getProductsAndPricesAction,
@@ -24,8 +24,13 @@ import UploadFiles from '../../../forms/uploadFile/uploadFile';
 import { createProductsAndPrices } from '../../../../redux/actions/catalogo/productsAndpricesActions/createProduct';
 import CreateProductsModal from './forms/createProducts';
 import { exportToExcel } from '../../../../utils/exporter';
+import LinesComponent from '../../../elements/lines/lines';
 
 export default function ProductosYPrecios() {
+  // Redux states
+  const { allCategories } = useSelector((state) => state.categories);
+  // States
+  const [activeSelect, setActiveSelect] = useState(false);
   const dispatch = useDispatch();
   const { allProductsAndPrices } = useSelector((state) => state.products);
   const toggleStatus = (id, body) => {
@@ -211,10 +216,93 @@ export default function ProductosYPrecios() {
             <span>Productos</span>
           </div>
           <div className={styles.searchContainer}>
-            <button className={styles.categoryButton}>
-              <img src={filterIcon} alt="categories-button" />
-              <span>Categorias</span>
-            </button>
+            <div className={styles.containerInput}>
+              <div className={styles.categoriesSelect}>
+                <div className={styles.customSelect}>
+                  <div
+                    className={styles.selectTrigger}
+                    onClick={() => setActiveSelect(!activeSelect)}
+                  >
+                    <img src={filterIcon} alt="filter-icon" />
+                    <span>Categorias</span>
+                  </div>
+                  <div
+                    className={activeSelect ? styles.options : styles.hidden}
+                  >
+                    {allCategories?.map((element) => (
+                      <div className={styles.oneCategory}>
+                        <LinesComponent
+                          left="15px"
+                          top="40px"
+                          redLinePosition={1}
+                          items="290px"
+                        />
+                        <span key={element._id} className={styles.option}>
+                          {element.categoryName}
+                        </span>
+                        {element.subCategories?.map((item) => (
+                          <div className={styles.twoCategory}>
+                            <LinesComponent
+                              left="45px"
+                              top="82px"
+                              redLinePosition={1}
+                              items="80px"
+                            />
+                            <span key={item._id} className={styles.optionTwo}>
+                              {item.categoryName}
+                            </span>
+                            {item.subCategories?.map((itemThree) => (
+                              <div className={styles.threeCategory}>
+                                {itemThree.subCategories?.length >= 1 && (
+                                  <LinesComponent
+                                    left="70px"
+                                    top="164px"
+                                    redLinePosition={1}
+                                  />
+                                )}
+                                <span
+                                  key={itemThree._id}
+                                  className={styles.optionThree}
+                                >
+                                  {itemThree.categoryName}
+                                </span>
+                                {itemThree.subCategories?.map((itemFour) => (
+                                  <div className={styles.FourCategory}>
+                                    {itemFour.subCategories?.length >= 1 && (
+                                      <LinesComponent
+                                        left="90px"
+                                        top="208px"
+                                        redLinePosition={1}
+                                      />
+                                    )}
+                                    <span
+                                      key={itemFour._id}
+                                      className={styles.optionFour}
+                                    >
+                                      {itemFour.categoryName}
+                                    </span>
+                                    {itemFour.subCategories?.map((itemFive) => (
+                                      <div className={styles.fiveCategory}>
+                                        <span
+                                          key={itemFive._id}
+                                          className={styles.optionFive}
+                                        >
+                                          {itemFive.categoryName}
+                                        </span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                ))}
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
             <button className={styles.sellTypeButton}>
               <img src={filterIcon} alt="sell-types" />
               <span>Tipo de venta</span>

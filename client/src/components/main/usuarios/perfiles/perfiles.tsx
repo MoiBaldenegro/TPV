@@ -62,7 +62,14 @@ export default function Perfiles() {
           </thead>
           <tbody>
             {allProfiles?.map((element) => (
-              <tr key={element._id}>
+              <tr
+                key={element._id}
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.departament}</td>
                 <td className={styles.tableRows}>{element.code}</td>
                 <td className={styles.tableRows}>{element.profileName}</td>

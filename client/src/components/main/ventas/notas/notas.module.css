@@ -371,5 +371,13 @@ margin: 3px 8px;
 box-shadow: -1px 1px 3px 1px #f9f9f925;
 filter: brightness(1.1);
 }
+.rowDisabled:hover,
+.release:hover{
+    background-color: #2e2c2d21;
+    transition: 300ms;
+}
+.release{
+  transition: 300ms;
+}
 
 

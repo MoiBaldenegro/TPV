@@ -27,7 +27,7 @@ export default function Empleados() {
   return (
     <div className={styles.container}>
       <section className={styles.head}>
-        <h2>Perfiles</h2>
+        <h2>Empleados</h2>
         <div>
           <button className={styles.btnHeadCreate}>
             <img src={createIcon} alt="create-icon" />
@@ -64,7 +64,14 @@ export default function Empleados() {
           </thead>
           <tbody>
             {allEmployees?.map((element) => (
-              <tr key={element._id}>
+              <tr
+                key={element._id}
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.code}</td>
                 <td className={styles.tableRows}>{element.employeeName}</td>
                 <td className={styles.tableRows}>{element.status}</td>

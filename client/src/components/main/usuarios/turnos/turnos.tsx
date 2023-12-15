@@ -47,7 +47,14 @@ export default function Turnos() {
           </thead>
           <tbody>
             {allShifts?.map((element) => (
-              <tr key={element._id}>
+              <tr
+                key={element._id}
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.shiftName}</td>
                 <td className={styles.tableRows}>{element.timeStartShift}</td>
                 <td className={styles.tableRows}>{element.timeEndShift}</td>

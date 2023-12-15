@@ -63,7 +63,14 @@ export default function Departamentos() {
           </thead>
           <tbody>
             {allDepartaments?.map((element) => (
-              <tr key={element._id}>
+              <tr
+                key={element._id}
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.code}</td>
                 <td className={styles.tableRows}>{element.departamentName}</td>
                 <td className={styles.tableRows}>{element.createdAt}</td>

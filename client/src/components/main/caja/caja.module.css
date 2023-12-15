@@ -338,3 +338,14 @@ gap: 8px;
      border-top: 1px solid #F9F9F9;
      text-indent: 25px;
    }
+
+   .rowDisabled:hover,
+.release:hover{
+    background-color: #2e2c2d21;
+    transition: 300ms;
+}
+.release{
+  transition: 300ms;
+}
+
+

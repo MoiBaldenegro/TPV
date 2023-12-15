@@ -130,7 +130,6 @@ export default function Modificaciones() {
             </div>
           </div>
         </div>
-
         <table className={styles.table}>
           <thead>
             <tr>
@@ -141,7 +140,14 @@ export default function Modificaciones() {
           </thead>
           <tbody>
             {allModifiers?.map((element, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.category}</td>
                 <td className={styles.tableRows}>{element.modifierName}</td>
                 <td className={styles.buttonsContainer}>

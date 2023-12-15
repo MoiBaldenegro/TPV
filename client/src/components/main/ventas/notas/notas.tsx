@@ -72,7 +72,14 @@ export default function Notas() {
           </thead>
           <tbody>
             {allNotes?.map((element, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.checkCode}</td>
                 <td className={styles.tableRows}>{element.noteNumber}</td>
                 <td className={styles.tableRows}>{element.paymentCode}</td>
@@ -80,7 +87,6 @@ export default function Notas() {
                 <td className={styles.tableRows}>{element.user}</td>
                 <td className={styles.tableRows}>{element.checkTotal}</td>
                 <td className={styles.tableRows}>
-                  {' '}
                   {element.status === 'enabled' ? (
                     <>
                       <img

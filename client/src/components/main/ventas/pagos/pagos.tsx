@@ -68,7 +68,14 @@ export default function Pagos() {
           </thead>
           <tbody>
             {allPayments?.map((element, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.paymentCode}</td>
                 <td className={styles.tableRows}>{element.check}</td>
                 <td className={styles.tableRows}>{element.noteCode}</td>

@@ -182,16 +182,20 @@
 
 /* main section */
 .mainSection{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 1,482px;
-    height: 600px;
-    padding: 16px, 0px, 16px, 0px;
-    border-radius: 16px;
-    background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
-    margin-bottom: -8px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
+  margin-top: 2.5vh;
+  width: 1,482px;
+  min-height: 300px;
+  max-height: 450px;
+  overflow: auto;
+  padding: 16px, 0px, 0px, 0px;
+  border-radius: 8px;
 }
+
+
 .mainHead{
     display: flex;
     justify-content: center;
@@ -382,6 +386,104 @@ text-indent: 25px;
 .release{
   transition: 300ms;
 }
+.rowDisabled:hover,
+.release:hover{
+    background-color: #2e2c2d21;
+}
+/* Select styles */
+.customSelect{
+  position: relative;
+  width: 145px;
+  height: 48px;
+  background: rgba(249, 249, 249, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+ 
+}
+.selectTrigger {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: var(--font-size-small);
+}
+.options {
+  position: absolute;
+  background-color: var(--color-gray-hover);
+  top: 120%;
+  left: 0;
+  width: 400px;
+  max-height: 490px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  color: #333;
+  font-size: var(--font-size-small);
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+
+.hidden{
+  display: none;
+}
+.option,
+.optionTwo,
+.optionThree,
+.optionFour,
+.optionFive {
+  padding: 12px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+
+}
+.optionTwo{
+  margin-left: 2vw;
+}
+.optionThree{
+  margin-left: 4vw;
+}
+.optionFour{
+  margin-left: 6vw;
+}
+.optionFive{
+  margin-left: 8vw;
+}
+.option:hover {
+  background-color: #6e717442;
+  
+}
+
+/* //////////////*/
+
+.oneCategory{
+  width: 100%;
+  
+}
+.twoCategory{
+  border: 1px solid #ff0000;
+  position:relative ;
+}
+
+.threeCategory{
+}
+
+.FourCategory{
+}
+
+.fiveCategory{
+}
+
+
+
 
 
 

@@ -94,6 +94,14 @@ text-indent: 25px;
 .downArrowDisabled{
    opacity: .2;
 }
+.rowDisabled:hover,
+.release:hover,
+.subCategoryRow:hover,
+.subCategoryRowTwo:hover,
+.subCategoryRowThree:hover,
+.subCategoryRowFour:hover{
+    filter: brightness(1.05);
+}
 
 .tHeadClave,
 .tHeadCategoria,

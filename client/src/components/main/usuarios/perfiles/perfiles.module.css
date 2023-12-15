@@ -421,3 +421,14 @@ text-indent: 25px;
     margin: 2vh 25px 0px 38.5vw;   
 }
 
+.rowDisabled:hover,
+.release:hover{
+    background-color: #2e2c2d21;
+    transition: 300ms;
+}
+.release{
+  transition: 300ms;
+}
+
+
+

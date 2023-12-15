@@ -374,3 +374,13 @@ text-indent: 25px;
    /*  opacity: .6; */
    filter:brightness(0.85);
 }
+.rowDisabled:hover,
+.release:hover{
+    background-color: #2e2c2d21;
+    transition: 300ms;
+}
+.release{
+  transition: 300ms;
+}
+
+

@@ -31,7 +31,13 @@ export default function VentaTypes() {
           </thead>
           <tbody>
             {allSellTypes?.map((element) => (
-              <tr>
+              <tr
+                className={
+                  element.status === 'disabled'
+                    ? styles.rowDisabled
+                    : styles.release
+                }
+              >
                 <td className={styles.tableRows}>{element.code}</td>
                 <td className={styles.tableRows}>{element.sellName}</td>
                 <td className={styles.tableRows}>{element.createdAt}</td>
