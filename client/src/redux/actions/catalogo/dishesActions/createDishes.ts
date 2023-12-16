@@ -6,7 +6,7 @@ import {
   SAVE_DISHES,
 } from './actionTypes';
 
-export const createDishes = (dishes) => async (dispatch) => {
+export const createDishesAction = (dishes) => async (dispatch) => {
   dispatch({ type: DISHES_REQUEST });
   try {
     if (Array.isArray(dishes)) {
@@ -25,7 +25,7 @@ export const createDishes = (dishes) => async (dispatch) => {
       }
       if (res.status === 409) {
         dispatch({
-          type: DISHES_CONFLICT,
+          type: DISHES_FAILURE,
           error: 'Se han encontrado complementos duplicados',
         });
         throw new Error('Esta categoria ya se encuentra listada');
@@ -41,7 +41,7 @@ export const createDishes = (dishes) => async (dispatch) => {
           'Ha ocurrido algo inesperado, la respuesta no contiene datos',
         );
       }
-      alert('complemento creado con éxito.');
+      dispatch({ type: SAVE_DISHES });
     }
   } catch (error) {
     if (axios.isCancel(error)) {
@@ -52,7 +52,7 @@ export const createDishes = (dishes) => async (dispatch) => {
       throw new Error(`La solicitud fue cancelada: ${error}`);
     } else if (error.response && error.response.status === 409) {
       dispatch({
-        type: DISHES_CONFLICT,
+        type: DISHES_FAILURE,
         error: 'Se han encontrado complementos duplicados',
       });
       throw new Error('Este complemento ya se encuentra listado');

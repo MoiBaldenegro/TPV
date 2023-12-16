@@ -77,7 +77,7 @@ export default function CreateProductsModal({
               }}
             />
             <input
-              type="text"
+              type="number"
               className={styles.input}
               placeholder="Precio"
               onChange={(e) => {

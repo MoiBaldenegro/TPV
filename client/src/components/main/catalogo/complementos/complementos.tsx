@@ -25,9 +25,13 @@ import { discontinueDishesAction } from '../../../../redux/actions/catalogo/dish
 import UploadFiles from '../../../forms/uploadFile/uploadFile';
 import CreateDishesModal from './forms/createDishes';
 import { exportToExcel } from '../../../../utils/exporter';
+import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
 
 export default function Complementos() {
+  const { loading } = useSelector((state) => state.dishes);
+  const { error } = useSelector((state) => state.dishes);
   // MODALS
+  const confirmChanges = useModal('confirmChanges');
   const uploadPayment = useModal('uploadPayment');
   const savePayments = useModal('savePayments');
   const createDishes = useModal('createDishes');
@@ -91,9 +95,22 @@ export default function Complementos() {
             <CreateDishesModal
               isOpen={createDishes.isOpen}
               onClose={createDishes.closeModal}
+              openModal={confirmChanges.openModal}
             >
               Crear complemento
             </CreateDishesModal>
+          ) : null}
+          {confirmChanges.isOpen &&
+          confirmChanges.modalName === 'confirmChanges' ? (
+            <ConfirmChangesModal
+              loading={loading}
+              errors={error}
+              isOpen={confirmChanges.isOpen}
+              onClose={confirmChanges.closeModal}
+              actionType={getDishesAction}
+            >
+              Cambios guardados
+            </ConfirmChangesModal>
           ) : null}
         </div>
       </section>
