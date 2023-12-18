@@ -17,14 +17,16 @@ import searchIcon from '../../../../assets/public/searchIcon.svg';
 import { getMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/getMenu';
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
 import CreateMenuModal from './forms/createMenu';
+import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
 
 export default function MenusYRecetas() {
   const dispatch = useDispatch();
-  const { allMenus } = useSelector((state) => state.menus);
+  const { allMenus, loading, error } = useSelector((state) => state.menus);
   // MODALS
   const uploadMenus = useModal('uploadMenus');
   const saveMenus = useModal('saveMenus');
   const createMenu = useModal('createMenu');
+  const confirmChanges = useModal('confirmChanges');
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueMenusAction(id, body));
@@ -50,9 +52,22 @@ export default function MenusYRecetas() {
             <CreateMenuModal
               isOpen={createMenu.isOpen}
               onClose={createMenu.closeModal}
+              openModal={confirmChanges.openModal}
             >
-              <strong>Crear Menu</strong>
+              Crear Menu
             </CreateMenuModal>
+          ) : null}
+          {confirmChanges.isOpen &&
+          confirmChanges.modalName === 'confirmChanges' ? (
+            <ConfirmChangesModal
+              loading={loading}
+              errors={error}
+              isOpen={confirmChanges.isOpen}
+              onClose={confirmChanges.closeModal}
+              actionType={getMenusAction}
+            >
+              Cambios guardados
+            </ConfirmChangesModal>
           ) : null}
         </div>
       </section>
