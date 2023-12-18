@@ -26,7 +26,7 @@ export function notFoundModifiers(state) {
 export function modifiersConflict(state, action) {
   return {
     ...state,
-    loading: true,
+    loading: false,
     conflict: action.error,
   };
 }

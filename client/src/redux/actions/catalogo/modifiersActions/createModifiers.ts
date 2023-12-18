@@ -6,8 +6,9 @@ import {
   SAVE_MODIFIERS,
 } from './actionTypes';
 
-export const createModifiers = (modifiers) => async (dispatch) => {
+export const createModifiersAction = (modifiers) => async (dispatch) => {
   dispatch({ type: MODIFIERS_REQUEST });
+  console.log(modifiers);
   try {
     if (Array.isArray(modifiers)) {
       const res = await axios.post(
@@ -25,15 +26,16 @@ export const createModifiers = (modifiers) => async (dispatch) => {
       }
       if (res.status === 409) {
         dispatch({
-          type: MODIFIERS_CONFLICT,
+          type: MODIFIERS_FAILURE,
           error: 'Se han encontrado complementos duplicados',
         });
         throw new Error('Esta categoria ya se encuentra listada');
       }
+
       dispatch({ type: SAVE_MODIFIERS });
     } else {
       const response = await axios.post(
-        'https://tomate-server.onrender.com/modications',
+        'https://tomate-server.onrender.com/modifications',
         modifiers,
       );
       if (!response.data) {
@@ -41,7 +43,7 @@ export const createModifiers = (modifiers) => async (dispatch) => {
           'Ha ocurrido algo inesperado, la respuesta no contiene datos',
         );
       }
-      alert('complemento creado con éxito.');
+      dispatch({ type: SAVE_MODIFIERS });
     }
   } catch (error) {
     if (axios.isCancel(error)) {
@@ -52,7 +54,7 @@ export const createModifiers = (modifiers) => async (dispatch) => {
       throw new Error(`La solicitud fue cancelada: ${error}`);
     } else if (error.response && error.response.status === 409) {
       dispatch({
-        type: MODIFIERS_CONFLICT,
+        type: MODIFIERS_FAILURE,
         error: 'Se han encontrado complementos duplicados',
       });
       throw new Error('Este complemento ya se encuentra listado');

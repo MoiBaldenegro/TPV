@@ -19,7 +19,7 @@ import {
 
 let initialState = {
   allModifiers: [],
-  loading: true,
+  loading: false,
   error: null,
   conflict: null,
 };

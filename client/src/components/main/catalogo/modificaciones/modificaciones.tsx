@@ -19,10 +19,11 @@ import DeletedModifierModal from './modals/confirms/deleteModifier';
 import { useModal } from '../../../../hooks/useModals';
 import ButtonLoader from '../../../loaders/buttonLoader/buttonLoader';
 import UploadFiles from '../../../forms/uploadFile/uploadFile';
-import { createModifiers } from '../../../../redux/actions/catalogo/modifiersActions/createModifiers';
 import CreateModifierModal from './forms/createModifierModal';
 import ExportCategories from '../categorias/exporter/exportCategories';
 import { exportToExcel } from '../../../../utils/exporter';
+import { createModifiersAction } from '../../../../redux/actions/catalogo/modifiersActions/createModifiers';
+import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
 
 export default function Modificaciones() {
   // LocalState
@@ -35,6 +36,7 @@ export default function Modificaciones() {
   const uploadModifier = useModal('uploadModifier');
   const saveModifier = useModal('saveModifier');
   const createModifier = useModal('createModifier');
+  const confirmChanges = useModal('confirmChanges');
   // Events
   const handleChange = (event) => {
     event.preventDefault();
@@ -52,7 +54,6 @@ export default function Modificaciones() {
 
   useEffect(() => {
     dispatch(getModifiersAction());
-    console.log('Me ejecute');
   }, [refresh]);
   return (
     <div className={styles.container}>
@@ -83,7 +84,7 @@ export default function Modificaciones() {
               openModal={saveModifier.openModal}
               isOpen={uploadModifier.isOpen}
               onClose={uploadModifier.closeModal}
-              actionType={createModifiers}
+              actionType={createModifiersAction}
             >
               Cargar plantilla de modificadores
             </UploadFiles>
@@ -93,9 +94,22 @@ export default function Modificaciones() {
             <CreateModifierModal
               isOpen={createModifier.isOpen}
               onClose={createModifier.closeModal}
+              openModal={confirmChanges.openModal}
             >
-              <strong>Crear complemento</strong>
+              Crear complemento
             </CreateModifierModal>
+          ) : null}
+          {confirmChanges.isOpen &&
+          confirmChanges.modalName === 'confirmChanges' ? (
+            <ConfirmChangesModal
+              loading={loading}
+              errors={error}
+              isOpen={confirmChanges.isOpen}
+              onClose={confirmChanges.closeModal}
+              actionType={getModifiersAction}
+            >
+              Cambios guardados
+            </ConfirmChangesModal>
           ) : null}
         </div>
       </section>
