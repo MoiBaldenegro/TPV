@@ -22,6 +22,7 @@ import SaveCategoriesModal from './modals/confirms/saveCategories';
 import { discontinueCategoriesAction } from '../../../../redux/actions/catalogo/categoriesActions/discontinueCategories';
 import UpdateOneCategory from './forms/updateCategory/updateOneCategory';
 import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
+import CategoryProcessOne from './createCategoriesProcess/categoryProcessOne/categoryProcessOne';
 //hooks
 import { useState } from 'react';
 // Utils
@@ -38,6 +39,7 @@ export default function Categorias() {
   const AuthDiscontinue = useModal('AuthDiscontinue');
   const confirmChanges = useModal('confirmChanges');
   const exportCategories = useModal('exportCategories');
+  const categoryProcessOne = useModal('categoryProcessOne');
 
   //////////////////////////////////////////////////////////////////////////////////////
   // States
@@ -47,7 +49,9 @@ export default function Categorias() {
   // UpdateOneCategory
   const [updateValue, setUpdateValue] = useState();
   const dispatch = useDispatch();
-  const { allCategories } = useSelector((state) => state.categories);
+  const { allCategories, loading, error } = useSelector(
+    (state) => state.categories,
+  );
 
   const toggleStatus = () => {
     dispatch(
@@ -116,7 +120,7 @@ export default function Categorias() {
           ) : null}
           <button
             className={styles.createCategories}
-            onClick={createCategory.openModal}
+            onClick={categoryProcessOne.openModal}
           >
             <img src={createIcon} alt="create-icon" />
             <span>Crear categoria</span>
@@ -164,12 +168,27 @@ export default function Categorias() {
             </AuthDiscontinueModal>
           ) : null}
         </div>
+        {categoryProcessOne.isOpen &&
+        categoryProcessOne.modalName === 'categoryProcessOne' ? (
+          <CategoryProcessOne
+            loading={loading}
+            errors={error}
+            isOpen={categoryProcessOne.isOpen}
+            onClose={categoryProcessOne.closeModal}
+            actionType={getCategoriesAction}
+            openModal={confirmChanges.openModal}
+          >
+            Crear categoria
+          </CategoryProcessOne>
+        ) : null}
         {confirmChanges.isOpen &&
         confirmChanges.modalName === 'confirmChanges' ? (
           <ConfirmChangesModal
             isOpen={confirmChanges.isOpen}
             onClose={confirmChanges.closeModal}
             actionType={getCategoriesAction}
+            loading={loading}
+            errors={error}
           >
             Cambios guardados
           </ConfirmChangesModal>

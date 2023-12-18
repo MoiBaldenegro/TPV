@@ -28,7 +28,7 @@ export const createCategoryAction = (category) => async (dispatch) => {
       }
       if (res.status === 409) {
         dispatch({
-          type: CATEGORIES_CONFLICT,
+          type: CATEGORIES_FAILURE,
           error: 'Se han encontrado categorias duplicadas',
         });
         throw new Error('Esta categoria ya se encuentra listada');
@@ -48,7 +48,7 @@ export const createCategoryAction = (category) => async (dispatch) => {
           'Ha ocurrido algo inesperado, la respuesta no contiene datos',
         );
       }
-      alert('categoria creada con éxito.'); // Aca se va a modificar
+      dispatch({ type: SAVE_CATEGORIES });
     }
   } catch (error) {
     if (axios.isCancel(error)) {
@@ -59,7 +59,7 @@ export const createCategoryAction = (category) => async (dispatch) => {
       throw new Error(`La solicitud fue cancelada: ${error}`);
     } else if (error.response && error.response.status === 409) {
       dispatch({
-        type: CATEGORIES_CONFLICT,
+        type: CATEGORIES_FAILURE,
         error: 'Se han encontrado categorias duplicadas',
       });
       throw new Error('Esta categoria ya se encuentra listada');
