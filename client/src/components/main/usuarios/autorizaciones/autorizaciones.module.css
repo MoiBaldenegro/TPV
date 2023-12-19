@@ -1,7 +1,6 @@
 @import "../../../../varCss/fonts.module.css";
 
 .container{
-    position: relative;    
 }
 .saveButton{
     width: 115px;
@@ -36,7 +35,6 @@
     width: 1,490px;
     height: 720px;
     gap: 32px;
-    margin-right: 12px;
 }
 
 .containerOne{
