@@ -2,49 +2,40 @@ import styles from './autorizaciones.module.css';
 //  Icons
 import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
+import { useSelector } from 'react-redux';
 
 export default function Autorizaciones() {
+  const { allProfiles } = useSelector((state) => state.profiles);
   return (
     <div className={styles.container}>
       <h1 className={styles.tittle}>Autorizaciones</h1>
       <section className={styles.section}>
         <div className={styles.containerOne}>
-          <h3>Empleado</h3>
-          <div className={styles.searchContainer}>
-            <button className={styles.filterButton}>
-              <img src={filterIcon} alt="filter-icon" />
-              filtros
-            </button>
-            <div className={styles.searchBar}>
-              <img
-                src={searchIcon}
-                alt="search-icon"
-                className={styles.searchIcon}
-              />
-              <input
-                className={styles.inputSearch}
-                type="text"
-                placeholder="Buscar por nombre"
-              />
-            </div>
+          <div className={styles.tittles}>
+            <h3 className={styles.profiles}>Perfiles</h3>
+            <h3 className={styles.employees}>Empleados</h3>
           </div>
-          <div>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
-            <h4>Empleado</h4>
+          <div className={styles.contentContainer}>
+            <div className={styles.list}>
+              {allProfiles?.map((element) => (
+                <h4 className={styles.item}>{element.profileName}</h4>
+              ))}
+              {allProfiles?.map((element) => (
+                <h4 className={styles.item}>{element.profileName}</h4>
+              ))}
+              {allProfiles?.map((element) => (
+                <h4 className={styles.item}>{element.profileName}</h4>
+              ))}
+              {allProfiles?.map((element) => (
+                <h4 className={styles.item}>{element.profileName}</h4>
+              ))}
+              {allProfiles?.map((element) => (
+                <h4 className={styles.item}>{element.profileName}</h4>
+              ))}
+              {allProfiles?.map((element) => (
+                <h4 className={styles.item}>{element.profileName}</h4>
+              ))}
+            </div>
           </div>
         </div>
         <div className={styles.sectionTwo}>
