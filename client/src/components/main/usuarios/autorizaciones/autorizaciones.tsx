@@ -3,6 +3,8 @@ import styles from './autorizaciones.module.css';
 import filterIcon from '../../../../assets/public/filterIcon.svg';
 import searchIcon from '../../../../assets/public/searchIcon.svg';
 import { useSelector } from 'react-redux';
+// Vars
+import { apps, modules, posActions } from './admin/admin.modules';
 
 export default function Autorizaciones() {
   const { allProfiles } = useSelector((state) => state.profiles);
@@ -38,28 +40,63 @@ export default function Autorizaciones() {
             </div>
           </div>
         </div>
-        <div className={styles.sectionTwo}>
-          <div className={styles.containerTwo}>
-            <h3>Autorizacion por modulos</h3>
-            <section className={styles.sectionInTwo}>
-              <div className={styles.inContainerOne}></div>
-              <div className={styles.inContainerTwo}></div>
-              <div className={styles.inContainerThree}></div>
-            </section>
-          </div>
-          <div className={styles.containerThree}>
-            <h3>Autorizacion por acciones</h3>
-            <div>
-              <button></button>
-              <button></button>
+        <section className={styles.sectionTwo}>
+          <div className={styles.inContainerOne}>
+            <h2 className={styles.tittleOne}>Autorización por módulos</h2>
+            <div className={styles.inListOne}>
+              {apps?.map((element) => (
+                <div className={styles.inputOne}>
+                  <label className={styles.label}>
+                    <input type="checkbox" className={styles.check} />
+                    {element}
+                  </label>
+                </div>
+              ))}
             </div>
-            <div></div>
-
-            <div>
-              <button></button>
+            <div className={styles.inListTwo}>
+              {modules?.map((element) => (
+                <div className={styles.inputOne}>
+                  <label className={styles.label}>
+                    <input type="checkbox" className={styles.check} />
+                    {element}
+                  </label>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+          <div className={styles.inContainerTwo}>
+            <div className={styles.head}>
+              <h2 className={styles.tittleTwo}>Autorización por acciones</h2>
+              <button className={styles.allButton}>Seleccionar todo</button>
+            </div>
+            <div className={styles.inListThree}>
+              {posActions?.map((element) => (
+                <div className={styles.inputTwo}>
+                  <label className={styles.labelTwo}>
+                    <input type="checkbox" className={styles.check} />
+                    {element}
+                  </label>
+                </div>
+              ))}
+              {posActions?.map((element) => (
+                <div className={styles.inputTwo}>
+                  <label className={styles.labelTwo}>
+                    <input type="checkbox" className={styles.check} />
+                    {element}
+                  </label>
+                </div>
+              ))}
+              {posActions?.map((element) => (
+                <div className={styles.inputTwo}>
+                  <label className={styles.labelTwo}>
+                    <input type="checkbox" className={styles.check} />
+                    {element}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </section>
     </div>
   );
