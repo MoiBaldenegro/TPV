@@ -1,45 +1,85 @@
 import styles from './autorizaciones.module.css';
 //  Icons
-import filterIcon from '../../../../assets/public/filterIcon.svg';
-import searchIcon from '../../../../assets/public/searchIcon.svg';
+import disquetIcon from '../../../../assets/public/disquetIcon.svg';
+// Hooks
 import { useSelector } from 'react-redux';
 // Vars
 import { apps, modules, posActions } from './admin/admin.modules';
+import { useState } from 'react';
 
 export default function Autorizaciones() {
+  const { allEmployees } = useSelector((state) => state.employees);
+  const [select, setSelect] = useState(false);
   const { allProfiles } = useSelector((state) => state.profiles);
+  const toggleSelect = () => {
+    setSelect(!select);
+  };
   return (
     <div className={styles.container}>
-      <h1 className={styles.tittle}>Autorizaciones</h1>
+      <h1 className={styles.tittle}>
+        Autorizaciones
+        <button className={styles.saveButton}>
+          <img src={disquetIcon} alt="save-icon" />
+          Guardar
+        </button>
+      </h1>
       <section className={styles.section}>
-        <div className={styles.containerOne}>
-          <div className={styles.tittles}>
-            <h3 className={styles.profiles}>Perfiles</h3>
-            <h3 className={styles.employees}>Empleados</h3>
-          </div>
-          <div className={styles.contentContainer}>
-            <div className={styles.list}>
-              {allProfiles?.map((element) => (
-                <h4 className={styles.item}>{element.profileName}</h4>
-              ))}
-              {allProfiles?.map((element) => (
-                <h4 className={styles.item}>{element.profileName}</h4>
-              ))}
-              {allProfiles?.map((element) => (
-                <h4 className={styles.item}>{element.profileName}</h4>
-              ))}
-              {allProfiles?.map((element) => (
-                <h4 className={styles.item}>{element.profileName}</h4>
-              ))}
-              {allProfiles?.map((element) => (
-                <h4 className={styles.item}>{element.profileName}</h4>
-              ))}
-              {allProfiles?.map((element) => (
-                <h4 className={styles.item}>{element.profileName}</h4>
-              ))}
+        {select ? (
+          <div className={styles.containerOne}>
+            <div className={styles.tittles}>
+              <h3 className={styles.profiles} onClick={toggleSelect}>
+                Perfiles
+              </h3>
+              <h3 className={styles.employees} onClick={toggleSelect}>
+                Empleados
+              </h3>
+            </div>
+            <div className={styles.contentContainer}>
+              <div className={styles.list}>
+                {allProfiles?.map((element) => (
+                  <h4 className={styles.item}>{element.profileName}</h4>
+                ))}
+                {allProfiles?.map((element) => (
+                  <h4 className={styles.item}>{element.profileName}</h4>
+                ))}
+                {allProfiles?.map((element) => (
+                  <h4 className={styles.item}>{element.profileName}</h4>
+                ))}
+                {allProfiles?.map((element) => (
+                  <h4 className={styles.item}>{element.profileName}</h4>
+                ))}
+                {allProfiles?.map((element) => (
+                  <h4 className={styles.item}>{element.profileName}</h4>
+                ))}
+                {allProfiles?.map((element) => (
+                  <h4 className={styles.item}>{element.profileName}</h4>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className={styles.containerOne}>
+            <div className={styles.tittles}>
+              <h3 className={styles.profilesTwo} onClick={toggleSelect}>
+                Perfiles
+              </h3>
+              <h3 className={styles.employeesTwo} onClick={toggleSelect}>
+                Empleados
+              </h3>
+            </div>
+            <div className={styles.contentContainerTwo}>
+              <div className={styles.list}>
+                {allEmployees?.map((element) => (
+                  <div className={styles.itemCode}>
+                    <h4 className={styles.item}>{element.code}</h4>
+                    <h4 className={styles.item}>{element.employeeName}</h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
         <section className={styles.sectionTwo}>
           <div className={styles.inContainerOne}>
             <h2 className={styles.tittleOne}>Autorización por módulos</h2>
@@ -70,6 +110,22 @@ export default function Autorizaciones() {
               <button className={styles.allButton}>Seleccionar todo</button>
             </div>
             <div className={styles.inListThree}>
+              {posActions?.map((element) => (
+                <div className={styles.inputTwo}>
+                  <label className={styles.labelTwo}>
+                    <input type="checkbox" className={styles.check} />
+                    {element}
+                  </label>
+                </div>
+              ))}
+              {posActions?.map((element) => (
+                <div className={styles.inputTwo}>
+                  <label className={styles.labelTwo}>
+                    <input type="checkbox" className={styles.check} />
+                    {element}
+                  </label>
+                </div>
+              ))}
               {posActions?.map((element) => (
                 <div className={styles.inputTwo}>
                   <label className={styles.labelTwo}>
