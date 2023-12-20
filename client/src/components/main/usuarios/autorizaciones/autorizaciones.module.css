@@ -1,7 +1,6 @@
 @import "../../../../varCss/fonts.module.css";
 
-.container{
-}
+
 .saveButton{
     width: 115px;
     height: 48px;
@@ -31,7 +30,7 @@
 }
 .section{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 1,490px;
     height: 720px;
     gap: 32px;

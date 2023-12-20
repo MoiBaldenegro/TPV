@@ -404,5 +404,7 @@ filter: brightness(1.1);
 .release{
   transition: 300ms;
 }
-
+.hidden{
+  display: none;
+}
 
