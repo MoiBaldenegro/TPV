@@ -103,21 +103,59 @@ export default function NotesDetails({
             <div className={styles.detailsInOne}>
               <div className={styles.detailsHead}>Descuento de la cuenta</div>
               <div className={styles.detailsContentTwo}>
-                <div className={styles.itemContainer}></div>
-                <div className={styles.itemContainer}></div>
-                <div className={styles.itemContainer}></div>
-                <div className={styles.itemContainer}></div>
-                <div className={styles.itemContainer}></div>
+                <div className={styles.itemContainer}>
+                  <h5>Descuento realizado por</h5>
+                  <h5>{element.user}</h5>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h5>Descuento realizado a</h5>
+                  <h5>{element.user}</h5>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h5>Motivo de descuento</h5>
+                  <h5>
+                    <strong>Cortesia</strong>
+                    <h5>
+                      <img src={commentIcon} alt="comment-icon" />
+                    </h5>
+                  </h5>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h5>Hora de descuento</h5>
+                  <h5>12:00</h5>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h5>Porcentaje de descuento</h5>
+                  <h5>10%</h5>
+                </div>
               </div>
             </div>
             <div className={styles.detailsInOne}>
               <div className={styles.detailsHead}>Cancelacion de la cuenta</div>
               <div className={styles.detailsContentTwo}>
-                <div className={styles.itemContainer}></div>
-                <div className={styles.itemContainer}></div>
-                <div className={styles.itemContainer}></div>
-                <div className={styles.itemContainer}></div>
-                <div className={styles.itemContainer}></div>
+                <div className={styles.itemContainer}>
+                  <h5>Cancelada por</h5>
+                  <h5>{element.user}</h5>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h5>Cancelada a</h5>
+                  <h5>{element.user}</h5>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h5>Motivo de cancelación</h5>
+                  <h5>
+                    #valor
+                    <img src={commentIcon} alt="comment-icon" />
+                  </h5>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h5>Hora de cancelación</h5>
+                  <h5>12:00</h5>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h5>Monto cancelado</h5>
+                  <h5>${element.checkTotal}</h5>
+                </div>
               </div>
             </div>
           </div>
