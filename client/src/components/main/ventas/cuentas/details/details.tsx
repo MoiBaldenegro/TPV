@@ -149,12 +149,71 @@ export default function NotesDetails({
               </thead>
               <tbody>
                 <tr className={styles.release}>
-                  <td className={styles.tableRows}>a</td>
-                  <td className={styles.tableRows}>a</td>
-                  <td className={styles.tableRows}>a</td>
-                  <td className={styles.tableRows}>s</td>
-                  <td className={styles.tableRows}>s</td>
-                  <td className={styles.tableRows}>s</td>
+                  <td className={styles.tableRows}>1</td>
+                  <td className={styles.tableRows}>{element.user}</td>
+                  <td className={styles.tableRows}>2</td>
+                  <td className={styles.tableRows}>{element.checkTotal}</td>
+                  <td className={styles.tableRows}>-</td>
+                  <td className={styles.tableRows}>
+                    {element.status === 'enabled' ? (
+                      <img
+                        src={enabledIcon}
+                        alt="enabled-icon"
+                        onClick={onClose}
+                      />
+                    ) : element.status === 'disabled' ? (
+                      <img
+                        src={disabledIcon}
+                        alt="disabled-icon"
+                        onClick={onClose}
+                      />
+                    ) : (
+                      <img
+                        src={pendingIcon}
+                        alt="pending-icon"
+                        onClick={onClose}
+                      />
+                    )}
+                    {element.status}
+                  </td>
+                  <td className={styles.buttonsContainer}>
+                    <button
+                      className={styles.actionButtonsFirstDetails}
+                      onClick={() => {
+                        notesDetails.openModal();
+                        setAccount(element);
+                      }}
+                    >
+                      <img src={eyeIcon} alt="open-eye-icon" />
+                    </button>
+                  </td>
+                </tr>
+                <tr className={styles.release}>
+                  <td className={styles.tableRows}>1</td>
+                  <td className={styles.tableRows}>{element.user}</td>
+                  <td className={styles.tableRows}>2</td>
+                  <td className={styles.tableRows}>{element.checkTotal}</td>
+                  <td className={styles.tableRows}>-</td>
+                  <td className={styles.tableRows}>{element.status}</td>
+                  <td className={styles.buttonsContainer}>
+                    <button
+                      className={styles.actionButtonsFirstDetails}
+                      onClick={() => {
+                        notesDetails.openModal();
+                        setAccount(element);
+                      }}
+                    >
+                      <img src={eyeIcon} alt="open-eye-icon" />
+                    </button>
+                  </td>
+                </tr>
+                <tr className={styles.release}>
+                  <td className={styles.tableRows}>1</td>
+                  <td className={styles.tableRows}>{element.user}</td>
+                  <td className={styles.tableRows}>2</td>
+                  <td className={styles.tableRows}>{element.checkTotal}</td>
+                  <td className={styles.tableRows}>-</td>
+                  <td className={styles.tableRows}>{element.status}</td>
                   <td className={styles.buttonsContainer}>
                     <button
                       className={styles.actionButtonsFirstDetails}
@@ -176,32 +235,32 @@ export default function NotesDetails({
               <thead>
                 <tr>
                   <th className={styles.tHeadNote}>Nota</th>
-                  <th className={styles.tHeadNote}>Abierta por</th>
-                  <th className={styles.tHeadNote}>Productos</th>
-                  <th className={styles.tHeadNote}>Total</th>
+                  <th className={styles.tHeadNote}>Orden</th>
+                  <th className={styles.tHeadNote}>Categoria</th>
+                  <th className={styles.tHeadNote}>Producto</th>
+                  <th className={styles.tHeadNote}>Cantidad</th>
+                  <th className={styles.tHeadNote}>Precio</th>
                   <th className={styles.tHeadNote}>Descuento</th>
-                  <th className={styles.tHeadNote}>Estatus</th>
-                  <th className={styles.tHeadNote}>Detalles</th>
+                  <th className={styles.tHeadNote}>Importe</th>
+                  <th className={styles.tHeadNote}>Enviado por</th>
+                  <th className={styles.tHeadNote}>Cancelado por</th>
+                  <th className={styles.tHeadNote}>Info</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className={styles.release}>
-                  <td className={styles.tableRows}>a</td>
-                  <td className={styles.tableRows}>a</td>
-                  <td className={styles.tableRows}>a</td>
-                  <td className={styles.tableRows}>s</td>
-                  <td className={styles.tableRows}>s</td>
-                  <td className={styles.tableRows}>s</td>
-                  <td className={styles.buttonsContainer}>
-                    <button
-                      className={styles.actionButtonsFirstDetails}
-                      onClick={() => {
-                        notesDetails.openModal();
-                        setAccount(element);
-                      }}
-                    >
-                      <img src={eyeIcon} alt="open-eye-icon" />
-                    </button>
+                  <td className={styles.tableRows}>1</td>
+                  <td className={styles.tableRows}>2</td>
+                  <td className={styles.tableRows}>Refrescos</td>
+                  <td className={styles.tableRows}>Agua mineral</td>
+                  <td className={styles.tableRows}>1</td>
+                  <td className={styles.tableRows}>$39.00</td>
+                  <td className={styles.tableRows}>-</td>
+                  <td className={styles.tableRows}>$35.00</td>
+                  <td className={styles.tableRows}>{element.user}</td>
+                  <td className={styles.tableRows}>{element.user}</td>
+                  <td className={styles.tableRows}>
+                    <img src={commentIcon} alt="comment-icon" />
                   </td>
                 </tr>
               </tbody>
@@ -212,33 +271,59 @@ export default function NotesDetails({
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th className={styles.tHeadNote}>Nota</th>
-                  <th className={styles.tHeadNote}>Abierta por</th>
-                  <th className={styles.tHeadNote}>Productos</th>
-                  <th className={styles.tHeadNote}>Total</th>
-                  <th className={styles.tHeadNote}>Descuento</th>
-                  <th className={styles.tHeadNote}>Estatus</th>
-                  <th className={styles.tHeadNote}>Detalles</th>
+                  <th className={styles.tHeadNote}>Folio</th>
+                  <th className={styles.tHeadNote}>Impreso por</th>
+                  <th className={styles.tHeadNote}>Terminal</th>
+                  <th className={styles.tHeadNote}>Impresora</th>
+                  <th className={styles.tHeadNote}>Folio de nota</th>
+                  <th className={styles.tHeadNote}>Hora de impresion</th>
+                  <th className={styles.tHeadNote}>Hora de solicitud</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className={styles.release}>
-                  <td className={styles.tableRows}>a</td>
-                  <td className={styles.tableRows}>a</td>
-                  <td className={styles.tableRows}>a</td>
-                  <td className={styles.tableRows}>s</td>
-                  <td className={styles.tableRows}>s</td>
-                  <td className={styles.tableRows}>s</td>
-                  <td className={styles.buttonsContainer}>
-                    <button
-                      className={styles.actionButtonsFirstDetails}
-                      onClick={() => {
-                        notesDetails.openModal();
-                        setAccount(element);
-                      }}
-                    >
-                      <img src={eyeIcon} alt="open-eye-icon" />
-                    </button>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>{element.user}</td>
+                  <td className={styles.tableRows}>100</td>
+                  <td className={styles.tableRows}>{'(1)'} Bebidas</td>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
+                  </td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
+                  </td>
+                </tr>
+                <tr className={styles.release}>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>{element.user}</td>
+                  <td className={styles.tableRows}>100</td>
+                  <td className={styles.tableRows}>{'(1)'} Bebidas</td>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
+                  </td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
+                  </td>
+                </tr>
+                <tr className={styles.release}>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>{element.user}</td>
+                  <td className={styles.tableRows}>100</td>
+                  <td className={styles.tableRows}>{'(1)'} Bebidas</td>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
+                  </td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
                   </td>
                 </tr>
               </tbody>
