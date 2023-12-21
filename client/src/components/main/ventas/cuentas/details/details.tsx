@@ -130,38 +130,31 @@ export default function NotesDetails({
                 </div>
               </div>
             </div>
-            <div className={styles.detailsInOne}>
-              <div className={styles.detailsHead}>Cancelacion de la cuenta</div>
-              <div className={styles.detailsContentTwo}>
-                <div className={styles.itemContainer}>
-                  <h5>Cancelada por</h5>
-                  <h5>{element.user}</h5>
-                </div>
-                <div className={styles.itemContainer}>
-                  <h5>Cancelada a</h5>
-                  <h5>{element.user}</h5>
-                </div>
-                <div className={styles.itemContainer}>
-                  <h5>Motivo de cancelación</h5>
-                  <h5>
-                    #valor
-                    <img src={commentIcon} alt="comment-icon" />
-                  </h5>
-                </div>
-                <div className={styles.itemContainer}>
-                  <h5>Hora de cancelación</h5>
-                  <h5>12:00</h5>
-                </div>
-                <div className={styles.itemContainer}>
-                  <h5>Monto cancelado</h5>
-                  <h5>${element.checkTotal}</h5>
-                </div>
-              </div>
-            </div>
           </div>
-          <div className={styles.detailsFirst}></div>
-          <div className={styles.detailsFirst}></div>
-          <div className={styles.detailsFirst}></div>
+          <div className={styles.detailsFirst}>
+            <h2 className={styles.tableTittle}>Notas</h2>
+            <table className={styles.table}>
+              <tr>
+                <th></th>
+              </tr>
+            </table>
+          </div>
+          <div className={styles.detailsFirst}>
+            <h2 className={styles.tableTittle}>Productos</h2>
+            <table className={styles.table}>
+              <tr>
+                <th></th>
+              </tr>
+            </table>
+          </div>
+          <div className={styles.detailsFirst}>
+            <h2 className={styles.tableTittle}>Impresiones</h2>
+            <table className={styles.table}>
+              <tr>
+                <th></th>
+              </tr>
+            </table>
+          </div>
         </div>
         <div className={styles.sectionThree}>
           <div className={styles.totalTwo}>
