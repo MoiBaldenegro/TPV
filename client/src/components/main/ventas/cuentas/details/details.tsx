@@ -7,6 +7,7 @@ import disabledIcon from '../../../../../assets/public/StatusIcon(disabled).svg'
 import pendingIcon from '../../../../../assets/public/StatusIcon(pending).svg';
 import arrowRightSmall from '../../../../../assets/public/arrowRightSmall.svg';
 import commentIcon from '../../../../../assets/public/comentsIcon.svg';
+import eyeIcon from '../../../../../assets/public/openEye.svg';
 interface Props {
   element: any;
   isOpen: any;
@@ -131,31 +132,120 @@ export default function NotesDetails({
               </div>
             </div>
           </div>
+
           <div className={styles.detailsFirst}>
             <h2 className={styles.tableTittle}>Notas</h2>
             <table className={styles.table}>
-              <tr>
-                <th></th>
-              </tr>
+              <thead>
+                <tr>
+                  <th className={styles.tHeadNote}>Nota</th>
+                  <th className={styles.tHeadNote}>Abierta por</th>
+                  <th className={styles.tHeadNote}>Productos</th>
+                  <th className={styles.tHeadNote}>Total</th>
+                  <th className={styles.tHeadNote}>Descuento</th>
+                  <th className={styles.tHeadNote}>Estatus</th>
+                  <th className={styles.tHeadNote}>Detalles</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className={styles.release}>
+                  <td className={styles.tableRows}>a</td>
+                  <td className={styles.tableRows}>a</td>
+                  <td className={styles.tableRows}>a</td>
+                  <td className={styles.tableRows}>s</td>
+                  <td className={styles.tableRows}>s</td>
+                  <td className={styles.tableRows}>s</td>
+                  <td className={styles.buttonsContainer}>
+                    <button
+                      className={styles.actionButtonsFirstDetails}
+                      onClick={() => {
+                        notesDetails.openModal();
+                        setAccount(element);
+                      }}
+                    >
+                      <img src={eyeIcon} alt="open-eye-icon" />
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
           <div className={styles.detailsFirst}>
             <h2 className={styles.tableTittle}>Productos</h2>
             <table className={styles.table}>
-              <tr>
-                <th></th>
-              </tr>
+              <thead>
+                <tr>
+                  <th className={styles.tHeadNote}>Nota</th>
+                  <th className={styles.tHeadNote}>Abierta por</th>
+                  <th className={styles.tHeadNote}>Productos</th>
+                  <th className={styles.tHeadNote}>Total</th>
+                  <th className={styles.tHeadNote}>Descuento</th>
+                  <th className={styles.tHeadNote}>Estatus</th>
+                  <th className={styles.tHeadNote}>Detalles</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className={styles.release}>
+                  <td className={styles.tableRows}>a</td>
+                  <td className={styles.tableRows}>a</td>
+                  <td className={styles.tableRows}>a</td>
+                  <td className={styles.tableRows}>s</td>
+                  <td className={styles.tableRows}>s</td>
+                  <td className={styles.tableRows}>s</td>
+                  <td className={styles.buttonsContainer}>
+                    <button
+                      className={styles.actionButtonsFirstDetails}
+                      onClick={() => {
+                        notesDetails.openModal();
+                        setAccount(element);
+                      }}
+                    >
+                      <img src={eyeIcon} alt="open-eye-icon" />
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
           <div className={styles.detailsFirst}>
             <h2 className={styles.tableTittle}>Impresiones</h2>
             <table className={styles.table}>
-              <tr>
-                <th></th>
-              </tr>
+              <thead>
+                <tr>
+                  <th className={styles.tHeadNote}>Nota</th>
+                  <th className={styles.tHeadNote}>Abierta por</th>
+                  <th className={styles.tHeadNote}>Productos</th>
+                  <th className={styles.tHeadNote}>Total</th>
+                  <th className={styles.tHeadNote}>Descuento</th>
+                  <th className={styles.tHeadNote}>Estatus</th>
+                  <th className={styles.tHeadNote}>Detalles</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className={styles.release}>
+                  <td className={styles.tableRows}>a</td>
+                  <td className={styles.tableRows}>a</td>
+                  <td className={styles.tableRows}>a</td>
+                  <td className={styles.tableRows}>s</td>
+                  <td className={styles.tableRows}>s</td>
+                  <td className={styles.tableRows}>s</td>
+                  <td className={styles.buttonsContainer}>
+                    <button
+                      className={styles.actionButtonsFirstDetails}
+                      onClick={() => {
+                        notesDetails.openModal();
+                        setAccount(element);
+                      }}
+                    >
+                      <img src={eyeIcon} alt="open-eye-icon" />
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
+
         <div className={styles.sectionThree}>
           <div className={styles.totalTwo}>
             <h4>Subtotal: ${element.checkTotal}</h4>

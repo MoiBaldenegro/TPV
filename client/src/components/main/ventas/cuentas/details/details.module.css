@@ -92,10 +92,9 @@
   .detailsFirst{
     background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
     width: 1,478px;
-    min-height: 318px;
-    position: relative;
-    padding: 16px;
+    padding: 10px 16px 30px 16px;
     border-radius: 16px;
+    position: relative;
 
   }
   .detailsInOne{
@@ -180,11 +179,49 @@
     gap: 8px;
   }
   .table{
+    border-collapse: separate;
+    border-spacing: 0 1px;
     width: 1460px;
+    background: #F9F9F980;
+    padding: 0px, 16px, 0px, 16px;
+    border-radius: 8px;
+    overflow: hidden;   
   }
 
   .tableTittle{
     font-size: var(--font-size-medium);
     margin-bottom: 10px;
   }
-  
+  .tHeadNote{
+    text-align: left;
+    text-indent: 8px;
+    background-color: #F9F9F966;
+    width: 464px;
+    height:56px;
+    padding: 16px;
+    gap: 8px;
+  }
+
+  .tableRows{
+    text-indent: 25px;
+    }
+    .tableRows,
+    .buttonsContainer{
+      border-top: 1px solid #F9F9F9;
+    }
+    .release{
+      transition: 300ms;
+    }
+    .actionButtonsFirstDetails{
+      position: relative;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        transition: 200ms;
+        margin: 10px 16px;
+      }
+      .actionButtonsFirstDetails{
+        background-color: #7c78784f;
+        margin-left: 1vw;
+      }
