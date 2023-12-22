@@ -170,7 +170,70 @@ export default function NotesDetailsIntern({
             </table>
           </div>
           <div className={styles.detailsFirst}>
-            <h2 className={styles.tableTittle}>Impresiones</h2>
+            <h2 className={styles.tableTittle}>Impresion de comandas</h2>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th className={styles.tHeadNote}>Folio</th>
+                  <th className={styles.tHeadNote}>Impreso por</th>
+                  <th className={styles.tHeadNote}>Terminal</th>
+                  <th className={styles.tHeadNote}>Impresora</th>
+                  <th className={styles.tHeadNote}>Folio de nota</th>
+                  <th className={styles.tHeadNote}>Hora de impresion</th>
+                  <th className={styles.tHeadNote}>Hora de solicitud</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className={styles.release}>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>{element.user}</td>
+                  <td className={styles.tableRows}>100</td>
+                  <td className={styles.tableRows}>{'(1)'} Bebidas</td>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
+                  </td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
+                  </td>
+                </tr>
+                <tr className={styles.release}>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>{element.user}</td>
+                  <td className={styles.tableRows}>100</td>
+                  <td className={styles.tableRows}>{'(1)'} Bebidas</td>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
+                  </td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
+                  </td>
+                </tr>
+                <tr className={styles.release}>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>{element.user}</td>
+                  <td className={styles.tableRows}>100</td>
+                  <td className={styles.tableRows}>{'(1)'} Bebidas</td>
+                  <td className={styles.tableRows}>000000</td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
+                  </td>
+                  <td className={styles.tableRows}>
+                    {element.createdAt.slice(1, 9)}
+                    {element.createdAt.slice(11, 16)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className={styles.detailsFirst}>
+            <h2 className={styles.tableTittle}>Impresion de notas</h2>
             <table className={styles.table}>
               <thead>
                 <tr>
