@@ -5,6 +5,7 @@ import pendingIcon from '../../../../assets/public/StatusIcon(pending).svg';
 import dividerTwo from '../../../../assets/public/dividerTwo.svg';
 import commentIcon from '../../../../assets/public/comentIcon.svg';
 import eyeIcon from '../../../../assets/public/openEye.svg';
+import dividerSmall from '../../../../assets/public/dividerSmall.svg';
 interface Props {
   element: any;
   isOpen: any;
@@ -17,6 +18,7 @@ export default function TillDetails({
   onClose,
   children,
 }: Props) {
+  const numeral = ['2', '2', '2'];
   return (
     <div className={styles.screen}>
       <section className={styles.modal}>
@@ -76,232 +78,175 @@ export default function TillDetails({
                 </div>
               </div>
               <img src={dividerTwo} alt="divider-large" />
+              <div className={styles.detailsContentThree}>
+                <div className={styles.itemContainer}>
+                  <h4>Efectivo</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h4>Tarjeta de débito</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h4>Tarjeta de crédito</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h4>Transferencias</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h4>Rappi</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h4>Uber Eats</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+                <div className={styles.itemContainer}>
+                  <h4>Didi Food</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+              </div>
+              <img src={dividerTwo} alt="divider-large" />
+              <div className={styles.detailsContentTwo}>
+                <div className={styles.itemContainer}>
+                  <h4>Total</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+              </div>
             </div>
             <div className={styles.detailsInOne}>
-              <div className={styles.detailsHead}>Descuento de la cuenta</div>
-              <div className={styles.detailsContent}>
-                <div className={styles.itemContainer}>
-                  <h5>Descuento realizado por</h5>
-                  <h5>{element.user}</h5>
+              <div className={styles.detailsHead}>Resumen de caja</div>
+              <div className={styles.resume}>
+                <div className={styles.itemContainerSubtittle}>
+                  <h5>Movimientos</h5>
+                  <h5>Importe</h5>
                 </div>
-                <div className={styles.itemContainer}>
-                  <h5>Descuento realizado a</h5>
-                  <h5>{element.user}</h5>
+                <img src={dividerSmall} alt="divider-small" />
+                <div className={styles.itemContainerSubtittle}>
+                  <h4>Apertura de caja</h4>
+                  <h4>$000,000.00</h4>
                 </div>
-                <div className={styles.itemContainer}>
-                  <h5>Motivo de descuento</h5>
-                  <h5>
-                    <strong>Cortesia</strong>
-                    <h5>
-                      <img src={commentIcon} alt="comment-icon" />
-                    </h5>
-                  </h5>
+                <div className={styles.itemContainerSubtittle}>
+                  <h4>Ventas en efectivo</h4>
+                  <h4>$000,000.00</h4>
                 </div>
-                <div className={styles.itemContainer}>
-                  <h5>Hora de descuento</h5>
-                  <h5>12:00</h5>
+                <div className={styles.itemContainerSubtittle}>
+                  <h4>Entradas de efectivo</h4>
+                  <h4>$000,000.00</h4>
                 </div>
-                <div className={styles.itemContainer}>
-                  <h5>Porcentaje de descuento</h5>
-                  <h5>10%</h5>
+                <div className={styles.itemContainerSubtittle}>
+                  <h4>Salidas de efectivo</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+                <div className={styles.itemContainerSubtittle}>
+                  <h4>Retiroa de propinas</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+                <img src={dividerSmall} alt="divider-small" />
+                <div className={styles.itemContainerSubtittle}>
+                  <h4>Esperado en caja</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+                <div className={styles.itemContainerSubtittle}>
+                  <h4>Cierre de caja</h4>
+                  <h4>$000,000.00</h4>
+                </div>
+                <img src={dividerSmall} alt="divider-small" />
+                <div className={styles.itemContainerSubtittle}>
+                  <h5>Diferencia</h5>
+                  <h5>$000,000.00</h5>
                 </div>
               </div>
             </div>
           </div>
-
           <div className={styles.detailsFirst}>
-            <h2 className={styles.tableTittle}>Notas</h2>
+            <h2 className={styles.tableTittle}>Entradas</h2>
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th className={styles.tHeadNote}>Nota</th>
-                  <th className={styles.tHeadNote}>Abierta por</th>
-                  <th className={styles.tHeadNote}>Productos</th>
-                  <th className={styles.tHeadNote}>Total</th>
-                  <th className={styles.tHeadNote}>Descuento</th>
-                  <th className={styles.tHeadNote}>Estatus</th>
-                  <th className={styles.tHeadNote}>Detalles</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className={styles.release}>
-                  <td className={styles.tableRows}>1</td>
-                  <td className={styles.tableRows}>{element.user}</td>
-                  <td className={styles.tableRows}>2</td>
-                  <td className={styles.tableRows}>{element.checkTotal}</td>
-                  <td className={styles.tableRows}>-</td>
-                  <td className={styles.tableRows}>
-                    {element.status === 'enabled' ? (
-                      <img
-                        src={enabledIcon}
-                        alt="enabled-icon"
-                        onClick={onClose}
-                      />
-                    ) : element.status === 'disabled' ? (
-                      <img
-                        src={disabledIcon}
-                        alt="disabled-icon"
-                        onClick={onClose}
-                      />
-                    ) : (
-                      <img
-                        src={pendingIcon}
-                        alt="pending-icon"
-                        onClick={onClose}
-                      />
-                    )}
-                    {element.status}
-                  </td>
-                  <td className={styles.buttonsContainer}>
-                    <button
-                      className={styles.actionButtonsFirstDetails}
-                      onClick={() => {
-                        notesDetails.openModal();
-                        setAccount(element);
-                      }}
-                    >
-                      <img src={eyeIcon} alt="open-eye-icon" />
-                    </button>
-                  </td>
-                </tr>
-                <tr className={styles.release}>
-                  <td className={styles.tableRows}>1</td>
-                  <td className={styles.tableRows}>{element.user}</td>
-                  <td className={styles.tableRows}>2</td>
-                  <td className={styles.tableRows}>{element.checkTotal}</td>
-                  <td className={styles.tableRows}>-</td>
-                  <td className={styles.tableRows}>{element.status}</td>
-                  <td className={styles.buttonsContainer}>
-                    <button
-                      className={styles.actionButtonsFirstDetails}
-                      onClick={() => {
-                        notesDetails.openModal();
-                        setAccount(element);
-                      }}
-                    >
-                      <img src={eyeIcon} alt="open-eye-icon" />
-                    </button>
-                  </td>
-                </tr>
-                <tr className={styles.release}>
-                  <td className={styles.tableRows}>1</td>
-                  <td className={styles.tableRows}>{element.user}</td>
-                  <td className={styles.tableRows}>2</td>
-                  <td className={styles.tableRows}>{element.checkTotal}</td>
-                  <td className={styles.tableRows}>-</td>
-                  <td className={styles.tableRows}>{element.status}</td>
-                  <td className={styles.buttonsContainer}>
-                    <button
-                      className={styles.actionButtonsFirstDetails}
-                      onClick={() => {
-                        notesDetails.openModal();
-                        setAccount(element);
-                      }}
-                    >
-                      <img src={eyeIcon} alt="open-eye-icon" />
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className={styles.detailsFirst}>
-            <h2 className={styles.tableTittle}>Productos</h2>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th className={styles.tHeadNote}>Nota</th>
-                  <th className={styles.tHeadNote}>Orden</th>
-                  <th className={styles.tHeadNote}>Categoria</th>
-                  <th className={styles.tHeadNote}>Producto</th>
-                  <th className={styles.tHeadNote}>Cantidad</th>
-                  <th className={styles.tHeadNote}>Precio</th>
-                  <th className={styles.tHeadNote}>Descuento</th>
+                  <th className={styles.tHeadNote}>Hora</th>
+                  <th className={styles.tHeadNote}>Cajero</th>
+                  <th className={styles.tHeadNote}>Concepto</th>
                   <th className={styles.tHeadNote}>Importe</th>
-                  <th className={styles.tHeadNote}>Enviado por</th>
-                  <th className={styles.tHeadNote}>Cancelado por</th>
-                  <th className={styles.tHeadNote}>Info</th>
+                  <th className={styles.tHeadNote}>Método</th>
+                  <th className={styles.tHeadNote}>Editar</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className={styles.release}>
-                  <td className={styles.tableRows}>1</td>
-                  <td className={styles.tableRows}>2</td>
-                  <td className={styles.tableRows}>Refrescos</td>
-                  <td className={styles.tableRows}>Agua mineral</td>
-                  <td className={styles.tableRows}>1</td>
-                  <td className={styles.tableRows}>$39.00</td>
-                  <td className={styles.tableRows}>-</td>
-                  <td className={styles.tableRows}>$35.00</td>
-                  <td className={styles.tableRows}>{element.user}</td>
-                  <td className={styles.tableRows}>{element.user}</td>
-                  <td className={styles.tableRows}>
-                    <img src={commentIcon} alt="comment-icon" />
-                  </td>
-                </tr>
+                {numeral.map((item) => (
+                  <tr className={styles.release}>
+                    <td className={styles.tableRows}>12:00</td>
+                    <td className={styles.tableRows}>{element.user}</td>
+                    <td className={styles.tableRows}>Cuenta ejemplo</td>
+                    <td className={styles.tableRows}>$00.00</td>
+                    <td className={styles.tableRows}>Transferencia</td>
+                    <td className={styles.tableRows}>boton de edicion</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
           <div className={styles.detailsFirst}>
-            <h2 className={styles.tableTittle}>Impresiones</h2>
+            <h2 className={styles.tableTittle}>Salidas de efectivo</h2>
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th className={styles.tHeadNote}>Folio</th>
-                  <th className={styles.tHeadNote}>Impreso por</th>
-                  <th className={styles.tHeadNote}>Terminal</th>
-                  <th className={styles.tHeadNote}>Impresora</th>
-                  <th className={styles.tHeadNote}>Folio de nota</th>
-                  <th className={styles.tHeadNote}>Hora de impresion</th>
-                  <th className={styles.tHeadNote}>Hora de solicitud</th>
+                  <th className={styles.tHeadNote}>Hora</th>
+                  <th className={styles.tHeadNote}>Cajero</th>
+                  <th className={styles.tHeadNote}>Concepto</th>
+                  <th className={styles.tHeadNote}>Importe</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className={styles.release}>
-                  <td className={styles.tableRows}>000000</td>
-                  <td className={styles.tableRows}>{element.user}</td>
-                  <td className={styles.tableRows}>100</td>
-                  <td className={styles.tableRows}>{'(1)'} Bebidas</td>
-                  <td className={styles.tableRows}>000000</td>
-                  <td className={styles.tableRows}>
-                    {element.createdAt.slice(1, 9)}
-                    {element.createdAt.slice(11, 16)}
-                  </td>
-                  <td className={styles.tableRows}>
-                    {element.createdAt.slice(1, 9)}
-                    {element.createdAt.slice(11, 16)}
-                  </td>
+                {numeral.map((item) => (
+                  <tr className={styles.release}>
+                    <td className={styles.tableRows}>12:00</td>
+                    <td className={styles.tableRows}>{element.user}</td>
+                    <td className={styles.tableRows}>Cuenta ejemplo</td>
+                    <td className={styles.tableRows}>$00.00</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className={styles.detailsFirst}>
+            <h2 className={styles.tableTittle}>Propinas</h2>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th className={styles.tHeadNote}>Hora</th>
+                  <th className={styles.tHeadNote}>Cajero</th>
+                  <th className={styles.tHeadNote}>Concepto</th>
+                  <th className={styles.tHeadNote}>Importe</th>
                 </tr>
-                <tr className={styles.release}>
-                  <td className={styles.tableRows}>000000</td>
-                  <td className={styles.tableRows}>{element.user}</td>
-                  <td className={styles.tableRows}>100</td>
-                  <td className={styles.tableRows}>{'(1)'} Bebidas</td>
-                  <td className={styles.tableRows}>000000</td>
-                  <td className={styles.tableRows}>
-                    {element.createdAt.slice(1, 9)}
-                    {element.createdAt.slice(11, 16)}
-                  </td>
-                  <td className={styles.tableRows}>
-                    {element.createdAt.slice(1, 9)}
-                    {element.createdAt.slice(11, 16)}
-                  </td>
-                </tr>
-                <tr className={styles.release}>
-                  <td className={styles.tableRows}>000000</td>
-                  <td className={styles.tableRows}>{element.user}</td>
-                  <td className={styles.tableRows}>100</td>
-                  <td className={styles.tableRows}>{'(1)'} Bebidas</td>
-                  <td className={styles.tableRows}>000000</td>
-                  <td className={styles.tableRows}>
-                    {element.createdAt.slice(1, 9)}
-                    {element.createdAt.slice(11, 16)}
-                  </td>
-                  <td className={styles.tableRows}>
-                    {element.createdAt.slice(1, 9)}
-                    {element.createdAt.slice(11, 16)}
-                  </td>
-                </tr>
+              </thead>
+              <tbody>
+                {numeral.map((item) => (
+                  <tr className={styles.release}>
+                    <td className={styles.tableRows}>12:00</td>
+                    <td className={styles.tableRows}>{element.user}</td>
+                    <td className={styles.tableRows}>Cuenta ejemplo</td>
+                    <td className={styles.tableRows}>$00.00</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
