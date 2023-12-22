@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './details.module.css';
 // Icons
 import leftArrow from '../../../../../assets/public/leftArrow.svg';
@@ -8,6 +8,8 @@ import pendingIcon from '../../../../../assets/public/StatusIcon(pending).svg';
 import arrowRightSmall from '../../../../../assets/public/arrowRightSmall.svg';
 import commentIcon from '../../../../../assets/public/comentsIcon.svg';
 import eyeIcon from '../../../../../assets/public/openEye.svg';
+import NotesDetailsIntern from './notas/details/notaDetails';
+import { useModal } from '../../../../../hooks/useModals';
 interface Props {
   element: any;
   isOpen: any;
@@ -20,6 +22,10 @@ export default function NotesDetails({
   onClose,
   children,
 }: Props) {
+  // Local states
+  const [note, setNotes] = useState();
+  // Modals
+  const notesDeatilsIntern = useModal('notesDetailsIntern');
   useEffect(() => {
     console.log(element);
   });
@@ -180,8 +186,8 @@ export default function NotesDetails({
                     <button
                       className={styles.actionButtonsFirstDetails}
                       onClick={() => {
-                        notesDetails.openModal();
-                        setAccount(element);
+                        notesDeatilsIntern.openModal();
+                        setNotes(element);
                       }}
                     >
                       <img src={eyeIcon} alt="open-eye-icon" />
@@ -199,8 +205,8 @@ export default function NotesDetails({
                     <button
                       className={styles.actionButtonsFirstDetails}
                       onClick={() => {
-                        notesDetails.openModal();
-                        setAccount(element);
+                        notesDeatilsIntern.openModal();
+                        setNotes(element);
                       }}
                     >
                       <img src={eyeIcon} alt="open-eye-icon" />
@@ -218,8 +224,8 @@ export default function NotesDetails({
                     <button
                       className={styles.actionButtonsFirstDetails}
                       onClick={() => {
-                        notesDetails.openModal();
-                        setAccount(element);
+                        notesDeatilsIntern.openModal();
+                        setNotes(element);
                       }}
                     >
                       <img src={eyeIcon} alt="open-eye-icon" />
@@ -343,6 +349,16 @@ export default function NotesDetails({
           </div>
         </div>
       </section>
+      {notesDeatilsIntern.isOpen &&
+        notesDeatilsIntern.modalName === 'notesDetailsIntern' && (
+          <NotesDetailsIntern
+            isOpen={notesDeatilsIntern.isOpen}
+            onClose={notesDeatilsIntern.closeModal}
+            element={element}
+          >
+            Detalles de la nota:{' '}
+          </NotesDetailsIntern>
+        )}
     </div>
   );
 }
