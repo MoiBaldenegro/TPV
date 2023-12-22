@@ -1,6 +1,6 @@
 import styles from './caja.module.css';
 //Hooks
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTillsAction } from '../../../redux/actions/caja/getTill';
 
@@ -8,7 +8,14 @@ import { getTillsAction } from '../../../redux/actions/caja/getTill';
 import searchIcon from '../../../assets/public/searchIcon.svg';
 import filterIcon from '../../../assets/public/filterIcon.svg';
 import eyeIcon from '../../../assets/public/openEye.svg';
+import { useModal } from '../../../hooks/useModals';
+import TillDetails from './details/details';
+
 export default function Caja() {
+  // Local states
+  const [till, setTills] = useState();
+  // Modals
+  const tillDetails = useModal('tillDetails');
   const dispatch = useDispatch();
   const { allTills } = useSelector((state) => state.tills);
   useEffect(() => {
@@ -86,7 +93,13 @@ export default function Caja() {
                 <td className={styles.tableRows}>{element.didi}</td>
                 <td className={styles.tableRows}>{element.uber}</td>
                 <td className={styles.tableRows}>
-                  <button className={styles.actionButtonsFirstDetails}>
+                  <button
+                    className={styles.actionButtonsFirstDetails}
+                    onClick={() => {
+                      setTills(element);
+                      tillDetails.openModal();
+                    }}
+                  >
                     <img src={eyeIcon} alt="open-eye-icon" />
                   </button>
                 </td>
@@ -94,6 +107,15 @@ export default function Caja() {
             ))}
           </tbody>
         </table>
+        {tillDetails.isOpen && tillDetails.modalName === 'tillDetails' && (
+          <TillDetails
+            element={till}
+            isOpen={tillDetails.isOpen}
+            onClose={tillDetails.closeModal}
+          >
+            Detalles del corte
+          </TillDetails>
+        )}
         <div className={styles.tableFooter}></div>
       </section>
     </div>
