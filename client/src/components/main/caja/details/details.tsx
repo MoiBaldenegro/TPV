@@ -77,7 +77,6 @@ export default function TillDetails({
               </div>
               <img src={dividerTwo} alt="divider-large" />
             </div>
-
             <div className={styles.detailsInOne}>
               <div className={styles.detailsHead}>Descuento de la cuenta</div>
               <div className={styles.detailsContent}>
