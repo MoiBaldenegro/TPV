@@ -113,120 +113,114 @@
     border-radius: 16px;
     gap: 32px;
   }
-  .totalOne,
-  .totalTwo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 155px;
-    height: 82px;
-    gap: 16px;
-    margin-right: 32px;
-  }
-  .totalTwo{
-    align-items: end;
-  }
-  .totalTwo h4{
-    font-size: var(--font-size-small);
-    font-weight: 200;
-  }
+.totalOne,
+.totalTwo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 155px;
+  height: 82px;
+  gap: 16px;
+ margin-right: 32px;
+}
+.totalTwo{
+  align-items: end;
+}
+.totalTwo h4{
+  font-size: var(--font-size-small);
+  font-weight: 200;
+}
+.totalOne h4{
+  margin-top: -2px;
+   font-size: var(--font-size-medium);
+  font-weight: 200;
+}
+.totalOne h3{
+  font-size: var(--font-size-large);
+  font-weight: 500;
+ }
+.detailsHead{
+  display: flex;
+  align-items: center;
+  background: rgba(249, 249, 249, 0.1);
+  width: 439.33px;
+  height: 46px;
+  padding: 12px;
+  border-radius: 8px;
+  gap: 8px;
+}
+.detailsContent,
+.detailsContentTwo{
+  width: 439.33px;
+  height: 144px;
+  padding: 0px, 8px, 0px, 8px;
+  gap: 16px; 
+   margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.detailsContentTwo{
+  height: 184px;
+}
+.itemContainer{
+  width: 430px;
+  height: 24px;
+  border-radius: 8px;
+  justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.itemContainer h5{
+  font-weight: 200;
+  font-size: var(--font-size-small);
+  display: flex;
+  gap: 8px;
+ }
+.table{
+  border-collapse: separate;
+  border-spacing: 0 1px;
+  width: 1460px;
+  background: #F9F9F980;
+  padding: 0px, 16px, 0px, 16px;
+  border-radius: 8px;
+  overflow: hidden;   
+}
+.tableTittle{
+  font-size: var(--font-size-medium);
+   margin-bottom: 10px;
+}
+.tHeadNote{
+  text-align: left;
+  text-indent: 8px;
+  background-color: #F9F9F966;
+  width: 464px;
+  height:56px;
+  padding: 16px;
+  gap: 8px;
+}
 
-  .totalOne h4{
-    margin-top: -2px;
-    font-size: var(--font-size-medium);
-    font-weight: 200;
-  }
-  .totalOne h3{
-    font-size: var(--font-size-large);
-    font-weight: 500;
-  }
-
-  .detailsHead{
-    display: flex;
-    align-items: center;
-    background: rgba(249, 249, 249, 0.1);
-    width: 439.33px;
-    height: 46px;
-    padding: 12px;
-    border-radius: 8px;
-    gap: 8px;
-  }
-  .detailsContent,
-  .detailsContentTwo{
-    width: 439.33px;
-    height: 144px;
-    padding: 0px, 8px, 0px, 8px;
-    gap: 16px; 
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-
-  }
-  .detailsContentTwo{
-    height: 184px;
-  }
-  .itemContainer{
-    width: 430px;
-    height: 24px;
-    border-radius: 8px;
-    justify-content: space-between;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .itemContainer h5{
-    font-weight: 200;
-    font-size: var(--font-size-small);
-    display: flex;
-    gap: 8px;
-  }
-  .table{
-    border-collapse: separate;
-    border-spacing: 0 1px;
-    width: 1460px;
-    background: #F9F9F980;
-    padding: 0px, 16px, 0px, 16px;
-    border-radius: 8px;
-    overflow: hidden;   
-  }
-
-  .tableTittle{
-    font-size: var(--font-size-medium);
-    margin-bottom: 10px;
-  }
-  .tHeadNote{
-    text-align: left;
-    text-indent: 8px;
-    background-color: #F9F9F966;
-    width: 464px;
-    height:56px;
-    padding: 16px;
-    gap: 8px;
-  }
-
-  .tableRows{
+.tableRows{
     text-indent: 25px;
-    }
-    .tableRows,
-    .buttonsContainer{
-      border-top: 1px solid #F9F9F9;
-      padding: 10px;
-    }
-    .release{
-      transition: 300ms;
-    }
-    .actionButtonsFirstDetails{
-      position: relative;
-        border: none;
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
-        transition: 200ms;
-        margin: -8px;
-        background-color: #7c78784f;
-
-      }
-      .actionButtonsFirstDetails{
-      }
+   }
+.tableRows,
+.buttonsContainer{
+  border-top: 1px solid #F9F9F9;
+  padding: 10px;
+}
+.release{
+  transition: 300ms;
+}
+.actionButtonsFirstDetails{
+  position: relative;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  transition: 200ms;
+  margin: -8px;
+  background-color: #7c78784f;
+}
+   
