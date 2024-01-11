@@ -30,6 +30,11 @@ export class Bills {
     required: true,
   })
   status: 'enabled' | 'disabled' | 'pending' | 'cancel';
+    @Prop({
+    default: [],
+    trim: true,
+  })
+  products: [{}];
 
   @Prop({
     required: true,
