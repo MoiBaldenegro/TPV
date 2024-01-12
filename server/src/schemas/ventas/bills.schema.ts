@@ -42,6 +42,10 @@ export class Bills {
   })
   paymentDate: string;
 
-  // falta la informacion que aparecera en detalles //
+ @Prop({
+    required: true,
+    trim: true,
+  })
+  tableNum: string;
 }
 export const BillSchema = SchemaFactory.createForClass(Bills);
