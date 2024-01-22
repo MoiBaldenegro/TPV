@@ -1,13 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, ClientSession } from 'mongoose';
 import { CreateBillDto } from 'src/dto/ventas/bills/createBill.Dto';
 import { UpdateBillDto } from 'src/dto/ventas/bills/updateBill.Dto';
 import { Bills, BillsDocument } from 'src/schemas/ventas/bills.schema';
 
 @Injectable()
 export class BillsService {
-  constructor(@InjectModel(Bills.name) private billsModel: Model<Bills>) {}
+  constructor(
+    @InjectModel(Bills.name) private billsModel: Model<BillsDocument>,
+  ) {}
 
   async findAll() {
     return await this.billsModel.find();
@@ -18,20 +20,35 @@ export class BillsService {
   }
 
   async create(createBill: CreateBillDto) {
-    // Obtener el valor actual del contador y formatear el billCode
-    const billCodeCounter = await this.getNextBillCodeCounter();
-    const formattedBillCode = this.formatBillCode(billCodeCounter);
+    const session = await this.billsModel.startSession();
+    session.startTransaction();
 
-    // Incrementar el contador en la base de datos
-    await this.incrementBillCodeCounter();
+    try {
+      // Obtener el valor actual del contador y formatear el billCode
+      const billCodeCounter = await this.getNextBillCodeCounter(session);
+      const formattedBillCode = this.formatBillCode(billCodeCounter);
 
-    // Crear la nueva factura con el billCode formateado
-    const billToCreate = new this.billsModel({
-      ...createBill,
-      billCode: formattedBillCode,
-    });
+      // Incrementar el contador en la base de datos
+      await this.incrementBillCodeCounter(session);
 
-    return await billToCreate.save();
+      // Crear la nueva factura con el billCode formateado
+      const billToCreate = new this.billsModel({
+        ...createBill,
+        billCode: formattedBillCode,
+      });
+
+      await billToCreate.save({ session });
+
+      await session.commitTransaction();
+      session.endSession();
+
+      return billToCreate;
+    } catch (error) {
+      await session.abortTransaction();
+      session.endSession();
+
+      throw error;
+    }
   }
 
   async delete(id: string) {
@@ -44,18 +61,22 @@ export class BillsService {
     });
   }
 
-  async getNextBillCodeCounter(): Promise<number> {
+  async getNextBillCodeCounter(session?: ClientSession): Promise<number> {
     const result = await this.billsModel.findOneAndUpdate(
       {},
       { $inc: { billCodeCounter: 1 } },
-      { new: true, upsert: true, select: 'billCodeCounter' },
+      { new: true, upsert: true, select: 'billCodeCounter', session },
     );
 
     return result ? result.billCodeCounter : 1;
   }
 
-  async incrementBillCodeCounter(): Promise<void> {
-    await this.billsModel.updateOne({}, { $inc: { billCodeCounter: 1 } });
+  async incrementBillCodeCounter(session?: ClientSession): Promise<void> {
+    await this.billsModel.updateOne(
+      {},
+      { $inc: { billCodeCounter: 1 } },
+      { session },
+    );
   }
 
   private formatBillCode(counter: number): string {
