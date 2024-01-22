@@ -45,7 +45,19 @@ export class BillsController {
   @Post()
   async create(@Body() body: CreateBillDto) {
     try {
-      const newBill = await this.billService.create(body);
+      // Obtener el valor actual del contador y formatear el billCode
+      const billCodeCounter = await this.billService.getNextBillCodeCounter();
+      const formattedBillCode = this.formatBillCode(billCodeCounter);
+
+      // Incrementar el contador en la base de datos
+      await this.billService.incrementBillCodeCounter();
+
+      // Crear la nueva factura con el billCode formateado
+      const newBill = await this.billService.create({
+        ...body,
+        billCode: formattedBillCode,
+      });
+
       return newBill;
     } catch (error) {
       if (error.code === 11000) {
@@ -80,5 +92,9 @@ export class BillsController {
     } catch (error) {
       throw new NotFoundException('Ha ocurrido algo inesperado');
     }
+  }
+  private formatBillCode(counter: number): string {
+    // Formatear el contador como "001"
+    return counter.toString().padStart(3, '0');
   }
 }

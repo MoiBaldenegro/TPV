@@ -16,9 +16,22 @@ export class BillsService {
   async findOne(id: string) {
     return await this.billsModel.findById(id);
   }
+
   async create(createBill: CreateBillDto) {
-    const billCreated = new this.billsModel(createBill);
-    return await billCreated.save();
+    // Obtener el valor actual del contador y formatear el billCode
+    const billCodeCounter = await this.getNextBillCodeCounter();
+    const formattedBillCode = this.formatBillCode(billCodeCounter);
+
+    // Incrementar el contador en la base de datos
+    await this.incrementBillCodeCounter();
+
+    // Crear la nueva factura con el billCode formateado
+    const billToCreate = new this.billsModel({
+      ...createBill,
+      billCode: formattedBillCode,
+    });
+
+    return await billToCreate.save();
   }
 
   async delete(id: string) {
@@ -29,5 +42,24 @@ export class BillsService {
     return await this.billsModel.findByIdAndUpdate(id, updatedBill, {
       new: true,
     });
+  }
+
+  async getNextBillCodeCounter(): Promise<number> {
+    const result = await this.billsModel.findOneAndUpdate(
+      {},
+      { $inc: { billCodeCounter: 1 } },
+      { new: true, upsert: true, select: 'billCodeCounter' },
+    );
+
+    return result ? result.billCodeCounter : 1;
+  }
+
+  async incrementBillCodeCounter(): Promise<void> {
+    await this.billsModel.updateOne({}, { $inc: { billCodeCounter: 1 } });
+  }
+
+  private formatBillCode(counter: number): string {
+    // Formatear el contador como "001"
+    return counter.toString().padStart(3, '0');
   }
 }
