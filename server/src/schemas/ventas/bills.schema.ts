@@ -10,6 +10,12 @@ export class Bills {
 
   @Prop({
     required: true,
+    default: 1,
+  })
+  billCodeCounter: number;
+
+  @Prop({
+    required: true,
     trim: true,
   })
   sellType: 'onSite' | 'toGo' | 'rappi' | 'phone';
@@ -30,7 +36,7 @@ export class Bills {
     required: true,
   })
   status: 'enabled' | 'disabled' | 'pending' | 'cancel';
-    @Prop({
+  @Prop({
     default: [],
     trim: true,
   })
@@ -42,10 +48,14 @@ export class Bills {
   })
   paymentDate: string;
 
- @Prop({
+  @Prop({
     required: true,
     trim: true,
   })
   tableNum: string;
 }
+export interface BillsDocument extends Document, Bills {
+  billCodeCounter: number;
+}
+
 export const BillSchema = SchemaFactory.createForClass(Bills);

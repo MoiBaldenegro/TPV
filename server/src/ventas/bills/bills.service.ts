@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateBillDto } from 'src/dto/ventas/bills/createBill.Dto';
 import { UpdateBillDto } from 'src/dto/ventas/bills/updateBill.Dto';
-import { Bills } from 'src/schemas/ventas/bills.schema';
+import { Bills, BillsDocument } from 'src/schemas/ventas/bills.schema';
 
 @Injectable()
 export class BillsService {
