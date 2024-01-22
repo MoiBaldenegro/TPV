@@ -94,7 +94,6 @@ export class BillsController {
     }
   }
   private formatBillCode(counter: number): string {
-    // Formatear el contador como "001"
     return counter.toString().padStart(3, '0');
   }
 }
