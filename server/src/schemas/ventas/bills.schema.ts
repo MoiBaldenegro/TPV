@@ -7,7 +7,7 @@ export class Bills {
     required: true,
     trim: true,
   })
-  billCode: string;
+  billCode: number;
 
   @Prop({
     required: true,

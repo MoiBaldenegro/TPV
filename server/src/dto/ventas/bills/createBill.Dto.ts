@@ -1,11 +1,6 @@
 import { IsString, IsDefined, Length } from 'class-validator';
 
 export class CreateBillDto {
-  @IsString()
-  @IsDefined()
-  @Length(1, 8)
-  billCode: string;
-
   @IsDefined()
   @IsString()
   @Length(1, 6)
