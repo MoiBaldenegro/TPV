@@ -18,6 +18,7 @@ export class BillsService {
   async findOne(id: string) {
     return await this.billsModel.findById(id);
   }
+
   async create(createBill: CreateBillDto) {
     try {
       // Obtener el último documento insertado ordenado por fecha de creación
@@ -27,7 +28,9 @@ export class BillsService {
         .exec();
 
       // Calcular el siguiente billCode
-      const nextBillCode = lastBill ? lastBill.billCode + 1 : 1;
+      const nextBillCode = lastBill
+        ? this.getNextBillCode(lastBill.billCode)
+        : 1;
 
       // Crear la nueva factura con el billCode calculado
       const billToCreate = new this.billsModel({
@@ -42,6 +45,11 @@ export class BillsService {
     } catch (error) {
       throw error;
     }
+  }
+
+  private getNextBillCode(lastBillCode: number): number {
+    // Incrementar el billCode actual en 1
+    return lastBillCode + 1;
   }
 
   /*
