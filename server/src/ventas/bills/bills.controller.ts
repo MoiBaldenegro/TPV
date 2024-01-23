@@ -45,7 +45,6 @@ export class BillsController {
   @Post()
   async create(@Body() body: CreateBillDto) {
     try {
-      // Crear la nueva factura con el billCode formateado
       const newBill = await this.billService.create(body);
       return newBill;
     } catch (error) {
@@ -81,8 +80,5 @@ export class BillsController {
     } catch (error) {
       throw new NotFoundException('Ha ocurrido algo inesperado');
     }
-  }
-  private formatBillCode(counter: number): string {
-    return counter.toString().padStart(3, '0');
   }
 }

@@ -1,4 +1,5 @@
-import { SchemaFactory, Schema, Prop } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true })
 export class Bills {
@@ -7,12 +8,6 @@ export class Bills {
     trim: true,
   })
   billCode: string;
-
-  @Prop({
-    required: true,
-    default: 1,
-  })
-  billCodeCounter: number;
 
   @Prop({
     required: true,
@@ -36,6 +31,7 @@ export class Bills {
     required: true,
   })
   status: 'enabled' | 'disabled' | 'pending' | 'cancel';
+
   @Prop({
     default: [],
     trim: true,
@@ -54,8 +50,7 @@ export class Bills {
   })
   tableNum: string;
 }
-export interface BillsDocument extends Document, Bills {
-  billCodeCounter: number;
-}
+
+export interface BillsDocument extends Document, Bills {}
 
 export const BillSchema = SchemaFactory.createForClass(Bills);

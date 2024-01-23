@@ -18,7 +18,33 @@ export class BillsService {
   async findOne(id: string) {
     return await this.billsModel.findById(id);
   }
+  async create(createBill: CreateBillDto) {
+    try {
+      // Obtener el último documento insertado ordenado por fecha de creación
+      const lastBill = await this.billsModel
+        .findOne({})
+        .sort({ createdAt: -1 })
+        .exec();
 
+      // Calcular el siguiente billCode
+      const nextBillCode = lastBill ? lastBill.billCode + 1 : 1;
+
+      // Crear la nueva factura con el billCode calculado
+      const billToCreate = new this.billsModel({
+        ...createBill,
+        billCode: nextBillCode,
+      });
+
+      // Guardar la nueva factura en la base de datos
+      await billToCreate.save();
+
+      return billToCreate;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /*
   async create(createBill: CreateBillDto) {
     const session = await this.billsModel.startSession();
     session.startTransaction();
@@ -50,7 +76,7 @@ export class BillsService {
       throw error;
     }
   }
-
+ */
   async delete(id: string) {
     return await this.billsModel.findByIdAndDelete(id);
   }
@@ -60,6 +86,7 @@ export class BillsService {
       new: true,
     });
   }
+  /*
 
   async getNextBillCodeCounter(session?: ClientSession): Promise<number> {
     const result = await this.billsModel.findOneAndUpdate(
@@ -83,4 +110,5 @@ export class BillsService {
     // Formatear el contador como "001"
     return counter.toString().padStart(3, '0');
   }
+  */
 }
