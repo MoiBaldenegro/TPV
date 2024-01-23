@@ -45,19 +45,8 @@ export class BillsController {
   @Post()
   async create(@Body() body: CreateBillDto) {
     try {
-      // Obtener el valor actual del contador y formatear el billCode
-      const billCodeCounter = await this.billService.getNextBillCodeCounter();
-      const formattedBillCode = this.formatBillCode(billCodeCounter);
-
-      // Incrementar el contador en la base de datos
-      await this.billService.incrementBillCodeCounter();
-
       // Crear la nueva factura con el billCode formateado
-      const newBill = await this.billService.create({
-        ...body,
-        billCode: formattedBillCode,
-      });
-
+      const newBill = await this.billService.create(body);
       return newBill;
     } catch (error) {
       if (error.code === 11000) {
