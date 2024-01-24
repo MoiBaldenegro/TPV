@@ -26,7 +26,6 @@ import { SubcategoryThreeModule } from './catalogo/categories/subcategory-three/
 import { SellTypesModule } from './sell-types/sell-types.module';
 import { EmployeesModule } from './usuarios/employees/employees.module';
 import { XlsModule } from './exports/xls/xls.module';
-import { PrintModule } from './print/print.module';
 
 @Module({
   imports: [
@@ -59,7 +58,6 @@ import { PrintModule } from './print/print.module';
     SellTypesModule,
     EmployeesModule,
     XlsModule,
-    PrintModule,
   ],
   controllers: [],
   providers: [],
