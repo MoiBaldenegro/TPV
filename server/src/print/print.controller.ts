@@ -1,35 +1,48 @@
-import { Controller, Post, Body } from '@nestjs/common';
-import * as printer from 'node-printer';
-
+import {
+  Controller,
+  Post,
+  Body,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
+import {
+  ThermalPrinter,
+  PrinterTypes,
+  CharacterSet,
+} from 'node-thermal-printer'; // Importa las clases específicas
 
 @Controller('print')
 export class PrintController {
-    @Post('ticket')
-    async printTicket(@Body() content: string): Promise<{ success: boolean }> {
+  @Post('ticket')
+  async imprimirTicket(@Body() data: any): Promise<string> {
+    // Ejecutar todos los comandos. Devuelve éxito o lanza un error en caso de fallo
     try {
-      const printers = printer.getPrinters();
-
-      // Supongamos que hay al menos una impresora instalada
-      const printerName = printers[0].name;
-
-      // Imprimir el contenido en la impresora seleccionada
-      printer.printDirect({
-        printer: printerName,
-        data: content,
-        type: 'TEXT',
-        success: function (jobID) {
-          console.log(`Impresión exitosa. ID de trabajo: ${jobID}`);
-        },
-        error: function (err) {
-          console.error(`Error al imprimir: ${err}`);
-        },
+      const printer = new ThermalPrinter({
+        type: PrinterTypes.EPSON, // Ajusta según tu tipo de impresora
+        interface: 'tcp://192.168.1.88', // Nombre o IP de tu impresora
+        characterSet: CharacterSet.SLOVENIA, // Configura según tus necesidades
+        removeSpecialCharacters: false,
       });
 
-      return { success: true };
+      // Generar contenido del ticket
+      const { items, total } = data;
+      printer.alignCenter();
+      printer.print('=== Ticket de Venta ===\n');
+
+      items.forEach((item) => {
+        printer.print(`${item.name} x${item.quantity} $${item.price}\n`);
+      });
+
+      printer.print(`Total: $${total}\n`);
+      printer.cut();
+      printer.execute();
+
+      return 'Ticket impreso correctamente';
     } catch (error) {
-      console.error(`Error al imprimir: ${error}`);
-      return { success: false };
+      throw new HttpException(
+        'Error al imprimir el ticket',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 }
-
