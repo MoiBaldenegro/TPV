@@ -28,7 +28,6 @@ import { EmployeesModule } from './usuarios/employees/employees.module';
 import { XlsModule } from './exports/xls/xls.module';
 import { PrintModule } from './print/print.module';
 import { TablesModule } from './tables/tables.module';
-import { TableModule } from './table/table.module';
 
 @Module({
   imports: [
@@ -63,7 +62,6 @@ import { TableModule } from './table/table.module';
     XlsModule,
     PrintModule,
     TablesModule,
-    TableModule,
   ],
   controllers: [],
   providers: [],
