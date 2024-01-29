@@ -27,6 +27,8 @@ import { SellTypesModule } from './sell-types/sell-types.module';
 import { EmployeesModule } from './usuarios/employees/employees.module';
 import { XlsModule } from './exports/xls/xls.module';
 import { PrintModule } from './print/print.module';
+import { TablesModule } from './tables/tables.module';
+import { TableModule } from './table/table.module';
 
 @Module({
   imports: [
@@ -60,6 +62,8 @@ import { PrintModule } from './print/print.module';
     EmployeesModule,
     XlsModule,
     PrintModule,
+    TablesModule,
+    TableModule,
   ],
   controllers: [],
   providers: [],
