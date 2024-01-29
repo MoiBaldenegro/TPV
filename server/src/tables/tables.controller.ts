@@ -53,7 +53,7 @@ export class TablesController {
     }
   }
 
-  @Patch()
+  @Patch(':id')
   async updateStatus(
     @Param('id') id: string,
     @Body() updateTable: UpdateTableDto,
