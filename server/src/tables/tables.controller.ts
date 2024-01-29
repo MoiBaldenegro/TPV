@@ -2,6 +2,7 @@ import {
   Body,
   ConflictException,
   Controller,
+  Get,
   NotFoundException,
   Post,
 } from '@nestjs/common';
@@ -12,21 +13,33 @@ import { CreateTableDto } from 'src/dto/tables/createTableDto';
 export class TablesController {
   constructor(private tableService: TablesService) {}
 
+  @Get()
+  async findAll() {
+    try {
+      const tablesArray = await this.tableService.findAll();
+      if (!tablesArray || tablesArray.length === 0)
+        throw new NotFoundException('No se han encontrado mesas');
+      return tablesArray;
+    } catch (error) {
+      throw new NotFoundException('Ha ocurrido algo inesperado');
+    }
+  }
+
   @Post()
   async create(@Body() body: CreateTableDto | CreateTableDto[]) {
-    const dishService = this.tableService;
+    const tableService = this.tableService;
     try {
       if (Array.isArray(body)) {
         await this.tableService.replace();
-        const createdDishes = await Promise.all(
+        const createdTables = await Promise.all(
           body.map(async (element: CreateTableDto) => {
-            return await dishService.create(element);
+            return await tableService.create(element);
           }),
         );
-        return createdDishes;
+        return createdTables;
       } else {
-        const createdDishes = await this.tableService.create(body);
-        return createdDishes;
+        const createdTables = await this.tableService.create(body);
+        return createdTables;
       }
     } catch (error) {
       if (error.code === 11000) {
