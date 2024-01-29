@@ -4,10 +4,13 @@ import {
   Controller,
   Get,
   NotFoundException,
+  Param,
+  Patch,
   Post,
 } from '@nestjs/common';
 import { TablesService } from './tables.service';
 import { CreateTableDto } from 'src/dto/tables/createTableDto';
+import { UpdateTableDto } from 'src/dto/tables/updateTableDto';
 
 @Controller('tables')
 export class TablesController {
@@ -47,6 +50,22 @@ export class TablesController {
       } else {
         throw new NotFoundException('Ha ocurrido algo inesperado');
       }
+    }
+  }
+
+  @Patch()
+  async updateStatus(
+    @Param('id') id: string,
+    @Body() updateTable: UpdateTableDto,
+  ) {
+    try {
+      const updatedTable = await this.tableService.update(id, updateTable);
+      if (!updatedTable) {
+        new NotFoundException('No se encontro la mesa');
+      }
+      return updateTable;
+    } catch (error) {
+      throw new NotFoundException('Ha ocurrido un error inesperado');
     }
   }
 }
