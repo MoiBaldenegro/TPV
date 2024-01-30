@@ -18,7 +18,7 @@ export class Table {
     required: true,
     trim: true,
   })
-  status: string;
+  status: 'free' | 'pending' | 'enable' | 'forPayment';
 }
 
 export const TableSchema = SchemaFactory.createForClass(Table);

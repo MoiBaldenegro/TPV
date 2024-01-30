@@ -2,9 +2,9 @@ import { IsString } from 'class-validator';
 
 export class CreateTableDto {
   @IsString()
-  tableNum: string;
+  tableNum?: string;
   @IsString()
-  server: string;
+  server?: string;
   @IsString()
-  status: string;
+  status?: string;
 }
