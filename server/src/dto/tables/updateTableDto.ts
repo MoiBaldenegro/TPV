@@ -10,4 +10,6 @@ export class UpdateTableDto {
   @IsString()
   @IsOptional()
   status?: string;
+  @IsOptional()
+  bill?: string[];
 }

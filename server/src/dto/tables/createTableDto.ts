@@ -7,4 +7,5 @@ export class CreateTableDto {
   server?: string;
   @IsString()
   status?: string;
+  bill?: string[];
 }

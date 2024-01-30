@@ -10,7 +10,11 @@ import { Table } from 'src/schemas/tables/tableSchema';
 export class TablesService {
   constructor(@InjectModel(Table.name) private tableModel: Model<Table>) {}
   async findAll() {
-    return await this.tableModel.find();
+    try {
+      return await this.tableModel.find().populate({
+        path: 'bill',
+      });
+    } catch (error) {}
   }
 
   async findOne(id: string) {
