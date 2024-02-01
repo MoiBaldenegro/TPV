@@ -61,7 +61,7 @@ export class Bills {
     required: true,
     trim: true,
   })
-  table: string;
+  table: string | undefined;
 }
 
 export interface BillsDocument extends Document, Bills {}
