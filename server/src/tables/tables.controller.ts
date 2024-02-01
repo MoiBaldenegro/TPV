@@ -27,6 +27,18 @@ export class TablesController {
       throw new NotFoundException('Ha ocurrido algo inesperado');
     }
   }
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    try {
+      const selectedTable = await this.tableService.findOne(id);
+      if (!selectedTable) {
+        throw new NotFoundException('No se han encontrado mesas');
+      }
+      return selectedTable;
+    } catch (error) {
+      throw new NotFoundException('Ha ocurrido algo inesperado');
+    }
+  }
 
   @Post()
   async create(@Body() body: CreateTableDto | CreateTableDto[]) {
