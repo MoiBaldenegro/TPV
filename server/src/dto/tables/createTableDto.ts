@@ -1,4 +1,5 @@
 import { IsString } from 'class-validator';
+import { Table } from 'src/schemas/tables/tableSchema';
 
 export class CreateTableDto {
   @IsString()
@@ -7,5 +8,5 @@ export class CreateTableDto {
   server?: string;
   @IsString()
   status?: string;
-  bill?: string[];
+  bill?: [];
 }

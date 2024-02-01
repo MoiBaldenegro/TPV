@@ -21,4 +21,8 @@ export class CreateBillDto {
   @IsDefined()
   @IsString()
   paymentDate: string;
+
+  @IsDefined()
+  @IsString()
+  table: string;
 }
