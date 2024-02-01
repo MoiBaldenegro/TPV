@@ -1,4 +1,4 @@
-import { IsString, Length, IsOptional, IsDefined } from 'class-validator';
+import { IsString, Length, IsOptional } from 'class-validator';
 
 export class UpdateBillDto {
   @IsOptional()
@@ -25,7 +25,7 @@ export class UpdateBillDto {
   @IsString()
   paymentDate?: string;
 
-  @IsDefined()
+  @IsOptional()
   @IsString()
-  table: string;
+  table?: string;
 }
