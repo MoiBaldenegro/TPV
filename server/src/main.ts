@@ -1,12 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common/pipes';
 import { AppModule } from './app.module';
-import { MachineIdentifierService } from './machine-identifier/machine-identifier.service';
 
+import { machineIdentifier } from './utils/chargeFiles/excel/machineIdentifier';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Configuración del CORS y pipes global
   app.enableCors({
     origin: [
       'https://tomate-pos.vercel.app',
@@ -17,13 +16,9 @@ async function bootstrap() {
     credentials: true,
     allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
   });
+
   app.useGlobalPipes(new ValidationPipe());
-
-  // Crear el identificador de la máquina
-  const machineIdentifierService = app.get(MachineIdentifierService);
-  machineIdentifierService.generateAndSaveIdentifier();
-
-  // Iniciar la aplicación
   await app.listen(8000);
 }
+machineIdentifier();
 bootstrap();
