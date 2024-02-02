@@ -28,7 +28,7 @@ import { EmployeesModule } from './usuarios/employees/employees.module';
 import { XlsModule } from './exports/xls/xls.module';
 import { PrintModule } from './print/print.module';
 import { TablesModule } from './tables/tables.module';
-import { PrintersModule } from './printers/printers.module';
+import { PrintersModule } from './config/printers/printers.module';
 
 @Module({
   imports: [

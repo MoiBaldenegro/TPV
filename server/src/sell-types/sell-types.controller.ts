@@ -74,7 +74,7 @@ export class SellTypesController {
     }
   }
 
-  @Put()
+  @Put(':id')
   async update(@Param('id') id: string, @Body() body: UpdateSellTypeDto) {
     try {
       const updatedSellType = this.sellTypeService.update(id, body);
