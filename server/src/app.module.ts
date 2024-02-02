@@ -29,6 +29,7 @@ import { XlsModule } from './exports/xls/xls.module';
 import { PrintModule } from './print/print.module';
 import { TablesModule } from './tables/tables.module';
 import { PrintersModule } from './config/printers/printers.module';
+import { MachineIdentifierModule } from './machine-identifier/machine-identifier.module';
 
 @Module({
   imports: [
@@ -64,6 +65,7 @@ import { PrintersModule } from './config/printers/printers.module';
     PrintModule,
     TablesModule,
     PrintersModule,
+    MachineIdentifierModule,
   ],
   controllers: [],
   providers: [],

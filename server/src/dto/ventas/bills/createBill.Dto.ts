@@ -1,4 +1,5 @@
-import { IsString, IsDefined, Length } from 'class-validator';
+import { IsString, IsDefined, Length, IsOptional } from 'class-validator';
+import { Printer } from 'src/schemas/configuracion/printer.schema';
 
 export class CreateBillDto {
   @IsDefined()
@@ -25,4 +26,7 @@ export class CreateBillDto {
   @IsDefined()
   @IsString()
   table: string;
+
+  @IsOptional()
+  printerLocation?: Printer[];
 }
