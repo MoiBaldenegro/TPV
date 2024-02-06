@@ -1,5 +1,5 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { Schema as MongooseSchema } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Printer } from '../configuracion/printer.schema';
 
 @Schema({ timestamps: true })
@@ -71,5 +71,7 @@ export class Bills {
   device: string;
   */
 }
+
+export interface BillsDocument extends Document, Bills {}
 
 export const BillSchema = SchemaFactory.createForClass(Bills);
