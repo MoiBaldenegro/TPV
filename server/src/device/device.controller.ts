@@ -13,6 +13,7 @@ import {
 import { DeviceService } from './device.service';
 import { CreateDeviceDto } from 'src/dto/devices/createDeviceDto';
 import { UpdateDeviceDto } from 'src/dto/devices/updateDeviceDto';
+import { idnMachine } from 'idn.config';
 
 @Controller('device')
 export class DeviceController {
@@ -92,6 +93,20 @@ export class DeviceController {
       return deviceDeleted;
     } catch (error) {
       throw new NotFoundException(`Ha ocurrido un error inesperado ${error}`);
+    }
+  }
+
+  @Get('/idn')
+  async getIdn() {
+    try {
+      if (!idnMachine) {
+        throw new NotFoundException('No se ha creado ningun identificador');
+      }
+      return idnMachine;
+    } catch (error) {
+      throw new NotFoundException(
+        'Ha ocurrido un error al intentar recuperar el identificador local',
+      );
     }
   }
 }
