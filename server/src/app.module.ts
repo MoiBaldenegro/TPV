@@ -31,6 +31,7 @@ import { TablesModule } from './tables/tables.module';
 import { PrintersModule } from './config/printers/printers.module';
 import { MachineIdentifierModule } from './machine-identifier/machine-identifier.module';
 import { DeviceModule } from './device/device.module';
+import { SettingModule } from './setting/setting.module';
 
 @Module({
   imports: [
@@ -68,6 +69,7 @@ import { DeviceModule } from './device/device.module';
     PrintersModule,
     MachineIdentifierModule,
     DeviceModule,
+    SettingModule,
   ],
   controllers: [],
   providers: [],

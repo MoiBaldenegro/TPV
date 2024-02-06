@@ -65,11 +65,13 @@ export class Bills {
   })
   printerLocation?: Printer[];
 
+  /* 
   @Prop({
     required: true,
     trim: true,
   })
   device: string;
+  */
 }
 
 export interface BillsDocument extends Document, Bills {}
