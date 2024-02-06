@@ -31,7 +31,7 @@ export class Bills {
   @Prop({
     required: true,
   })
-  status: 'enabled' | 'disabled' | 'pending' | 'cancel';
+  status: 'enable' | 'disabled' | 'pending' | 'cancel';
 
   @Prop({
     default: [],
@@ -51,9 +51,6 @@ export class Bills {
   })
   tableNum: string;
 
-  @Prop({
-    required: true,
-  })
   @Prop({
     required: true,
     trim: true,
