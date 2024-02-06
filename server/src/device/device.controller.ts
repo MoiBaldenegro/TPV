@@ -35,6 +35,37 @@ export class DeviceController {
       );
     }
   }
+  @Get('idn')
+  async getIdn() {
+    try {
+      if (!idnMachine) {
+        throw new NotFoundException('No se ha creado ningun identificador');
+      }
+      console.log(idnMachine);
+      return idnMachine;
+    } catch (error) {
+      throw new NotFoundException(
+        'Ha ocurrido un error al intentar recuperar el identificador local',
+      );
+    }
+  }
+
+  @Get('deviceIdn/:serial')
+  async findBySerial(@Param('serial') serial: string) {
+    try {
+      const deviceSelected = await this.deviceService.findOneBySerial(serial);
+      if (!deviceSelected) {
+        throw new NotFoundException(
+          `El dispositivo ${serial}, no se encuentra disponible o no existe`,
+        );
+      }
+      return deviceSelected;
+    } catch (error) {
+      throw new NotFoundException(
+        `Ha ocurrido un error inesperado en la busqueda ${error}`,
+      );
+    }
+  }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
@@ -93,20 +124,6 @@ export class DeviceController {
       return deviceDeleted;
     } catch (error) {
       throw new NotFoundException(`Ha ocurrido un error inesperado ${error}`);
-    }
-  }
-
-  @Get('/idn')
-  async getIdn() {
-    try {
-      if (!idnMachine) {
-        throw new NotFoundException('No se ha creado ningun identificador');
-      }
-      return idnMachine;
-    } catch (error) {
-      throw new NotFoundException(
-        'Ha ocurrido un error al intentar recuperar el identificador local',
-      );
     }
   }
 }

@@ -62,6 +62,7 @@ export class Bills {
 
   @Prop({
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Printer' }],
+    default: [],
   })
   printerLocation?: Printer[];
 

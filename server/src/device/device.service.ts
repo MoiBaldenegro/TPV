@@ -16,6 +16,14 @@ export class DeviceService {
       },
     });
   }
+  async findOneBySerial(deviceIdn: string) {
+    return await this.deviceModel.findOne({ deviceIdn: deviceIdn }).populate({
+      path: 'settings',
+      populate: {
+        path: 'printers',
+      },
+    });
+  }
 
   async findOne(id: string) {
     return await this.deviceModel.findById(id).populate({
