@@ -12,8 +12,9 @@ export class Device {
   deviceIdn: string;
   @Prop({
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Setting' }],
+    default: [],
   })
-  settings: Setting[];
+  settings?: Setting[];
 }
 
 export const DeviceSchema = SchemaFactory.createForClass(Device);
