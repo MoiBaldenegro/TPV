@@ -11,12 +11,18 @@ export class DeviceService {
   async findAll() {
     return await this.deviceModel.find().populate({
       path: 'settings',
+      populate: {
+        path: 'printers',
+      },
     });
   }
 
   async findOne(id: string) {
     return await this.deviceModel.findById(id).populate({
       path: 'settings',
+      populate: {
+        path: 'printers',
+      },
     });
   }
 
