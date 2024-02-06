@@ -32,8 +32,9 @@ export class UpdateBillDto {
 
   @IsOptional()
   printerLocation?: Printer[];
-
+  /*
   @IsOptional()
   @IsString()
   devide?: string;
+  */
 }
