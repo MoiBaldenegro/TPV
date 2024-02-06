@@ -10,13 +10,13 @@ export class DeviceService {
   constructor(@InjectModel(Device.name) private deviceModel: Model<Device>) {}
   async findAll() {
     return await this.deviceModel.find().populate({
-      path: 'Setting',
+      path: 'settings',
     });
   }
 
   async findOne(id: string) {
     return await this.deviceModel.findById(id).populate({
-      path: 'Setting',
+      path: 'settings',
     });
   }
 

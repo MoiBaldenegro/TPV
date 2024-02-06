@@ -12,13 +12,13 @@ export class SettingService {
   ) {}
   async findAll() {
     return await this.settingModel.find().populate({
-      path: 'Printer',
+      path: 'printers',
     });
   }
 
   async findOne(id: string) {
     return await this.settingModel.findById(id).populate({
-      path: 'Printer',
+      path: 'printers',
     });
   }
 
