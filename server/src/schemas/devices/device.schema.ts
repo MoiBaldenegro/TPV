@@ -1,4 +1,7 @@
-import { Schema, SchemaFactory, Prop } from '@nestjs/mongoose';
+import { Schema, SchemaFactory, Prop, MongooseModule } from '@nestjs/mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
+
+import { Setting } from '../setting/setting.schema';
 
 @Schema({ timestamps: true })
 export class Device {
@@ -7,6 +10,10 @@ export class Device {
     trim: true,
   })
   deviceIdn: string;
+  @Prop({
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Setting' }],
+  })
+  settings: Setting[];
 }
 
 export const DeviceSchema = SchemaFactory.createForClass(Device);
