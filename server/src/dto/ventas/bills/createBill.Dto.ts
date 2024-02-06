@@ -29,4 +29,8 @@ export class CreateBillDto {
 
   @IsOptional()
   printerLocation?: Printer[];
+
+  @IsDefined()
+  @IsString()
+  devide: string;
 }

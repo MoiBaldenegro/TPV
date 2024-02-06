@@ -16,7 +16,6 @@ export const machineIdentifier = () => {
       }
     });
   } else {
-    // Generar un UUID
     const contenido = uuidv4();
     const content = `export const idnMachine = "${contenido}"`;
 

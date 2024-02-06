@@ -64,6 +64,12 @@ export class Bills {
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Printer' }],
   })
   printerLocation?: Printer[];
+
+  @Prop({
+    required: true,
+    trim: true,
+  })
+  device: string;
 }
 
 export interface BillsDocument extends Document, Bills {}
