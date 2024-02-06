@@ -9,11 +9,15 @@ import { Device } from 'src/schemas/devices/device.schema';
 export class DeviceService {
   constructor(@InjectModel(Device.name) private deviceModel: Model<Device>) {}
   async findAll() {
-    return await this.deviceModel.find();
+    return await this.deviceModel.find().populate({
+      path: 'Setting',
+    });
   }
 
   async findOne(id: string) {
-    return await this.deviceModel.findById(id);
+    return await this.deviceModel.findById(id).populate({
+      path: 'Setting',
+    });
   }
 
   async create(body: CreateDeviceDto) {

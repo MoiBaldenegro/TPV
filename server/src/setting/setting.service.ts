@@ -11,11 +11,15 @@ export class SettingService {
     @InjectModel(Setting.name) private settingModel: Model<Setting>,
   ) {}
   async findAll() {
-    return await this.settingModel.find();
+    return await this.settingModel.find().populate({
+      path: 'Printer',
+    });
   }
 
   async findOne(id: string) {
-    return await this.settingModel.findById(id);
+    return await this.settingModel.findById(id).populate({
+      path: 'Printer',
+    });
   }
 
   async create(body: CreateSettingDto) {
