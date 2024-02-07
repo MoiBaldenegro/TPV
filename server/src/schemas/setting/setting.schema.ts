@@ -6,9 +6,9 @@ import { Printer } from '../configuracion/printer.schema';
 export class Setting {
   @Prop({
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Printer' }],
-    default: [],
+    default: {},
   })
-  printers?: Printer[];
+  printers?: Printer;
 }
 
 export const SettingSchema = SchemaFactory.createForClass(Setting);
