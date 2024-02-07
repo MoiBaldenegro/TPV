@@ -24,7 +24,8 @@ export class PrintController {
   @Post('ticket')
   async printTicket(@Body() data: any): Promise<string> {
     const date = new Date().toDateString();
-    console.log(data.tcp);
+    const billData = data.data;
+
     try {
       const printer = new ThermalPrinter({
         type: PrinterTypes.EPSON,

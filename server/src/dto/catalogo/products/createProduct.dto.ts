@@ -44,4 +44,8 @@ export class createProductDto {
   @Length(1, 8)
   @IsOptional()
   status?: 'disabled' | 'enabled';
+
+  @IsOptional()
+  @Length(1, 2)
+  quantity?: number;
 }

@@ -47,6 +47,11 @@ export class Products {
     default: 'enabled',
   })
   status: 'disabled' | 'enabled';
+
+  @Prop({
+    default: 1,
+  })
+  quantity: number;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Products);
