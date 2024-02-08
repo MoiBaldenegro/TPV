@@ -39,4 +39,23 @@ export class updateProductDto {
   @IsOptional()
   @Length(1, 2)
   quantity?: number;
+
+  @IsString()
+  @IsOptional()
+  priceInSiteBill?: string;
+
+  @IsString()
+  @IsOptional()
+  priceToGoBill?: string;
+
+  @IsString()
+  @IsOptional()
+  priceCallOrderBill?: string;
+
+  @IsString()
+  @IsOptional()
+  priceDeliveryBill?: string;
+
+  @IsOptional()
+  active: boolean;
 }

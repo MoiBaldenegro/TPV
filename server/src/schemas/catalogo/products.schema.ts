@@ -21,25 +21,21 @@ export class Products {
   @Prop({
     required: true,
     trim: true,
-    default: 0.0,
   })
   priceInSite: string;
   @Prop({
     required: true,
     trim: true,
-    default: 0.0,
   })
   priceToGo: string;
   @Prop({
     required: true,
     trim: true,
-    default: 0.0,
   })
   priceCallOrder: string;
   @Prop({
     required: true,
     trim: true,
-    default: 0.0,
   })
   priceDelivery: string;
 
@@ -52,6 +48,38 @@ export class Products {
     default: 1,
   })
   quantity: number;
+
+  @Prop({
+    required: true,
+    trim: true,
+    default: '00.00',
+  })
+  priceInSiteBill?: string;
+  @Prop({
+    required: true,
+    trim: true,
+    default: '00.00',
+  })
+  priceToGoBill?: string;
+  @Prop({
+    required: true,
+    trim: true,
+    default: '00.00',
+  })
+  priceCallOrderBill?: string;
+  @Prop({
+    required: true,
+    trim: true,
+    default: '00.00',
+  })
+  priceDeliveryBill?: string;
+
+  @Prop({
+    required: true,
+    trim: true,
+    default: false,
+  })
+  active?: boolean;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Products);

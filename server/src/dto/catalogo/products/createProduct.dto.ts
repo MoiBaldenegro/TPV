@@ -24,21 +24,21 @@ export class createProductDto {
   @IsNotEmpty()
   productName: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  priceInSite?: number;
+  priceInSite?: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  priceToGo?: number;
+  priceToGo?: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  priceCallOrder: number;
+  priceCallOrder?: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  priceDelivery?: number;
+  priceDelivery?: string;
 
   @IsString()
   @Length(1, 8)
@@ -48,4 +48,23 @@ export class createProductDto {
   @IsOptional()
   @Length(1, 2)
   quantity?: number;
+
+  @IsString()
+  @IsOptional()
+  priceInSiteBill?: string;
+
+  @IsString()
+  @IsOptional()
+  priceToGoBill?: string;
+
+  @IsString()
+  @IsOptional()
+  priceCallOrderBill?: string;
+
+  @IsString()
+  @IsOptional()
+  priceDeliveryBill?: string;
+
+  @IsOptional()
+  active: boolean;
 }
