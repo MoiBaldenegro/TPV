@@ -21,21 +21,25 @@ export class Products {
   @Prop({
     required: true,
     trim: true,
+    default: '00.00',
   })
   priceInSite: string;
   @Prop({
     required: true,
     trim: true,
+    default: '00.00',
   })
   priceToGo: string;
   @Prop({
     required: true,
     trim: true,
+    default: '00.00',
   })
   priceCallOrder: string;
   @Prop({
     required: true,
     trim: true,
+    default: '00.00',
   })
   priceDelivery: string;
 
