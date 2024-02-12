@@ -21,7 +21,6 @@ import {
   timeOptions,
   userInformation,
 } from './utils/format';
-import { x } from 'pdfkit';
 
 @Controller('print')
 export class PrintController {
