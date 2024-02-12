@@ -14,7 +14,7 @@ export class Bills {
     required: true,
     trim: true,
   })
-  sellType: 'onSite' | 'toGo' | 'rappi' | 'phone';
+  sellType: 'onSite' | 'toGo' | 'rappi' | 'phone' | 'n/A';
 
   @Prop({
     required: true,
