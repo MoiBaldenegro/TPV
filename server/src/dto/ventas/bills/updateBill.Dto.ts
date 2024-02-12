@@ -30,8 +30,6 @@ export class UpdateBillDto {
   @IsString()
   table?: string;
 
-  @IsOptional()
-  printerLocation?: Printer[];
   /*
   @IsOptional()
   @IsString()

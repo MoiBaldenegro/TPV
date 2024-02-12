@@ -27,8 +27,6 @@ export class CreateBillDto {
   @IsString()
   table: string;
 
-  @IsOptional()
-  printerLocation?: Printer[];
   /*
   @IsDefined()
   @IsString()

@@ -13,17 +13,28 @@ import {
 } from 'node-thermal-printer';
 
 import {
+  dateOptions,
+  formatearCadena,
   headInfoProducts,
   productInfo,
   restaurantDetails,
+  timeOptions,
   userInformation,
 } from './utils/format';
+import { x } from 'pdfkit';
 
 @Controller('print')
 export class PrintController {
   @Post('ticket')
   async printTicket(@Body() data: any): Promise<string> {
-    const date = new Date().toDateString();
+    const date = new Date().toLocaleDateString(
+      'es-MX',
+      dateOptions as Intl.DateTimeFormatOptions,
+    );
+    const hour = new Date().toLocaleTimeString(
+      'es-MX',
+      timeOptions as Intl.DateTimeFormatOptions,
+    );
     const billData = data.data;
 
     try {
@@ -61,7 +72,7 @@ export class PrintController {
 
       printer.println('');
 
-      printer.println(`Fecha ${date}`);
+      printer.leftRight(`${date}`, `${hour}`);
       printer.println(userInformation);
 
       printer.println('');
@@ -83,29 +94,49 @@ export class PrintController {
       printer.alignCenter();
       await printImage('./src/assets/icon/dividerTicket.png');
 
-      // Simulación de productos
-      for (let i = 0; i < 10; i++) {
-        printer.println(productInfo);
-      }
+      // const productData= `0${data.data.} Product Name     $0,000.00   $0,000.00`;
 
+      data.data.products.forEach((item) => {
+        const productFormat = formatearCadena(item.productName, 21, ' ', 0);
+        const quantityFormat = formatearCadena(
+          item.quantity.toString(),
+          2,
+          '0',
+          1,
+        );
+        const totalPrice =
+          item.quantity === 1 ? item.priceInSite : item.priceInSiteBill;
+        const totalPriceFormat = formatearCadena(totalPrice, 8, ' ', 0);
+
+        const individualPrice = formatearCadena(item.priceInSite, 8, ' ', 0);
+        console.log(totalPrice);
+        console.log(totalPriceFormat);
+        printer.println(
+          `${quantityFormat} ${productFormat}$${individualPrice}$${totalPriceFormat}`,
+        );
+      });
       printer.alignCenter();
       await printImage('./src/assets/icon/dividerTicket.png');
 
       printer.println('');
 
       printer.alignLeft();
-      printer.println('11 Productos');
+      let counter = 0;
+      billData.products.forEach((item) => {
+        counter++;
+      });
+      printer.println(`${counter} Productos`);
 
       printer.println('');
 
       printer.alignCenter();
-      printer.leftRight('Subtotal', '$0,000.00');
+      printer.leftRight('Subtotal', `$${billData.checkTotal}`);
       printer.leftRight('Subtotal', '10% -$0,000.00');
       printer.leftRight('Subtotal', '10% -$0,000.00');
       printer.leftRight('Subtotal', '10% -$0,000.00');
 
       printer.println('');
-      printer.leftRight('Total por pagar', '$0,000.00');
+      printer.leftRight('Total por pagar', `$${billData.checkTotal}`);
       printer.setTextNormal();
       printer.alignRight();
       printer.println('(cantidad en texto/mxn)');
