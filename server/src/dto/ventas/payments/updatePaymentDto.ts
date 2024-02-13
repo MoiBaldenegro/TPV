@@ -5,7 +5,7 @@ export interface Transaction {
   quantity: string;
 }
 
-export class CreatePaymentDto {
+export class UpdatePaymentDto {
   @IsOptional()
   @IsString()
   paymentCode?: string;
