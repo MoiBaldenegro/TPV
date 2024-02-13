@@ -1,5 +1,10 @@
 import { SchemaFactory, Schema, Prop } from '@nestjs/mongoose';
 
+export interface Transaction {
+  paymentType: string;
+  quantity: string;
+}
+
 @Schema({ timestamps: true })
 export class Payment {
   @Prop({
@@ -7,25 +12,18 @@ export class Payment {
     required: true,
     trim: true,
   })
-  paymentCode: string;
+  paymentCode?: string;
 
   @Prop({
     required: true,
     trim: true,
   })
   check: string;
-
   @Prop({
     required: true,
     trim: true,
   })
-  noteCode: string;
-
-  @Prop({
-    required: true,
-    trim: true,
-  })
-  sellType: string; // este tendra que ser un enum
+  note?: string;
 
   @Prop({
     required: true,
@@ -41,17 +39,15 @@ export class Payment {
 
   @Prop({
     required: true,
-    trim: true,
-    default: '0.00',
   })
-  paymentTotal: string;
+  transactions: Transaction[];
 
   @Prop({
     required: true,
     trim: true,
-    // default: "cash"
+    default: '0.00',
   })
-  paymentType: string;
+  paymentTotal: string;
 
   @Prop({
     required: true,
@@ -68,9 +64,9 @@ export class Payment {
   @Prop({
     required: true,
     trim: true,
-    default: 'unbilled',
+    default: false,
   })
-  billing: 'billed' | 'unbilled';
+  billing: boolean;
 }
 
 export const PaymentSchema = SchemaFactory.createForClass(Payment);

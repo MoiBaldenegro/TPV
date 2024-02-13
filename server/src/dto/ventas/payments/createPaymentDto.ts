@@ -1,27 +1,29 @@
 import { IsString, IsDefined } from 'class-validator';
 
+export interface Transaction {
+  paymentType: string;
+  quantity: string;
+}
+
 export class CreatePaymentDto {
   @IsString()
-  @IsDefined()
-  paymentCode: string;
+  paymentCode?: string;
 
   @IsDefined()
   @IsString()
   check: string;
 
-  @IsDefined()
   @IsString()
-  noteCode: string;
-
-  @IsDefined()
-  @IsString()
-  sellType: string; // este tendra que ser un enum
+  noteCode?: string;
 
   @IsString()
   checkTotal: true;
 
   @IsString()
   tips: string;
+
+  @IsDefined()
+  Transactions: Transaction[];
 
   @IsString()
   paymentTotal: string;
@@ -36,5 +38,5 @@ export class CreatePaymentDto {
   paymentDate: string;
 
   @IsString()
-  billing: 'billed' | 'unbilled';
+  billing: boolean;
 }

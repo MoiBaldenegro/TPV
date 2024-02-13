@@ -1,40 +1,50 @@
-import { IsString, IsDefined } from 'class-validator';
+import { IsString, IsOptional } from 'class-validator';
 
-export class UpdatePaymentDto {
+export interface Transaction {
+  paymentType: string;
+  quantity: string;
+}
+
+export class CreatePaymentDto {
+  @IsOptional()
   @IsString()
-  @IsDefined()
   paymentCode?: string;
 
-  @IsDefined()
+  @IsOptional()
   @IsString()
   check?: string;
 
-  @IsDefined()
+  @IsOptional()
   @IsString()
   noteCode?: string;
 
-  @IsDefined()
-  @IsString()
-  sellType?: string; // este tendra que ser un enum
-
+  @IsOptional()
   @IsString()
   checkTotal?: true;
 
+  @IsOptional()
   @IsString()
   tips?: string;
 
+  @IsOptional()
+  Transactions?: Transaction[];
+
+  @IsOptional()
   @IsString()
   paymentTotal?: string;
 
   @IsString()
+  @IsOptional()
   paymentType?: true;
 
-  @IsDefined()
+  @IsOptional()
   cashier?: string;
 
+  @IsOptional()
   @IsString()
   paymentDate?: string;
 
   @IsString()
-  billing?: 'billed' | 'unbilled';
+  @IsOptional()
+  billing?: boolean;
 }
