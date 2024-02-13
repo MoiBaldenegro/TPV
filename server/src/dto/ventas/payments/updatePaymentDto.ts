@@ -4,7 +4,7 @@ export interface Transaction {
   paymentType: string;
   quantity: string;
 }
-
+// update
 export class UpdatePaymentDto {
   @IsOptional()
   @IsString()
