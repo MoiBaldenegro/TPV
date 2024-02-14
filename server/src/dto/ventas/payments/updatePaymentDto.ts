@@ -6,6 +6,10 @@ export interface Transaction {
 }
 // update
 export class UpdatePaymentDto {
+  @IsString()
+  @IsOptional()
+  accountId?: string;
+
   @IsOptional()
   @IsString()
   paymentCode?: string;
@@ -42,4 +46,8 @@ export class UpdatePaymentDto {
 
   @IsOptional()
   billing?: boolean;
+
+  @IsString()
+  @IsOptional()
+  difference?: string;
 }

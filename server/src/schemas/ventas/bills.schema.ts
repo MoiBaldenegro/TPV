@@ -1,6 +1,6 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Printer } from '../configuracion/printer.schema';
+import { Payment } from './payment.schema';
 
 @Schema({ timestamps: true })
 export class Bills {
@@ -41,9 +41,9 @@ export class Bills {
 
   @Prop({
     required: true,
-    trim: true,
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Payment' }],
   })
-  paymentDate: string;
+  payment: Payment[];
 
   @Prop({
     required: true,

@@ -3,6 +3,7 @@ import { BillsController } from './bills.controller';
 import { BillsService } from './bills.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BillSchema, Bills } from 'src/schemas/ventas/bills.schema';
+import { Payment, PaymentSchema } from 'src/schemas/ventas/payment.schema';
 
 @Module({
   imports: [
@@ -10,6 +11,10 @@ import { BillSchema, Bills } from 'src/schemas/ventas/bills.schema';
       {
         name: Bills.name,
         schema: BillSchema,
+      },
+      {
+        name: Payment.name,
+        schema: PaymentSchema,
       },
     ]),
   ],

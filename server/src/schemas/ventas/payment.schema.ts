@@ -1,4 +1,5 @@
 import { SchemaFactory, Schema, Prop } from '@nestjs/mongoose';
+import { ObjectId } from 'mongodb';
 
 export interface Transaction {
   paymentType: string;
@@ -7,6 +8,12 @@ export interface Transaction {
 
 @Schema({ timestamps: true })
 export class Payment {
+  @Prop({
+    required: true,
+    trim: true,
+  })
+  accountId: ObjectId;
+
   @Prop({
     unique: true,
     required: true,
@@ -68,6 +75,12 @@ export class Payment {
     default: false,
   })
   billing: boolean;
+
+  @Prop({
+    required: true,
+    trim: true,
+  })
+  difference: string;
 }
 
 export const PaymentSchema = SchemaFactory.createForClass(Payment);

@@ -13,10 +13,14 @@ import {
 import { PaymentsService } from './payments.service';
 import { CreatePaymentDto } from 'src/dto/ventas/payments/createPaymentDto';
 import { UpdatePaymentDto } from 'src/dto/ventas/payments/updatePaymentDto';
+import { BillsService } from '../bills/bills.service';
 
 @Controller('payments')
 export class PaymentsController {
-  constructor(private paymentService: PaymentsService) {}
+  constructor(
+    private paymentService: PaymentsService,
+    private billService: BillsService,
+  ) {}
 
   @Get()
   async findAll() {
@@ -44,9 +48,12 @@ export class PaymentsController {
 
   @Post()
   async create(@Body() body: CreatePaymentDto) {
-    console.log('entre aca al controller');
     try {
       const newPayment = await this.paymentService.create(body);
+      /*
+      const accountForPayment = this.billService.findOne()
+      const payInBill = await this.billService.update()
+      */
       return newPayment;
     } catch (error) {
       if (error.code === 11000) {

@@ -14,7 +14,9 @@ export class TablesService {
       return await this.tableModel.find().populate({
         path: 'bill',
       });
-    } catch (error) {}
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   async findOne(id: string) {

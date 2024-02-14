@@ -12,33 +12,41 @@ export class BillsService {
   ) {}
 
   async findAll() {
-    return await this.billsModel.find();
+    try {
+      return await this.billsModel.find().populate({
+        path: 'payment',
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   async findOne(id: string) {
-    return await this.billsModel.findById(id);
+    try {
+      return await this.billsModel.findById(id).populate({
+        path: 'payment',
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   async create(createBill: CreateBillDto) {
     try {
-      // Obtener el último documento insertado ordenado por fecha de creación
       const lastBill = await this.billsModel
         .findOne({})
         .sort({ createdAt: -1 })
         .exec();
 
-      // Calcular el siguiente billCode
       const nextBillCode = lastBill
         ? this.getNextBillCode(lastBill.billCode)
         : 1;
 
-      // Crear la nueva factura con el billCode calculado
       const billToCreate = new this.billsModel({
         ...createBill,
         billCode: nextBillCode,
       });
 
-      // Guardar la nueva factura en la base de datos
       await billToCreate.save();
 
       return billToCreate;
@@ -48,7 +56,6 @@ export class BillsService {
   }
 
   private getNextBillCode(lastBillCode: number): number {
-    // Incrementar el billCode actual en 1
     return lastBillCode + 1;
   }
 

@@ -6,6 +6,10 @@ export interface Transaction {
 }
 
 export class CreatePaymentDto {
+  @IsString()
+  @IsDefined()
+  accountId: string;
+
   @IsOptional()
   @IsString()
   paymentCode?: string;
@@ -36,4 +40,8 @@ export class CreatePaymentDto {
   paymentDate: string;
 
   billing: boolean;
+
+  @IsString()
+  @IsDefined()
+  difference: string;
 }

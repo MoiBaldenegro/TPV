@@ -1,5 +1,6 @@
 import { IsString, Length, IsOptional } from 'class-validator';
 import { Printer } from 'src/schemas/configuracion/printer.schema';
+import { Payment } from 'src/schemas/ventas/payment.schema';
 
 export class UpdateBillDto {
   @IsOptional()
@@ -23,8 +24,7 @@ export class UpdateBillDto {
   status?: 'enabled' | 'disabled' | 'pending' | 'cancel';
 
   @IsOptional()
-  @IsString()
-  paymentDate?: string;
+  payment?: Payment[];
 
   @IsOptional()
   @IsString()
