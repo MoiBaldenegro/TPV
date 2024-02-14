@@ -31,10 +31,12 @@ export class PaymentsService {
         ? this.getNextPaymentCode(parseFloat(lastPaymentCode.paymentCode))
         : 1;
 
+      const newCode = nextPaymentCode.toString();
+
       // Crear nueva solicitud de pago con el folio calculado
       const newPaymentCode = new this.paymentModel({
         ...createdPayment,
-        paymentCode: nextPaymentCode.toString(),
+        paymentCode: newCode,
       });
 
       return await newPaymentCode.save();
