@@ -50,10 +50,11 @@ export class PaymentsController {
   async create(@Body() body: CreatePaymentDto) {
     try {
       const newPayment = await this.paymentService.create(body);
-
-      const accountForPayment = this.billService.findOne(body.accountId); // aca trajimos la cuenta
-      const payInBill = await this.billService.update(body.accountId, {
-        payment: [body],
+      const id = newPayment._id;
+      console.log(newPayment._id); // Creamos el pago
+      const accountForPayment = await this.billService.findOne(body.accountId); // traemos la cuenta actual
+      const payInBill = await this.billService.update(accountForPayment._id, {
+        payment: [id.toString()], // actualizamos la cuenta pasamos el id de la cuenta a actualizar - pasamos la key payment y como valor el id del ppago creado
       });
 
       return newPayment;

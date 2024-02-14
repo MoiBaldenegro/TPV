@@ -21,7 +21,7 @@ export class CreateBillDto {
   status: 'enabled' | 'disabled' | 'pending' | 'cancel';
 
   @IsDefined()
-  payment: Payment[];
+  payment: string[];
 
   @IsDefined()
   @IsString()

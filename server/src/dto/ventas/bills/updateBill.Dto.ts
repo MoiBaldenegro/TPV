@@ -24,7 +24,7 @@ export class UpdateBillDto {
   status?: 'enabled' | 'disabled' | 'pending' | 'cancel';
 
   @IsOptional()
-  payment?: Payment[];
+  payment?: string[];
 
   @IsOptional()
   @IsString()
