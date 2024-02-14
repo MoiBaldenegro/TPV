@@ -50,10 +50,12 @@ export class PaymentsController {
   async create(@Body() body: CreatePaymentDto) {
     try {
       const newPayment = await this.paymentService.create(body);
-      /*
-      const accountForPayment = this.billService.findOne()
-      const payInBill = await this.billService.update()
-      */
+
+      const accountForPayment = this.billService.findOne(body.accountId); // aca trajimos la cuenta
+      const payInBill = await this.billService.update(body.accountId, {
+        payment: [body],
+      });
+
       return newPayment;
     } catch (error) {
       if (error.code === 11000) {

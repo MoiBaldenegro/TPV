@@ -45,9 +45,7 @@ export class Payment {
   })
   tips: string;
 
-  @Prop({
-    required: true,
-  })
+  @Prop({ default: [] })
   transactions: Transaction[];
 
   @Prop({
