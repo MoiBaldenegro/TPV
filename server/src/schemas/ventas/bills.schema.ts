@@ -40,10 +40,10 @@ export class Bills {
   products: [{}];
 
   @Prop({
-    required: true,
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Payment' }],
+    default: [],
   })
-  payment: Payment[];
+  payment?: Payment[];
 
   @Prop({
     required: true,
