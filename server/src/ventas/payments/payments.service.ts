@@ -20,8 +20,27 @@ export class PaymentsService {
   }
 
   async create(createdPayment: CreatePaymentDto) {
-    const newPayment = new this.paymentModel(createdPayment);
-    return await newPayment.save();
+    try {
+      // Obtenemos el ultimo pago insertado
+      const lastPaymentCode = await this.paymentModel
+        .findOne({})
+        .sort({ createdAt: -1 })
+        .exec();
+
+      const nextPaymentCode = lastPaymentCode
+        ? this.getNextPaymentCode(parseFloat(lastPaymentCode.paymentCode))
+        : 1;
+
+      // Crear nueva solicitud de pago con el folio calculado
+      const newPaymentCode = new this.paymentModel({
+        ...createdPayment,
+        paymentCode: nextPaymentCode.toString(),
+      });
+
+      return await newPaymentCode.save();
+    } catch (error) {
+      throw error;
+    }
   }
 
   async delete(id: string) {
@@ -32,5 +51,10 @@ export class PaymentsService {
     return await this.paymentModel.findByIdAndUpdate(id, updatePayment, {
       new: true,
     });
+  }
+
+  private getNextPaymentCode(lastPaymentCode: number): number {
+    // Incrementar el billCode actual en 1
+    return lastPaymentCode + 1;
   }
 }
