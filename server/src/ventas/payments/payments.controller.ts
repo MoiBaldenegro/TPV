@@ -44,6 +44,7 @@ export class PaymentsController {
 
   @Post()
   async create(@Body() body: CreatePaymentDto) {
+    console.log('entre aca al controller');
     try {
       const newPayment = await this.paymentService.create(body);
       return newPayment;

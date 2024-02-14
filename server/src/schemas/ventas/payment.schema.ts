@@ -19,11 +19,12 @@ export class Payment {
     trim: true,
   })
   check: string;
+
   @Prop({
-    required: true,
     trim: true,
+    default: '',
   })
-  note?: string;
+  noteCode?: string;
 
   @Prop({
     required: true,

@@ -1,4 +1,4 @@
-import { IsString, IsDefined } from 'class-validator';
+import { IsString, IsDefined, IsOptional } from 'class-validator';
 
 export interface Transaction {
   paymentType: string;
@@ -6,6 +6,7 @@ export interface Transaction {
 }
 
 export class CreatePaymentDto {
+  @IsOptional()
   @IsString()
   paymentCode?: string;
 
@@ -13,6 +14,7 @@ export class CreatePaymentDto {
   @IsString()
   check: string;
 
+  @IsOptional()
   @IsString()
   noteCode?: string;
 
@@ -22,14 +24,10 @@ export class CreatePaymentDto {
   @IsString()
   tips: string;
 
-  @IsDefined()
-  Transactions: Transaction[];
+  Transactions?: Transaction[];
 
   @IsString()
   paymentTotal: string;
-
-  @IsString()
-  paymentType: true;
 
   @IsDefined()
   cashier: string;
@@ -37,6 +35,5 @@ export class CreatePaymentDto {
   @IsString()
   paymentDate: string;
 
-  @IsString()
   billing: boolean;
 }

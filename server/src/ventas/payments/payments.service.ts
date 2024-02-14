@@ -20,6 +20,7 @@ export class PaymentsService {
   }
 
   async create(createdPayment: CreatePaymentDto) {
+    console.log('entre al service');
     try {
       // Obtenemos el ultimo pago insertado
       const lastPaymentCode = await this.paymentModel
@@ -38,10 +39,11 @@ export class PaymentsService {
         ...createdPayment,
         paymentCode: newCode,
       });
+      console.log(createdPayment.paymentCode);
 
       return await newPaymentCode.save();
     } catch (error) {
-      throw error;
+      console.error(error);
     }
   }
 

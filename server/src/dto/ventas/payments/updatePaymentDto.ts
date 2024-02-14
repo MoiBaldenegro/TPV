@@ -33,10 +33,6 @@ export class UpdatePaymentDto {
   @IsString()
   paymentTotal?: string;
 
-  @IsString()
-  @IsOptional()
-  paymentType?: true;
-
   @IsOptional()
   cashier?: string;
 
@@ -44,7 +40,6 @@ export class UpdatePaymentDto {
   @IsString()
   paymentDate?: string;
 
-  @IsString()
   @IsOptional()
   billing?: boolean;
 }
