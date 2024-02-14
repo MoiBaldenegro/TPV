@@ -12,7 +12,7 @@ export class Payment {
     required: true,
     trim: true,
   })
-  accountId: ObjectId;
+  accountId: string;
 
   @Prop({
     unique: true,

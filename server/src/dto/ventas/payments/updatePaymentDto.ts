@@ -24,7 +24,7 @@ export class UpdatePaymentDto {
 
   @IsOptional()
   @IsString()
-  checkTotal?: true;
+  checkTotal?: string;
 
   @IsOptional()
   @IsString()

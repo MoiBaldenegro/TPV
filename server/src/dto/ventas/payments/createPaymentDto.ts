@@ -23,7 +23,7 @@ export class CreatePaymentDto {
   noteCode?: string;
 
   @IsString()
-  checkTotal: true;
+  checkTotal: string;
 
   @IsString()
   tips: string;
