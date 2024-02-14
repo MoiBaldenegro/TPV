@@ -28,7 +28,7 @@ export class CreatePaymentDto {
   @IsString()
   tips: string;
 
-  Transactions?: Transaction[];
+  transactions?: Transaction[];
 
   @IsString()
   paymentTotal: string;

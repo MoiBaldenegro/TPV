@@ -31,7 +31,7 @@ export class UpdatePaymentDto {
   tips?: string;
 
   @IsOptional()
-  Transactions?: Transaction[];
+  transactions?: Transaction[];
 
   @IsOptional()
   @IsString()
