@@ -10,33 +10,34 @@ import {
   MaxLength,
 } from 'class-validator';
 
-export class CreateUserDto {
+export class UpdateUserDto {
   @Transform(({ value }) => value.trim())
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   @Length(2, 35)
-  name: string;
+  name?: string;
 
   @Transform(({ value }) => value.trim())
   @IsString()
-  @IsNotEmpty()
   @Length(2, 45)
-  lastName: string;
+  @IsOptional()
+  lastName?: string;
 
   @IsString()
-  @IsNotEmpty()
   @IsEmail()
-  email: string;
+  @IsOptional()
+  email?: string;
 
   @Transform(({ value }) => value.trim())
   @IsString()
   @IsNotEmpty()
-  password: string;
+  password?: string;
 
   @IsString()
   @IsOptional()
   role?: string;
 
+  @IsOptional()
   active?: boolean;
 
   @IsOptional()
@@ -45,12 +46,13 @@ export class CreateUserDto {
   @MaxLength(4)
   employeeNumber?: number;
 
+  @IsOptional()
   @IsNumber()
-  @IsNotEmpty()
   @MinLength(4)
   @MaxLength(4)
-  pinPos: number;
+  pinPos?: number;
 
+  @IsOptional()
   shift?: string;
 
   @IsOptional()

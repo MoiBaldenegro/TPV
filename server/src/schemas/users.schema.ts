@@ -9,6 +9,20 @@ export class User {
     required: true,
     trim: true,
   })
+  name: string;
+
+  @Prop({
+    unique: true,
+    required: true,
+    trim: true,
+  })
+  lastName: string;
+
+  @Prop({
+    unique: true,
+    required: true,
+    trim: true,
+  })
   email: string;
 
   @Prop({
@@ -21,6 +35,36 @@ export class User {
     default: 'user',
   })
   role: string;
+
+  @Prop({
+    default: false,
+  })
+  active: boolean;
+
+  @Prop({
+    trim: true,
+  })
+  employeeNumber: number;
+
+  @Prop({
+    trim: true,
+  })
+  pinPos: number;
+
+  @Prop({
+    trim: true,
+  })
+  shift: string;
+
+  @Prop({
+    trim: true,
+  })
+  entryDate: string;
+
+  @Prop({
+    trim: true,
+  })
+  color: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
