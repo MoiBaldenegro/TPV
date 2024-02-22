@@ -65,6 +65,11 @@ export class User {
     trim: true,
   })
   color: string;
+  @Prop({
+    required: false,
+    default: [],
+  })
+  samples?: string[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

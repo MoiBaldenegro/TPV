@@ -64,4 +64,7 @@ export class UpdateUserDto {
   @IsOptional()
   @IsString()
   color?: string;
+
+  @IsOptional()
+  samples?: string[];
 }

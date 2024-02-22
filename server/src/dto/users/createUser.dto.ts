@@ -62,4 +62,7 @@ export class CreateUserDto {
   @IsOptional()
   @IsString()
   color?: string;
+
+  @IsOptional()
+  samples?: string[];
 }
