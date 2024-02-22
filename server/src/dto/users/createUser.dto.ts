@@ -42,13 +42,13 @@ export class CreateUserDto {
   active?: boolean;
 
   @IsOptional()
-  @IsInt()
-  @Length(4, 4, { message: 'Debe contener exactamente 4 dígitos' })
+  //@IsInt()
+  // @Length(4, 4, { message: 'Debe contener exactamente 4 dígitos' })
   employeeNumber?: number;
 
   @IsNotEmpty()
-  @IsInt()
-  @Length(4, 4, { message: 'Debe contener exactamente 4 dígitos' })
+  //@IsInt()
+  //@Length(4, 4, { message: 'Debe contener exactamente 4 dígitos' })
   pinPos: number;
 
   shift?: string;

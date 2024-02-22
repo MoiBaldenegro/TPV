@@ -41,13 +41,13 @@ export class UpdateUserDto {
   active?: boolean;
 
   @IsOptional()
-  @IsNumber()
-  @Length(4, 4)
+  //@IsNumber()
+  //@Length(4, 4)
   employeeNumber?: number;
 
   @IsNumber()
-  @IsNotEmpty()
-  @Length(4, 4)
+  //@IsNotEmpty()
+  //@Length(4, 4)
   pinPos: number;
 
   @IsOptional()
