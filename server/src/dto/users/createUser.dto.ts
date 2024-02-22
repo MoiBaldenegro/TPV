@@ -42,14 +42,12 @@ export class CreateUserDto {
 
   @IsOptional()
   @IsNumber()
-  @MinLength(4)
-  @MaxLength(4)
+  @Length(4, 4)
   employeeNumber?: number;
 
   @IsNumber()
   @IsNotEmpty()
-  @MinLength(4)
-  @MaxLength(4)
+  @Length(4, 4)
   pinPos: number;
 
   shift?: string;

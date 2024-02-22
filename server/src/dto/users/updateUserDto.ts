@@ -42,15 +42,13 @@ export class UpdateUserDto {
 
   @IsOptional()
   @IsNumber()
-  @MinLength(4)
-  @MaxLength(4)
+  @Length(4, 4)
   employeeNumber?: number;
 
-  @IsOptional()
   @IsNumber()
-  @MinLength(4)
-  @MaxLength(4)
-  pinPos?: number;
+  @IsNotEmpty()
+  @Length(4, 4)
+  pinPos: number;
 
   @IsOptional()
   shift?: string;
