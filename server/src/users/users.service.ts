@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from 'src/schemas/users.schema';
+import * as base64 from 'base-64';
+
 // interfaces
 import { CreateUserDto } from 'src/dto/users/createUser.dto';
 import { UpdateUserDto } from 'src/dto/users/updateUserDto';
@@ -22,7 +24,13 @@ export class UsersService {
     return await newUser.save();
   }
 
-  async update(id: string, body: UpdateUserDto) {
-    return this.UserModel.findByIdAndUpdate(id, body, { new: true });
+  async updateSamples(id: string, body: UpdateUserDto) {
+    // const sampleByte = base64.decode(body.samples);
+    console.log(body.samples);
+
+    const updatedUser = await this.UserModel.findByIdAndUpdate(id, body, {
+      new: true,
+    });
+    return updatedUser;
   }
 }

@@ -30,10 +30,9 @@ export class UpdateUserDto {
 
   @Transform(({ value }) => value.trim())
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   password?: string;
 
-  @IsString()
   @IsOptional()
   role?: string;
 
@@ -45,10 +44,10 @@ export class UpdateUserDto {
   //@Length(4, 4)
   employeeNumber?: number;
 
-  @IsNumber()
+  @IsOptional()
   //@IsNotEmpty()
   //@Length(4, 4)
-  pinPos: number;
+  pinPos?: number;
 
   @IsOptional()
   shift?: string;
