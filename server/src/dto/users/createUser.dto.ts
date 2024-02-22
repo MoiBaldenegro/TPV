@@ -8,6 +8,7 @@ import {
   IsEmail,
   IsNumber,
   MaxLength,
+  IsInt,
 } from 'class-validator';
 
 export class CreateUserDto {
@@ -41,13 +42,13 @@ export class CreateUserDto {
   active?: boolean;
 
   @IsOptional()
-  @IsNumber()
-  @Length(4, 4)
+  @IsInt()
+  @Length(4, 4, { message: 'Debe contener exactamente 4 dígitos' })
   employeeNumber?: number;
 
-  @IsNumber()
   @IsNotEmpty()
-  @Length(4, 4)
+  @IsInt()
+  @Length(4, 4, { message: 'Debe contener exactamente 4 dígitos' })
   pinPos: number;
 
   shift?: string;
