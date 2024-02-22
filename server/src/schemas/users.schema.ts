@@ -34,17 +34,18 @@ export class User {
   @Prop({
     default: 'user',
   })
-  role: string;
+  role?: string;
 
   @Prop({
-    default: false,
+    default: true,
   })
-  active: boolean;
+  active?: boolean;
 
   @Prop({
     trim: true,
+    default: 666,
   })
-  employeeNumber: number;
+  employeeNumber?: number;
 
   @Prop({
     trim: true,
@@ -53,18 +54,22 @@ export class User {
 
   @Prop({
     trim: true,
+    default: 'turno por defecto',
   })
-  shift: string;
+  shift?: string;
 
   @Prop({
     trim: true,
+    default: 'fecha por defecto',
   })
-  entryDate: string;
+  entryDate?: string;
 
   @Prop({
     trim: true,
+    default: '#336699',
   })
-  color: string;
+  color?: string;
+
   @Prop({
     required: false,
     default: [],

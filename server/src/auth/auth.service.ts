@@ -16,14 +16,17 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async register({ email, password }: CreateUserDto) {
+  async register({ email, password, name, lastName, pinPos }: CreateUserDto) {
     const user = await this.UsersService.findByEmail(email);
     if (user) {
       throw new BadRequestException('Este correo ya esta en uso');
     }
     return this.UsersService.create({
+      name,
+      lastName,
       email,
       password: await bcryptjs.hash(password, 10),
+      pinPos,
     });
   }
   async login({ email, password }: LoginDto) {
