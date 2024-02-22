@@ -7,10 +7,14 @@ import {
   Body,
   ConflictException,
   HttpCode,
+  Param,
+  NotFoundException,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from 'src/dto/users/createUser.dto';
 import { Error } from 'mongoose';
+import { UpdateUserDto } from 'src/dto/users/updateUserDto';
+import { NotFoundError } from 'rxjs';
 
 @Controller('users')
 export class UsersController {
@@ -42,7 +46,17 @@ export class UsersController {
     return 'Usuario eliminado con exito';
   }
   @Put(':id')
-  update() {
-    return 'Usuario actualizado por exito';
+  async update(@Param('id') id: string, @Body() body: UpdateUserDto) {
+    try {
+      const userUpdated = await this.usersService.update(id, body);
+      if (!userUpdated) {
+        throw new NotFoundException(
+          'No se encontro el usuario que deseas actualizar',
+        );
+      }
+      return userUpdated;
+    } catch (error) {
+      throw new NotFoundException('Ha ocurrido algo inesperado');
+    }
   }
 }
