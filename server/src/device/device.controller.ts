@@ -13,7 +13,7 @@ import {
 import { DeviceService } from './device.service';
 import { CreateDeviceDto } from 'src/dto/devices/createDeviceDto';
 import { UpdateDeviceDto } from 'src/dto/devices/updateDeviceDto';
-import { idnMachine } from 'idn.config';
+import { idnMachine } from 'src/idn.config'; // Esta ruta es despues de pegar el archivo manualmente, verificar la ruta donde se crea por medio del controllador
 
 @Controller('device')
 export class DeviceController {
