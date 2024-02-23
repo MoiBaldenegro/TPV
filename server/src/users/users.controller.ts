@@ -59,4 +59,9 @@ export class UsersController {
       throw new NotFoundException('Ha ocurrido algo inesperado');
     }
   }
+
+  @Post('biometrics/auth')
+  async autenticate(@Body() body: any[]) {
+    return 'si jala';
+  }
 }

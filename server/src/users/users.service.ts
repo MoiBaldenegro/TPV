@@ -24,7 +24,7 @@ export class UsersService {
   }
 
   async updateSamples(id: string, body: UpdateUserDto) {
-    // const sampleByte = base64.decode(body.samples);
+    // const sampleByte = base64.decode(body.samples); //
     console.log(body.samples);
 
     const updatedUser = await this.UserModel.findByIdAndUpdate(id, body, {
