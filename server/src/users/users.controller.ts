@@ -9,16 +9,10 @@ import {
   HttpCode,
   Param,
   NotFoundException,
-  BadRequestException,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from 'src/dto/users/createUser.dto';
-import { Error } from 'mongoose';
 import { UpdateUserDto } from 'src/dto/users/updateUserDto';
-import { NotFoundError } from 'rxjs';
-import { FingerprintsAuth } from '@digitalpersona/authentication';
-import { imageHash } from 'image-hash';
-import * as hammingDistance from 'hamming-distance';
 
 @Controller('users')
 export class UsersController {
