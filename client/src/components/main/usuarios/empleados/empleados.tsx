@@ -1,7 +1,7 @@
 import styles from './empleados.module.css';
 // Hook
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // icons
 import createIcon from '../../../../assets/public/createIcon.svg';
@@ -12,8 +12,12 @@ import searchIcon from '../../../../assets/categorias/searchIcon.svg';
 // Actions
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
 import { getEmployeesAction } from '../../../../redux/actions/usuarios/employeesActions/getEmployees';
+import { useModal } from '../../../../hooks/useModals';
+import Register from './regiter/register';
 
 export default function Empleados() {
+  const [employee, setEmployee] = useState({});
+  const register = useModal('register');
   const dispatch = useDispatch();
   const { allEmployees } = useSelector((state) => state.employees);
 
@@ -26,12 +30,26 @@ export default function Empleados() {
   }, []);
   return (
     <div className={styles.container}>
+      {register.isOpen && register.modalName === 'register' ? (
+        <Register
+          setEmployee={setEmployee}
+          onClose={register.closeModal}
+          isOpen={register.isOpen}
+        >
+          Registrar
+        </Register>
+      ) : null}
       <section className={styles.head}>
         <h2>Empleados</h2>
         <div>
-          <button className={styles.btnHeadCreate}>
+          <button
+            className={styles.btnHeadCreate}
+            onClick={() => {
+              register.openModal();
+            }}
+          >
             <img src={createIcon} alt="create-icon" />
-            <span>Crear perfil</span>
+            <span>Registro</span>
           </button>
         </div>
       </section>
