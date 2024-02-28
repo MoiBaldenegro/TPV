@@ -25,6 +25,11 @@ export default function Empleados() {
     dispatch(discontinueMenusAction(id, body));
   };
 
+  const handleChange = (args: any) => {
+    setEmployee(args);
+    console.log(employee);
+  };
+
   useEffect(() => {
     dispatch(getEmployeesAction());
   }, []);
@@ -32,7 +37,8 @@ export default function Empleados() {
     <div className={styles.container}>
       {register.isOpen && register.modalName === 'register' ? (
         <Register
-          setEmployee={setEmployee}
+          currentEmployee={employee}
+          setEmployee={handleChange}
           onClose={register.closeModal}
           isOpen={register.isOpen}
         >

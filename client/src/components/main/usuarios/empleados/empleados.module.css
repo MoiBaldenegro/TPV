@@ -380,6 +380,9 @@ margin-left: 1vw;
 .actionButtonsSecond{
   background: var(--color-accent-red-primary);
 }
+.buttonsContainer{
+  display: flex;
+}
 .actionButtonsSecond:hover,
 .actionButtonsFirst:hover,
 .actionButtonsFirstEnabled:hover,

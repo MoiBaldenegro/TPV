@@ -1,3 +1,6 @@
+@import "../../../../../varCss/fonts.module.css";
+@import "../../../../../varCss/colors.module.css";
+
 .screen {
     position: fixed;
     top: 0;
@@ -31,7 +34,6 @@
         align-items: center;
         width: 100%;
         height: 10px;
-
     }
 
     .process{
@@ -39,10 +41,12 @@
         height: 72px;
         position: relative;
 
-        & .barOne{
+        & .barOne,
+        .barTwo,
+        .barThree{
             width: 70%;
             height: 5px;
-            background-color: aliceblue;
+          background: white;
             position: absolute;
             top: 32px;
             left: 100px;
@@ -50,19 +54,47 @@
           
         }
 
+
+        .barTwo{
+          animation: barMediumTransition .8s ease forwards;
+
+        }
+        .barThree{
+          animation: barCompleteTransition .8s ease forwards;
+
+        }
+
+
         .One,
         .Two,
-        .Three{
+        .Three,
+        .active{
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: brown;
+            background: var( --color-accent-red-primary);
             width: 40px;
             height: 40px;
             border-radius: 8px;
              z-index: 1000;
         }
+
+
+        .Two{
+          background-color: #d8d2d2;
+          color: black;
+        
+        }
+
+        .active{
+          color: black;
+          background-color: white;
+          animation: backgroundAnimation .5s ease forwards;
+          animation-delay: .5s;
+        }
     }
+
+    
   }
   .closeButton {
     color: white;
@@ -79,17 +111,73 @@
   }
 
   section{
+
+    >article{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 656px;
+      height: 468px;
+      gap: 32px;
+      
+      & .filterButton{
+        width: 277px;
+        height: 48px;
+        padding: 12px 16px 12px 16px;
+        border-radius: 8px;
+        justify-content: flex-start;
+        background-color: transparent;
+        color: aliceblue;
+        border: none;
+        outline: none;
+        transition: .2.5s ease;
+      }
+
+      & .filterButton:hover{
+        background-color: #d8d2d236;
+      }
+      
+      >div{
+        width: 309px;
+        height: 406px;
+        padding: 16px;
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
+
+        & h2{
+          font-size: 24px;
+          font-weight: 200;
+          margin-bottom: 12px;
+        }
+
+        form{
+          background-color: #d8d2d227;
+          border-radius: 8px;
+          padding: 10px;
+        }
+      }
+    }
     .dataUser{
         height: 246px;
         width: 480px;
         border-radius: 16px;
         background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
-
-    
-        >div{
-            background-color: rgb(255, 217, 0);
-            height: 100px;
-            width: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px;
+        >h2{
+          font-weight: 400;
+          font-size: var(--font-size-medium)
+        }
+        >input{
+          background: rgba(249, 249, 249, 0.1);
+          width: 448px;
+          height: 48px;
+          padding: 12px 16px 12px 16px;
+          border-radius: 8px;
+          color: aliceblue;
+          font-size: var(--font-size-small)
         }
       }
       .head{
@@ -104,23 +192,34 @@
         width: 480px;
         border-radius: 16px;
         background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px;
 
-
-        >div{
-            background-color: rgb(255, 217, 0);
-            height: 100px;
-            width: 150px;
+        >h2{
+          font-weight: 400;
+          font-size: var(--font-size-medium)
         }
-
+        
+        >input{
+          background: rgba(249, 249, 249, 0.1);
+          width: 448px;
+          height: 48px;
+          padding: 12px 16px 12px 16px;
+          border-radius: 8px;
+          color: aliceblue;
+          font-size: var(--font-size-small)
+        }
       }
 
       >footer{
-        border: 1px solid orange;
         width: 80%;
         height: 60px;
         display: flex;
         justify-content: end;  
         align-items: center;
+        gap: 12px;
         
         >button{
             width: 124px;
@@ -132,10 +231,141 @@
             outline: none;
             background: rgba(249, 249, 249, 0.1);
             color: aliceblue;
+            transition: .2s ease;
         }
 
+        >button:last-child:active{
+          background: var( --color-accent-red-primary);
+        }
+
+        >button:hover{
+          filter: opacity(0.8);
+        }
+     }
+
+     .third{
+      display: flex;
+      flex-direction: column;
+      width:656px;
+      height: 468px;
+      gap: 16px;
+      
+      >div{
+        position: relative;
+        width: 480px;
+        height: 182px;
+        padding: 16px;
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        
+        >input{
+          width: 448px;
+          height: 48px;
+          border-radius: 8px;
+          background: rgba(249, 249, 249, 0.1);
+          text-indent: 12px;
+          color: #d8d2d2;
+          font-size: 16px
+        }
+      };
+
+      & div:last-child{
+        height: 158px;
+
       }
+    }
   }
+  .customDate{
+    position: relative;
+    display: inline-block; 
+    width: 100%; 
+    height: 48px;
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(249, 249, 249, 0.1);
+    align-items: center;
+  }
+  .customDate img{
+    margin-right: 20px;
+    height: 20px;
+  }
+
+  .customDate input[type="date"]{
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); 
+    font-size: 14px;
+    background-color: transparent;
+    color: #d8d2d286;
+    font-size: 18px;
+  }
+
+  .customDate label{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #d8d2d2;
+    transition: 0.2s ease-out;
+    font-size: 16px ;
+    margin-left: 8px;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+.radioContainer{
+  height: 35px;
+  display: flex;
+  align-items: center;
+  filter: saturate(0);
+
+  >label{
+    font-size: 16px;
+    font-weight: 200;
+  }
+}
+
+.saveButton{
+  background: var( --color-accent-red-primary);
+
+}
+
+
+h4{
+  font-weight: 100;
+  font-size: 16px;
+}
+
+@keyframes barMediumTransition {
+  0% { width: 0%; background-color: var(--color-accent-red-primary); } /* Estado inicial */
+  100% { width: 35%; background-color: var(--color-accent-red-primary); } /* Estado final */
+
+}
+
+
+@keyframes barCompleteTransition {
+ 
+  0% { width: 35%; background-color: var(--color-accent-red-primary); } /* Estado inicial */
+  100% { width: 70%; background-color: var(--color-accent-red-primary)}; /* Estado final */
+}
+
+@keyframes backgroundAnimation{
+  0% {
+    background-color: #d8d2d2;
+  }
+  100%{
+    background-color: var(--color-accent-red-primary);
+    color:#d8d2d2;
+  }
+}
 
  
 
