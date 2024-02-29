@@ -367,6 +367,21 @@ h4{
   }
 }
 
+.validation{
+  margin-top: -20px;
+  width: 65% !important;
+  height: 30px !important;
+  justify-content: flex-start !important;
+  gap: 12px;
+  
+
+  & span{    
+    font-size: 16px;
+    font-weight: 200;
+    color: var( --color-error-message);
+  }
+}
+
  
 
 

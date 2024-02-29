@@ -6,8 +6,9 @@ import saveIcon from '../../../../../assets/public/disquetIcon.svg';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDepartamentsAction } from '../../../../../redux/actions/usuarios/departamentsActions/getDepartaments';
-import createAccount from '../../../../../pages/createAccount/createAccount';
 import { createUser } from '../../../../../redux/actions/auth';
+import useValidation from '../../../../../hooks/useValidation';
+import warningIcon from '../../../../../assets/public/warningIcon.svg';
 
 interface Props {
   isOpen: any;
@@ -23,6 +24,8 @@ export default function Register({
   setEmployee,
   currentEmployee,
 }: Props) {
+  const { validationRegisterFirst, validate, message, setMessage } =
+    useValidation();
   const [lastName, setLastName] = useState({
     first: '',
     second: '',
@@ -33,12 +36,30 @@ export default function Register({
 
   useEffect(() => {
     dispatch(getDepartamentsAction);
-    console.log(allDepartaments);
   });
+
+  const handleChange = () => {
+    if (message.length) {
+      setMessage(validate);
+    }
+    const lastNameConcat = lastName.first.concat(' ');
+    const lastNameComplete = lastNameConcat.concat(lastName.second);
+    const newUser = {
+      ...currentEmployee,
+      lastName: lastNameComplete,
+    };
+    validationRegisterFirst(newUser, lastName);
+  };
   return (
     <main className={styles.screen}>
       <section className={styles.modal}>
-        <button className={styles.closeButton} onClick={onClose}>
+        <button
+          className={styles.closeButton}
+          onClick={() => {
+            onClose();
+            setEmployee({});
+          }}
+        >
           X
         </button>
         <div className={styles.head}>{children}</div>
@@ -83,6 +104,7 @@ export default function Register({
                 onChange={(e) => {
                   const { value } = e.target;
                   setLastName({ ...lastName, first: value });
+                  handleChange();
                 }}
               />
               <input
@@ -91,6 +113,7 @@ export default function Register({
                 onChange={(e) => {
                   const { value } = e.target;
                   setLastName({ ...lastName, second: value });
+                  handleChange();
                 }}
               />
               <input
@@ -99,6 +122,7 @@ export default function Register({
                 onChange={(e) => {
                   const { value } = e.target;
                   setEmployee({ ...currentEmployee, name: value });
+                  handleChange();
                 }}
               />
             </div>
@@ -113,6 +137,7 @@ export default function Register({
                   onChange={(e) => {
                     const { value } = e.target;
                     setEmployee({ ...currentEmployee, entryDate: value });
+                    handleChange();
                   }}
                 />
                 <label htmlFor="fecha">Fecha de ingreso</label>
@@ -125,8 +150,13 @@ export default function Register({
                 onChange={(e) => {
                   const { value } = e.target;
                   setEmployee({ ...currentEmployee, shift: value });
+                  handleChange();
                 }}
               />
+            </div>
+            <div className={styles.validation}>
+              {message ? <img src={warningIcon} alt="warning-icon" /> : null}
+              <span>{message}</span>
             </div>
           </>
         ) : sequence === 2 ? (
@@ -149,6 +179,10 @@ export default function Register({
                       id={element._id}
                       name="dapartaments"
                       value={element.departamentName}
+                      onChange={(e) => {
+                        const { value } = e.target;
+                        setEmployee({ ...currentEmployee, role: value });
+                      }}
                     />
                     <label htmlFor={element._id}>
                       {element.departamentName}
@@ -207,6 +241,32 @@ export default function Register({
           {sequence < 3 ? (
             <button
               onClick={() => {
+                const lastNameConcat = lastName.first.concat(' ');
+                const lastNameComplete = lastNameConcat.concat(lastName.second);
+                const newUser = {
+                  ...currentEmployee,
+                  lastName: lastNameComplete,
+                };
+
+                if (validate && !currentEmployee.lastName?.length) {
+                  handleChange();
+                  setMessage(validate);
+                  return;
+                }
+                if (
+                  !newUser.lastName?.length ||
+                  !newUser.name?.length ||
+                  !newUser.entryDate?.length ||
+                  !newUser.shift?.length ||
+                  !lastName.first.length ||
+                  !lastName.second.length
+                ) {
+                  setMessage(
+                    'Ingresa los datos del usuario antes de continuar',
+                  );
+                  return;
+                }
+
                 setSequence(sequence + 1);
               }}
             >
