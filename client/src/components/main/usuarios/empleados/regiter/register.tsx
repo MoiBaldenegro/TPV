@@ -24,8 +24,18 @@ export default function Register({
   setEmployee,
   currentEmployee,
 }: Props) {
-  const { validationRegisterFirst, validate, message, setMessage } =
-    useValidation();
+  const {
+    validationRegisterFirst,
+    validationRegisterThird,
+    validate,
+    message,
+    setMessage,
+    secondMessage,
+    thirdMessage,
+    setThirdMessage,
+    setSecondMessage,
+    thirdValidate,
+  } = useValidation();
   const [lastName, setLastName] = useState({
     first: '',
     second: '',
@@ -39,6 +49,9 @@ export default function Register({
   });
 
   const handleChange = () => {
+    if (thirdMessage.length) {
+      setThirdMessage(thirdValidate);
+    }
     if (message.length) {
       setMessage(validate);
     }
@@ -49,6 +62,7 @@ export default function Register({
       lastName: lastNameComplete,
     };
     validationRegisterFirst(newUser, lastName);
+    validationRegisterThird(newUser, lastName);
   };
   return (
     <main className={styles.screen}>
@@ -160,38 +174,48 @@ export default function Register({
             </div>
           </>
         ) : sequence === 2 ? (
-          <article>
-            <div>
-              <h2>Departamentos</h2>
-              {allDepartaments?.map((element, index) => (
-                <button className={styles.filterButton}>
-                  {element.departamentName}
-                </button>
-              ))}
-            </div>
-            <div>
-              <h2>Perfiles</h2>
-              <form action="">
+          <>
+            <article>
+              <div>
+                <h2>Departamentos</h2>
                 {allDepartaments?.map((element, index) => (
-                  <div className={styles.radioContainer}>
-                    <input
-                      type="radio"
-                      id={element._id}
-                      name="dapartaments"
-                      value={element.departamentName}
-                      onChange={(e) => {
-                        const { value } = e.target;
-                        setEmployee({ ...currentEmployee, role: value });
-                      }}
-                    />
-                    <label htmlFor={element._id}>
-                      {element.departamentName}
-                    </label>
-                  </div>
+                  <button className={styles.filterButton}>
+                    {element.departamentName}
+                  </button>
                 ))}
-              </form>
+              </div>
+              <div>
+                <h2>Perfiles</h2>
+                <form action="">
+                  {allDepartaments?.map((element, index) => (
+                    <div className={styles.radioContainer}>
+                      <input
+                        type="radio"
+                        id={element._id}
+                        name="dapartaments"
+                        value={element.departamentName}
+                        onChange={(e) => {
+                          setSecondMessage('');
+                          handleChange();
+                          const { value } = e.target;
+                          setEmployee({ ...currentEmployee, role: value });
+                        }}
+                      />
+                      <label htmlFor={element._id}>
+                        {element.departamentName}
+                      </label>
+                    </div>
+                  ))}
+                </form>
+              </div>
+            </article>
+            <div className={styles.validation}>
+              {secondMessage ? (
+                <img src={warningIcon} alt="warning-icon" />
+              ) : null}
+              <span>{secondMessage}</span>
             </div>
-          </article>
+          </>
         ) : sequence === 3 ? (
           <div className={styles.third}>
             <div>
@@ -202,12 +226,16 @@ export default function Register({
                 onChange={(e) => {
                   const { value } = e.target;
                   setEmployee({ ...currentEmployee, email: value });
+                  handleChange();
+                  setThirdMessage(thirdValidate);
                 }}
               />
               <input
                 type="password"
                 placeholder="*********"
                 onChange={(e) => {
+                  handleChange();
+                  setThirdMessage(thirdValidate);
                   const { value } = e.target;
                   setEmployee({ ...currentEmployee, password: value });
                 }}
@@ -222,8 +250,16 @@ export default function Register({
                 onChange={(e) => {
                   const { value } = e.target;
                   setEmployee({ ...currentEmployee, pinPos: value });
+                  handleChange();
+                  setThirdMessage(thirdValidate);
                 }}
               />
+            </div>
+            <div className={styles.validation}>
+              {thirdMessage ? (
+                <img src={warningIcon} alt="warning-icon" />
+              ) : null}
+              <span>{thirdMessage}</span>
             </div>
           </div>
         ) : null}
@@ -247,7 +283,6 @@ export default function Register({
                   ...currentEmployee,
                   lastName: lastNameComplete,
                 };
-
                 if (validate && !currentEmployee.lastName?.length) {
                   handleChange();
                   setMessage(validate);
@@ -264,10 +299,18 @@ export default function Register({
                   setMessage(
                     'Ingresa los datos del usuario antes de continuar',
                   );
-                  return;
+                  // aqui debemos de ir ala siguiente pantalla
+                } else if (!validate && sequence === 1) {
+                  setSequence(sequence + 1);
+                } else if (
+                  sequence > 1 &&
+                  sequence < 3 &&
+                  !newUser.role?.length
+                ) {
+                  setSecondMessage('Selecciona un perfil para el usuario'); // que no entre aca si no existe role TOMA EN CUNETA EL PROCESS
+                } else {
+                  setSequence(sequence + 1);
                 }
-
-                setSequence(sequence + 1);
               }}
             >
               <img src={rightArrow} alt="arrow-icon" />
@@ -275,8 +318,17 @@ export default function Register({
             </button>
           ) : (
             <button
+              disabled={
+                thirdMessage.length > 0 ||
+                !currentEmployee.email ||
+                !currentEmployee.password ||
+                !currentEmployee.pinPos
+              }
               className={styles.saveButton}
               onClick={() => {
+                if (thirdValidate) {
+                  setThirdMessage(thirdMessage);
+                }
                 const lastNameConcat = lastName.first.concat(' ');
                 const lastNameComplete = lastNameConcat.concat(lastName.second);
                 const newUser = {
