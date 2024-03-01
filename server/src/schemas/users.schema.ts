@@ -55,7 +55,7 @@ export class User {
   @Prop({
     trim: true,
   })
-  shift?: string;
+  shift: string;
 
   @Prop({
     trim: true,

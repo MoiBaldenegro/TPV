@@ -51,7 +51,7 @@ export class CreateUserDto {
   //@Length(4, 4, { message: 'Debe contener exactamente 4 dígitos' })
   pinPos: number;
 
-  shift?: string;
+  shift: string;
 
   @IsOptional()
   @IsString()
