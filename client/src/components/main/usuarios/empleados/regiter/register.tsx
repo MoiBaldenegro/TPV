@@ -9,6 +9,9 @@ import { getDepartamentsAction } from '../../../../../redux/actions/usuarios/dep
 import { createUser } from '../../../../../redux/actions/auth';
 import useValidation from '../../../../../hooks/useValidation';
 import warningIcon from '../../../../../assets/public/warningIcon.svg';
+import { getShiftsAction } from '../../../../../redux/actions/usuarios/shiftsActions/getShifts';
+import arrowSewlect from '../../../../../assets/public/arrow.svg';
+import { getProfilesAction } from '../../../../../redux/actions/usuarios/profilesActions/getProfiles';
 
 interface Props {
   isOpen: any;
@@ -43,11 +46,16 @@ export default function Register({
     second: '',
   });
   const [sequence, setSequence] = useState(1);
+  const [toggleShift, setToggleShift] = useState(false);
   const dispatch = useDispatch();
   const { allDepartaments } = useSelector((state) => state.departaments);
+  const { allShifts } = useSelector((state) => state.shifts);
+  const { allProfiles } = useSelector((state) => state.profiles);
 
   useEffect(() => {
     dispatch(getDepartamentsAction());
+    dispatch(getShiftsAction());
+    dispatch(getProfilesAction());
   }, []);
 
   const handleChange = () => {
@@ -163,16 +171,50 @@ export default function Register({
                 <label htmlFor="fecha">Fecha de ingreso</label>
                 <img src={dateIcon} alt="date-icon" />
               </div>
-              <input
-                placeholder="Turno"
-                type="text"
-                required
-                onChange={(e) => {
-                  const { value } = e.target;
-                  setEmployee({ ...currentEmployee, shift: value });
-                  handleChange();
-                }}
-              />
+              <div className={styles.containerInput}>
+                <div className={styles.categoriesSelect}>
+                  <div
+                    className={styles.customSelect}
+                    onClick={() => {
+                      setToggleShift(!toggleShift);
+                    }}
+                  >
+                    <div className={styles.selectTrigger}>
+                      <span>
+                        {currentEmployee.shift?.length
+                          ? currentEmployee.shift
+                          : 'Turno'}
+                      </span>
+                      <img
+                        src={arrowSewlect}
+                        alt=""
+                        className={styles.arrowSelect}
+                      />
+                    </div>
+                    <div
+                      className={toggleShift ? styles.options : styles.hidden}
+                    >
+                      {allShifts?.map((element) => (
+                        <>
+                          <span
+                            className={styles.option}
+                            onClick={(e) => {
+                              setEmployee({
+                                ...currentEmployee,
+                                shift: element.shiftName,
+                              });
+                              handleChange();
+                              console.log(currentEmployee);
+                            }}
+                          >
+                            {element.shiftName}
+                          </span>
+                        </>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className={styles.validation}>
               {message ? <img src={warningIcon} alt="warning-icon" /> : null}
@@ -193,13 +235,13 @@ export default function Register({
               <div>
                 <h2>Perfiles</h2>
                 <form action="">
-                  {allDepartaments?.map((element, index) => (
+                  {allProfiles?.map((element, index) => (
                     <div className={styles.radioContainer}>
                       <input
                         type="radio"
                         id={element._id}
                         name="dapartaments"
-                        value={element.departamentName}
+                        value={element.profileName}
                         onChange={(e) => {
                           setSecondMessage('');
                           handleChange();
@@ -207,9 +249,7 @@ export default function Register({
                           setEmployee({ ...currentEmployee, role: value });
                         }}
                       />
-                      <label htmlFor={element._id}>
-                        {element.departamentName}
-                      </label>
+                      <label htmlFor={element._id}>{element.profileName}</label>
                     </div>
                   ))}
                 </form>
@@ -289,11 +329,7 @@ export default function Register({
                   ...currentEmployee,
                   lastName: lastNameComplete,
                 };
-                if (validate && !currentEmployee.lastName?.length) {
-                  handleChange();
-                  setMessage(validate);
-                  return;
-                }
+
                 if (
                   !newUser.lastName?.length ||
                   !newUser.name?.length ||
@@ -302,10 +338,18 @@ export default function Register({
                   !lastName.first.length ||
                   !lastName.second.length
                 ) {
+                  if (
+                    !newUser.shift?.length &&
+                    newUser.lastName?.length &&
+                    newUser.entryDate?.length
+                  ) {
+                    setMessage('Selecciona un turno para el usuario');
+                    return;
+                  }
                   setMessage(
                     'Ingresa los datos del usuario antes de continuar',
                   );
-                  // aqui debemos de ir ala siguiente pantalla
+                  return;
                 } else if (!validate && sequence === 1) {
                   setSequence(sequence + 1);
                 } else if (
@@ -313,7 +357,7 @@ export default function Register({
                   sequence < 3 &&
                   !newUser.role?.length
                 ) {
-                  setSecondMessage('Selecciona un perfil para el usuario'); // que no entre aca si no existe role TOMA EN CUNETA EL PROCESS
+                  setSecondMessage('Selecciona un perfil para el usuario');
                 } else {
                   setSequence(sequence + 1);
                 }
