@@ -59,9 +59,8 @@ export class User {
 
   @Prop({
     trim: true,
-    default: 'fecha por defecto',
   })
-  entryDate?: string;
+  entryDate: string;
 
   @Prop({
     trim: true,

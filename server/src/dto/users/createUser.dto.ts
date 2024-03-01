@@ -53,11 +53,10 @@ export class CreateUserDto {
 
   shift: string;
 
-  @IsOptional()
   @IsString()
   @IsNotEmpty()
   @Length(2, 35)
-  entryDate?: string;
+  entryDate: string;
 
   @IsOptional()
   @IsString()

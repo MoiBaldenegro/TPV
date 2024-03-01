@@ -17,6 +17,7 @@ export class AuthService {
   ) {}
 
   async register({
+    entryDate,
     email,
     password,
     name,
@@ -29,6 +30,7 @@ export class AuthService {
       throw new BadRequestException('Este correo ya esta en uso');
     }
     return this.UsersService.create({
+      entryDate,
       shift,
       name,
       lastName,
