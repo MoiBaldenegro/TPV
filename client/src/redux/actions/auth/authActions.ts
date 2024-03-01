@@ -6,7 +6,7 @@ export const SET_ERRORS = 'SET_ERRORS';
 
 // Register authentication
 export const createUser = (user) => async (dispatch) => {
-  console.log(user);
+  dispatch({ type: TOGGLE_LOADING, payload: true });
   try {
     const response = await axios.post(
       'https://tomate-server.onrender.com/auth/register',
