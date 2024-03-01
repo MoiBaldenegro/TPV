@@ -54,7 +54,6 @@ export class User {
 
   @Prop({
     trim: true,
-    default: 'turno por defecto',
   })
   shift?: string;
 
