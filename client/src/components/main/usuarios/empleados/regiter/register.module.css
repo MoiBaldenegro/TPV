@@ -38,8 +38,28 @@
 
     .process{
         width: 656px;
-        height: 72px;
+        height: 75px;
         position: relative;
+
+         >.tittleOne,
+          .tittleTwo,
+          .tittleThree {
+          position: absolute;
+        }
+
+        >.tittleOne{
+          top: 86%;
+          left: 12.2%;
+        }
+        >.tittleTwo{
+          top: 86%;
+          left: 45%;
+        }
+        >.tittleThree{
+          top: 86%;
+          left: 78%;
+        }
+        
 
         & .barOne,
         .barTwo,
@@ -369,13 +389,13 @@ h4{
 
 .validation{
   margin-top: -20px;
-  width: 80% !important;
+  width: 65% !important;
   height: 30px !important;
   justify-content: flex-start !important;
   gap: 12px;
   background: transparent !important;
   flex-direction: row !important;
-  align-items: center;
+  align-items: start;
 
   & img{ 
     height: 20px !important;

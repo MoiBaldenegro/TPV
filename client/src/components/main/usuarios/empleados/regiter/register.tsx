@@ -107,7 +107,11 @@ export default function Register({
           >
             <span>3</span>
           </div>
+          <span className={styles.tittleOne}>Datos</span>
+          <span className={styles.tittleTwo}>Perfiles</span>
+          <span className={styles.tittleThree}>Accesos</span>
         </div>
+
         {sequence === 1 ? (
           <>
             <div className={styles.dataUser}>
