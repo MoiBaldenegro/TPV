@@ -16,6 +16,7 @@ interface Props {
   children: any;
   setEmployee: (arg: any) => void;
   currentEmployee: any;
+  openModal: any;
 }
 export default function Register({
   isOpen,
@@ -23,6 +24,7 @@ export default function Register({
   children,
   setEmployee,
   currentEmployee,
+  openModal,
 }: Props) {
   const {
     validationRegisterFirst,
@@ -45,8 +47,8 @@ export default function Register({
   const { allDepartaments } = useSelector((state) => state.departaments);
 
   useEffect(() => {
-    dispatch(getDepartamentsAction);
-  });
+    dispatch(getDepartamentsAction());
+  }, []);
 
   const handleChange = () => {
     if (thirdMessage.length) {
@@ -330,6 +332,7 @@ export default function Register({
               }
               className={styles.saveButton}
               onClick={() => {
+                openModal();
                 if (thirdValidate) {
                   setThirdMessage(thirdMessage);
                 }

@@ -23,6 +23,7 @@
     gap: 32px;
     background: rgba(31, 32, 35, 1);
     
+    
 }
 
 .tittle{
@@ -30,4 +31,5 @@
     width: 400px;
     color: white;
     border: none;
+    text-align: center;
 }

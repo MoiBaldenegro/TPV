@@ -9,17 +9,25 @@ import update from '../../../../assets/public/updateIcon.svg';
 import deleteIcon from '../../../../assets/public/bloquedIcon.svg';
 import enabledIcon from '../../../../assets/public/enabledIcon.svg';
 import searchIcon from '../../../../assets/categorias/searchIcon.svg';
+
 // Actions
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
 import { getEmployeesAction } from '../../../../redux/actions/usuarios/employeesActions/getEmployees';
 import { useModal } from '../../../../hooks/useModals';
 import Register from './regiter/register';
+import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
+import { getDepartamentsAction } from '../../../../redux/actions/usuarios/departamentsActions/getDepartaments';
+import { getUsersAction } from '../../../../redux/actions/auth';
 
 export default function Empleados() {
   const [employee, setEmployee] = useState({});
   const register = useModal('register');
+  const confirmChanges = useModal('confirmChanges');
   const dispatch = useDispatch();
-  const { allEmployees } = useSelector((state) => state.employees);
+  const { isLoadingRegister, errorsRegister } = useSelector(
+    (state) => state.auth,
+  );
+  const { allUsers } = useSelector((state) => state.auth);
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueMenusAction(id, body));
@@ -29,14 +37,15 @@ export default function Empleados() {
     setEmployee(args);
     console.log(employee);
   };
-
   useEffect(() => {
-    dispatch(getEmployeesAction());
-  }, []);
+    console.log(isLoadingRegister);
+    dispatch(getUsersAction());
+  }, [isLoadingRegister]);
   return (
     <div className={styles.container}>
       {register.isOpen && register.modalName === 'register' ? (
         <Register
+          openModal={confirmChanges.openModal}
           currentEmployee={employee}
           setEmployee={handleChange}
           onClose={register.closeModal}
@@ -45,6 +54,20 @@ export default function Empleados() {
           Registrar
         </Register>
       ) : null}
+      {confirmChanges.isOpen &&
+      confirmChanges.modalName === 'confirmChanges' ? (
+        <ConfirmChangesModal
+          loading={isLoadingRegister}
+          errors={errorsRegister}
+          isOpen={confirmChanges.isOpen}
+          onClose={confirmChanges.closeModal}
+          actionType={getDepartamentsAction}
+          closeModal={register.closeModal}
+        >
+          Registro del usuario exitoso
+        </ConfirmChangesModal>
+      ) : null}
+
       <section className={styles.head}>
         <h2>Empleados</h2>
         <div>
@@ -87,7 +110,7 @@ export default function Empleados() {
             </tr>
           </thead>
           <tbody>
-            {allEmployees?.map((element) => (
+            {allUsers?.map((element) => (
               <tr
                 key={element._id}
                 className={
@@ -96,10 +119,16 @@ export default function Empleados() {
                     : styles.release
                 }
               >
-                <td className={styles.tableRows}>{element.code}</td>
-                <td className={styles.tableRows}>{element.employeeName}</td>
-                <td className={styles.tableRows}>{element.status}</td>
-                <td className={styles.tableRows}>{element.profile}</td>
+                <td className={styles.tableRows}>{element.employeeNumber}</td>
+                <td className={styles.tableRows}>
+                  {element.name
+                    .toUpperCase()
+                    .concat(` ${element.lastName.toUpperCase()}`)}
+                </td>
+                <td className={styles.tableRows}>
+                  {element.active ? 'activo' : 'No activo'}
+                </td>
+                <td className={styles.tableRows}>{element.role}</td>
                 <td className={styles.tableRows}>{element.shift}</td>
                 <td className={styles.tableRows}>{element.createdAt}</td>
                 <td className={styles.buttonsContainer}>

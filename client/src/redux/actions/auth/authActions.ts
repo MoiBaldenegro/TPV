@@ -2,19 +2,28 @@ import axios from 'axios';
 
 export const LOGIN_USER = 'LOGIN_USER';
 export const TOGGLE_LOADING = 'TOGGLE_LOADING';
+export const TOGGLE_LOADING_REGISTER = 'TOGGLE_LOADING_REGISTER';
 export const SET_ERRORS = 'SET_ERRORS';
+export const SET_ERRORS_REGISTER = 'SET_ERRORS_REGISTER';
+export const GET_USERS = 'GET_USERS';
 
 // Register authentication
 export const createUser = (user) => async (dispatch) => {
-  dispatch({ type: TOGGLE_LOADING, payload: true });
+  dispatch({ type: TOGGLE_LOADING_REGISTER, payload: true });
   try {
     const response = await axios.post(
       'https://tomate-server.onrender.com/auth/register',
       user,
     );
-    alert(`El usuario con el correo ${user.email} ha sido creado con exito`);
+    if (!response.data) {
+      dispatch({ type: TOGGLE_LOADING_REGISTER, payload: false });
+      dispatch({ type: SET_ERRORS_REGISTER, payload: true });
+    }
+    dispatch({ type: TOGGLE_LOADING_REGISTER, payload: false });
+    dispatch({ type: TOGGLE_LOADING_REGISTER, payload: null });
   } catch (error) {
-    alert(error.response?.data?.error || 'Hubo un error al crear el usuario');
+    dispatch({ type: TOGGLE_LOADING_REGISTER, payload: false });
+    dispatch({ type: SET_ERRORS_REGISTER, payload: true });
   }
 };
 
@@ -28,6 +37,36 @@ export const loginUser = (user) => async (dispatch) => {
     return dispatch({ type: LOGIN_USER, payload: response.data });
   } catch (error) {
     return dispatch({ type: TOGGLE_LOADING, payload: false });
+  }
+};
+
+export const getUsersAction = () => async (dispatch: any) => {
+  try {
+    const res = await axios.get('https://tomate-server.onrender.com/users', {
+      timeout: 5000,
+    });
+    if (res.status < 200 || res.status >= 300) {
+      throw new Error(`Error en la petición: ${res.status} ${res.statusText}`);
+    }
+    if (!res.data) {
+      throw new Error(
+        'No se pudo resolver la peticion, usuarios no encontrado',
+      );
+    }
+    const usersData = res.data;
+    dispatch({ type: GET_USERS, payload: usersData });
+
+    return usersData;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.code === 'ECONNABORTED') {
+      console.error('Tiempo de espera de la solicitud agotado');
+      // Realizar acciones específicas, como mostrar un mensaje al usuario
+    } else {
+      console.error('Error inesperado:', error);
+    }
+    console.error(
+      `No se pudo resolver la peticion debido a un error inesperado ${error}`,
+    );
   }
 };
 

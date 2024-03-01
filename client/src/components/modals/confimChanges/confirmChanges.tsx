@@ -3,6 +3,7 @@ import styles from './confirmChanges.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import ConfirmLoader from '../../../components/loaders/confirmsLoader/confirmsLoader';
 import checkIcon from '../../../assets/public/checkIcon.svg';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   loading: any;
@@ -10,7 +11,9 @@ interface Props {
   isOpen: any;
   onClose: any;
   children: any;
-  actionType: () => void;
+  actionType?: () => void;
+  route?: string;
+  closeModal?: any;
 }
 
 export default function ConfirmChangesModal({
@@ -20,14 +23,25 @@ export default function ConfirmChangesModal({
   onClose,
   children,
   actionType,
+  route,
+  closeModal,
 }: Props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   if (!isOpen) return null;
   if (!loading && !errors) {
     setTimeout(async () => {
-      dispatch(actionType());
+      if (actionType) {
+        dispatch(actionType());
+      }
       onClose();
+      if (route) {
+        navigate(route);
+      }
+      if (closeModal) {
+        closeModal();
+      }
     }, 1500);
   }
   return (
