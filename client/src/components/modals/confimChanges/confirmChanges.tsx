@@ -3,6 +3,7 @@ import styles from './confirmChanges.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import ConfirmLoader from '../../../components/loaders/confirmsLoader/confirmsLoader';
 import checkIcon from '../../../assets/public/checkIcon.svg';
+import errorIcon from '../../../assets/public/errorIcon.svg';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {
@@ -43,14 +44,29 @@ export default function ConfirmChangesModal({
         closeModal();
       }
     }, 1500);
+  } else if (!loading && errors) {
+    setTimeout(async () => {
+      if (actionType) {
+        dispatch(actionType());
+      }
+      if (route) {
+        navigate(route);
+      }
+      if (closeModal) {
+        closeModal();
+      }
+      onClose();
+    }, 1500);
   }
+
   return (
     <div className={styles.container}>
       {loading ? (
         <ConfirmLoader />
       ) : errors ? (
-        <div>
-          <h1>hay errores</h1>
+        <div className={styles.modal}>
+          <img src={errorIcon} alt="check-icon" />
+          <h1 className={styles.tittle}>No se pudo completar</h1>
         </div>
       ) : (
         <div className={styles.modal}>

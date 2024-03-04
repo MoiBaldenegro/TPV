@@ -105,7 +105,7 @@ export default function Empleados() {
               <th className={styles.tHeadStatus}>Estatus</th>
               <th className={styles.tHeadProfile}>Perfil</th>
               <th className={styles.tHeadShift}>Turno</th>
-              <th className={styles.tHeadCreatedAt}>Última actualización</th>
+              <th className={styles.tHeadCreatedAt}>Fecha de ingreso</th>
               <th className={styles.tHeadActions}>Acciones</th>
             </tr>
           </thead>
@@ -130,7 +130,7 @@ export default function Empleados() {
                 </td>
                 <td className={styles.tableRows}>{element.role}</td>
                 <td className={styles.tableRows}>{element.shift}</td>
-                <td className={styles.tableRows}>{element.createdAt}</td>
+                <td className={styles.tableRows}>{element.entryDate}</td>
                 <td className={styles.buttonsContainer}>
                   {element.status === 'enabled' ? (
                     <>

@@ -64,9 +64,8 @@ export class User {
 
   @Prop({
     trim: true,
-    default: '#336699',
   })
-  color?: string;
+  color: string;
 
   @Prop({
     required: false,

@@ -26,6 +26,28 @@ export class AuthService {
     shift,
   }: CreateUserDto) {
     const user = await this.UsersService.findByEmail(email);
+    const numberColor = Math.floor(Math.random() * 11);
+    const color =
+      numberColor === 1
+        ? '#8D89CC'
+        : numberColor === 2
+          ? '#AD83AE'
+          : numberColor === 3
+            ? '#C37BA1'
+            : numberColor === 4
+              ? '#B06C4C'
+              : numberColor === 5
+                ? '#C38B7B'
+                : numberColor === 6
+                  ? '#D39D58'
+                  : numberColor === 7
+                    ? '#B6AE19'
+                    : numberColor === 8
+                      ? '#88B167'
+                      : numberColor === 9
+                        ? '#53AE9A'
+                        : '#4E96B1';
+
     if (user) {
       throw new BadRequestException('Este correo ya esta en uso');
     }
@@ -37,6 +59,7 @@ export class AuthService {
       email,
       password: await bcryptjs.hash(password, 10),
       pinPos,
+      color,
     });
   }
   async login({ email, password }: LoginDto) {
