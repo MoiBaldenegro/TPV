@@ -9,10 +9,10 @@ export class Profile {
   departament: string;
 
   @Prop({
-    required: true,
     trim: true,
   })
-  code: string;
+  code?: number;
+
   @Prop({
     unique: true,
     required: true,

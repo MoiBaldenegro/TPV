@@ -20,8 +20,22 @@ export class ProfilesService {
   }
 
   async create(body: createProfileDto) {
-    const newProfile = new this.profileModel(body);
-    return await newProfile.save();
+    try {
+      const lastProfile = await this.profileModel
+        .findOne({})
+        .sort({ createdAt: -1 })
+        .exec();
+
+      const nextCode = lastProfile ? this.getNextBillCode(lastProfile.code) : 1;
+      const profileToCreate = new this.profileModel({
+        ...body,
+        code: nextCode,
+      });
+      await profileToCreate.save();
+      return profileToCreate;
+    } catch (error) {
+      throw new Error(`Ocurrio algo inesperado ${error}`);
+    }
   }
 
   async delete(id: string) {
@@ -30,5 +44,9 @@ export class ProfilesService {
 
   async update(id: string, body: updateProfileDto) {
     return await this.profileModel.findByIdAndUpdate(id, body, { new: true });
+  }
+
+  private getNextBillCode(lastBillCode: number): number {
+    return lastBillCode + 1;
   }
 }

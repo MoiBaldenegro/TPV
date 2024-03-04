@@ -5,11 +5,8 @@ export class updateProfileDto {
   @IsOptional()
   departament?: string;
 
-  @IsString()
-  @IsString()
   @IsOptional()
-  @Length(1, 2)
-  code?: string;
+  code?: number;
 
   @IsString()
   @IsString()
