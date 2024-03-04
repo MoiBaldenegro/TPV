@@ -11,7 +11,6 @@ import deleteIcon from '../../../../assets/public/bloquedIcon.svg';
 import enabledIcon from '../../../../assets/public/enabledIcon.svg';
 import searchIcon from '../../../../assets/categorias/searchIcon.svg';
 // Actions
-import { getMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/getMenu';
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
 import { getDepartamentsAction } from '../../../../redux/actions/usuarios/departamentsActions/getDepartaments';
 

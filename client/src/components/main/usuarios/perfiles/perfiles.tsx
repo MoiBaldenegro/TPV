@@ -12,10 +12,14 @@ import searchIcon from '../../../../assets/categorias/searchIcon.svg';
 // Actions
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
 import { getProfilesAction } from '../../../../redux/actions/usuarios/profilesActions/getProfiles';
+import { CREATE_PROFILE } from '../../../configs/consts';
+import { useModal } from '../../../../hooks/useModals';
+import CreateProfile from './create/createProfile';
 
 export default function Perfiles() {
   const dispatch = useDispatch();
   const { allProfiles } = useSelector((state) => state.profiles);
+  const createProfile = useModal(CREATE_PROFILE);
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueMenusAction(id, body));
@@ -26,12 +30,20 @@ export default function Perfiles() {
   }, []);
   return (
     <div className={styles.container}>
+      {createProfile.isOpen && createProfile.modalName === CREATE_PROFILE ? (
+        <CreateProfile
+          isOpen={createProfile.isOpen}
+          onClose={createProfile.closeModal}
+        >
+          Crear perfil
+        </CreateProfile>
+      ) : null}
       <section className={styles.head}>
         <h2>Perfiles</h2>
         <div>
           <button className={styles.btnHeadCreate}>
             <img src={createIcon} alt="create-icon" />
-            <span>Crear perfil</span>
+            <span onClick={createProfile.openModal}>Crear perfil</span>
           </button>
         </div>
       </section>
