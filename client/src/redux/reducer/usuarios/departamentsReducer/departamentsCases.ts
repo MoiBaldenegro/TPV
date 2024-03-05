@@ -4,32 +4,32 @@ import { toggleStatus } from '../../utils/toggleStatus';
 export function departamentsRequest(state) {
   return {
     ...state,
-    loading: true,
+    loadingDepartament: true,
   };
 }
 
-export function departamentsFailure(state, action) {
+export function departamentsFailure(state) {
   return {
     ...state,
-    error: action.error,
-    loading: false,
+    loadingDepartament: false,
+    errorDepartament: true,
   };
 }
 // Create
-export function departamentsConflict(state, action) {
+export function departamentsConflict(state) {
   return {
     ...state,
-    loading: true,
-    conflict: action.error,
+    loadingDepartament: true,
+    conflict: true,
   };
 }
 
 export function saveDepartaments(state) {
   return {
     ...state,
-    error: null,
+    errorDepartament: null,
     conflict: null,
-    loading: false,
+    loadingDepartament: false,
   };
 }
 
@@ -38,8 +38,8 @@ export function getDepartaments(state, action) {
   return {
     ...state,
     allDepartaments: action.payload,
-    loading: false,
-    error: null,
+    loadingDepartament: false,
+    errorDepartament: null,
     conflict: null,
   };
 }
@@ -62,9 +62,9 @@ export function discontinueDepartaments(state, action) {
   );
   return {
     ...state,
-    allDepartaments: newDepartamentsArray,
-    error: null,
+    allDepartament: newDepartamentsArray,
+    errorDepartament: null,
     conflict: null,
-    loading: false,
+    loadingDepartament: false,
   };
 }

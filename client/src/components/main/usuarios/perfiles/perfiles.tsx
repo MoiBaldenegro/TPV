@@ -16,6 +16,7 @@ import {
   CREATE_PROFILE,
   CONFIRM_CHANGES,
   CREATE_DEPARTAMENT,
+  CONFIRM_SAVE_DEPARTAMENTS,
 } from '../../../../configs/consts';
 import { useModal } from '../../../../hooks/useModals';
 import CreateProfile from './create/createProfile';
@@ -28,10 +29,13 @@ export default function Perfiles() {
   const { allProfiles, loading, error, conflict } = useSelector(
     (state) => state.profiles,
   );
-  const { allDepartaments } = useSelector((state) => state.departaments);
+  const { allDepartaments, errorDepartament, loadingDepartament } = useSelector(
+    (state) => state.departaments,
+  );
   const createProfile = useModal(CREATE_PROFILE);
   const confirmChanges = useModal(CONFIRM_CHANGES);
   const createDepartament = useModal(CREATE_DEPARTAMENT);
+  const confirmSaveDepartaments = useModal(CONFIRM_SAVE_DEPARTAMENTS);
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueMenusAction(id, body));
@@ -40,15 +44,28 @@ export default function Perfiles() {
   useEffect(() => {
     dispatch(getProfilesAction());
     dispatch(getDepartamentsAction());
-  }, [conflict, error]);
+  }, []);
   return (
     <div className={styles.container}>
+      {confirmSaveDepartaments.isOpen &&
+      confirmSaveDepartaments.modalName === CONFIRM_SAVE_DEPARTAMENTS ? (
+        <ConfirmChangesModal
+          isOpen={confirmSaveDepartaments.isOpen}
+          onClose={confirmSaveDepartaments.closeModal}
+          errors={errorDepartament}
+          loading={loadingDepartament}
+          actionType={getDepartamentsAction}
+        >
+          Departamento creado exitosamente
+        </ConfirmChangesModal>
+      ) : null}
       {createDepartament.isOpen &&
       createDepartament.modalName === CREATE_DEPARTAMENT ? (
         <CreateDepartament
           isOpen={createDepartament.isOpen}
           onClose={createDepartament.closeModal}
           allDepartaments={allDepartaments}
+          openModal={confirmSaveDepartaments.openModal}
         >
           Departamentos
         </CreateDepartament>

@@ -19,21 +19,21 @@ import {
 
 const initialState = {
   allDepartaments: [],
-  loading: false,
-  error: null,
-  conflict: null,
+  loadingDepartament: false,
+  errorDepartament: false,
+  conflict: false,
 };
 
-export default function departamentsReducer(state = initialState, action) {
+export default function departamentsReducer(state = initialState, action: any) {
   switch (action.type) {
     // Public
     case DEPARTAMENTS_REQUEST:
       return departamentsRequest(state);
     case DEPARTAMENTS_FAILURE:
-      return departamentsFailure(state, action);
+      return departamentsFailure(state);
     // Create
     case DEPARTAMENTS_CONFLICT:
-      return departamentsConflict(state, action);
+      return departamentsConflict(state);
     case SAVE_DEPARTAMENTS:
       return saveDepartaments(state);
     // Get

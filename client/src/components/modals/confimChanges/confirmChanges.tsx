@@ -67,7 +67,7 @@ export default function ConfirmChangesModal({
       ) : errors ? (
         <div className={styles.modal}>
           <img src={errorIcon} alt="check-icon" />
-          <h1 className={styles.tittle}>'No se pudo completar'</h1>
+          <h1 className={styles.tittle}>No se pudo completar</h1>
         </div>
       ) : (
         <div className={styles.modal}>

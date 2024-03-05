@@ -3,20 +3,26 @@ import saveIcon from '../../../../../../assets/public/disquetIcon.svg';
 import createIcon from '../../../../../../assets/public/createIcon.svg';
 import deleteIcon from '../../../../../../assets/public/trashIcon.svg';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createDepartamentAction } from '../../../../../../redux/actions/usuarios/departamentsActions/createDepartament';
 interface Props {
   isOpen: any;
   onClose: any;
   children: any;
   allDepartaments: any;
+  openModal: () => void;
 }
 export default function CreateDepartament({
   isOpen,
   onClose,
   children,
   allDepartaments,
+  openModal,
 }: Props) {
   const [newDepartament, setNewDepartament] = useState(false);
-  const [createDepartament, setCreateDepartament] = useState('');
+  const [createDepartament, setCreateDepartament] = useState({});
+
+  const dispatch = useDispatch();
   return (
     <main className={styles.screen}>
       <section className={styles.modal}>
@@ -33,6 +39,12 @@ export default function CreateDepartament({
             <input
               type="text"
               placeholder="Logistica...    Almacen...   Desarrollo..."
+              onChange={(event) => {
+                setCreateDepartament({
+                  ...createDepartament,
+                  departamentName: event?.target.value,
+                });
+              }}
             />
             <button
               onClick={() => {
@@ -68,7 +80,14 @@ export default function CreateDepartament({
             <img src={createIcon} alt="create-icon" />
             Crear
           </button>
-          <button>
+          <button
+            onClick={() => {
+              openModal();
+              dispatch(createDepartamentAction(createDepartament));
+              onClose();
+            }}
+            disabled={!newDepartament}
+          >
             <img src={saveIcon} alt="save-icon" />
             Guardar
           </button>
