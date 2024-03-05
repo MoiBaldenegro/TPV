@@ -11,8 +11,13 @@
     justify-content: space-between;
     width: 77.5vw;
     margin-right: .5vw;
+
+    >div{
+      display:  flex;
+      gap: 8px;
+    }
 }
-.btnHead, .btnHeadCreate{
+.btnHead, .btnHeadCreate, .btnHeadCreateDepartament{
     width: 202.18px;
     height: 48px;
     padding: 12px, 16px, 12px, 16px;

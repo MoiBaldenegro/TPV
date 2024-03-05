@@ -12,14 +12,26 @@ import searchIcon from '../../../../assets/categorias/searchIcon.svg';
 // Actions
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
 import { getProfilesAction } from '../../../../redux/actions/usuarios/profilesActions/getProfiles';
-import { CREATE_PROFILE } from '../../../configs/consts';
+import {
+  CREATE_PROFILE,
+  CONFIRM_CHANGES,
+  CREATE_DEPARTAMENT,
+} from '../../../../configs/consts';
 import { useModal } from '../../../../hooks/useModals';
 import CreateProfile from './create/createProfile';
+import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
+import CreateDepartament from './create/createDepartament/createDepartament';
+import { getDepartamentsAction } from '../../../../redux/actions/usuarios/departamentsActions/getDepartaments';
 
 export default function Perfiles() {
   const dispatch = useDispatch();
-  const { allProfiles } = useSelector((state) => state.profiles);
+  const { allProfiles, loading, error, conflict } = useSelector(
+    (state) => state.profiles,
+  );
+  const { allDepartaments } = useSelector((state) => state.departaments);
   const createProfile = useModal(CREATE_PROFILE);
+  const confirmChanges = useModal(CONFIRM_CHANGES);
+  const createDepartament = useModal(CREATE_DEPARTAMENT);
 
   const toggleStatus = (id, body) => {
     dispatch(discontinueMenusAction(id, body));
@@ -27,13 +39,39 @@ export default function Perfiles() {
 
   useEffect(() => {
     dispatch(getProfilesAction());
-  }, []);
+    dispatch(getDepartamentsAction());
+  }, [conflict, error]);
   return (
     <div className={styles.container}>
+      {createDepartament.isOpen &&
+      createDepartament.modalName === CREATE_DEPARTAMENT ? (
+        <CreateDepartament
+          isOpen={createDepartament.isOpen}
+          onClose={createDepartament.closeModal}
+          allDepartaments={allDepartaments}
+        >
+          Departamentos
+        </CreateDepartament>
+      ) : null}
+      {confirmChanges.isOpen && confirmChanges.modalName === CONFIRM_CHANGES ? (
+        <ConfirmChangesModal
+          isOpen={confirmChanges.isOpen}
+          onClose={confirmChanges.closeModal}
+          loading={loading}
+          errors={error}
+          conflict={conflict}
+          route="/home/usuarios/profiles"
+          closeModal={createProfile.closeModal}
+          actionType={getProfilesAction}
+        >
+          Perfil guardado con exito
+        </ConfirmChangesModal>
+      ) : null}
       {createProfile.isOpen && createProfile.modalName === CREATE_PROFILE ? (
         <CreateProfile
           isOpen={createProfile.isOpen}
           onClose={createProfile.closeModal}
+          openModal={confirmChanges.openModal}
         >
           Crear perfil
         </CreateProfile>
@@ -41,6 +79,12 @@ export default function Perfiles() {
       <section className={styles.head}>
         <h2>Perfiles</h2>
         <div>
+          <button className={styles.btnHeadCreateDepartament}>
+            <img src={createIcon} alt="create-icon" />
+            <span onClick={createDepartament.openModal}>
+              Crear departamento
+            </span>
+          </button>
           <button className={styles.btnHeadCreate}>
             <img src={createIcon} alt="create-icon" />
             <span onClick={createProfile.openModal}>Crear perfil</span>

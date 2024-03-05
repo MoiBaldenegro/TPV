@@ -1,10 +1,9 @@
 import { IsOptional, IsString, Length } from 'class-validator';
 
 export class updateDepartamentDto {
-  @IsString()
   @IsOptional()
   @Length(1, 2)
-  code?: true;
+  code?: number;
 
   @IsString()
   @IsOptional()

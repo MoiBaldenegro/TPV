@@ -20,8 +20,26 @@ export class DepartamentsService {
   }
 
   async create(body: createDepartamentDto) {
-    const newDepartament = new this.departamentModel(body);
-    return await newDepartament.save();
+    try {
+      const lastDepartament = await this.departamentModel
+        .findOne({})
+        .sort({ createdAt: -1 })
+        .exec();
+
+      const nextCode = lastDepartament
+        ? this.getNextBillCode(lastDepartament.code)
+        : 1;
+
+      const departamentToCreate = new this.departamentModel({
+        ...body,
+        code: nextCode,
+      });
+
+      await departamentToCreate.save();
+      return departamentToCreate;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async delete(id: string) {
@@ -32,5 +50,9 @@ export class DepartamentsService {
     return await this.departamentModel.findByIdAndUpdate(id, body, {
       new: true,
     });
+  }
+
+  private getNextBillCode(lastBillCode: number): number {
+    return lastBillCode + 1;
   }
 }

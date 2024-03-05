@@ -20,8 +20,8 @@ import {
 const initialState = {
   allProfiles: [],
   loading: false,
-  error: null,
-  conflict: null,
+  error: false,
+  conflict: false,
 };
 
 export default function profilesReducer(state = initialState, action) {

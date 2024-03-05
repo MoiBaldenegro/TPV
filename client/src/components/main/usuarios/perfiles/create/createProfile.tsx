@@ -4,13 +4,20 @@ import { useEffect, useState } from 'react';
 import arrow from '../../../../../assets/public/arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDepartamentsAction } from '../../../../../redux/actions/usuarios/departamentsActions/getDepartaments';
+import { createProfileAction } from '../../../../../redux/actions/usuarios/profilesActions/createProfile';
 
 interface Props {
   isOpen: any;
   onClose: any;
   children: any;
+  openModal: () => void;
 }
-export default function CreateProfile({ isOpen, onClose, children }: Props) {
+export default function CreateProfile({
+  isOpen,
+  onClose,
+  children,
+  openModal,
+}: Props) {
   const dispatch = useDispatch();
   const { allDepartaments } = useSelector((state) => state.departaments);
   const [departament, setDepartament] = useState('');
@@ -79,7 +86,19 @@ export default function CreateProfile({ isOpen, onClose, children }: Props) {
           </div>
         </div>
         <div className={styles.footer}>
-          <button disabled={departament.length < 1}>
+          <button
+            disabled={departament.length < 1}
+            onClick={() => {
+              const newProfile = {
+                departament: departament,
+                profileName: profile,
+              };
+              console.log(newProfile);
+              dispatch(createProfileAction(newProfile));
+              onClose();
+              openModal();
+            }}
+          >
             <img src={saveIcon} alt="save-icon" />
             Guardar
           </button>

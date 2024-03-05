@@ -14,30 +14,18 @@ export const createProfileAction = (profile: any) => async (dispatch: any) => {
       profile,
     );
     if (!response.data) {
+      dispatch({
+        type: PROFILES_FAILURE,
+        payload: true,
+      });
       throw new Error(
         'Ha ocurrido algo inesperado, la respuesta no contiene datos',
       );
     }
     dispatch({ type: SAVE_PROFILES });
+    return response;
   } catch (error: any) {
-    if (axios.isCancel(error)) {
-      dispatch({
-        type: PROFILES_FAILURE,
-        error: 'Solicitud cancelada',
-      });
-      throw new Error(`La solicitud fue cancelada: ${error}`);
-    } else if (error.response && error.response.status === 409) {
-      dispatch({
-        type: PROFILES_FAILURE,
-        error: 'Se han encontrado complementos duplicados',
-      });
-      throw new Error('Este complemento ya se encuentra listado');
-    }
-    alert(
-      'Ha ocurrido algo inesperado, y no se ha podido enviar la informacion',
-    );
-
-    dispatch({ type: PROFILES_FAILURE, error: 'Error en la solicitud' });
+    dispatch({ type: PROFILES_FAILURE, payload: true });
     throw new Error(error);
   }
 };

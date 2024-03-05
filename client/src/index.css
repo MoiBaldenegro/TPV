@@ -5,8 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  
-    
+    user-select: none;
   }
 
   
@@ -32,6 +31,10 @@
     gap: 8px;
     border: none;
     outline: none;
+    transition: .2s ease;
+  }
+  button:hover{
+    filter: brightness(0.80);
   }
   
   input[type="radio"] {

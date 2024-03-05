@@ -11,7 +11,7 @@ export function profilesRequest(state) {
 export function profilesFailure(state, action) {
   return {
     ...state,
-    error: action.error,
+    error: action.payload,
     loading: false,
   };
 }
@@ -19,16 +19,16 @@ export function profilesFailure(state, action) {
 export function profilesConflict(state, action) {
   return {
     ...state,
-    loading: true,
-    conflict: action.error,
+    loading: false,
+    conflict: action.payload,
   };
 }
 
 export function saveProfiles(state) {
   return {
     ...state,
-    error: null,
-    conflict: null,
+    error: false,
+    conflict: false,
     loading: false,
   };
 }
@@ -39,8 +39,8 @@ export function getProfiles(state, action) {
     ...state,
     allProfiles: action.payload,
     loading: false,
-    error: null,
-    conflict: null,
+    error: false,
+    conflict: false,
   };
 }
 // Search

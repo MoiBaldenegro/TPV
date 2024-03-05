@@ -3,11 +3,9 @@ import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 @Schema({ timestamps: true })
 export class Departament {
   @Prop({
-    unique: true,
-    required: true,
     trim: true,
   })
-  code: string;
+  code: number;
 
   @Prop({
     unique: true,

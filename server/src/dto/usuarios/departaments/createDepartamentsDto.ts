@@ -1,11 +1,15 @@
-import { IsDefined, IsNotEmpty, IsString, Length } from 'class-validator';
+import {
+  IsDefined,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  Length,
+} from 'class-validator';
 
 export class createDepartamentDto {
-  @IsString()
-  @IsDefined()
-  @IsNotEmpty()
+  @IsOptional()
   @Length(1, 2)
-  code: string;
+  code?: number;
 
   @IsString()
   @IsDefined()
