@@ -40,7 +40,7 @@ export default function Empleados() {
   useEffect(() => {
     console.log(isLoadingRegister);
     dispatch(getUsersAction());
-  }, [isLoadingRegister]);
+  }, []);
   return (
     <div className={styles.container}>
       {register.isOpen && register.modalName === 'register' ? (

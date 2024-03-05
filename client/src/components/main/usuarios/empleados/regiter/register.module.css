@@ -160,10 +160,14 @@
       >div{
 
         width: 309px;
-        height: 406px;
+        min-height: 406px;
+        max-height: 406px;
         padding: 16px;
         border-radius: 16px;
         background: linear-gradient(180deg, rgba(249, 249, 249, 0.15) 0%, rgba(249, 249, 249, 0.03) 100%);
+        overflow-x: hidden;
+        overflow-y: auto;
+
 
         & h2{
           font-size: 24px;

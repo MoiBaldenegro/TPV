@@ -125,6 +125,8 @@
     border-radius: 6px;
     color: #333;
     font-size: var(--font-size-small);
+    max-height: 380px;
+    overflow-y: auto;
   }
   
  
