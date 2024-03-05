@@ -16,7 +16,6 @@ export const createProfileAction = (profile: any) => async (dispatch: any) => {
     if (!response.data) {
       dispatch({
         type: PROFILES_FAILURE,
-        payload: true,
       });
       throw new Error(
         'Ha ocurrido algo inesperado, la respuesta no contiene datos',
@@ -25,7 +24,7 @@ export const createProfileAction = (profile: any) => async (dispatch: any) => {
     dispatch({ type: SAVE_PROFILES });
     return response;
   } catch (error: any) {
-    dispatch({ type: PROFILES_FAILURE, payload: true });
+    dispatch({ type: PROFILES_FAILURE });
     throw new Error(error);
   }
 };

@@ -17,7 +17,10 @@ export const createDepartamentAction =
         dispatch({ type: DEPARTAMENTS_FAILURE });
         throw new Error('No se pudo completar');
       }
-      console.log(res);
+      if (res.data.length < 1) {
+        dispatch({ type: DEPARTAMENTS_FAILURE });
+        throw new Error('No se pudo completar');
+      }
       const departamentArray = res.data;
       dispatch({ type: SAVE_DEPARTAMENTS, payload: departamentArray });
       return res;

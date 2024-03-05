@@ -8,19 +8,19 @@ export function profilesRequest(state) {
   };
 }
 
-export function profilesFailure(state, action) {
+export function profilesFailure(state) {
   return {
     ...state,
-    error: action.payload,
     loading: false,
+    error: true,
   };
 }
 // Create
-export function profilesConflict(state, action) {
+export function profilesConflict(state) {
   return {
     ...state,
     loading: false,
-    conflict: action.payload,
+    conflict: true,
   };
 }
 
