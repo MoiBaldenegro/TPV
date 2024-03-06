@@ -1,9 +1,10 @@
-import { IsString, Length, IsOptional } from 'class-validator';
+import { IsString, Length, IsOptional, IsNumber } from 'class-validator';
 import { Printer } from 'src/schemas/configuracion/printer.schema';
 import { Payment } from 'src/schemas/ventas/payment.schema';
 
 export class UpdateBillDto {
   @IsOptional()
+  @IsNumber()
   billCode?: number;
 
   @IsOptional()

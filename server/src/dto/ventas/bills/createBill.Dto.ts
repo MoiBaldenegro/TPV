@@ -1,8 +1,18 @@
-import { IsString, IsDefined, Length, IsOptional } from 'class-validator';
+import {
+  IsString,
+  IsDefined,
+  Length,
+  IsOptional,
+  IsNumber,
+} from 'class-validator';
 import { Printer } from 'src/schemas/configuracion/printer.schema';
 import { Payment } from 'src/schemas/ventas/payment.schema';
 
 export class CreateBillDto {
+  @IsOptional()
+  @IsNumber()
+  billCode?: number;
+
   @IsDefined()
   @IsString()
   @Length(1, 6)
