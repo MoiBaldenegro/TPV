@@ -57,6 +57,16 @@ export class Bills {
   })
   table: string | undefined;
 
+  @Prop({
+    trim: true,
+  })
+  billName?: string;
+
+  @Prop({
+    trim: true,
+  })
+  comments?: string;
+
   /* 
   @Prop({
     required: true,

@@ -30,6 +30,14 @@ export class UpdateBillDto {
   @IsString()
   table?: string;
 
+  @IsOptional()
+  @IsString()
+  billName?: string;
+
+  @IsOptional()
+  @IsString()
+  comments?: string;
+
   /*
   @IsOptional()
   @IsString()

@@ -27,6 +27,14 @@ export class CreateBillDto {
   @IsString()
   table: string;
 
+  @IsOptional()
+  @IsString()
+  billName?: string;
+
+  @IsOptional()
+  @IsString()
+  comments?: string;
+
   /*
   @IsDefined()
   @IsString()
