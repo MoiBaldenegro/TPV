@@ -9,10 +9,6 @@ import { Printer } from 'src/schemas/configuracion/printer.schema';
 import { Payment } from 'src/schemas/ventas/payment.schema';
 
 export class CreateBillDto {
-  @IsOptional()
-  @IsNumber()
-  billCode?: number;
-
   @IsDefined()
   @IsString()
   @Length(1, 6)

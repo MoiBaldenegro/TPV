@@ -4,10 +4,6 @@ import { Payment } from 'src/schemas/ventas/payment.schema';
 
 export class UpdateBillDto {
   @IsOptional()
-  @IsNumber()
-  billCode?: number;
-
-  @IsOptional()
   @IsString()
   @Length(1, 6)
   sellType?: 'onSite' | 'toGo' | 'rappi' | 'phone';
