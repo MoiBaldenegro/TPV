@@ -4,9 +4,8 @@ import {
   Length,
   IsOptional,
   IsNumber,
+  IsArray,
 } from 'class-validator';
-import { Printer } from 'src/schemas/configuracion/printer.schema';
-import { Payment } from 'src/schemas/ventas/payment.schema';
 
 export class CreateBillDto {
   @IsDefined()
@@ -26,8 +25,15 @@ export class CreateBillDto {
   @IsString()
   status: 'enabled' | 'disabled' | 'pending' | 'cancel';
 
+  @IsArray()
+  products: [];
+
+  @IsArray()
+  payment: [];
+
   @IsDefined()
-  payment: string[];
+  @IsString()
+  tableNum: string;
 
   @IsDefined()
   @IsString()

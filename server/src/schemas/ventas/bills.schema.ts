@@ -37,7 +37,7 @@ export class Bills {
     default: [],
     trim: true,
   })
-  products: [{}];
+  products: {}[];
 
   @Prop({
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Payment' }],
@@ -60,12 +60,12 @@ export class Bills {
   @Prop({
     trim: true,
   })
-  billName?: string;
+  billName: string;
 
   @Prop({
     trim: true,
   })
-  comments?: string;
+  comments: string;
 
   /* 
   @Prop({
