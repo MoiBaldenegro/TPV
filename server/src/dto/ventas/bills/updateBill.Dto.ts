@@ -1,6 +1,11 @@
-import { IsString, Length, IsOptional, IsNumber } from 'class-validator';
-import { Printer } from 'src/schemas/configuracion/printer.schema';
-import { Payment } from 'src/schemas/ventas/payment.schema';
+import {
+  IsString,
+  IsDefined,
+  Length,
+  IsOptional,
+  IsNumber,
+  IsArray,
+} from 'class-validator';
 
 export class UpdateBillDto {
   @IsOptional()
@@ -8,7 +13,6 @@ export class UpdateBillDto {
   @Length(1, 6)
   sellType?: 'onSite' | 'toGo' | 'rappi' | 'phone';
 
-  @IsOptional()
   @IsString()
   user?: string;
 
@@ -21,9 +25,17 @@ export class UpdateBillDto {
   status?: 'enabled' | 'disabled' | 'pending' | 'cancel';
 
   @IsOptional()
-  payment?: string[];
+  @IsArray()
+  products?: [];
 
   @IsOptional()
+  @IsArray()
+  payment?: [];
+
+  @IsOptional()
+  @IsString()
+  tableNum?: string;
+
   @IsString()
   table?: string;
 
@@ -36,8 +48,8 @@ export class UpdateBillDto {
   comments?: string;
 
   /*
-  @IsOptional()
+  @IsDefined()
   @IsString()
-  devide?: string;
+  devide: string;
   */
 }
