@@ -30,7 +30,7 @@ export class UpdateBillDto {
 
   @IsOptional()
   @IsArray()
-  payment?: [];
+  payment?: string[];
 
   @IsOptional()
   @IsString()
