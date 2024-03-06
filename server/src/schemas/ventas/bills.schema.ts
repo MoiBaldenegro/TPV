@@ -58,13 +58,11 @@ export class Bills {
   table: string | undefined;
 
   @Prop({
-    required: true,
     trim: true,
   })
   billName: string;
 
   @Prop({
-    required: true,
     trim: true,
   })
   comments: string;
