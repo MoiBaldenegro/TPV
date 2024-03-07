@@ -13,6 +13,7 @@ export class UpdateBillDto {
   @Length(1, 6)
   sellType?: 'onSite' | 'toGo' | 'rappi' | 'phone';
 
+  @IsOptional()
   @IsString()
   user?: string;
 
@@ -36,6 +37,7 @@ export class UpdateBillDto {
   @IsString()
   tableNum?: string;
 
+  @IsOptional()
   @IsString()
   table?: string;
 
