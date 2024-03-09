@@ -66,6 +66,11 @@ export class Bills {
     trim: true,
   })
   comments: string;
+  @Prop({
+    trim: true,
+    default: [],
+  })
+  notes?: [];
 
   /* 
   @Prop({
