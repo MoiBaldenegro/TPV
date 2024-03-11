@@ -31,6 +31,13 @@ export class Notes {
     trim: true,
   })
   user: string;
+
+  @Prop({
+    default: [],
+    trim: true,
+  })
+  products: {}[];
+
   @Prop({
     required: true,
     trim: true,

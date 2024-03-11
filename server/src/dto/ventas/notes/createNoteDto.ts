@@ -1,4 +1,4 @@
-import { IsDefined, IsString } from 'class-validator';
+import { IsArray, IsDefined, IsString } from 'class-validator';
 
 export class createNoteDto {
   @IsDefined()
@@ -20,6 +20,9 @@ export class createNoteDto {
   @IsDefined()
   @IsString()
   user: string;
+
+  @IsArray()
+  products: [];
 
   @IsString()
   checkTotal: string;

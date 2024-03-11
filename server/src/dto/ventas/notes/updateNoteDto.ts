@@ -1,4 +1,4 @@
-import { IsString, IsOptional } from 'class-validator';
+import { IsString, IsOptional, IsArray } from 'class-validator';
 
 export class updateNoteDto {
   @IsOptional()
@@ -20,6 +20,10 @@ export class updateNoteDto {
   @IsOptional()
   @IsString()
   user?: string;
+
+  @IsOptional()
+  @IsArray()
+  products?: [];
 
   @IsOptional()
   @IsString()
