@@ -49,6 +49,7 @@ export class UpdateBillDto {
   @IsString()
   comments?: string;
 
+  @IsOptional()
   @IsArray()
   notes?: [];
 

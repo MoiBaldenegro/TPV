@@ -47,6 +47,7 @@ export class CreateBillDto {
   @IsString()
   comments?: string;
 
+  @IsOptional()
   @IsArray()
   notes?: [];
 
