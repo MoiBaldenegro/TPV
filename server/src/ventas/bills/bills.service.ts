@@ -13,9 +13,14 @@ export class BillsService {
 
   async findAll() {
     try {
-      return await this.billsModel.find().populate({
-        path: 'payment',
-      });
+      return await this.billsModel
+        .find()
+        .populate({
+          path: 'payment',
+        })
+        .populate({
+          path: 'notes',
+        });
     } catch (error) {
       throw new Error(error);
     }
@@ -23,9 +28,14 @@ export class BillsService {
 
   async findOne(id: string) {
     try {
-      return await this.billsModel.findById(id).populate({
-        path: 'payment',
-      });
+      return await this.billsModel
+        .findById(id)
+        .populate({
+          path: 'payment',
+        })
+        .populate({
+          path: 'notes',
+        });
     } catch (error) {
       throw new Error(error);
     }

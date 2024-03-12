@@ -4,6 +4,7 @@ import { BillsService } from './bills.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BillSchema, Bills } from 'src/schemas/ventas/bills.schema';
 import { Payment, PaymentSchema } from 'src/schemas/ventas/payment.schema';
+import { NoteSchema, Notes } from 'src/schemas/ventas/notes.schema';
 
 @Module({
   imports: [
@@ -15,6 +16,10 @@ import { Payment, PaymentSchema } from 'src/schemas/ventas/payment.schema';
       {
         name: Payment.name,
         schema: PaymentSchema,
+      },
+      {
+        name: Notes.name,
+        schema: NoteSchema,
       },
     ]),
   ],
