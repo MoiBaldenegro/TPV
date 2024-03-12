@@ -1,6 +1,7 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Payment } from './payment.schema';
+import { Notes } from './notes.schema';
 
 @Schema({ timestamps: true })
 export class Bills {
@@ -67,10 +68,10 @@ export class Bills {
   })
   comments: string;
   @Prop({
-    trim: true,
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Notes' }],
     default: [],
   })
-  notes?: [];
+  notes?: Notes[];
 
   /* 
   @Prop({
