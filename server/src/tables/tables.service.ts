@@ -13,6 +13,9 @@ export class TablesService {
     try {
       return await this.tableModel.find().populate({
         path: 'bill',
+        populate: {
+          path: 'notes',
+        },
       });
     } catch (error) {
       throw new Error(error);
@@ -20,7 +23,12 @@ export class TablesService {
   }
 
   async findOne(id: string) {
-    return await this.tableModel.findById(id);
+    return await this.tableModel.findById(id).populate({
+      path: 'bill',
+      populate: {
+        path: 'notes',
+      },
+    });
   }
 
   async create(createtable: CreateTableDto) {
