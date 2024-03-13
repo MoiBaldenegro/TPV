@@ -15,6 +15,11 @@ export class Notes {
   noteNumber: string;
 
   @Prop({
+    trim: true
+  })
+  noteName?: string;
+
+  @Prop({
     required: true,
     trim: true,
   })

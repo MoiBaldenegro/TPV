@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsArray } from 'class-validator';
+import { IsString, IsOptional, IsArray, Length } from 'class-validator';
 
 export class updateNoteDto {
   @IsOptional()
@@ -8,6 +8,10 @@ export class updateNoteDto {
   @IsOptional()
   @IsString()
   noteNumber?: string;
+
+  @IsOptional()
+  @Length(1, 15)
+  noteName?: string;
 
   @IsOptional()
   @IsString()

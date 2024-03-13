@@ -1,4 +1,10 @@
-import { IsArray, IsDefined, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsDefined,
+  IsOptional,
+  IsString,
+  Length,
+} from 'class-validator';
 
 export class createNoteDto {
   @IsDefined()
@@ -8,6 +14,10 @@ export class createNoteDto {
   @IsDefined()
   @IsString()
   noteNumber: string;
+
+  @IsOptional()
+  @Length(1, 15)
+  noteName?: string;
 
   @IsDefined()
   @IsString()
