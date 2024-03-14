@@ -18,9 +18,12 @@ export class NotesService {
   }
 
   async create(createNote: createNoteDto) {
-    const lastNote = this.noteModel.findOne({}).sort({ createdAt: -1 }).exec();
+    const lastNote = await this.noteModel
+      .findOne({})
+      .sort({ createdAt: -1 })
+      .exec();
     const nextNoteCode = lastNote
-      ? this.getNextNoteCode((await lastNote).noteNumber)
+      ? this.getNextNoteCode(lastNote.noteNumber)
       : 1;
 
     const noteToCreate = new this.noteModel({
