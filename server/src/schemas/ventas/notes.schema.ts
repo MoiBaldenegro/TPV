@@ -12,10 +12,10 @@ export class Notes {
     required: true,
     trim: true,
   })
-  noteNumber: string;
+  noteNumber: number;
 
   @Prop({
-    trim: true
+    trim: true,
   })
   noteName?: string;
 

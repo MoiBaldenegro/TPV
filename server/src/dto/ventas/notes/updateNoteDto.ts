@@ -6,10 +6,6 @@ export class updateNoteDto {
   checkCode?: string;
 
   @IsOptional()
-  @IsString()
-  noteNumber?: string;
-
-  @IsOptional()
   @Length(1, 15)
   noteName?: string;
 

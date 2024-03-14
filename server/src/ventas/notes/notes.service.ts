@@ -18,7 +18,16 @@ export class NotesService {
   }
 
   async create(createNote: createNoteDto) {
-    const newNote = new this.noteModel(createNote);
+    const lastNote = this.noteModel.findOne({}).sort({ createdAt: -1 }).exec();
+    const nextNoteCode = lastNote
+      ? this.getNextNoteCode((await lastNote).noteNumber)
+      : 1;
+
+    const noteToCreate = new this.noteModel({
+      ...createNote,
+      noteNumber: nextNoteCode,
+    });
+    const newNote = new this.noteModel(noteToCreate);
     return await newNote.save();
   }
 
@@ -29,5 +38,8 @@ export class NotesService {
     return await this.noteModel.findByIdAndUpdate(id, updatedNote, {
       new: true,
     });
+  }
+  private getNextNoteCode(lastBillCode: number): number {
+    return lastBillCode + 1;
   }
 }
