@@ -30,6 +30,7 @@ export class NotesService {
       ...createNote,
       noteNumber: nextNoteCode,
     });
+    console.log(noteToCreate);
 
     await noteToCreate.save();
     return noteToCreate;
