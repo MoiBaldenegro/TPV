@@ -12,6 +12,12 @@ export class Notes {
     required: true,
     trim: true,
   })
+  accountId: string;
+
+  @Prop({
+    required: true,
+    trim: true,
+  })
   noteNumber: number;
 
   @Prop({

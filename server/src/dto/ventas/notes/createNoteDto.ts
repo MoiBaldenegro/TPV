@@ -11,6 +11,10 @@ export class createNoteDto {
   @IsString()
   checkCode: string;
 
+  @IsDefined()
+  @IsString()
+  accountId: string;
+
   @IsOptional()
   @Length(1, 15)
   noteName?: string;
