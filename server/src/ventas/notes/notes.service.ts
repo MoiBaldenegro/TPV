@@ -30,8 +30,9 @@ export class NotesService {
       ...createNote,
       noteNumber: nextNoteCode,
     });
-    const newNote = new this.noteModel(noteToCreate);
-    return await newNote.save();
+
+    await noteToCreate.save();
+    return noteToCreate;
   }
 
   async delete(id: string) {
