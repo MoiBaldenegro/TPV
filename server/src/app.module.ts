@@ -32,6 +32,8 @@ import { PrintersModule } from './config/printers/printers.module';
 import { MachineIdentifierModule } from './machine-identifier/machine-identifier.module';
 import { DeviceModule } from './device/device.module';
 import { SettingModule } from './setting/setting.module';
+import { OperatingPeriodModule } from './operating-period/operating-period.module';
+import { CashierSessionModule } from './cashier-session/cashier-session.module';
 
 @Module({
   imports: [
@@ -70,6 +72,8 @@ import { SettingModule } from './setting/setting.module';
     MachineIdentifierModule,
     DeviceModule,
     SettingModule,
+    OperatingPeriodModule,
+    CashierSessionModule,
   ],
   controllers: [],
   providers: [],
