@@ -15,6 +15,11 @@ export class CancellationReason {
     required: true,
   })
   reasonName: string;
+
+  @Prop({
+    default: true,
+  })
+  sum: boolean;
 }
 
 export const CancellationReasonSchema =

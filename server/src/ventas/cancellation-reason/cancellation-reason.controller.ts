@@ -11,7 +11,6 @@ import {
   ConflictException,
 } from '@nestjs/common';
 import { CancellationReasonService } from './cancellation-reason.service';
-import { NotFoundError } from 'rxjs';
 import { CreateCancellationReasonDto } from 'src/dto/ventas/cancellationReasons/createCancellationReasonDto';
 import { UpdateCancellationReasonDto } from 'src/dto/ventas/cancellationReasons/updateCancellationReasonDto';
 
