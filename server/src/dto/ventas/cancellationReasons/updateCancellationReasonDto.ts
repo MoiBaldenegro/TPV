@@ -10,4 +10,7 @@ export class UpdateCancellationReasonDto {
   @IsString()
   @Length(1, 35)
   reasonName?: string;
+
+  @IsOptional()
+  substraction?: boolean;
 }

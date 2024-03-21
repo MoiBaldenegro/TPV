@@ -1,4 +1,10 @@
-import { IsString, IsDefined, IsNotEmpty, Length } from 'class-validator';
+import {
+  IsString,
+  IsDefined,
+  IsNotEmpty,
+  Length,
+  IsOptional,
+} from 'class-validator';
 
 export class CreateCancellationReasonDto {
   @IsDefined()
@@ -12,4 +18,7 @@ export class CreateCancellationReasonDto {
   @IsString()
   @Length(1, 35)
   reasonName: string;
+
+  @IsOptional()
+  substraction?: boolean;
 }

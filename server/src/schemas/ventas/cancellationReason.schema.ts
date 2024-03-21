@@ -19,7 +19,7 @@ export class CancellationReason {
   @Prop({
     default: true,
   })
-  sum: boolean;
+  substraction?: boolean;
 }
 
 export const CancellationReasonSchema =
