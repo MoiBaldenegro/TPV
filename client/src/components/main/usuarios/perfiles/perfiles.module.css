@@ -3,6 +3,10 @@
     flex-direction: column;
     height: 83vh;
     gap:3vh
+    
+   
+
+    
 }
 
 /* container  buttons */
@@ -17,14 +21,16 @@
       gap: 8px;
     }
 }
-.btnHead, .btnHeadCreate, .btnHeadCreateDepartament{
-    width: 202.18px;
+.btnHeadCreateDepartament{
+    width: 140px;
     height: 48px;
     padding: 12px, 16px, 12px, 16px;
     border-radius: 8px; 
     background: #F9F9F933;
     color: #f9f9f9;
     border: none;
+    background: rgba(153, 0, 15, 1);
+
 }
 .btnHead .btnHeadCreate, img, span{
     text-align: center;
@@ -285,11 +291,13 @@
     gap: 25px;
     margin-right: 20px;
   }
+
   .dayInput{
     display: flex;
     gap: 8px;
     align-items: center;
   }
+
   .checkInput{
     border: none;
     width: 24px;
@@ -297,7 +305,6 @@
     background-color: #99000F;
   }
   
- 
   /* toggle Fullscreen */
   @media (max-height: 1050px) {
    .tableContainer{
@@ -370,6 +377,7 @@ text-indent: 25px;
     transition: 200ms;
     margin: 10px 10px;
 }
+
 .actionButtonsFirstDetails{
   background-color: #7c78784f;
   margin-left: 1vw;
@@ -404,7 +412,6 @@ text-indent: 25px;
     gap: 10px;
     background: transparent;
 } 
-
 .searchIcon{
     margin-left: 15px;
 }
@@ -435,5 +442,10 @@ text-indent: 25px;
   transition: 300ms;
 }
 
+.tableContent{
+  outline: 2px solid green;
+  height: 200px !important;
+  overflow: hidden !important;
+}
 
 

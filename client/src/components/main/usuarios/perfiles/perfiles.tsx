@@ -85,27 +85,13 @@ export default function Perfiles() {
           Perfil guardado con exito
         </ConfirmChangesModal>
       ) : null}
-      {createProfile.isOpen && createProfile.modalName === CREATE_PROFILE ? (
-        <CreateProfile
-          isOpen={createProfile.isOpen}
-          onClose={createProfile.closeModal}
-          openModal={confirmChanges.openModal}
-        >
-          Crear perfil
-        </CreateProfile>
-      ) : null}
+
       <section className={styles.head}>
         <h2>Perfiles</h2>
         <div>
           <button className={styles.btnHeadCreateDepartament}>
             <img src={createIcon} alt="create-icon" />
-            <span onClick={createDepartament.openModal}>
-              Crear departamento
-            </span>
-          </button>
-          <button className={styles.btnHeadCreate}>
-            <img src={createIcon} alt="create-icon" />
-            <span onClick={createProfile.openModal}>Crear perfil</span>
+            <span onClick={createDepartament.openModal}>Crear</span>
           </button>
         </div>
       </section>
