@@ -65,8 +65,10 @@ export class Bills {
 
   @Prop({
     trim: true,
+    default: '',
   })
   comments: string;
+
   @Prop({
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Notes' }],
     default: [],

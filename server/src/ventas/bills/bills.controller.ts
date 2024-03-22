@@ -72,6 +72,7 @@ export class BillsController {
 
   @Put(':id')
   async update(@Body() body: UpdateBillDto, @Param('id') id: string) {
+    console.log(body);
     try {
       const updatedBill = await this.billService.update(id, body);
       if (!updatedBill) {
@@ -79,7 +80,8 @@ export class BillsController {
       }
       return updatedBill;
     } catch (error) {
-      throw new NotFoundException('Ha ocurrido algo inesperado');
+      console.log(error);
+      throw new NotFoundException(`Ha ocurrido algo inesperado ${error}}`);
     }
   }
 }
