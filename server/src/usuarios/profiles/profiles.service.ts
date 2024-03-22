@@ -16,7 +16,9 @@ export class ProfilesService {
   }
 
   async findOne(id: string) {
-    return await this.profileModel.findById(id);
+    return await this.profileModel.findById(id).populate({
+      path: 'departament',
+    });
   }
 
   async create(body: createProfileDto) {

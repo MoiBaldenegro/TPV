@@ -1,12 +1,13 @@
 import { Schema, SchemaFactory, Prop } from '@nestjs/mongoose';
+import { Departament } from './departaments.Schema';
+import { Schema as MongooseSchema } from 'mongoose';
 
 @Schema({ timestamps: true })
 export class Profile {
   @Prop({
-    required: true,
-    trim: true,
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Departament' }],
   })
-  departament: string;
+  departament: Departament;
 
   @Prop({
     trim: true,

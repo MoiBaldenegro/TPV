@@ -21,6 +21,8 @@ export default function CreateDepartament({
 }: Props) {
   const [newDepartament, setNewDepartament] = useState(false);
   const [createDepartament, setCreateDepartament] = useState({});
+  const [newProfile, setNewProfile] = useState([]);
+  const [createProfile, setCreateProfile] = useState([]);
 
   const dispatch = useDispatch();
   return (
