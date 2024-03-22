@@ -2,15 +2,18 @@ import styles from './createDepartament.module.css';
 import saveIcon from '../../../../../../assets/public/disquetIcon.svg';
 import createIcon from '../../../../../../assets/public/createIcon.svg';
 import deleteIcon from '../../../../../../assets/public/trashIcon.svg';
+import pencil from '../../../../../../assets/public/editPencil.svg';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createDepartamentAction } from '../../../../../../redux/actions/usuarios/departamentsActions/createDepartament';
+import { createProfileAction } from '../../../../../../redux/actions/usuarios/profilesActions/createProfile';
 interface Props {
   isOpen: any;
   onClose: any;
   children: any;
   allDepartaments: any;
   openModal: () => void;
+  openModalProfile: () => void;
 }
 export default function CreateDepartament({
   isOpen,
@@ -18,11 +21,18 @@ export default function CreateDepartament({
   children,
   allDepartaments,
   openModal,
+  openModalProfile,
 }: Props) {
   const [newDepartament, setNewDepartament] = useState(false);
   const [createDepartament, setCreateDepartament] = useState({});
-  const [newProfile, setNewProfile] = useState([]);
-  const [createProfile, setCreateProfile] = useState([]);
+  const [selectedDepartament, setSelectedDepartament] = useState();
+  const [newProfile, setNewProfile] = useState();
+  const [newProfilesArray, setNewProfilesArray] = useState([]);
+
+  const newProfileCreate = {
+    profileName: newProfile,
+    departament: selectedDepartament,
+  };
 
   const dispatch = useDispatch();
   return (
@@ -45,6 +55,7 @@ export default function CreateDepartament({
                   }
                 >
                   <input
+                    className={styles.newDepartament}
                     type="text"
                     placeholder="Logistica...    Almacen...   Desarrollo..."
                     onChange={(event) => {
@@ -55,6 +66,7 @@ export default function CreateDepartament({
                     }}
                   />
                   <button
+                    className={styles.backButton}
                     onClick={() => {
                       if (newDepartament) {
                         setNewDepartament(false);
@@ -63,16 +75,27 @@ export default function CreateDepartament({
                       return;
                     }}
                   >
-                    <img src={deleteIcon} alt="delete-icon" />
+                    Deshacer
                   </button>
                 </div>
                 {allDepartaments?.map((element: any, index: any) => (
                   <div key={index} className={styles.departamentBox}>
                     <input
+                      type="radio"
+                      name="departament"
+                      onClick={() => {
+                        console.log(selectedDepartament);
+                        setSelectedDepartament(element);
+                      }}
+                    />
+                    <input
                       type="text"
                       readOnly
                       value={element.departamentName}
                     />
+                    <button>
+                      <img src={pencil} alt="delete-icon" />
+                    </button>
                     <button>
                       <img src={deleteIcon} alt="delete-icon" />
                     </button>
@@ -106,43 +129,55 @@ export default function CreateDepartament({
               </button>
             </div>
           </div>
-
           <div className={styles.profilesContainer}>
             <h2>Perfiles</h2>
             <div>
               <input
                 type="text"
                 placeholder=" recepcionista.... operador...."
+                value={newProfile}
+                onChange={(e) => {
+                  console.log(newProfile);
+                  setNewProfile(e.target.value);
+                }}
               />
               <div>
-                <button>
-                  {' '}
+                <button
+                  disabled={!selectedDepartament}
+                  onClick={() => {
+                    setNewProfilesArray((prevState) => {
+                      if (prevState.length <= 0) {
+                        return [newProfileCreate];
+                      }
+                      const value = [...prevState, newProfileCreate];
+                      return value;
+                    });
+                  }}
+                >
                   <img src={createIcon} alt="create-icon" />
                   Agregar perfil
                 </button>
-                <button>
+                <button
+                  className={styles.saveButton}
+                  disabled={!selectedDepartament || !newProfilesArray.length}
+                  onClick={() => {
+                    // aca lanzamos la action para crear los perfiles del array
+                    dispatch(createProfileAction(newProfilesArray));
+                    openModalProfile();
+                  }}
+                >
                   <img src={saveIcon} alt="save-icon" />
                   Guardar
                 </button>
               </div>
             </div>
             <div>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
-              <h3>perfil element box</h3>
+              {newProfilesArray?.map((element, index) => (
+                <div className={styles.profileBox}>
+                  <h3>{element.profileName}</h3>
+                  <h3>{`(${element.departament.departamentName})`}</h3>
+                </div>
+              ))}
             </div>
           </div>
         </div>

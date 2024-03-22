@@ -93,7 +93,6 @@ export default function CreateProfile({
                 departament: departament,
                 profileName: profile,
               };
-              console.log(newProfile);
               dispatch(createProfileAction(newProfile));
               onClose();
               openModal();

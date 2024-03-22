@@ -66,6 +66,7 @@ export default function Perfiles() {
           onClose={createDepartament.closeModal}
           allDepartaments={allDepartaments}
           openModal={confirmSaveDepartaments.openModal}
+          openModalProfile={confirmChanges.openModal}
         >
           Crear perfil
         </CreateDepartament>
