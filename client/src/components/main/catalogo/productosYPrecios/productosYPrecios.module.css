@@ -11,6 +11,10 @@
     justify-content: space-between;
     width: 77.5vw;
     margin-right: .5vw;
+
+    >div{
+      display: flex;
+    }
 }
 .btnHead, .btnHeadCreate{
     width: 202.18px;
@@ -35,6 +39,10 @@
 .btnHeadCreate{
     width: 160px;
     background: #99000F;
+}
+
+.buttonsContainer{
+  display: flex;
 }
 /*  Update section */
 .updateSection{

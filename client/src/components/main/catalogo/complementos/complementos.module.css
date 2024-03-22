@@ -11,6 +11,10 @@
     justify-content: space-between;
     width: 77.5vw;
     margin-right: .5vw;
+
+    >div{
+      display: flex;
+    }
 }
 .btnHead, .btnHeadCreate{
     width: 225px;
@@ -380,3 +384,7 @@ text-indent: 25px;
 .release:hover{
     background-color: #2e2c2d21;
 }
+.buttonsContainer{
+  display: flex;
+}
+

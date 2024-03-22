@@ -8,7 +8,11 @@
 }
 .categoriesButtonsContainer{
    display: flex;
+
 }
+.buttonsContainer{
+    display: flex;
+ }
 .categoriasButtons{
     display: flex;
     justify-content: space-between;

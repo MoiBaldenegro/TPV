@@ -3,6 +3,8 @@
     flex-direction: column;
     justify-content: space-around;
     height: 83vh;
+
+    
 }
 
 /* container  buttons */
@@ -11,6 +13,9 @@
     justify-content: space-between;
     width: 77.5vw;
     margin-right: .5vw;
+    >div{
+      display: flex;
+    }
 }
 .btnHead, .btnHeadCreate{
     width: 202.18px;
@@ -25,6 +30,10 @@
 .btnHead .btnHeadCreate, img, span{
     text-align: center;
     vertical-align: middle;
+}
+
+.buttonsContainer{
+  display: flex;
 }
 .btnHead,
 .btnHeadCreate,
