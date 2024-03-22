@@ -130,7 +130,9 @@ export default function Perfiles() {
                     : styles.release
                 }
               >
-                <td className={styles.tableRows}>{element.departament}</td>
+                <td className={styles.tableRows}>
+                  {element.departament[0].departamentName}
+                </td>
                 <td className={styles.tableRows}>{element.code}</td>
                 <td className={styles.tableRows}>{element.profileName}</td>
                 <td className={styles.tableRows}>{element.createdAt}</td>
