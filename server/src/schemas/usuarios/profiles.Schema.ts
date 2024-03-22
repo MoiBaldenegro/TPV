@@ -5,9 +5,9 @@ import { Schema as MongooseSchema } from 'mongoose';
 @Schema({ timestamps: true })
 export class Profile {
   @Prop({
-    type: { type: MongooseSchema.Types.ObjectId, ref: 'Departament' },
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Departament' }],
   })
-  departament: Departament;
+  departament: Departament[];
 
   @Prop({
     trim: true,
