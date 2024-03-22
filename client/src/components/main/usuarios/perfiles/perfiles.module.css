@@ -366,6 +366,10 @@ text-indent: 25px;
     border-top: 1px solid #F9F9F9;
 }
 
+.buttonsContainer{
+  display:flex ;
+}
+
 .actionButtonsSecond,
 .actionButtonsFirst,
 .actionButtonsFirstDetails,
