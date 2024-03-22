@@ -32,65 +32,117 @@ export default function CreateDepartament({
         <div className={styles.head}>
           <h2>{children}</h2>
         </div>
-        <div className={styles.mainSection}>
-          <div
-            className={newDepartament ? styles.departamentBox : styles.hidden}
-          >
-            <input
-              type="text"
-              placeholder="Logistica...    Almacen...   Desarrollo..."
-              onChange={(event) => {
-                setCreateDepartament({
-                  ...createDepartament,
-                  departamentName: event?.target.value,
-                });
-              }}
-            />
-            <button
-              onClick={() => {
-                if (newDepartament) {
-                  setNewDepartament(false);
+        <div className={styles.content}>
+          <div className={styles.mainSection}>
+            <h2>Departamentos</h2>
+            <div>
+              <div className={styles.departamentsContainer}>
+                <div
+                  className={
+                    newDepartament ? styles.departamentBox : styles.hidden
+                  }
+                >
+                  <input
+                    type="text"
+                    placeholder="Logistica...    Almacen...   Desarrollo..."
+                    onChange={(event) => {
+                      setCreateDepartament({
+                        ...createDepartament,
+                        departamentName: event?.target.value,
+                      });
+                    }}
+                  />
+                  <button
+                    onClick={() => {
+                      if (newDepartament) {
+                        setNewDepartament(false);
+                        return;
+                      }
+                      return;
+                    }}
+                  >
+                    <img src={deleteIcon} alt="delete-icon" />
+                  </button>
+                </div>
+                {allDepartaments?.map((element: any, index: any) => (
+                  <div key={index} className={styles.departamentBox}>
+                    <input
+                      type="text"
+                      readOnly
+                      value={element.departamentName}
+                    />
+                    <button>
+                      <img src={deleteIcon} alt="delete-icon" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={styles.footer}>
+              <button
+                onClick={() => {
+                  if (!newDepartament) {
+                    setNewDepartament(true);
+                    return;
+                  }
                   return;
-                }
-                return;
-              }}
-            >
-              <img src={deleteIcon} alt="delete-icon" />
-            </button>
-          </div>
-          {allDepartaments?.map((element: any, index: any) => (
-            <div key={index} className={styles.departamentBox}>
-              <input type="text" readOnly value={element.departamentName} />
-              <button>
-                <img src={deleteIcon} alt="delete-icon" />
+                }}
+              >
+                <img src={createIcon} alt="create-icon" />
+                Crear
+              </button>
+              <button
+                onClick={() => {
+                  openModal();
+                  dispatch(createDepartamentAction(createDepartament));
+                  onClose();
+                }}
+                disabled={!newDepartament}
+              >
+                <img src={saveIcon} alt="save-icon" />
+                Guardar
               </button>
             </div>
-          ))}
-        </div>
-        <div className={styles.footer}>
-          <button
-            onClick={() => {
-              if (!newDepartament) {
-                setNewDepartament(true);
-                return;
-              }
-              return;
-            }}
-          >
-            <img src={createIcon} alt="create-icon" />
-            Crear
-          </button>
-          <button
-            onClick={() => {
-              openModal();
-              dispatch(createDepartamentAction(createDepartament));
-              onClose();
-            }}
-            disabled={!newDepartament}
-          >
-            <img src={saveIcon} alt="save-icon" />
-            Guardar
-          </button>
+          </div>
+
+          <div className={styles.profilesContainer}>
+            <h2>Perfiles</h2>
+            <div>
+              <input
+                type="text"
+                placeholder=" recepcionista.... operador...."
+              />
+              <div>
+                <button>
+                  {' '}
+                  <img src={createIcon} alt="create-icon" />
+                  Agregar perfil
+                </button>
+                <button>
+                  <img src={saveIcon} alt="save-icon" />
+                  Guardar
+                </button>
+              </div>
+            </div>
+            <div>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+              <h3>perfil element box</h3>
+            </div>
+          </div>
         </div>
       </section>
     </main>

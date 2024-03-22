@@ -67,7 +67,7 @@ export default function Perfiles() {
           allDepartaments={allDepartaments}
           openModal={confirmSaveDepartaments.openModal}
         >
-          Departamentos
+          Crear perfil
         </CreateDepartament>
       ) : null}
       {confirmChanges.isOpen && confirmChanges.modalName === CONFIRM_CHANGES ? (
