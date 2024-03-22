@@ -74,10 +74,7 @@ export class Bills {
   notes?: Notes[];
 
   /* 
-  @Prop({
-    required: true,
-    trim: true,
-  })
+
   device: string;
   */
 }
