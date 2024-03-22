@@ -69,10 +69,8 @@
     align-items: center;
     transition: .2s ease;
     gap: 8px;
-    padding: 0px 0px 0px 8px;
-
- 
-
+    padding: 0px 8px 0px 8px;
+    
     > input{
       width: 280px;
       height: 48px;

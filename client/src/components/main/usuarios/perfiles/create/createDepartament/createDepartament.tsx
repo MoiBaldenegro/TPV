@@ -26,7 +26,7 @@ export default function CreateDepartament({
   const [newDepartament, setNewDepartament] = useState(false);
   const [createDepartament, setCreateDepartament] = useState({});
   const [selectedDepartament, setSelectedDepartament] = useState();
-  const [newProfile, setNewProfile] = useState();
+  const [newProfile, setNewProfile] = useState('');
   const [newProfilesArray, setNewProfilesArray] = useState([]);
 
   const newProfileCreate = {
@@ -135,7 +135,7 @@ export default function CreateDepartament({
               <input
                 type="text"
                 placeholder=" recepcionista.... operador...."
-                value={newProfile}
+                value={newProfile} // ppor que no me aharra como value el newProfile?
                 onChange={(e) => {
                   console.log(newProfile);
                   setNewProfile(e.target.value);
@@ -143,7 +143,7 @@ export default function CreateDepartament({
               />
               <div>
                 <button
-                  disabled={!selectedDepartament}
+                  disabled={!selectedDepartament || !newProfile.length}
                   onClick={() => {
                     setNewProfilesArray((prevState) => {
                       if (prevState.length <= 0) {
@@ -152,6 +152,7 @@ export default function CreateDepartament({
                       const value = [...prevState, newProfileCreate];
                       return value;
                     });
+                    setNewProfile('');
                   }}
                 >
                   <img src={createIcon} alt="create-icon" />
