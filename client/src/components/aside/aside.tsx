@@ -201,7 +201,7 @@ export default function Aside() {
           </div>
           <img src={arrow} className={styles.arrowIcon} alt="icon" />
         </NavLink>
-        <NavLink to="reports" className={activeClassName}>
+        <NavLink to="reports/reports" className={activeClassName}>
           <img src={reportes} className={styles.icon} alt="reportes" />
           <span className={styles.itemTittle}>Reportes</span>
           <div className={styles.separator}></div>

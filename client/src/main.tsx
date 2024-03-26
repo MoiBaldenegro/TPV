@@ -10,6 +10,7 @@ import {
   CreateAccount,
   Home,
   LoginPage,
+  Reportes,
   VentaTypes,
 } from './components.tsx';
 import NotFound from './pages/notFound/notFound.tsx';
@@ -155,6 +156,17 @@ const router = createBrowserRouter([
               {
                 path: 'assistants',
                 element: <Asistencias />,
+              },
+            ],
+          },
+
+          {
+            path: 'reports',
+            element: <Main />,
+            children: [
+              {
+                path: 'reports',
+                element: <Reportes />,
               },
             ],
           },
