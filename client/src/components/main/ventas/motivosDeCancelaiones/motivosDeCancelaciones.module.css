@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: space-around;
   height: 83vh;
+
 }
 
 /* container  buttons */
@@ -20,6 +21,9 @@
   background: #F9F9F933;
   color: #f9f9f9;
   border: none;
+}
+.buttonsContainer{
+  display: flex;
 }
 .btnHead .btnHeadCreate, img, span{
   text-align: center;

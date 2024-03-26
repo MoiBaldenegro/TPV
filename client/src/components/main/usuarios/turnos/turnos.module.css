@@ -21,6 +21,9 @@
     color: #f9f9f9;
     border: none;
 }
+.buttonsContainer{
+  display: flex;
+}
 .btnHead .btnHeadCreate, img, span{
     text-align: center;
     vertical-align: middle;
