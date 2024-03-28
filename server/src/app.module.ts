@@ -34,6 +34,7 @@ import { DeviceModule } from './device/device.module';
 import { SettingModule } from './setting/setting.module';
 import { OperatingPeriodModule } from './operating-period/operating-period.module';
 import { CashierSessionModule } from './cashier-session/cashier-session.module';
+import { RoleModule } from './role/role.module';
 
 @Module({
   imports: [
@@ -74,6 +75,7 @@ import { CashierSessionModule } from './cashier-session/cashier-session.module';
     SettingModule,
     OperatingPeriodModule,
     CashierSessionModule,
+    RoleModule,
   ],
   controllers: [],
   providers: [],

@@ -11,7 +11,6 @@ export default function Reportes() {
             <div>
               <img src={element.icon} alt="icon-element" />
             </div>
-
             <h3>{element.tittle}</h3>
           </div>
         ))}
