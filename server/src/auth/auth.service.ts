@@ -83,4 +83,23 @@ export class AuthService {
 
     return { token, email };
   }
+
+  async loginPos({ employeeNumber, pinPos }: any) {
+    const user = await this.UsersService.findByEmployeeNumber(employeeNumber);
+    if (!user) {
+      throw new UnauthorizedException(
+        'El email y/o contraseña son incorrectos',
+      );
+    }
+    const isValidCredentials = user.pinPos === pinPos ? true : false;
+    if (!isValidCredentials) {
+      throw new UnauthorizedException(
+        'El email y/o contraseña son incorrectos',
+      );
+    }
+    const payload = { email: user.email, user: user };
+    const token = await this.jwtService.signAsync(payload);
+
+    return { token, payload };
+  }
 }

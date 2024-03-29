@@ -7,3 +7,5 @@ export class Role {
   })
   name: string;
 }
+
+export const RoleSchema = SchemaFactory.createForClass(Role);

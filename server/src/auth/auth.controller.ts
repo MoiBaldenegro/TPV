@@ -26,6 +26,11 @@ export class AuthController {
     return this.authService.login(loginDto);
   }
 
+  @Post('signIn')
+  loginPos(@Body() body: any) {
+    return this.authService.loginPos(body);
+  }
+
   @Get('profile')
   @UseGuards(AuthGuard)
   profile(
