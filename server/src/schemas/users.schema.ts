@@ -74,6 +74,21 @@ export class User {
     default: [],
   })
   samples?: string[];
+
+  @Prop({
+    default: true,
+  })
+  pos: boolean;
+
+  @Prop({
+    default: false,
+  })
+  admin: boolean;
+
+  @Prop({
+    default: false,
+  })
+  authorizations: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
