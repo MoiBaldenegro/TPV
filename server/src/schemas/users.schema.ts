@@ -34,9 +34,10 @@ export class User {
   password: string;
 
   @Prop({
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Role' }],
     default: [],
   })
-  role?: string;
+  role?: Role[];
 
   @Prop({
     default: true,
