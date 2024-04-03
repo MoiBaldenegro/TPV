@@ -17,8 +17,7 @@ export class ProfilesService {
       .populate({
         path: 'departament',
       })
-
-      .exec();
+      .populate({ path: 'role' });
   }
 
   async findOne(id: string) {
@@ -27,7 +26,7 @@ export class ProfilesService {
       .populate({
         path: 'departament',
       })
-      .exec();
+      .populate({ path: 'role' });
   }
 
   async create(body: createProfileDto) {

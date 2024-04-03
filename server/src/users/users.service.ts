@@ -14,18 +14,21 @@ export class UsersService {
   async findAll() {
     return await this.UserModel.find().populate({
       path: 'role',
+      populate: 'departament',
     });
   }
 
   async findByEmail(email: string) {
     return await this.UserModel.findOne({ email }).populate({
       path: 'role',
+      populate: 'departament',
     });
   }
 
   async findByEmployeeNumber(employeeNumber: number) {
     return await this.UserModel.findOne({ employeeNumber }).populate({
       path: 'role',
+      populate: 'departament',
     });
   }
 
