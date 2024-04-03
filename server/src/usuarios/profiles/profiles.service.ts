@@ -12,21 +12,15 @@ export class ProfilesService {
   ) {}
 
   async findAll() {
-    return await this.profileModel
-      .find()
-      .populate({
-        path: 'departament',
-      })
-      .populate({ path: 'role' });
+    return await this.profileModel.find().populate({
+      path: 'departament',
+    });
   }
 
   async findOne(id: string) {
-    return await this.profileModel
-      .findById(id)
-      .populate({
-        path: 'departament',
-      })
-      .populate({ path: 'role' });
+    return await this.profileModel.findById(id).populate({
+      path: 'departament',
+    });
   }
 
   async create(body: createProfileDto) {
