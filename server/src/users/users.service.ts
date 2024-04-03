@@ -12,15 +12,30 @@ export class UsersService {
   constructor(@InjectModel(User.name) private UserModel: Model<User>) {}
 
   async findAll() {
-    return await this.UserModel.find().exec();
+    return await this.UserModel.find().populate({
+      path: 'departament',
+      populate: {
+        path: 'role',
+      },
+    });
   }
 
   async findByEmail(email: string) {
-    return await this.UserModel.findOne({ email }).exec();
+    return await this.UserModel.findOne({ email }).populate({
+      path: 'departament',
+      populate: {
+        path: 'role',
+      },
+    });
   }
 
   async findByEmployeeNumber(employeeNumber: number) {
-    return await this.UserModel.findOne({ employeeNumber }).exec();
+    return await this.UserModel.findOne({ employeeNumber }).populate({
+      path: 'departament',
+      populate: {
+        path: 'role',
+      },
+    });
   }
 
   async create(createUser: CreateUserDto) {

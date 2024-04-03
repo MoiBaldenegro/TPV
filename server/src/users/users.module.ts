@@ -7,6 +7,7 @@ import {
   Departament,
   departamentSchema,
 } from 'src/schemas/usuarios/departaments.Schema';
+import { Role, RoleSchema } from 'src/schemas/role/role';
 
 @Module({
   imports: [
@@ -18,6 +19,10 @@ import {
       {
         name: Departament.name,
         schema: departamentSchema,
+      },
+      {
+        name: Role.name,
+        schema: RoleSchema,
       },
     ]),
   ],

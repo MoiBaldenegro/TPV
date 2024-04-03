@@ -35,10 +35,11 @@ export class User {
   password: string;
 
   @Prop({
-    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Profile' }],
-    default: [],
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'Profile',
+    default: null,
   })
-  role?: Profile[];
+  role?: Profile;
 
   @Prop({
     default: true,
