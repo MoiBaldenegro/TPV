@@ -15,4 +15,4 @@ export class Departament {
   departamentName: string;
 }
 
-export const departamentSchema = SchemaFactory.createForClass(Departament);
+export const DepartamentSchema = SchemaFactory.createForClass(Departament);

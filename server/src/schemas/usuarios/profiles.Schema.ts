@@ -33,7 +33,7 @@ export class Profile {
     ref: 'Role',
     default: USER_ROLE,
   })
-  role: Role;
+  role?: Role;
 }
 
 export const ProfileSchema = SchemaFactory.createForClass(Profile);

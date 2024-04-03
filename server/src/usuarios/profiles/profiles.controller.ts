@@ -26,6 +26,7 @@ export class ProfilesController {
       }
       return profilesArray;
     } catch (error) {
+      console.log(error);
       throw new NotFoundException('Ha ocurrido un error inesperado');
     }
   }

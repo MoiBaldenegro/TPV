@@ -4,7 +4,7 @@ import { DepartamentsController } from './departaments.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
   Departament,
-  departamentSchema,
+  DepartamentSchema,
 } from 'src/schemas/usuarios/departaments.Schema';
 
 @Module({
@@ -12,7 +12,7 @@ import {
     MongooseModule.forFeature([
       {
         name: Departament.name,
-        schema: departamentSchema,
+        schema: DepartamentSchema,
       },
     ]),
   ],
