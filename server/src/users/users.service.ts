@@ -26,9 +26,6 @@ export class UsersService {
   async findByEmployeeNumber(employeeNumber: number) {
     return await this.UserModel.findOne({ employeeNumber }).populate({
       path: 'role',
-      populate: {
-        path: 'role',
-      },
     });
   }
 

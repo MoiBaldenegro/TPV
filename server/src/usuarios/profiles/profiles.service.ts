@@ -17,9 +17,7 @@ export class ProfilesService {
       .populate({
         path: 'departament',
       })
-      .populate({
-        path: 'role',
-      })
+
       .exec();
   }
 
@@ -29,7 +27,6 @@ export class ProfilesService {
       .populate({
         path: 'departament',
       })
-      .populate({ path: 'role' })
       .exec();
   }
 
