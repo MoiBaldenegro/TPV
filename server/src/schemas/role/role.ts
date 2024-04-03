@@ -6,6 +6,11 @@ export class Role {
     required: true,
   })
   name: string;
+
+  @Prop({
+    required: true,
+  })
+  value: string;
 }
 
 export const RoleSchema = SchemaFactory.createForClass(Role);
