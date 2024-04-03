@@ -1,6 +1,7 @@
 import { Schema, Prop, SchemaFactory, MongooseModule } from '@nestjs/mongoose';
 import { Role } from './role/role';
 import { Document, Schema as MongooseSchema } from 'mongoose';
+import { Profile } from './usuarios/profiles.Schema';
 
 @Schema({
   timestamps: true,
@@ -34,10 +35,10 @@ export class User {
   password: string;
 
   @Prop({
-    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Role' }],
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Profile' }],
     default: [],
   })
-  role?: Role[];
+  role?: Profile[];
 
   @Prop({
     default: true,

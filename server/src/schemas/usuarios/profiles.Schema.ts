@@ -1,6 +1,7 @@
 import { Schema, SchemaFactory, Prop } from '@nestjs/mongoose';
 import { Departament } from './departaments.Schema';
 import { Schema as MongooseSchema } from 'mongoose';
+import { Role } from '../role/role';
 
 @Schema({ timestamps: true })
 export class Profile {
@@ -20,6 +21,12 @@ export class Profile {
     trim: true,
   })
   profileName: string;
+
+  @Prop({
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Role' }],
+    default: [],
+  })
+  role: Role[];
 }
 
 export const ProfileSchema = SchemaFactory.createForClass(Profile);
