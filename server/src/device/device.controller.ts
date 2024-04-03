@@ -35,6 +35,7 @@ export class DeviceController {
       );
     }
   }
+
   @Get('idn')
   async getIdn() {
     try {
