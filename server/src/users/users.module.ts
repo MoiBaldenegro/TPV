@@ -3,11 +3,9 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from 'src/schemas/users.schema';
-import {
-  Departament,
-  departamentSchema,
-} from 'src/schemas/usuarios/departaments.Schema';
+import { departamentSchema } from 'src/schemas/usuarios/departaments.Schema';
 import { Role, RoleSchema } from 'src/schemas/role/role';
+import { Profile } from 'src/schemas/usuarios/profiles.Schema';
 
 @Module({
   imports: [
@@ -17,7 +15,7 @@ import { Role, RoleSchema } from 'src/schemas/role/role';
         schema: UserSchema,
       },
       {
-        name: Departament.name,
+        name: Profile.name,
         schema: departamentSchema,
       },
       {
