@@ -1,10 +1,32 @@
-import { Body, ConflictException, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  ConflictException,
+  Controller,
+  Get,
+  NotFoundException,
+  Post,
+} from '@nestjs/common';
 import { RoleService } from './role.service';
 import { CreateRoleDto } from 'src/dto/role/createRoleDto';
 
 @Controller('role')
 export class RoleController {
   constructor(private roleService: RoleService) {}
+
+  @Get()
+  async findAll() {
+    try {
+      const roleArray = await this.roleService.findAll();
+      if (!roleArray) {
+        throw new NotFoundException('No se encontraron roles');
+      }
+      return roleArray;
+    } catch (error) {
+      throw new NotFoundException(
+        `Ha ocurrido un error inesperado, mas informacion ${error}`,
+      );
+    }
+  }
 
   @Post()
   async create(@Body() body: CreateRoleDto) {
