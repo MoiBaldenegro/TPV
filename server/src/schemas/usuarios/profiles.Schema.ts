@@ -3,6 +3,11 @@ import { Departament } from './departaments.Schema';
 import { Schema as MongooseSchema } from 'mongoose';
 import { Role } from '../role/role';
 
+const USER_ROLE: Role = {
+  name: 'USER',
+  value: 'USER_ROLE',
+};
+
 @Schema({ timestamps: true })
 export class Profile {
   @Prop({
@@ -23,10 +28,11 @@ export class Profile {
   profileName: string;
 
   @Prop({
-    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Role' }],
-    default: [],
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'Role',
+    default: USER_ROLE,
   })
-  role: Role[];
+  role: Role;
 }
 
 export const ProfileSchema = SchemaFactory.createForClass(Profile);
