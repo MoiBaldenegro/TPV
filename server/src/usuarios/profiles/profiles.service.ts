@@ -19,13 +19,18 @@ export class ProfilesService {
       })
       .populate({
         path: 'role',
-      });
+      })
+      .exec();
   }
 
   async findOne(id: string) {
-    return await this.profileModel.findById(id).populate({
-      path: 'departament',
-    });
+    return await this.profileModel
+      .findById(id)
+      .populate({
+        path: 'departament',
+      })
+      .populate({ path: 'role' })
+      .exec();
   }
 
   async create(body: createProfileDto) {
