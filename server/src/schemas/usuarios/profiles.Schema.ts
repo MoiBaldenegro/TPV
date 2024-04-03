@@ -2,10 +2,11 @@ import { Schema, SchemaFactory, Prop } from '@nestjs/mongoose';
 import { Departament } from './departaments.Schema';
 import { Schema as MongooseSchema } from 'mongoose';
 import { Role } from '../role/role';
+import { USER } from 'src/libs/roles.libs';
 
 const USER_ROLE: Role = {
-  name: 'USER',
-  value: 'USER_ROLE',
+  name: USER,
+  value: USER,
 };
 
 @Schema({ timestamps: true })

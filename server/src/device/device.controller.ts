@@ -93,7 +93,9 @@ export class DeviceController {
       if (error.code === 11000) {
         throw new ConflictException(`Este disposito ya se encuetra listado`);
       }
-      throw new NotFoundException(`Ha ocurrido algo inesperado ${error}`);
+      throw new NotFoundException(
+        `Ha ocurrido algo inesperado;  mas informacion:${error}`,
+      );
     }
   }
   @Put(':id')

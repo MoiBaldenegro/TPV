@@ -9,10 +9,11 @@ import { UpdateUserDto } from 'src/dto/users/updateUserDto';
 
 @Injectable()
 export class UsersService {
+  constructor(@InjectModel(User.name) private UserModel: Model<User>) {}
+
   async findAll() {
     return await this.UserModel.find().exec();
   }
-  constructor(@InjectModel(User.name) private UserModel: Model<User>) {}
 
   async findByEmail(email: string) {
     return await this.UserModel.findOne({ email }).exec();
