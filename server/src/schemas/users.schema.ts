@@ -2,6 +2,7 @@ import { Schema, Prop, SchemaFactory, MongooseModule } from '@nestjs/mongoose';
 import { Role } from './role/role';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Profile } from './usuarios/profiles.Schema';
+import { Table } from './tables/tableSchema';
 
 @Schema({
   timestamps: true,
@@ -92,6 +93,12 @@ export class User {
     default: false,
   })
   authorizations: boolean;
+
+  @Prop({
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Table' }],
+    default: [],
+  })
+  tables: Table[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

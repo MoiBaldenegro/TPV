@@ -21,6 +21,9 @@ export class UsersService {
         {
           path: 'role',
         },
+        {
+          path: 'tables',
+        },
       ],
     });
   }
@@ -35,6 +38,9 @@ export class UsersService {
         {
           path: 'role',
         },
+        {
+          path: 'tables',
+        },
       ],
     });
   }
@@ -48,6 +54,9 @@ export class UsersService {
         },
         {
           path: 'role',
+        },
+        {
+          path: 'tables',
         },
       ],
     });
