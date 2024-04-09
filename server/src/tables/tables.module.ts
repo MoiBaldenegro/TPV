@@ -4,8 +4,7 @@ import { TablesService } from './tables.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Table, TableSchema } from 'src/schemas/tables/tableSchema';
 import { BillSchema, Bills } from 'src/schemas/ventas/bills.schema';
-import { User } from '@digitalpersona/core';
-import { UserSchema } from 'src/schemas/users.schema';
+import { User, UserSchema } from 'src/schemas/users.schema';
 
 @Module({
   imports: [
