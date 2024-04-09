@@ -12,57 +12,57 @@ export class UsersService {
   constructor(@InjectModel(User.name) private UserModel: Model<User>) {}
 
   async findAll() {
-    return await this.UserModel.find().populate({
-      path: 'role',
-      populate: [
-        {
-          path: 'departament',
-        },
-        {
-          path: 'role',
-        },
-
-        {
-          path: 'tables',
-        },
-      ],
-    });
+    return await this.UserModel.find()
+      .populate({
+        path: 'role',
+        populate: [
+          {
+            path: 'departament',
+          },
+          {
+            path: 'role',
+          },
+        ],
+      })
+      .populate({
+        path: 'tables',
+      });
   }
 
   async findByEmail(email: string) {
-    return await this.UserModel.findOne({ email }).populate({
-      path: 'role',
-      populate: [
-        {
-          path: 'departament',
-        },
-        {
-          path: 'role',
-        },
-
-        {
-          path: 'tables',
-        },
-      ],
-    });
+    return await this.UserModel.findOne({ email })
+      .populate({
+        path: 'role',
+        populate: [
+          {
+            path: 'departament',
+          },
+          {
+            path: 'role',
+          },
+        ],
+      })
+      .populate({
+        path: 'tables',
+      });
   }
 
   async findByEmployeeNumber(employeeNumber: number) {
-    return await this.UserModel.findOne({ employeeNumber }).populate({
-      path: 'role',
-      populate: [
-        {
-          path: 'departament',
-        },
-        {
-          path: 'role',
-        },
-
-        {
-          path: 'tables',
-        },
-      ],
-    });
+    return await this.UserModel.findOne({ employeeNumber })
+      .populate({
+        path: 'role',
+        populate: [
+          {
+            path: 'departament',
+          },
+          {
+            path: 'role',
+          },
+        ],
+      })
+      .populate({
+        path: 'tables',
+      });
   }
 
   async create(createUser: CreateUserDto) {
