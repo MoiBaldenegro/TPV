@@ -11,24 +11,38 @@ export class TablesService {
   constructor(@InjectModel(Table.name) private tableModel: Model<Table>) {}
   async findAll() {
     try {
-      return await this.tableModel.find().populate({
-        path: 'bill',
-        populate: {
-          path: 'notes',
-        },
-      });
+      return await this.tableModel
+        .find()
+        .populate({
+          path: 'bill',
+          populate: {
+            path: 'notes',
+          },
+        })
+        .populate([
+          {
+            path: 'user',
+          },
+        ]);
     } catch (error) {
       throw new Error(error);
     }
   }
 
   async findOne(id: string) {
-    return await this.tableModel.findById(id).populate({
-      path: 'bill',
-      populate: {
-        path: 'notes',
-      },
-    });
+    return await this.tableModel
+      .findById(id)
+      .populate({
+        path: 'bill',
+        populate: {
+          path: 'notes',
+        },
+      })
+      .populate([
+        {
+          path: 'user',
+        },
+      ]);
   }
 
   async create(createtable: CreateTableDto) {
