@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from 'src/schemas/users.schema';
 import { Role, RoleSchema } from 'src/schemas/role/role';
 import { Profile, ProfileSchema } from 'src/schemas/usuarios/profiles.Schema';
+import { Table, TableSchema } from 'src/schemas/tables/tableSchema';
 
 @Module({
   imports: [
@@ -20,6 +21,10 @@ import { Profile, ProfileSchema } from 'src/schemas/usuarios/profiles.Schema';
       {
         name: Role.name,
         schema: RoleSchema,
+      },
+      {
+        name: Table.name,
+        schema: TableSchema,
       },
     ]),
   ],

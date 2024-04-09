@@ -93,13 +93,12 @@ export class User {
     default: false,
   })
   authorizations: boolean;
-  /*
+
   @Prop({
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Table' }],
     default: [],
   })
   tables: Table[];
-  */
 }
 // rollback
 export const UserSchema = SchemaFactory.createForClass(User);
