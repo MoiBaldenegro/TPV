@@ -62,6 +62,11 @@ export class UsersService {
       })
       .populate({
         path: 'tables',
+        populate: [
+          {
+            path: 'bill',
+          },
+        ],
       });
   }
 
