@@ -26,6 +26,11 @@ export class Table {
     type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Bills' }],
   })
   bill: Bills[];
+
+  @Prop({
+    default: false,
+  })
+  assigned: boolean;
 }
 
 export const TableSchema = SchemaFactory.createForClass(Table);
