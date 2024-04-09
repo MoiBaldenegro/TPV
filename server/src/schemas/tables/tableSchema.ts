@@ -48,7 +48,7 @@ export class Table {
   @Prop({
     default: true,
   })
-  actiave: boolean;
+  active: boolean;
 }
 
 export const TableSchema = SchemaFactory.createForClass(Table);
