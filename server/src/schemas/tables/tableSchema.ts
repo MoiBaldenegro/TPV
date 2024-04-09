@@ -1,6 +1,7 @@
 import { Schema, SchemaFactory, Prop } from '@nestjs/mongoose';
 import { Schema as MongooseSchema } from 'mongoose';
 import { Bills } from '../ventas/bills.schema';
+import { User } from '../users.schema';
 
 @Schema({ timestamps: true })
 export class Table {
@@ -31,6 +32,18 @@ export class Table {
     default: false,
   })
   assigned: boolean;
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
+    default: null,
+  })
+  user: User;
+
+  @Prop({
+    default: null,
+  })
+  zone: string;
 }
 
 export const TableSchema = SchemaFactory.createForClass(Table);
