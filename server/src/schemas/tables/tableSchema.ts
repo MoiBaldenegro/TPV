@@ -44,6 +44,11 @@ export class Table {
     default: null,
   })
   zone: string;
+
+  @Prop({
+    default: true,
+  })
+  actiave: boolean;
 }
 
 export const TableSchema = SchemaFactory.createForClass(Table);
