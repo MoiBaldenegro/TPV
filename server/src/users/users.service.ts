@@ -79,4 +79,8 @@ export class UsersService {
     });
     return updatedUser;
   }
+
+  async update(id: any, body: any) {
+    return this.UserModel.findByIdAndUpdate(id, body, { new: true });
+  }
 }

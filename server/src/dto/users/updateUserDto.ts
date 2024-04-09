@@ -64,4 +64,7 @@ export class UpdateUserDto {
 
   @IsOptional()
   samples?: string[];
+
+  @IsOptional()
+  tables?: string[];
 }

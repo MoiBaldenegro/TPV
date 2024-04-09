@@ -45,6 +45,8 @@ export class UsersController {
   }
   @Put(':id')
   async update(@Param('id') id: string, @Body() body: UpdateUserDto) {
+    console.log('llegue aca');
+    console.log(body);
     try {
       const userUpdated = await this.usersService.updateSamples(id, body);
       if (!userUpdated) {
