@@ -14,7 +14,6 @@
         flex-wrap: wrap;
         gap: 16px;
         padding: 16px;
-        border: 1px solid yellow;
 
         .reportItem{
             width: 345px;
@@ -36,16 +35,41 @@
                 align-items: center;
                 background: rgba(249, 249, 249, 0.1);
                 box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.15);
-                transition: .2s ease;
-               
-            }
-           
+                transition: .2s ease;             
+            }       
         }
 
         .reportItem:hover{
             opacity: .8;    
         }
-    }
+    }   
+}
 
-    
+.reportsContainer{
+    background: transparent !important;
+    height: 786px !important;
+    padding: 0 !important;
+    width: 1500px;
+    margin-top: -4px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    >div:first-child{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        >button{
+            background-color: transparent;
+            transition: .15s ease;
+        }
+        >button:hover{
+            transform: scale(1.2);
+        }
+        
+        >h3{
+            font-weight: 200;
+            font-size: 32px;
+        }
+    }
 }
