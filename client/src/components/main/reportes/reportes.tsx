@@ -1,5 +1,5 @@
 import styles from './reportes.module.css';
-import { reports } from './constants';
+import { reports } from './libs';
 
 export default function Reportes() {
   return (

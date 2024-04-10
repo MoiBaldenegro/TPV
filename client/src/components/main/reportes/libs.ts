@@ -32,3 +32,7 @@ export const reports: Report[] = [
   { tittle: 'Historial de cambios', value: SET_CHANGES_HISTORY, icon: clock },
   { tittle: 'Personalizados', value: SET_CUSTOM_REPORTS, icon: stars },
 ];
+
+export const documentsReport = [
+  { tittle: 'Cuentas canceladas' }, // aqui seguimos
+];
