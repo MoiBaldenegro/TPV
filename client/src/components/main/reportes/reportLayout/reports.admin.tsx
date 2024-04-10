@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { INITIAL_STATE, adminReports } from '../libs';
 import styles from './layout.module.css';
 import { CUSTOM, PRE_SET } from './lib';
+import { DOWNLOAD_REPORTS } from '../../../../lib/modals.lib';
+import { useModal } from '../../../../hooks/useModals';
+import DownloadReport from '../dowload/downloadReport';
 
 interface Props {
   back: (arg: string) => void;
@@ -9,6 +12,7 @@ interface Props {
 
 export default function AdminReports({ back }: Props) {
   const [option, setOption] = useState(PRE_SET);
+  const dowloadReport = useModal(DOWNLOAD_REPORTS);
 
   return (
     <div className={styles.container}>
@@ -51,7 +55,7 @@ export default function AdminReports({ back }: Props) {
           }
         >
           {adminReports.map((element) => (
-            <div>
+            <div onClick={dowloadReport.openModal}>
               <div>
                 <img src={element.icon} alt="icon" />
               </div>
@@ -62,6 +66,14 @@ export default function AdminReports({ back }: Props) {
       ) : (
         <div>Customizables</div>
       )}
+      {dowloadReport.isOpen && dowloadReport.modalName === DOWNLOAD_REPORTS ? (
+        <DownloadReport
+          isOpen={dowloadReport.isOpen}
+          onClose={dowloadReport.closeModal}
+        >
+          Filtros
+        </DownloadReport>
+      ) : null}
     </div>
   );
 }
