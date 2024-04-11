@@ -62,4 +62,8 @@ export class TablesService {
   async replace(): Promise<DeleteResult> {
     return await this.tableModel.deleteMany({}).exec();
   }
+
+  async cleanTables() {
+    return await this.tableModel.updateMany({}, { $set: { assigned: false } });
+  }
 }

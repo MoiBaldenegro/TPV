@@ -7,6 +7,7 @@ import {
   Param,
   Patch,
   Post,
+  Put,
 } from '@nestjs/common';
 import { TablesService } from './tables.service';
 import { CreateTableDto } from 'src/dto/tables/createTableDto';
@@ -65,6 +66,18 @@ export class TablesController {
     }
   }
 
+  @Put('reset')
+  async resetTables() {
+    try {
+      const res = await this.tableService.cleanTables();
+      if (!res) {
+        throw new NotFoundException('No se pudieran liberar las mesas');
+      }
+      return res;
+    } catch (error) {
+      throw new NotFoundException(`Ha ocurrido algo inesperado ${error}`);
+    }
+  }
   @Patch(':id')
   async updateStatus(
     @Param('id') id: string,
