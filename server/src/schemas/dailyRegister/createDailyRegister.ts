@@ -1,21 +1,20 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type DailyEntryDocument = DailyEntry & Document;
+export type DailyEntryDocument = DailyRegister & Document;
 
 @Schema()
-export class DailyEntry {
+export class DailyRegister {
   @Prop({ required: true })
   userId: string;
 
   @Prop({ required: true })
-  date: Date;
-
-  @Prop({ required: true })
   timeStart: Date;
-
+  /*
   @Prop({ type: [{ start: Date, end: Date }] })
   breaks: { start: Date; end: Date }[];
+
+  */
 
   @Prop()
   timeEnd: Date;
@@ -27,10 +26,10 @@ export class DailyEntry {
   totalBreakTime: number;
 }
 
-export const DailyEntrySchema = SchemaFactory.createForClass(DailyEntry);
+export const DailyRegisterSchema = SchemaFactory.createForClass(DailyRegister);
 
 // Método pre-save para calcular las estadísticas de tiempo antes de guardar
-DailyEntrySchema.pre('save', function (next) {
+DailyRegisterSchema.pre('save', function (next) {
   let totalTimeWorked = 0;
   let totalBreakTime = 0;
 
@@ -40,6 +39,7 @@ DailyEntrySchema.pre('save', function (next) {
       (this.timeEnd.getTime() - this.timeStart.getTime()) / (1000 * 60),
     ); // Convertir de milisegundos a minutos
   }
+  /*
 
   // Calcular el tiempo total de descanso
   this.breaks.forEach((breakPeriod) => {
@@ -49,6 +49,7 @@ DailyEntrySchema.pre('save', function (next) {
       ); // Convertir de milisegundos a minutos
     }
   });
+  */
 
   this.totalTimeWorked = totalTimeWorked;
   this.totalBreakTime = totalBreakTime;
