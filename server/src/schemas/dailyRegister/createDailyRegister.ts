@@ -6,7 +6,7 @@ export type DailyEntryDocument = DailyRegister & Document;
 @Schema()
 export class DailyRegister {
   @Prop({ required: true })
-  userId: string;
+  userId: number;
 
   @Prop({ required: true })
   timeStart: Date;
