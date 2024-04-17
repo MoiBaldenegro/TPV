@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import * as cron from 'node-cron';
+import cron from 'node-cron';
 
 @Injectable()
 export class CronService {
