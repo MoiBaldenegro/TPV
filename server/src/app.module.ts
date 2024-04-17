@@ -36,6 +36,7 @@ import { OperatingPeriodModule } from './operating-period/operating-period.modul
 import { CashierSessionModule } from './cashier-session/cashier-session.module';
 import { RoleModule } from './role/role.module';
 import { DailyRegisterModule } from './daily-register/daily-register.module';
+import { CronModule } from './cron/cron.module';
 
 @Module({
   imports: [
@@ -78,6 +79,7 @@ import { DailyRegisterModule } from './daily-register/daily-register.module';
     CashierSessionModule,
     RoleModule,
     DailyRegisterModule,
+    CronModule,
   ],
   controllers: [],
   providers: [],
