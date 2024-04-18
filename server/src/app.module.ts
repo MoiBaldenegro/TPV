@@ -37,6 +37,7 @@ import { CashierSessionModule } from './cashier-session/cashier-session.module';
 import { RoleModule } from './role/role.module';
 import { DailyRegisterModule } from './daily-register/daily-register.module';
 import { CronModule } from './cron/cron.module';
+import { TogoOrderModule } from './ventas/orders/togo-order/togo-order.module';
 
 @Module({
   imports: [
@@ -80,6 +81,7 @@ import { CronModule } from './cron/cron.module';
     RoleModule,
     DailyRegisterModule,
     CronModule,
+    TogoOrderModule,
   ],
   controllers: [],
   providers: [],

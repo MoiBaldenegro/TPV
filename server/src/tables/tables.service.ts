@@ -66,7 +66,7 @@ export class TablesService {
   async cleanTables() {
     return await this.tableModel.updateMany(
       {},
-      { $set: { assigned: false, user: [] } },
+      { $set: { assigned: false, user: null } },
     );
   }
 }
