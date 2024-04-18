@@ -17,8 +17,10 @@ export class OperatingPeriod {
   @Prop({ required: true })
   totalCredit: string;
 
+  /*
   @Prop({ required: true })
   totalRevenue: string;
+  */
 }
 
 export const OperatingPeriodSchema =
