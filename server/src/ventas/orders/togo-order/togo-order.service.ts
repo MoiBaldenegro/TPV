@@ -14,4 +14,8 @@ export class TogoOrderService {
     const newOrder = new this.toGoOrderModel(body);
     return newOrder.save();
   }
+
+  async findAll() {
+    return await this.toGoOrderModel.find();
+  }
 }

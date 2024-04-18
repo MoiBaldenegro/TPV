@@ -2,6 +2,7 @@ import {
   Body,
   ConflictException,
   Controller,
+  Get,
   NotFoundException,
   Post,
 } from '@nestjs/common';
@@ -22,7 +23,22 @@ export class TogoOrderController {
         throw new ConflictException(`Ya existe esta orden`);
       }
       throw new NotFoundException(
-        `Ha ocurrido un error inepserado, mas informacion: ${error}`,
+        `Ha ocurrido un error inesperado, mas informacion: ${error}`,
+      );
+    }
+  }
+
+  @Get()
+  async findAll() {
+    try {
+      const orderArray = await this.togoOrderService.findAll();
+      if (!orderArray) {
+        throw new NotFoundException(`No encontraron ordenes`);
+      }
+      return orderArray;
+    } catch (error) {
+      throw new NotFoundException(
+        `Ha ocurrido un error inesperado. Mas informacion: ${error}`,
       );
     }
   }
