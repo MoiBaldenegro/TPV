@@ -88,4 +88,8 @@ export class UsersService {
   async update(id: any, body: any) {
     return this.UserModel.findByIdAndUpdate(id, body, { new: true });
   }
+
+  async cleanTables() {
+    return await this.UserModel.updateMany({}, { $set: { tables: [] } });
+  }
 }

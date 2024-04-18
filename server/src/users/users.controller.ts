@@ -63,4 +63,17 @@ export class UsersController {
     // Recupera todos los usuarios con sus huellas dactilares almacenadas
     const users = await this.usersService.findAll();
   }
+
+  @Put('r/tables')
+  async resetTables() {
+    try {
+      const res = await this.usersService.cleanTables();
+      if (!res) {
+        throw new NotFoundException(`No se pudo actualizar`);
+      }
+      return res;
+    } catch (error) {
+      throw new NotFoundException(`Ha ocurrido algo inesperado ${error}`);
+    }
+  }
 }
