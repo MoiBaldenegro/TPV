@@ -1,6 +1,6 @@
 import { IsArray, IsOptional, IsString } from 'class-validator';
 
-export class createToGoOrderDto {
+export class updateToGoOrderDto {
   @IsOptional()
   @IsString()
   code: string;
