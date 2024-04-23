@@ -1,7 +1,7 @@
 import { IsBoolean, IsDate, IsNumber, IsString } from 'class-validator';
 
 export class CreateDailyRegisterDto {
-  @IsNumber()
+  @IsString();
   userId: string;
   /*
   @IsBoolean()
