@@ -54,6 +54,6 @@ export class DailyRegisterService {
       }
       return updatedRegister;
     }
-    console.log('Ya se creo este horario');
+    throw new NotFoundException('Fuera de caso');
   }
 }
