@@ -11,7 +11,6 @@ import {
   Put,
 } from '@nestjs/common';
 import { ModificationsService } from './modifications.service';
-import { createDishesDto } from 'src/dto/catalogo/dishes/createdDishes.dto';
 import { createModifierDto } from 'src/dto/catalogo/modifiers/createModifierDto';
 import { updateModifierDto } from 'src/dto/catalogo/modifiers/updateModifierDto';
 
