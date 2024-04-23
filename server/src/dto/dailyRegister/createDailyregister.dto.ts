@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsOptional, IsString } from 'class-validator';
 
 export class CreateDailyRegisterDto {
   @IsString()
@@ -7,15 +7,19 @@ export class CreateDailyRegisterDto {
   @IsBoolean()
   active: boolean;
   */
+  @IsOptional()
   @IsString()
   firstTime?: string;
 
+  @IsOptional()
   @IsString()
   secondTime?: string;
 
+  @IsOptional()
   @IsString()
   thirdTime?: string;
 
+  @IsOptional()
   @IsString()
   fourthTime?: string;
 }

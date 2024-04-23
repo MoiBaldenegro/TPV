@@ -7,11 +7,17 @@ export class DailyRegister {
   @Prop({ required: true, type: MongooseSchema.Types.ObjectId, ref: 'User' })
   userId: User;
 
-  @Prop({ required: true })
-  timeStart: string;
+  @Prop({ trim: true, default: null })
+  firstTime?: string | null;
 
-  @Prop()
-  timeEnd: string;
+  @Prop({ trim: true, default: null })
+  secondTime?: string | null;
+
+  @Prop({ trim: true, default: null })
+  thirdTime?: string | null;
+
+  @Prop({ trim: true, default: null })
+  fouthTime?: string | null;
   /*
   @Prop({ required: true })
   active: boolean;
