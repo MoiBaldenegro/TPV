@@ -21,9 +21,10 @@ export class DailyRegisterService {
     }
 
     if (actuallyUser && !actuallyUser.dailyRegister) {
-      const newRegister = new this.dailyRegisterModel(body);
+      const dataDate = new Date().toTimeString();
+      const dataRegister = { userId: body.userId, firstTime: dataDate };
+      const newRegister = new this.dailyRegisterModel(dataRegister);
       const registerEntry = await newRegister.save();
-
       const updateUser = await this.userModel.findByIdAndUpdate(
         actuallyUser._id,
         {
@@ -34,6 +35,24 @@ export class DailyRegisterService {
         throw new NotFoundException('No se pudo actualizar el usuario');
       }
       return updateUser;
+    }
+    if (
+      actuallyUser &&
+      actuallyUser.dailyRegister &&
+      actuallyUser.dailyRegister.firstTime &&
+      !actuallyUser.dailyRegister.secondTime
+    ) {
+      const dataDate = new Date().toTimeString();
+      const dataRegister = { userId: body.userId, secondTime: dataDate };
+      const updatedRegister = await this.dailyRegisterModel.findByIdAndUpdate(
+        actuallyUser.dailyRegister,
+        dataRegister,
+        { new: true },
+      );
+      if (!updatedRegister) {
+        throw new NotFoundException('No se pudo actualizar el registro');
+      }
+      return updatedRegister;
     }
     console.log('Ya se creo este horario');
   }
