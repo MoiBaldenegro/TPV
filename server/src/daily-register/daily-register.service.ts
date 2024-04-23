@@ -15,7 +15,7 @@ export class DailyRegisterService {
   ) {}
 
   async create(body: CreateDailyRegisterDto) {
-    const actuallyUser = this.userModel.findById(body.userId);
+    const actuallyUser = await this.userModel.findById(body.userId);
     if (!actuallyUser) {
       throw new NotFoundException('No se encontro el usuario');
     }
