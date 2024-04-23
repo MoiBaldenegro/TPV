@@ -12,9 +12,10 @@ export class DailyRegister {
 
   @Prop()
   timeEnd: string;
-
+  /*
   @Prop({ required: true })
   active: boolean;
+  */
 }
 
 export const DailyRegisterSchema = SchemaFactory.createForClass(DailyRegister);
