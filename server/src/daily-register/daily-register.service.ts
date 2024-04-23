@@ -9,8 +9,8 @@ import { User } from 'src/schemas/users.schema';
 export class DailyRegisterService {
   constructor(
     @InjectModel(DailyRegister.name)
-    @InjectModel(User.name)
     private dailyRegisterModel: Model<DailyRegister>,
+    @InjectModel(User.name) // Anotación separada para el modelo User
     private userModel: Model<User>,
   ) {}
 
