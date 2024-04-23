@@ -7,10 +7,15 @@ export class CreateDailyRegisterDto {
   @IsBoolean()
   active: boolean;
   */
+  @IsString()
+  firstTime?: string;
 
   @IsString()
-  timeStart: string;
+  secondTime?: string;
 
   @IsString()
-  timeEnd: string;
+  thirdTime?: string;
+
+  @IsString()
+  fourthTime?: string;
 }

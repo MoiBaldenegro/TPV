@@ -3,6 +3,7 @@ import { Role } from './role/role';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Profile } from './usuarios/profiles.Schema';
 import { Table } from './tables/tableSchema';
+import { DailyRegister } from './dailyRegister/createDailyRegister';
 
 @Schema({
   timestamps: true,
@@ -99,6 +100,13 @@ export class User {
     default: [],
   })
   tables: Table[];
+
+  @Prop({
+    trim: true,
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'DailyRegister',
+    default: null,
+  })
+  dailyRegister: DailyRegister;
 }
-// rollback
 export const UserSchema = SchemaFactory.createForClass(User);
