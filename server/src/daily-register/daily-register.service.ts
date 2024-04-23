@@ -15,12 +15,15 @@ export class DailyRegisterService {
   ) {}
 
   async create(body: CreateDailyRegisterDto) {
-    const actuallyUser = await this.userModel.findById(body.userId);
+    const actuallyUser = await this.userModel.findById(body.userId).populate({
+      path: 'dailyRegister',
+    });
+    console.log(actuallyUser);
     if (!actuallyUser) {
       throw new NotFoundException('No se encontro el usuario');
     }
 
-    if (actuallyUser && !actuallyUser.dailyRegister) {
+    if (actuallyUser && !actuallyUser.dailyRegister?.firstTime) {
       const dataDate = new Date().toTimeString();
       const dataRegister = { userId: body.userId, firstTime: dataDate };
       const newRegister = new this.dailyRegisterModel(dataRegister);
@@ -38,7 +41,6 @@ export class DailyRegisterService {
     }
     if (
       actuallyUser &&
-      actuallyUser.dailyRegister &&
       actuallyUser.dailyRegister.firstTime &&
       !actuallyUser.dailyRegister.secondTime
     ) {
@@ -54,6 +56,44 @@ export class DailyRegisterService {
       }
       return updatedRegister;
     }
-    throw new NotFoundException('Fuera de caso');
+    if (
+      actuallyUser &&
+      actuallyUser.dailyRegister.firstTime &&
+      actuallyUser.dailyRegister.secondTime &&
+      !actuallyUser.dailyRegister.thirdTime
+    ) {
+      const dataDate = new Date().toTimeString();
+      const dataRegister = { userId: body.userId, thirdTime: dataDate };
+      const updatedRegister = await this.dailyRegisterModel.findByIdAndUpdate(
+        actuallyUser.dailyRegister,
+        dataRegister,
+        { new: true },
+      );
+      if (!updatedRegister) {
+        throw new NotFoundException('No se pudo actualizar el registro');
+      }
+      return updatedRegister;
+    }
+    if (
+      actuallyUser &&
+      actuallyUser.dailyRegister.firstTime &&
+      actuallyUser.dailyRegister.secondTime &&
+      actuallyUser.dailyRegister.thirdTime &&
+      !actuallyUser.dailyRegister.fourthTime
+    ) {
+      const dataDate = new Date().toTimeString();
+      const dataRegister = { userId: body.userId, fourthTime: dataDate };
+      const updatedRegister = await this.dailyRegisterModel.findByIdAndUpdate(
+        actuallyUser.dailyRegister,
+        dataRegister,
+        { new: true },
+      );
+      if (!updatedRegister) {
+        throw new NotFoundException('No se pudo actualizar el registro');
+      }
+      return updatedRegister;
+    }
+    const res = 'Registro de turno completado con exito';
+    return res;
   }
 }

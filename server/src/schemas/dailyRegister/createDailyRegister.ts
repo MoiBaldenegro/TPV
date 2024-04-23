@@ -17,7 +17,7 @@ export class DailyRegister {
   thirdTime?: string | null;
 
   @Prop({ trim: true, default: null })
-  fouthTime?: string | null;
+  fourthTime?: string | null;
   /*
   @Prop({ required: true })
   active: boolean;

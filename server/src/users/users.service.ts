@@ -95,4 +95,10 @@ export class UsersService {
   async cleanTables() {
     return await this.UserModel.updateMany({}, { $set: { tables: [] } });
   }
+  async resetDailyRegister() {
+    return await this.UserModel.updateMany(
+      {},
+      { $set: { dailyRegister: null } },
+    );
+  }
 }
