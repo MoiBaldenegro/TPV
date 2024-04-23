@@ -105,7 +105,7 @@ export class User {
     trim: true,
     type: MongooseSchema.Types.ObjectId,
     ref: 'DailyRegister',
-    default: null,
+    default: '',
   })
   dailyRegister: DailyRegister;
 }

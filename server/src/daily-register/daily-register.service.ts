@@ -22,7 +22,18 @@ export class DailyRegisterService {
 
     if (actuallyUser && !actuallyUser.dailyRegister) {
       const newRegister = new this.dailyRegisterModel(body);
-      return await newRegister.save();
+      const registerEntry = await newRegister.save();
+
+      const updateUser = await this.userModel.findByIdAndUpdate(
+        actuallyUser._id,
+        {
+          dailyRegister: registerEntry._id,
+        },
+      );
+      if (!updateUser) {
+        throw new NotFoundException('No se pudo actualizar el usuario');
+      }
+      return updateUser;
     }
     console.log('Ya se creo este horario');
   }
