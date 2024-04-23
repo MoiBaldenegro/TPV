@@ -20,7 +20,7 @@ export class DailyRegisterService {
       throw new NotFoundException('No se encontro el usuario');
     }
 
-    if (actuallyUser && !actuallyUser.dailyRegister.length) {
+    if (actuallyUser && !actuallyUser.dailyRegister) {
       const newRegister = new this.dailyRegisterModel(body);
       return await newRegister.save();
     }
