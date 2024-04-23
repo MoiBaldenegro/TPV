@@ -6,7 +6,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { DailyRegisterService } from './daily-register.service';
-import { CreateDailyRegisterDto } from 'src/dto/dailyRegister/dailyregister.dto';
+import { CreateDailyRegisterDto } from 'src/dto/dailyRegister/createDailyregister.dto';
 
 @Controller('daily-register')
 export class DailyRegisterController {

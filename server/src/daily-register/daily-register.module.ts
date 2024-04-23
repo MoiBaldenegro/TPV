@@ -6,6 +6,7 @@ import {
   DailyRegister,
   DailyRegisterSchema,
 } from 'src/schemas/dailyRegister/createDailyRegister';
+import { User, UserSchema } from 'src/schemas/users.schema';
 
 @Module({
   imports: [
@@ -13,6 +14,10 @@ import {
       {
         name: DailyRegister.name,
         schema: DailyRegisterSchema,
+      },
+      {
+        name: User.name,
+        schema: UserSchema,
       },
     ]),
   ],
