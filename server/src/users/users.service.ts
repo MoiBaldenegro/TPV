@@ -22,6 +22,9 @@ export class UsersService {
           {
             path: 'role',
           },
+          {
+            path: 'dailyRegister',
+          },
         ],
       })
       .populate({

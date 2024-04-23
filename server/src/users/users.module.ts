@@ -6,6 +6,10 @@ import { User, UserSchema } from 'src/schemas/users.schema';
 import { Role, RoleSchema } from 'src/schemas/role/role';
 import { Profile, ProfileSchema } from 'src/schemas/usuarios/profiles.Schema';
 import { Table, TableSchema } from 'src/schemas/tables/tableSchema';
+import {
+  DailyRegister,
+  DailyRegisterSchema,
+} from 'src/schemas/dailyRegister/createDailyRegister';
 
 @Module({
   imports: [
@@ -25,6 +29,10 @@ import { Table, TableSchema } from 'src/schemas/tables/tableSchema';
       {
         name: Table.name,
         schema: TableSchema,
+      },
+      {
+        name: DailyRegister.name,
+        schema: DailyRegisterSchema,
       },
     ]),
   ],
