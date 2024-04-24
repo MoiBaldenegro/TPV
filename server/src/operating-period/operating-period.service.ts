@@ -9,4 +9,8 @@ export class OperatingPeriodService {
     @InjectModel(OperatingPeriod.name)
     private operatingPeriodModel: Model<OperatingPeriod>,
   ) {}
+
+  async findAll() {
+    return this.operatingPeriodModel.find();
+  }
 }
