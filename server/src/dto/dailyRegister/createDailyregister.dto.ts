@@ -1,25 +1,13 @@
-import { IsOptional, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateDailyRegisterDto {
-  @IsString()
-  userId: string;
+  @IsNumber()
+  employeeNumber: number;
+
+  @IsNumber()
+  pinPos: number;
   /*
   @IsBoolean()
   active: boolean;
   */
-  @IsOptional()
-  @IsString()
-  firstTime?: string;
-
-  @IsOptional()
-  @IsString()
-  secondTime?: string;
-
-  @IsOptional()
-  @IsString()
-  thirdTime?: string;
-
-  @IsOptional()
-  @IsString()
-  fourthTime?: string;
 }

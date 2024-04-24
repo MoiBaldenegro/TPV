@@ -33,7 +33,7 @@ export class CronService {
         { $set: { dailyRegister: null } },
       );
       if (UserUpdated) {
-        console.log('registro de usuarios reseteado con axito con exito');
+        console.log('registro de usuarios reseteado  con exito');
       }
     });
   }
