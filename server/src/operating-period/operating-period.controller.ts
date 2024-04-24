@@ -1,14 +1,9 @@
 import { Controller, Get, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { OperatingPeriod } from 'src/schemas/operatingPeriod/operatingPeriod.schema';
 import { OperatingPeriodService } from './operating-period.service';
 
 @Controller('operating-period')
 export class OperatingPeriodController {
-  constructor(
-    @InjectModel(OperatingPeriod.name)
-    private operatingPeriodService: OperatingPeriodService,
-  ) {}
+  constructor(private operatingPeriodService: OperatingPeriodService) {}
 
   @Get()
   async findAll() {
