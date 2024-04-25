@@ -63,9 +63,7 @@ export class DailyRegisterService {
               dataRegister,
               { new: true },
             );
-          if (!updatedRegister) {
-            throw new NotFoundException('No se pudo actualizar el registro');
-          }
+
           return updatedRegister;
         }
         if (!actuallyUser.dailyRegister.thirdTime) {
