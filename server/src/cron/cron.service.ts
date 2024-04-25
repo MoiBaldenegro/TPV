@@ -28,7 +28,7 @@ export class CronService {
       return newOperatingPeriod;
     });
 
-    cron.schedule('*/15 * * * * ', async () => {
+    cron.schedule('0 */8 * * * ', async () => {
       const UserUpdated = await this.userModel.updateMany(
         {},
         { $set: { dailyRegister: null } },
