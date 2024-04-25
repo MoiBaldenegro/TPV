@@ -22,13 +22,13 @@ export class UsersService {
           {
             path: 'role',
           },
-          {
-            path: 'dailyRegister',
-          },
         ],
       })
       .populate({
         path: 'tables',
+      })
+      .populate({
+        path: 'dailyRegister',
       });
   }
 

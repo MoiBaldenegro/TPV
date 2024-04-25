@@ -43,6 +43,12 @@ export class DailyRegisterService {
               dailyRegister: registerEntry._id,
             },
           );
+          console.log(updateUser);
+          if (!updateUser.dailyRegister) {
+            throw new NotFoundException(
+              'No se actualizo en horaio en el usuario',
+            );
+          }
           if (!updateUser) {
             throw new NotFoundException('No se pudo actualizar el usuario');
           }
