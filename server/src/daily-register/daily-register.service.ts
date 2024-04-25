@@ -46,7 +46,8 @@ export class DailyRegisterService {
           if (!updateUser) {
             throw new NotFoundException('No se pudo actualizar el usuario');
           }
-          return updateUser;
+          const data = { newRegister, updateUser };
+          return data;
         }
 
         if (!actuallyUser.dailyRegister.secondTime) {
