@@ -75,6 +75,11 @@ export class Bills {
   })
   notes?: Notes[];
 
+  @Prop({
+    default: [],
+  })
+  transferHistory?: string[]; // historial de transferenncias // aca seguirmos
+
   /* 
 
   device: string;

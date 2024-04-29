@@ -53,6 +53,10 @@ export class UpdateBillDto {
   @IsArray()
   notes?: [];
 
+  @IsOptional()
+  @IsArray()
+  transferHistory?: string[];
+
   /*
   @IsDefined()
   @IsString()

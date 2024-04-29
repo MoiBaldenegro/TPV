@@ -51,6 +51,10 @@ export class CreateBillDto {
   @IsArray()
   notes?: [];
 
+  @IsOptional()
+  @IsArray()
+  transferHistory?: string[];
+
   /*
   @IsDefined()
   @IsString()
