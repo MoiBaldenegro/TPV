@@ -93,4 +93,17 @@ export class TablesController {
       throw new NotFoundException('Ha ocurrido un error inesperado');
     }
   }
+
+  @Put('upt/:id')
+  async updateChars(@Param('id') id: string, @Body() body: UpdateTableDto) {
+    try {
+      const updatedTable = await this.tableService.update(id, body);
+      if (!updatedTable) {
+        new NotFoundException('No se encontro la mesa');
+      }
+      return updatedTable;
+    } catch (error) {
+      throw new NotFoundException('Ha ocurrido un error inesperado');
+    }
+  }
 }
