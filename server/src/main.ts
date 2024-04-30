@@ -14,6 +14,7 @@ async function bootstrap() {
     origin: [
       'https://tomate-pos.vercel.app',
       'https://tomate-ksuxm5zwf-tomatepvs-projects.vercel.app',
+      'http://localhost:5174',
       'http://localhost:5173',
     ],
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
