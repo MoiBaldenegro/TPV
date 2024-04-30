@@ -75,11 +75,10 @@ export class BillsController {
     const currentBill = await this.billService.findOne(id);
     const newHistory = body.transferHistory;
     const updateValue =
-      newHistory && currentBill.transferHistory.length > 1
+      newHistory && currentBill.transferHistory.length > 0
         ? [...currentBill.transferHistory, newHistory[0]]
         : undefined;
     const data = updateValue ? { ...body, transferHistory: updateValue } : body;
-
     try {
       const updatedBill = await this.billService.update(id, data);
       if (!updatedBill) {
