@@ -1,11 +1,4 @@
-import {
-  IsString,
-  IsDefined,
-  Length,
-  IsOptional,
-  IsNumber,
-  IsArray,
-} from 'class-validator';
+import { IsString, Length, IsOptional, IsArray } from 'class-validator';
 
 export class UpdateBillDto {
   @IsOptional()

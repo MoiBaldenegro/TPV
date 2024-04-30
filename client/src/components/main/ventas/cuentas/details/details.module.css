@@ -223,4 +223,9 @@
   margin: -8px;
   background-color: #7c78784f;
 }
+
+.transferTable{
+  display: flex;
+  gap: 5px;
+}
    
