@@ -26,7 +26,8 @@ export default function NotesDetails({
   const [note, setNotes] = useState();
   // Modals
   const notesDeatilsIntern = useModal('notesDetailsIntern');
-  const transferIndex = element.transferHistory.length > 1 ? -1 : 0;
+  const transferIndex =
+    element.transferHistory.length > 1 ? element.transferHistory.length - 1 : 0;
   useEffect(() => {
     console.log(element);
   });
@@ -71,15 +72,11 @@ export default function NotesDetails({
                 </div>
                 <div className={styles.itemContainer}>
                   <h5>Mesa</h5>
-                  {element.transferHistory.length ? (
+                  {element.transferHistory.length > 0 ? (
                     <div className={styles.transferTable}>
                       <h5>{element.transferHistory[transferIndex]}</h5>
                       <img src={arrowRightSmall} alt="arror-icon-small" />
-                      <h5>
-                        {element.transferHistory.length > 1
-                          ? element.transferHistory[-2]
-                          : element.tableNum}
-                      </h5>
+                      <h5>{element.tableNum}</h5>
                     </div>
                   ) : (
                     '--'
