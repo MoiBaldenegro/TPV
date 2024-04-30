@@ -7,25 +7,19 @@ export class Discount {
     required: true,
     trim: true,
   })
-  checkCode: string;
+  checkCode: number;
 
   @Prop({
+    trim: true,
     required: true,
-    trim: true,
-  })
-  sellType: string; // este sera un enum
-
-  @Prop({
-    trim: true,
-    default: '0,00',
   })
   checkTotal: string;
 
   @Prop({
     trim: true,
-    default: '0,00',
+    required: true,
   })
-  discountMount: string;
+  discountMount: number;
 
   @Prop({
     required: true,
@@ -45,22 +39,13 @@ export class Discount {
   })
   discountReason: string;
 
-  @Prop({
-    required: true,
-    trim: true,
-  })
-
-  // Verificar si esta prop se va quedar
+  // le voy  a mandar toda la info para qaue se calcule este discount Total automaticamente, preguntarle a chatGPT como hacerlo
+  /* 
   @Prop({
     trim: true,
   })
-  discountDate: string;
-  // verificar si esta prop se va quedar
-  @Prop({
-    trim: true,
-    default: 'enabled',
-  })
-  checkStatus: 'enabled' | 'disabled';
+  discountTotal: string;
 }
+*/
 
 export const DiscountSchema = SchemaFactory.createForClass(Discount);
