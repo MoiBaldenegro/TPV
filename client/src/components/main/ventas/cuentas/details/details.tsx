@@ -75,7 +75,11 @@ export default function NotesDetails({
                     <div className={styles.transferTable}>
                       <h5>{element.transferHistory[transferIndex]}</h5>
                       <img src={arrowRightSmall} alt="arror-icon-small" />
-                      <h5>{element.tableNum}</h5>
+                      <h5>
+                        {element.transferHistory.length > 1
+                          ? element.transferHistory[-2]
+                          : element.tableNum}
+                      </h5>
                     </div>
                   ) : (
                     '--'
