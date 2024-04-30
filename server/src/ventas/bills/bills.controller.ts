@@ -72,16 +72,22 @@ export class BillsController {
 
   @Put(':id')
   async update(@Body() body: UpdateBillDto, @Param('id') id: string) {
-    console.log(body);
+    const currentBill = await this.billService.findOne(id);
+    const newHistory = body.transferHistory;
+    const updateValue =
+      newHistory && currentBill.transferHistory.length > 1
+        ? [...currentBill.transferHistory, newHistory[0]]
+        : undefined;
+    const data = updateValue ? { ...body, transferHistory: updateValue } : body;
+
     try {
-      const updatedBill = await this.billService.update(id, body);
+      const updatedBill = await this.billService.update(id, data);
       if (!updatedBill) {
         throw new NotFoundException('No se encuentra esta cuenta');
       }
       return updatedBill;
     } catch (error) {
-      console.log(error);
-      throw new NotFoundException(`Ha ocurrido algo inesperado ${error}}`);
+      throw new NotFoundException(`Ha ocurrido algo inesperado: ${error}`);
     }
   }
 }
