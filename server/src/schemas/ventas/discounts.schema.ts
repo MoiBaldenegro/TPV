@@ -47,5 +47,6 @@ export class Discount {
   discountTotal: string;
 }
 */
+}
 
 export const DiscountSchema = SchemaFactory.createForClass(Discount);
