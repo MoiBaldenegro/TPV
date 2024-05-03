@@ -51,7 +51,7 @@ export class NotesService {
     console.log(updatedNote);
     console.log('ID de la cuenta');
     console.log(accountId);
-    if (accountId) {
+    if (accountId && accountId != null) {
       console.log('Primeramewnte vemos que entra correctamente añl primer IF');
       console.log(accountId);
       const billCurrent = await this.BillsModel.findById(accountId);
@@ -64,14 +64,22 @@ export class NotesService {
         console.log(billCurrent);
         console.log('Esta es la nota primera');
         console.log(billCurrent.notes[0]);
+        console.log('VER ACAAAAAAAAAAAAAA');
+        console.log(updatedNote);
         const upNote = await this.noteModel.findByIdAndUpdate(id, updatedNote, {
           new: true,
         });
         if (upNote) {
           console.log('Por finalo entramos al ultimo IF 3RO');
-          const refreshedBill = await this.BillsModel.findById(accountId);
-          console.log('Vamos a ver el refresh bill');
-          console.log(refreshedBill);
+          const refreshedBill = await this.BillsModel.findById(
+            accountId,
+          ).populate({ path: 'notes' });
+          console.log('Vamos a ver el refresh bill NOTEEES');
+          console.log(refreshedBill.notes);
+
+          refreshedBill.notes.forEach((element) => {
+            console.log(element.checkTotal);
+          });
           const newTotal = refreshedBill.notes.reduce(
             (total, element) => total + parseFloat(element.checkTotal),
             0,
@@ -90,7 +98,13 @@ export class NotesService {
         }
       }
     }
-    await this.noteModel.findByIdAndUpdate(id, updatedNote, {
+    console.log('Aca deberia estar cayendo al separar la snotas');
+    console.log(
+      'y aqui esta el upodateNot eahora que ya esta llegando bine por aca',
+    );
+    console.log(updatedNote);
+
+    return await this.noteModel.findByIdAndUpdate(id, updatedNote, {
       new: true,
     });
   }
