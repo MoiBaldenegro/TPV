@@ -18,6 +18,7 @@ export default function Cuentas() {
   // Local States
   const [detailsActive, setDetailsActive] = useState(true);
   const [account, setAccount] = useState();
+
   // Modals
   const notesDetails = useModal('notesDetails');
   const { allBills } = useSelector((state) => state.bills);
@@ -26,6 +27,7 @@ export default function Cuentas() {
   useEffect(() => {
     dispatch(getBillsAction());
   }, []);
+
   return (
     <div className={styles.container}>
       <div>
@@ -139,7 +141,6 @@ export default function Cuentas() {
               ))}
             </tbody>
           </table>
-
           <div className={styles.tableFooter}></div>
         </section>
       </div>

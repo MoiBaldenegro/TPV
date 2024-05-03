@@ -45,18 +45,42 @@ export class NotesService {
   }
 
   async update(id: string, updatedNote: updateNoteDto, accountId?: string) {
+    console.log('ID de la nota');
+    console.log(id);
+    console.log('La data de la nota par actualizar');
+    console.log(updatedNote);
+    console.log('ID de la cuenta');
+    console.log(accountId);
     if (accountId) {
-      const billCurrent = await this.BillsModel.findById(id);
+      console.log('Primeramewnte vemos que entra correctamente añl primer IF');
+      console.log(accountId);
+      const billCurrent = await this.BillsModel.findById(accountId);
+      console.log(
+        'Ahora vamos a checar si encontramos la  cuenta correctamente',
+      );
+      console.log(billCurrent);
       if (billCurrent && billCurrent.notes.length > 0) {
+        console.log('Antesw de seguir checamos si entramos al segundo IF');
+        console.log(billCurrent);
+        console.log('Esta es la nota primera');
+        console.log(billCurrent.notes[0]);
         const upNote = await this.noteModel.findByIdAndUpdate(id, updatedNote, {
           new: true,
         });
         if (upNote) {
+          console.log('Por finalo entramos al ultimo IF 3RO');
           const refreshedBill = await this.BillsModel.findById(accountId);
+          console.log('Vamos a ver el refresh bill');
+          console.log(refreshedBill);
           const newTotal = refreshedBill.notes.reduce(
             (total, element) => total + parseFloat(element.checkTotal),
             0,
           );
+          console.log(
+            'Parece ahora ser el problema que no se calcula bien le total',
+          );
+          console.log(newTotal);
+
           const refreshData = { checkTotal: newTotal };
           const refreshTotalInBill = await this.BillsModel.findByIdAndUpdate(
             accountId,

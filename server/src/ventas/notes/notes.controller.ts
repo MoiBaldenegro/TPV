@@ -72,9 +72,16 @@ export class NotesController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() body: updateNoteDto) {
+  async update(
+    @Param('id') id: string,
+    @Body() body: { accountId: string | null; body: updateNoteDto },
+  ) {
     try {
-      const updatedNote = await this.noteService.update(id, body);
+      const updatedNote = await this.noteService.update(
+        id,
+        body.body,
+        body.accountId,
+      );
       if (!updatedNote) {
         throw new NotFoundException(
           'La nota que intentas actualizar no se encontro',
