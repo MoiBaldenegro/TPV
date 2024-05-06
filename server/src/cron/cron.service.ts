@@ -18,7 +18,7 @@ export class CronService {
 
   private initializeCronJobs() {
     // Ejecutar una tarea cada minuto
-    cron.schedule('0 20 * * *', async () => {
+    cron.schedule('21 21 * * *', async () => {
       console.log(new Date().toLocaleDateString());
       const newOperatingPeriod = new this.operatingPeriodModel();
       await newOperatingPeriod.save();
