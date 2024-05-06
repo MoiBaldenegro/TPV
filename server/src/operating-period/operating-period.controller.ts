@@ -19,4 +19,19 @@ export class OperatingPeriodController {
       throw new NotFoundException('Ha ocurrido algo inesperado');
     }
   }
+
+  @Get('/current')
+  async current() {
+    try {
+      const currenPeriod = await this.operatingPeriodService.getCurrent();
+      if (!currenPeriod) {
+        throw new NotFoundException('No se han iniciado operaciones');
+      }
+      return currenPeriod;
+    } catch (error) {
+      throw new NotFoundException(
+        `Ha ocurrido algo inesperado. Mas informacion: ${error}`,
+      );
+    }
+  }
 }

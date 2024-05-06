@@ -13,4 +13,19 @@ export class OperatingPeriodService {
   async findAll() {
     return this.operatingPeriodModel.find();
   }
+
+  async getCurrent() {
+    const startDate = new Date();
+    startDate.setUTCHours(0, 0, 0, 0);
+
+    const endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + 1);
+
+    const doc = await this.operatingPeriodModel.find({
+      createdAt: { $gte: startDate, $lt: endDate },
+    });
+
+    console.log(doc);
+    return doc;
+  }
 }
