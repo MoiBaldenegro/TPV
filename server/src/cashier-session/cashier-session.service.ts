@@ -9,7 +9,7 @@ import { CashierSession } from 'src/schemas/cashierSession/cashierSession';
 export class CashierSessionService {
   constructor(
     @InjectModel(CashierSession.name)
-    private readonly cashierSessionModel: Model<CashierSession>,
+    private cashierSessionModel: Model<CashierSession>,
   ) {}
 
   async findAll() {
