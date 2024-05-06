@@ -6,6 +6,11 @@ import {
   CashierSession,
   CashierSessionSchema,
 } from 'src/schemas/cashierSession/cashierSession';
+import {
+  OperatingPeriod,
+  OperatingPeriodSchema,
+} from 'src/schemas/operatingPeriod/operatingPeriod.schema';
+import { OperatingPeriodService } from 'src/operating-period/operating-period.service';
 
 @Module({
   imports: [
@@ -13,6 +18,10 @@ import {
       {
         name: CashierSession.name,
         schema: CashierSessionSchema,
+      },
+      {
+        name: OperatingPeriod.name,
+        schema: OperatingPeriodSchema,
       },
     ]),
   ],

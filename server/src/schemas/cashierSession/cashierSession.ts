@@ -2,23 +2,26 @@ import { SchemaFactory, Schema, Prop } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true })
 export class CashierSession {
-  @Prop({ required: true, trim: true })
+  @Prop({ trim: true })
   startDate: string;
 
-  @Prop({ required: true, trim: true })
+  @Prop({ trim: true })
   endDate: string;
 
-  @Prop({ required: true, trim: true })
-  enable: string;
+  @Prop({ trim: true, default: true })
+  enable?: boolean;
 
-  @Prop({ required: true, trim: true })
-  totalDebit: string;
+  @Prop({ required: true })
+  initialQuantity: string;
 
-  @Prop({ required: true, trim: true })
-  totalCredit: string;
+  @Prop({ trim: true, default: '0.00' })
+  totalDebit?: string;
 
-  @Prop({ required: true, trim: true })
-  totalCash: string;
+  @Prop({ trim: true, default: '0.00' })
+  totalCredit?: string;
+
+  @Prop({ trim: true, default: '0.00' })
+  totalCash?: string;
 }
 
 export const CashierSessionSchema =
