@@ -84,9 +84,12 @@ export class UsersService {
         .sort({ createdAt: -1 })
         .exec();
 
-      const nextEmployeeNumber = lastUser
-        ? this.getNextEmployeeNumberCode(lastUser.employeeNumber)
-        : 1001;
+      const nextEmployeeNumber =
+        !lastUser || lastUser.employeeNumber.toString().startsWith('00')
+          ? 1001
+          : lastUser.employeeNumber === 8099
+            ? 8200
+            : this.getNextEmployeeNumberCode(lastUser.employeeNumber);
 
       const userToCreate = new this.UserModel({
         ...createUser,
