@@ -12,12 +12,9 @@ export class createProfileDto {
   @IsNotEmpty()
   departament: string;
 
-  @IsOptional()
-  code?: number;
-
   @IsString()
   @IsDefined()
   @IsNotEmpty()
   @Length(1, 25)
-  profileName: true;
+  profileName: string;
 }

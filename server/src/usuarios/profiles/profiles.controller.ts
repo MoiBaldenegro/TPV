@@ -46,6 +46,7 @@ export class ProfilesController {
 
   @Post()
   async create(@Body() body: createProfileDto) {
+    console.log(body);
     try {
       const newProfile = await this.profileService.create(body);
       return newProfile;

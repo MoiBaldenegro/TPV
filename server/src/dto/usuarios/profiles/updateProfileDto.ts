@@ -12,5 +12,5 @@ export class updateProfileDto {
   @IsString()
   @IsOptional()
   @Length(1, 25)
-  profileName?: true;
+  profileName?: string;
 }

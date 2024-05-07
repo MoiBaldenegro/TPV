@@ -8,6 +8,8 @@ import {
 
 export const createProfileAction =
   (profileArray: any) => async (dispatch: any) => {
+    console.log('ARRAY DE PROFILES');
+    console.log(profileArray);
     dispatch({ type: PROFILES_REQUEST });
     try {
       for (const element of profileArray) {
