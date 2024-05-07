@@ -246,7 +246,10 @@ export default function Register({
                           setSecondMessage('');
                           handleChange();
                           const { value } = e.target;
-                          setEmployee({ ...currentEmployee, role: value });
+                          setEmployee({
+                            ...currentEmployee,
+                            role: element._id,
+                          }); /////////////////
                         }}
                       />
                       <label htmlFor={element._id}>{element.profileName}</label>
@@ -386,9 +389,8 @@ export default function Register({
                   ...currentEmployee,
                   lastName: lastNameComplete,
                 };
-                console.log('aqca le nuevo usuario para crear');
+                console.log('Aca el ususario nuevoi');
                 console.log(newUser);
-
                 dispatch(createUser(newUser));
               }}
             >

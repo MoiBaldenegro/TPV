@@ -37,7 +37,6 @@ export class User {
   @Prop({
     type: MongooseSchema.Types.ObjectId,
     ref: 'Profile',
-    default: null,
   })
   role?: Profile;
 
