@@ -79,6 +79,8 @@ export class UsersService {
   }
 
   async create(createUser: CreateUserDto) {
+    console.log('Por aca el LOG del register');
+    console.log(createUser);
     const newUser = new this.UserModel(createUser);
     return await newUser.save();
   }

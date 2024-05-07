@@ -60,4 +60,7 @@ export class CreateUserDto {
 
   @IsOptional()
   samples?: string[];
+
+  @IsOptional()
+  dailyRegister?: string;
 }

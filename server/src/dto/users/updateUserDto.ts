@@ -4,7 +4,6 @@ import {
   IsString,
   IsOptional,
   IsNotEmpty,
-  MinLength,
   IsEmail,
   IsNumber,
   MaxLength,
@@ -67,4 +66,7 @@ export class UpdateUserDto {
 
   @IsOptional()
   tables?: string[];
+
+  @IsOptional()
+  dailyRegister: string;
 }

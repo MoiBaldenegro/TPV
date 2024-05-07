@@ -10,14 +10,12 @@ import { DailyRegister } from './dailyRegister/createDailyRegister';
 })
 export class User {
   @Prop({
-    unique: true,
     required: true,
     trim: true,
   })
   name: string;
 
   @Prop({
-    unique: true,
     required: true,
     trim: true,
   })
@@ -102,11 +100,10 @@ export class User {
   tables: Table[];
 
   @Prop({
-    trim: true,
     type: MongooseSchema.Types.ObjectId,
     ref: 'DailyRegister',
-    default: '',
+    default: null,
   })
-  dailyRegister: DailyRegister;
+  dailyRegister?: DailyRegister;
 }
 export const UserSchema = SchemaFactory.createForClass(User);

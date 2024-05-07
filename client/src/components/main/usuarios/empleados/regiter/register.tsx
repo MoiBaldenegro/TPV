@@ -386,6 +386,9 @@ export default function Register({
                   ...currentEmployee,
                   lastName: lastNameComplete,
                 };
+                console.log('aqca le nuevo usuario para crear');
+                console.log(newUser);
+
                 dispatch(createUser(newUser));
               }}
             >
