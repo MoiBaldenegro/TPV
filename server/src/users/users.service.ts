@@ -79,10 +79,24 @@ export class UsersService {
   }
 
   async create(createUser: CreateUserDto) {
-    console.log('Por aca el LOG del register');
-    console.log(createUser);
-    const newUser = new this.UserModel(createUser);
-    return await newUser.save();
+    try {
+      const lastUser = await this.UserModel.findOne({})
+        .sort({ createdAt: -1 })
+        .exec();
+
+      const nextEmployeeNumber = lastUser
+        ? this.getNextEmployeeNumberCode(lastUser.employeeNumber)
+        : 1001;
+
+      const userToCreate = new this.UserModel({
+        ...createUser,
+        employeeNumber: nextEmployeeNumber,
+      });
+      await userToCreate.save();
+      return userToCreate;
+    } catch (error) {
+      throw new Error(`Error: ${error}`);
+    }
   }
 
   async updateSamples(id: string, body: UpdateUserDto) {
@@ -107,5 +121,9 @@ export class UsersService {
       {},
       { $set: { dailyRegister: null } },
     );
+  }
+
+  private getNextEmployeeNumberCode(lastNumber: number): number {
+    return lastNumber + 1;
   }
 }

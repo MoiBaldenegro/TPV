@@ -47,7 +47,6 @@ export class User {
 
   @Prop({
     trim: true,
-    default: 6666,
   })
   employeeNumber?: number;
 
