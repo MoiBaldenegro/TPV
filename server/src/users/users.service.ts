@@ -79,21 +79,24 @@ export class UsersService {
   }
 
   async create(createUser: CreateUserDto) {
+    console.log(createUser);
     try {
       const lastUser = await this.UserModel.findOne({})
-        .sort({ createdAt: -1 })
+        .sort({ employeeNumber: -1 })
         .exec();
 
       const nextEmployeeNumber =
-        !lastUser || lastUser.employeeNumber.toString().startsWith('00')
-          ? 1001
+        !lastUser || lastUser.employeeNumber.toString().startsWith('10')
+          ? 2001
           : lastUser.employeeNumber === 8099
             ? 8200
             : this.getNextEmployeeNumberCode(lastUser.employeeNumber);
 
       const userToCreate = new this.UserModel({
         ...createUser,
-        employeeNumber: nextEmployeeNumber,
+        employeeNumber: createUser.employeeNumber
+          ? createUser.employeeNumber
+          : nextEmployeeNumber,
       });
       await userToCreate.save();
       return userToCreate;
