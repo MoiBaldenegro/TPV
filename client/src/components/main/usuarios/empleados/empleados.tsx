@@ -108,72 +108,67 @@ export default function Empleados() {
             </tr>
           </thead>
           <tbody>
-            {allUsers?.map((element: any) => (
-              <tbody>
-                {allUsers?.map((element: any) =>
-                  !element.employeeNumber.toString().startsWith('10') ? (
-                    <tr
-                      key={element._id}
-                      className={
-                        element.status === 'disabled'
-                          ? styles.rowDisabled
-                          : styles.release
-                      }
-                    >
-                      <td className={styles.tableRows}>
-                        {element.employeeNumber}
-                      </td>
-                      <td className={styles.tableRows}>
-                        {element.name
-                          .toUpperCase()
-                          .concat(` ${element.lastName.toUpperCase()}`)}
-                      </td>
-                      <td className={styles.tableRows}>
-                        {element.active ? 'activo' : 'No activo'}
-                      </td>
-                      <td className={styles.tableRows}>
-                        {element.role?.role?.name}
-                      </td>
-                      <td className={styles.tableRows}>{element.shift}</td>
-                      <td className={styles.tableRows}>{element.entryDate}</td>
-                      <td className={styles.buttonsContainer}>
-                        {element.status === 'enabled' ? (
-                          <>
-                            <button className={styles.actionButtonsFirst}>
-                              <img src={update} alt="update-icon" />
-                            </button>
-                            <button
-                              className={styles.actionButtonsSecond}
-                              onClick={() => {
-                                toggleStatus(element._id, element.status);
-                              }}
-                            >
-                              <img src={deleteIcon} alt="delete-icon" />
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            <button
-                              className={styles.actionButtonsFirstEnabled}
-                            >
-                              <img src={update} alt="update-icon" />
-                            </button>
-                            <button
-                              className={styles.actionButtonsSecond}
-                              onClick={() => {
-                                toggleStatus(element._id, element.status);
-                              }}
-                            >
-                              <img src={enabledIcon} alt="enabled-icon" />
-                            </button>
-                          </>
-                        )}
-                      </td>
-                    </tr>
-                  ) : null,
-                )}
-              </tbody>
-            ))}
+            {allUsers?.map(
+              (element: any) =>
+                !element.employeeNumber.toString().startsWith('10') && (
+                  <tr
+                    key={element._id}
+                    className={
+                      element.status === 'disabled'
+                        ? styles.rowDisabled
+                        : styles.release
+                    }
+                  >
+                    <td className={styles.tableRows}>
+                      {element.employeeNumber}
+                    </td>
+                    <td className={styles.tableRows}>
+                      {element.name
+                        .toUpperCase()
+                        .concat(` ${element.lastName.toUpperCase()}`)}
+                    </td>
+                    <td className={styles.tableRows}>
+                      {element.active ? 'activo' : 'No activo'}
+                    </td>
+                    <td className={styles.tableRows}>
+                      {element.role?.role?.name}
+                    </td>
+                    <td className={styles.tableRows}>{element.shift}</td>
+                    <td className={styles.tableRows}>{element.entryDate}</td>
+                    <td className={styles.buttonsContainer}>
+                      {element.status === 'enabled' ? (
+                        <>
+                          <button className={styles.actionButtonsFirst}>
+                            <img src={update} alt="update-icon" />
+                          </button>
+                          <button
+                            className={styles.actionButtonsSecond}
+                            onClick={() => {
+                              toggleStatus(element._id, element.status);
+                            }}
+                          >
+                            <img src={deleteIcon} alt="delete-icon" />
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button className={styles.actionButtonsFirstEnabled}>
+                            <img src={update} alt="update-icon" />
+                          </button>
+                          <button
+                            className={styles.actionButtonsSecond}
+                            onClick={() => {
+                              toggleStatus(element._id, element.status);
+                            }}
+                          >
+                            <img src={enabledIcon} alt="enabled-icon" />
+                          </button>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                ),
+            )}
           </tbody>
         </table>
         <div className={styles.tableFooter}></div>
