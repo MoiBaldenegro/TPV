@@ -24,6 +24,7 @@ export class AuthService {
     lastName,
     pinPos,
     shift,
+    role,
   }: CreateUserDto) {
     const user = await this.UsersService.findByEmail(email);
     const numberColor = Math.floor(Math.random() * 11);
@@ -60,6 +61,7 @@ export class AuthService {
       password: await bcryptjs.hash(password, 10),
       pinPos,
       color,
+      role,
     });
   }
   async login({ email, password }: LoginDto) {
