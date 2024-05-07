@@ -34,7 +34,6 @@ export default function Empleados() {
 
   const handleChange = (args: any) => {
     setEmployee(args);
-    console.log(employee);
   };
   useEffect(() => {
     console.log(isLoadingRegister);
