@@ -36,8 +36,6 @@ export default function ConfirmChangesModal({
   if (!loading && !errors) {
     setTimeout(async () => {
       if (actionType) {
-        console.log('Ejecutando la action');
-        console.log(errors);
         dispatch(actionType());
       }
       onClose();

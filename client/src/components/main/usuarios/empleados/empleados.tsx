@@ -59,7 +59,7 @@ export default function Empleados() {
           errors={errorsRegister}
           isOpen={confirmChanges.isOpen}
           onClose={confirmChanges.closeModal}
-          actionType={getDepartamentsAction}
+          actionType={getUsersAction}
           closeModal={register.closeModal}
         >
           Registro del usuario exitoso
