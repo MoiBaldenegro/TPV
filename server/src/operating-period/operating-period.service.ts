@@ -25,7 +25,6 @@ export class OperatingPeriodService {
       createdAt: { $gte: startDate, $lt: endDate },
     });
 
-    console.log(doc);
     return doc;
   }
 }

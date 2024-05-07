@@ -12,7 +12,6 @@ import searchIcon from '../../../../assets/categorias/searchIcon.svg';
 
 // Actions
 import { discontinueMenusAction } from '../../../../redux/actions/catalogo/menusYRecipes/discontinueMenus';
-import { getEmployeesAction } from '../../../../redux/actions/usuarios/employeesActions/getEmployees';
 import { useModal } from '../../../../hooks/useModals';
 import Register from './regiter/register';
 import ConfirmChangesModal from '../../../modals/confimChanges/confirmChanges';
@@ -110,7 +109,7 @@ export default function Empleados() {
             </tr>
           </thead>
           <tbody>
-            {allUsers?.map((element) => (
+            {allUsers?.map((element: any) => (
               <tr
                 key={element._id}
                 className={
@@ -128,7 +127,7 @@ export default function Empleados() {
                 <td className={styles.tableRows}>
                   {element.active ? 'activo' : 'No activo'}
                 </td>
-                <td className={styles.tableRows}>{element.role}</td>
+                <td className={styles.tableRows}>{element.role?.role?.name}</td>
                 <td className={styles.tableRows}>{element.shift}</td>
                 <td className={styles.tableRows}>{element.entryDate}</td>
                 <td className={styles.buttonsContainer}>
