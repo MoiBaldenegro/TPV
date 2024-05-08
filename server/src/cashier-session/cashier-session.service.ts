@@ -1,3 +1,4 @@
+import { User } from '@digitalpersona/core';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -14,6 +15,8 @@ export class CashierSessionService {
     private cashierSessionModel: Model<CashierSession>,
     @InjectModel(OperatingPeriod.name)
     private readonly operatingPeriodModel: Model<OperatingPeriod>,
+    @InjectModel(User.name)
+    private readonly userModel: Model<User>,
   ) {}
 
   async findAll() {
@@ -29,6 +32,7 @@ export class CashierSessionService {
   }
 
   async create(body: createCashierSessionDto) {
+    console.log(body);
     const data = { ...body, startDate: new Date().toISOString() };
 
     // Crear nueva sesión de cajero
@@ -49,6 +53,22 @@ export class CashierSessionService {
         { sellProcess },
         { new: true }, // Devuelve el documento actualizado
       );
+    }
+
+    if (newSession._id) {
+      console.log('por aca el log al editar el ususario');
+      console.log(body.user);
+      try {
+        const updatedUser = await this.userModel.findByIdAndUpdate(
+          body.user,
+          { cashierSession: newSession._id },
+          { new: true },
+        );
+      } catch (error) {
+        throw new NotFoundException(
+          'No se completo la actualizacion de usuario',
+        );
+      }
     }
 
     // Se retorna la nueva sesión creada

@@ -2,8 +2,8 @@ import { IsString } from 'class-validator';
 
 export class createCashierSessionDto {
   @IsString()
-  user: string;
+  initialQuantity: string;
 
   @IsString()
-  initialQuantity: string;
+  user: string;
 }

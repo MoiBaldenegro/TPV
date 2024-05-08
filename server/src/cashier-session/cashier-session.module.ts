@@ -11,6 +11,7 @@ import {
   OperatingPeriodSchema,
 } from 'src/schemas/operatingPeriod/operatingPeriod.schema';
 import { OperatingPeriodService } from 'src/operating-period/operating-period.service';
+import { User, UserSchema } from 'src/schemas/users.schema';
 
 @Module({
   imports: [
@@ -22,6 +23,10 @@ import { OperatingPeriodService } from 'src/operating-period/operating-period.se
       {
         name: OperatingPeriod.name,
         schema: OperatingPeriodSchema,
+      },
+      {
+        name: User.name,
+        schema: UserSchema,
       },
     ]),
   ],

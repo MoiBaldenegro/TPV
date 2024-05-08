@@ -69,4 +69,7 @@ export class UpdateUserDto {
 
   @IsOptional()
   dailyRegister: string;
+
+  @IsOptional()
+  cashierSession: string;
 }

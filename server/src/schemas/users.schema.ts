@@ -4,6 +4,7 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Profile } from './usuarios/profiles.Schema';
 import { Table } from './tables/tableSchema';
 import { DailyRegister } from './dailyRegister/createDailyRegister';
+import { CashierSession } from './cashierSession/cashierSession';
 
 @Schema({
   timestamps: true,
@@ -103,5 +104,12 @@ export class User {
     default: null,
   })
   dailyRegister?: DailyRegister;
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'CashierSession',
+    default: null,
+  })
+  cashierSession?: CashierSession;
 }
 export const UserSchema = SchemaFactory.createForClass(User);

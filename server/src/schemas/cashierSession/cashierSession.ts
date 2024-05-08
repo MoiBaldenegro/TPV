@@ -8,7 +8,9 @@ export class CashierSession {
   startDate: string;
 
   @Prop({
-    type: { type: MongooseSchema.Types.ObjectId, ref: 'User' },
+    required: true,
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
   })
   user: User;
 
