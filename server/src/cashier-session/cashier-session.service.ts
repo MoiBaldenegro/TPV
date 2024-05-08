@@ -1,4 +1,3 @@
-import { User } from '@digitalpersona/core';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -7,6 +6,7 @@ import { updateCashierSessionDto } from 'src/dto/cashierSession/updateCashierSes
 import { OperatingPeriodService } from 'src/operating-period/operating-period.service';
 import { CashierSession } from 'src/schemas/cashierSession/cashierSession';
 import { OperatingPeriod } from 'src/schemas/operatingPeriod/operatingPeriod.schema';
+import { User } from 'src/schemas/users.schema';
 
 @Injectable()
 export class CashierSessionService {
