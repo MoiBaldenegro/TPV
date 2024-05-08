@@ -93,4 +93,28 @@ export class CashierSessionController {
       );
     }
   }
+
+  @Put('payment/:id')
+  async updateBillForPayment(
+    @Param('id') id: string,
+    @Body() body: updateCashierSessionDto,
+  ) {
+    console.log('LLegue al metodo adecuado con la data:');
+    console.log(id);
+    console.log(body);
+    try {
+      const updatedData = await this.cashierSessionService.updateBillForPayment(
+        id,
+        body,
+      );
+      if (!updatedData) {
+        throw new NotFoundException('No se pudo actualizar');
+      }
+      return updatedData;
+    } catch (error) {
+      throw new NotFoundException(
+        `Ha ocurrido un error inepserado, mas informacion: ${error}`,
+      );
+    }
+  }
 }

@@ -80,4 +80,34 @@ export class CashierSessionService {
       new: true,
     });
   }
+
+  async updateBillForPayment(id: string, body: updateCashierSessionDto) {
+    console.log('si estoy llegando el metrodo correcto');
+    // Primero vamos a clavar el ID de la cuenta aqui en el cashier session
+
+    const session = await this.cashierSessionModel.startSession();
+    session.startTransaction();
+    try {
+      const currentSession = await this.cashierSessionModel.findById(id);
+      if (!currentSession) {
+        throw new NotFoundException('No se pudo actualizar');
+      }
+      const res = await this.cashierSessionModel.findByIdAndUpdate(
+        id,
+        { bills: [...currentSession.bills].concat(body.bills) },
+        {
+          new: true,
+        },
+      );
+      await session.commitTransaction();
+      session.endSession();
+      return res;
+    } catch (error) {
+      await session.abortTransaction();
+      session.endSession();
+      console.error(
+        `Hubo un error inesperado surante la sesion, mas informacion: ${error}`,
+      );
+    }
+  }
 }
