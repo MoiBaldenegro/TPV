@@ -10,6 +10,9 @@ export class updateCashierSessionDto {
   user: string;
 
   @IsOptional()
+  bills?: [];
+
+  @IsOptional()
   @IsString()
   endDate: string;
 

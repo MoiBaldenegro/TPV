@@ -13,6 +13,8 @@ export class CashierSession {
     ref: 'User',
   })
   user: User;
+  @Prop({ default: [] })
+  bills: [];
 
   @Prop({ trim: true })
   endDate: string;
