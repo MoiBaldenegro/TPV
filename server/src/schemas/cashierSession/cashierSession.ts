@@ -1,6 +1,7 @@
 import { SchemaFactory, Schema, Prop, MongooseModule } from '@nestjs/mongoose';
 import { Schema as MongooseSchema } from 'mongoose';
 import { User } from '../users.schema';
+import { Bills } from '../ventas/bills.schema';
 
 @Schema({ timestamps: true })
 export class CashierSession {
@@ -13,8 +14,11 @@ export class CashierSession {
     ref: 'User',
   })
   user: User;
-  @Prop({ default: [] })
-  bills: [];
+  @Prop({
+    type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Bills' }],
+    default: [],
+  })
+  bills: Bills[];
 
   @Prop({ trim: true })
   endDate: string;

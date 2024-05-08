@@ -6,6 +6,7 @@ import { User } from 'src/schemas/users.schema';
 // interfaces
 import { CreateUserDto } from 'src/dto/users/createUser.dto';
 import { UpdateUserDto } from 'src/dto/users/updateUserDto';
+import { Bills } from 'src/schemas/ventas/bills.schema';
 
 @Injectable()
 export class UsersService {
@@ -75,7 +76,8 @@ export class UsersService {
             ],
           },
         ],
-      });
+      })
+      .populate({ path: 'cashierSession', populate: [{ path: 'bills' }] });
   }
 
   async create(createUser: CreateUserDto) {
