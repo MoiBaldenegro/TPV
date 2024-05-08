@@ -1,9 +1,17 @@
-import { SchemaFactory, Schema, Prop } from '@nestjs/mongoose';
+import { SchemaFactory, Schema, Prop, MongooseModule } from '@nestjs/mongoose';
+import { Schema as MongooseSchema } from 'mongoose';
+import { User } from '../users.schema';
 
 @Schema({ timestamps: true })
 export class CashierSession {
   @Prop({ trim: true })
   startDate: string;
+
+  @Prop({
+    required: true,
+    type: { type: MongooseSchema.Types.ObjectId, ref: 'User' },
+  })
+  user: User;
 
   @Prop({ trim: true })
   endDate: string;

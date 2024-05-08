@@ -7,6 +7,10 @@ export class updateCashierSessionDto {
 
   @IsOptional()
   @IsString()
+  user: string;
+
+  @IsOptional()
+  @IsString()
   endDate: string;
 
   @IsOptional()
