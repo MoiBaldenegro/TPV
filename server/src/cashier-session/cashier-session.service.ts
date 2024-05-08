@@ -40,14 +40,15 @@ export class CashierSessionService {
       .findOne()
       .sort({ _id: -1 });
 
-    // Actualizar operatingPeriodModel con la nueva sesión si existe
     if (updatedOperatingPeriod && newSession._id) {
-      const updatedProcess = await this.operatingPeriodModel.findByIdAndUpdate(
+      const sellProcess = [...updatedOperatingPeriod.sellProcess, newSession];
+
+      // Actualizar operatingPeriodModel con la nueva sesión si existe
+      await this.operatingPeriodModel.findByIdAndUpdate(
         updatedOperatingPeriod._id,
-        { sellProcess: [newSession] },
+        { sellProcess },
         { new: true }, // Devuelve el documento actualizado
       );
-      console.log(updatedProcess);
     }
 
     // Se retorna la nueva sesión creada
