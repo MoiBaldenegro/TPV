@@ -14,6 +14,7 @@ import { PaymentsService } from './payments.service';
 import { CreatePaymentDto } from 'src/dto/ventas/payments/createPaymentDto';
 import { UpdatePaymentDto } from 'src/dto/ventas/payments/updatePaymentDto';
 import { BillsService } from '../bills/bills.service';
+import { updateNoteDto } from 'src/dto/ventas/notes/updateNoteDto';
 
 @Controller('payments')
 export class PaymentsController {
@@ -90,6 +91,20 @@ export class PaymentsController {
       return updatedPayment;
     } catch (error) {
       throw new NotFoundException('Ha ocurrido algo inesperado');
+    }
+  }
+  @Post('p/note/:id')
+  async paymentNote(@Param('id') id: string, @Body() body: CreatePaymentDto) {
+    try {
+      const payNote = await this.paymentService.paymentNote(id, body);
+      if (!payNote) {
+        throw new NotFoundException('No se completo al pago de la nota');
+      }
+      return payNote;
+    } catch (error) {
+      throw new NotFoundException(
+        `Ha ocurrido un error inesperado, no se pudo completar el pago, mas informacion: ${error}`,
+      );
     }
   }
 }

@@ -1,14 +1,20 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { UpdateBillDto } from 'src/dto/ventas/bills/updateBill.Dto';
 import { CreatePaymentDto } from 'src/dto/ventas/payments/createPaymentDto';
 import { UpdatePaymentDto } from 'src/dto/ventas/payments/updatePaymentDto';
+import { FINISHED_STATUS } from 'src/libs/status.libs';
+import { Bills } from 'src/schemas/ventas/bills.schema';
+import { Notes } from 'src/schemas/ventas/notes.schema';
 import { Payment } from 'src/schemas/ventas/payment.schema';
 
 @Injectable()
 export class PaymentsService {
   constructor(
     @InjectModel(Payment.name) private paymentModel: Model<Payment>,
+    @InjectModel(Notes.name) private readonly noteModel: Model<Notes>,
+    @InjectModel(Bills.name) private readonly billModel: Model<Bills>,
   ) {}
 
   async findAll() {
@@ -54,6 +60,42 @@ export class PaymentsService {
     return await this.paymentModel.findByIdAndUpdate(id, updatePayment, {
       new: true,
     });
+  }
+  async paymentNote(
+    id: string,
+    body: { accountId: string; body: CreatePaymentDto },
+  ) {
+    const session = await this.paymentModel.startSession();
+    session.startTransaction();
+    try {
+      const newPayment = new this.paymentModel(body.body);
+      await newPayment.save();
+      if (!newPayment) {
+        throw new NotFoundException(`No se pudo crear el pago`);
+      }
+      const dataInjectInNote = {
+        status: FINISHED_STATUS,
+        paymentCode: newPayment._id,
+      };
+      await this.noteModel.findByIdAndUpdate(id, dataInjectInNote);
+
+      const currentBill = await this.billModel.findById(body.accountId);
+      const newTotal = (
+        parseFloat(currentBill.checkTotal) - parseFloat(newPayment.paymentTotal)
+      ).toString();
+
+      const updatedBillData = {
+        payment: [...currentBill.payment, newPayment._id],
+        checkTotal: newTotal,
+      };
+      await this.billModel.findByIdAndUpdate(currentBill._id, updatedBillData);
+      await session.commitTransaction();
+      session.endSession();
+    } catch (error) {
+      await session.abortTransaction();
+      session.endSession();
+      console.error(error);
+    }
   }
 
   private getNextPaymentCode(lastPaymentCode: number): number {

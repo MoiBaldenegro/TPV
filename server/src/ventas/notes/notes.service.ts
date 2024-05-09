@@ -75,6 +75,7 @@ export class NotesService {
       new: true,
     });
   }
+
   private getNextNoteCode(lastBillCode: number): number {
     return lastBillCode + 1;
   }
