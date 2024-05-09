@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { path } from 'pdfkit';
 import { createCashierSessionDto } from 'src/dto/cashierSession/createCashierSession';
 import { updateCashierSessionDto } from 'src/dto/cashierSession/updateCashierSession';
 import { OperatingPeriodService } from 'src/operating-period/operating-period.service';
@@ -20,7 +21,9 @@ export class CashierSessionService {
   ) {}
 
   async findAll() {
-    return await this.cashierSessionModel.find().populate({ path: 'bills' });
+    return await this.cashierSessionModel
+      .find()
+      .populate({ path: 'bills', populate: [{ path: 'notes' }] });
   }
 
   async findOne(id: string) {
@@ -56,8 +59,6 @@ export class CashierSessionService {
     }
 
     if (newSession._id) {
-      console.log('por aca el log al editar el ususario');
-      console.log(body.user);
       try {
         const updatedUser = await this.userModel.findByIdAndUpdate(
           body.user,
