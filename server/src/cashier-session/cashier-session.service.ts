@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { path } from 'pdfkit';
 import { createCashierSessionDto } from 'src/dto/cashierSession/createCashierSession';
 import { updateCashierSessionDto } from 'src/dto/cashierSession/updateCashierSession';
 import { OperatingPeriodService } from 'src/operating-period/operating-period.service';
