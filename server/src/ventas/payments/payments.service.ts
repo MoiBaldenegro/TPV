@@ -91,6 +91,7 @@ export class PaymentsService {
       await this.billModel.findByIdAndUpdate(currentBill._id, updatedBillData);
       await session.commitTransaction();
       session.endSession();
+      return newPayment;
     } catch (error) {
       await session.abortTransaction();
       session.endSession();

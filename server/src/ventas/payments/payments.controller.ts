@@ -94,7 +94,10 @@ export class PaymentsController {
     }
   }
   @Post('p/note/:id')
-  async paymentNote(@Param('id') id: string, @Body() body: CreatePaymentDto) {
+  async paymentNote(
+    @Param('id') id: string,
+    @Body() body: { accountId: string; body: CreatePaymentDto },
+  ) {
     try {
       const payNote = await this.paymentService.paymentNote(id, body);
       if (!payNote) {
