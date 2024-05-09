@@ -21,9 +21,11 @@ export class OperatingPeriodService {
     const endDate = new Date(startDate);
     endDate.setDate(endDate.getDate() + 1);
 
-    const doc = await this.operatingPeriodModel.find({
-      createdAt: { $gte: startDate, $lt: endDate },
-    });
+    const doc = await this.operatingPeriodModel
+      .find({
+        createdAt: { $gte: startDate, $lt: endDate },
+      })
+      .populate({ path: 'bills' });
 
     return doc;
   }
