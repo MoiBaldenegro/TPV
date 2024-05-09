@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { path } from 'pdfkit';
 import { createCashierSessionDto } from 'src/dto/cashierSession/createCashierSession';
 import { updateCashierSessionDto } from 'src/dto/cashierSession/updateCashierSession';
 import { OperatingPeriodService } from 'src/operating-period/operating-period.service';
@@ -20,7 +21,7 @@ export class CashierSessionService {
   ) {}
 
   async findAll() {
-    return await this.cashierSessionModel.find();
+    return await this.cashierSessionModel.find().populate({ path: 'bills' });
   }
 
   async findOne(id: string) {
