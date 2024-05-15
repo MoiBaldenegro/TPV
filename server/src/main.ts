@@ -12,6 +12,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
+      'https://tomatesoft-server-paas.azurewebsites.net',
       'https://tomate-pos.vercel.app',
       'https://tomate-ksuxm5zwf-tomatepvs-projects.vercel.app',
       'http://localhost:5174',
